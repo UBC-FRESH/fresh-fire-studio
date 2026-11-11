@@ -1,0 +1,14 @@
+{
+  "slug": "dogrib-2001",
+  "title": "Dogrib 2001",
+  "trees": 15996,
+  "fragments": 31,
+  "grid_m": 100.0,
+  "area_ha": 10219.0,
+  "sim_area_ha": 29509.0,
+  "iou": 0.25455521520826097,
+  "duration_min": 1372.0,
+  "ffmc": 92.70489548149253,
+  "bui": 98.74296640468506,
+  "viewer": "/static/scenes/dogrib-2001/viewer.html"
+}

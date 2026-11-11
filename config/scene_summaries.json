@@ -1,0 +1,88 @@
+{
+  "scenes": [
+    {
+      "slug": "dogrib-2001",
+      "title": "Dogrib 2001",
+      "trees": 15996,
+      "fragments": 31,
+      "grid_m": 100.0,
+      "area_ha": 10219.0,
+      "sim_area_ha": 29509.0,
+      "iou": 0.25455521520826097,
+      "duration_min": 1372.0,
+      "ffmc": 92.70489548149253,
+      "bui": 98.74296640468506,
+      "viewer": "/static/scenes/dogrib-2001/viewer.html"
+    },
+    {
+      "slug": "hay-river-2023",
+      "title": "Hay River 2023",
+      "trees": 15984,
+      "fragments": 36,
+      "grid_m": 100.0,
+      "area_ha": 2987.0,
+      "sim_area_ha": 10846.0,
+      "iou": 0.27493087557603685,
+      "duration_min": 9300.0,
+      "ffmc": 92.92,
+      "bui": 73.28,
+      "viewer": "/static/scenes/hay-river-2023/viewer.html"
+    },
+    {
+      "slug": "cfsds-2003-526",
+      "title": "2003_526",
+      "trees": 15995,
+      "fragments": 35,
+      "grid_m": 100.0,
+      "area_ha": 520.0,
+      "sim_area_ha": 5325.0,
+      "iou": 0.09559512652296158,
+      "duration_min": 22200.0,
+      "ffmc": 90.831901550293,
+      "bui": 74.1177673339844,
+      "viewer": "/static/scenes/cfsds-2003-526/viewer.html"
+    },
+    {
+      "slug": "cfsds-2023-786",
+      "title": "2023_786",
+      "trees": 16014,
+      "fragments": 34,
+      "grid_m": 100.0,
+      "area_ha": 1124.0,
+      "sim_area_ha": 14165.0,
+      "iou": 0.07935051182492057,
+      "duration_min": 39480.0,
+      "ffmc": 93.5035247802734,
+      "bui": 83.1968765258789,
+      "viewer": "/static/scenes/cfsds-2023-786/viewer.html"
+    },
+    {
+      "slug": "cfsds-2003-96-large",
+      "title": "2003_96",
+      "trees": 15984,
+      "fragments": 36,
+      "grid_m": 500.0,
+      "area_ha": 31200.0,
+      "sim_area_ha": 159700.0,
+      "iou": 0.19182144529420947,
+      "duration_min": 97080.0,
+      "ffmc": 88.0287475585938,
+      "bui": 40.7482643127441,
+      "viewer": "/static/scenes/cfsds-2003-96-large/viewer.html"
+    },
+    {
+      "slug": "cfsds-2003-663-large",
+      "title": "2003_663",
+      "trees": 15984,
+      "fragments": 36,
+      "grid_m": 500.0,
+      "area_ha": 25600.0,
+      "sim_area_ha": 68225.0,
+      "iou": 0.34951456310679613,
+      "duration_min": 32280.0,
+      "ffmc": 92.6866034305456,
+      "bui": 122.185150146484,
+      "viewer": "/static/scenes/cfsds-2003-663-large/viewer.html"
+    }
+  ]
+}

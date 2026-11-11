@@ -1,0 +1,88 @@
+{
+  "cases": [
+    {
+      "slug": "dogrib-2001",
+      "title": "Dogrib 2001",
+      "subtitle": "The Prometheus benchmark fire",
+      "region": "Northwest Territories",
+      "year": 2001,
+      "area_ha": 510,
+      "duration": "6.7 hours",
+      "weather": "Hourly observed",
+      "fuel": "C3 / mixed boreal",
+      "tone": "benchmark",
+      "story": "The standard Canadian FBP validation case. A wind-driven run through a heterogeneous boreal stand.",
+      "provenance": "Prometheus Dogrib_v624 sample; P157/P160 fixture"
+    },
+    {
+      "slug": "hay-river-2023",
+      "title": "Hay River 2023",
+      "subtitle": "A real community evacuation fire",
+      "region": "South Slave, NWT",
+      "year": 2023,
+      "area_ha": 2770,
+      "duration": "7 days",
+      "weather": "Hourly ECCC",
+      "fuel": "C3 / C4 / M1",
+      "tone": "community",
+      "story": "The K'atl'odeeche / Hay River fire, reconstructed from CFSDS perimeters and an hourly weather stream.",
+      "provenance": "CFSDS 2023_320; ECCC Hay River; P161 fixture"
+    },
+    {
+      "slug": "cfsds-2003-526",
+      "title": "2003_526",
+      "subtitle": "A small free-burn event",
+      "region": "Southern interior",
+      "year": 2003,
+      "area_ha": 510,
+      "duration": "16 days",
+      "weather": "Hourly reanalysis",
+      "fuel": "M1 / mixedwood",
+      "tone": "small",
+      "story": "A compact CFSDS event used to expose where a free-burn model keeps growing after the observed fire stops.",
+      "provenance": "CFSDS 2003_526; FireSTARR fuel; Open-Meteo reanalysis"
+    },
+    {
+      "slug": "cfsds-2023-786",
+      "title": "2023_786",
+      "subtitle": "A northern mixedwood run",
+      "region": "Northwest Territories",
+      "year": 2023,
+      "area_ha": 1029,
+      "duration": "28 days",
+      "weather": "Hourly reanalysis",
+      "fuel": "C3 / mixedwood",
+      "tone": "small",
+      "story": "A 2023 event with a long growth window and a clear basin-filling failure in the free-burn model.",
+      "provenance": "CFSDS 2023_786; FireSTARR fuel; Open-Meteo reanalysis"
+    },
+    {
+      "slug": "cfsds-2003-96-large",
+      "title": "2003_96",
+      "subtitle": "A large northern free-burn event",
+      "region": "Northern interior",
+      "year": 2003,
+      "area_ha": 28355,
+      "duration": "68 days",
+      "weather": "Hourly reanalysis",
+      "fuel": "C3 / C4 mosaic",
+      "tone": "large",
+      "story": "A large event that shows how much of the free-burn error is suppression versus basin filling.",
+      "provenance": "CFSDS 2003_96; FireSTARR fuel; 500 m scene grid"
+    },
+    {
+      "slug": "cfsds-2003-663-large",
+      "title": "2003_663",
+      "subtitle": "A large free-burn landscape",
+      "region": "Southern interior",
+      "year": 2003,
+      "area_ha": 25490,
+      "duration": "23 days",
+      "weather": "Hourly reanalysis",
+      "fuel": "C3 / M1 mosaic",
+      "tone": "large",
+      "story": "A large event where the model still overfills the burnable basin, but the error is much smaller than on small suppressed fires.",
+      "provenance": "CFSDS 2003_663; FireSTARR fuel; 500 m scene grid"
+    }
+  ]
+}

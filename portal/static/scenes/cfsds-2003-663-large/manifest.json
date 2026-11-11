@@ -1,0 +1,19 @@
+{
+  "attributes": {
+    "case": "cfsds-2003-663-large",
+    "grid_m": 500.0,
+    "synthetic": true
+  },
+  "burn_duration_years": 2.0,
+  "fragment_count": 36,
+  "particle_budget": 7000,
+  "run_replay_token": "6bb0d31e9c93caf134d50e77707180cf87b64b58f34be35ffd978692c9a6c04e",
+  "scenario_id": "cfsds-2003-663-large",
+  "scene_id": "cfsds-2003-663-large",
+  "schema_version": "ws4.fire.scene.v1",
+  "seed": 20030816,
+  "source": "synthetic block mosaic over a public benchmark fire; Nemora stem placement; nemora=nemora; crs=local; ws4.nemora.adapter.v1",
+  "synthetic_trees": true,
+  "time_unit": "minutes",
+  "tree_count": 15984
+}

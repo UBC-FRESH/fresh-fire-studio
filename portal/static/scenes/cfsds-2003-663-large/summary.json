@@ -1,0 +1,14 @@
+{
+  "slug": "cfsds-2003-663-large",
+  "title": "2003_663",
+  "trees": 15984,
+  "fragments": 36,
+  "grid_m": 500.0,
+  "area_ha": 25600.0,
+  "sim_area_ha": 68225.0,
+  "iou": 0.34951456310679613,
+  "duration_min": 32280.0,
+  "ffmc": 92.6866034305456,
+  "bui": 122.185150146484,
+  "viewer": "/static/scenes/cfsds-2003-663-large/viewer.html"
+}

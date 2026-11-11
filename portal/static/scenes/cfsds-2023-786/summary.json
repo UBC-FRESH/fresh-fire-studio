@@ -1,0 +1,14 @@
+{
+  "slug": "cfsds-2023-786",
+  "title": "2023_786",
+  "trees": 16014,
+  "fragments": 34,
+  "grid_m": 100.0,
+  "area_ha": 1124.0,
+  "sim_area_ha": 14165.0,
+  "iou": 0.07935051182492057,
+  "duration_min": 39480.0,
+  "ffmc": 93.5035247802734,
+  "bui": 83.1968765258789,
+  "viewer": "/static/scenes/cfsds-2023-786/viewer.html"
+}

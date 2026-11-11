@@ -1,0 +1,16 @@
+[Unit]
+Description=Fresh Fire Studio public portal
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/srv/shared-data/gep/ws4/fresh-fire
+Environment=HOST=0.0.0.0
+Environment=PORT=8800
+ExecStart=/srv/shared-data/gep/ws4/fresh-fire/run_portal.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

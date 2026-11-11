@@ -1,0 +1,14 @@
+{
+  "slug": "cfsds-2003-526",
+  "title": "2003_526",
+  "trees": 15995,
+  "fragments": 35,
+  "grid_m": 100.0,
+  "area_ha": 520.0,
+  "sim_area_ha": 5325.0,
+  "iou": 0.09559512652296158,
+  "duration_min": 22200.0,
+  "ffmc": 90.831901550293,
+  "bui": 74.1177673339844,
+  "viewer": "/static/scenes/cfsds-2003-526/viewer.html"
+}

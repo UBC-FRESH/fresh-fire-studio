@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__CASE_TITLE__ · Fresh Fire</title>
+<style>
+:root{color-scheme:dark;--ink:#f4efe7;--muted:#a99e90;--panel:rgba(9,12,13,.82);--line:rgba(255,255,255,.15);--hot:#ff6b2c;--warm:#ffb347}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#07100f;color:var(--ink);font:13px/1.4 Manrope,system-ui,sans-serif}
+#c{position:fixed;inset:0;width:100%;height:100%;display:block}
+.hud{position:fixed;z-index:3;background:var(--panel);border:1px solid var(--line);border-radius:14px;backdrop-filter:blur(14px);box-shadow:0 18px 48px rgba(0,0,0,.35)}
+#title{top:16px;left:16px;max-width:390px;padding:13px 15px}#title h1{margin:0 0 4px;font-size:17px;letter-spacing:-.02em}#title p{margin:0;color:var(--muted);font-size:12px;line-height:1.45}
+#stats{top:16px;right:16px;min-width:190px;padding:11px 13px}#stats div{display:flex;justify-content:space-between;gap:18px;padding:3px 0;color:var(--muted);font-size:12px}#stats b{color:var(--ink);font-weight:600}
+#bar{left:16px;right:16px;bottom:16px;padding:10px 13px}#bar .row{display:flex;align-items:center;gap:11px;flex-wrap:wrap}#bar .grow{flex:1;min-width:180px}
+button,select{background:#12201f;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 11px;font:inherit;cursor:pointer}button:hover,select:hover{border-color:rgba(255,179,71,.7)}button.primary{background:var(--hot);border-color:var(--hot);color:#1a0b04;font-weight:800}
+input[type=range]{accent-color:var(--hot)}#clock{font:12px "DM Mono",monospace;color:var(--ink);min-width:88px;text-align:right}
+.legend{display:flex;gap:13px;flex-wrap:wrap;margin-top:7px;color:var(--muted);font-size:11px}.legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+#status{color:var(--muted);font-size:11px;margin-top:5px}
+@media(max-width:700px){#title{max-width:250px}#stats{display:none}#bar .row{gap:7px}}
+</style>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="title" class="hud"><h1>__CASE_TITLE__</h1><p>Synthetic Nemora stems over a public benchmark fire. WS4/FBP growth; each tree samples the local arrival time.</p></div>
+<div id="stats" class="hud"><div><span>trees</span><b id="s-trees">—</b></div><div><span>burning</span><b id="s-burning">0</b></div><div><span>burnt</span><b id="s-burnt">0</b></div><div><span>fps</span><b id="s-fps">—</b></div></div>
+<div id="bar" class="hud">
+  <div class="row"><button id="play" class="primary">Play</button><button id="reset">Reset</button><button id="focus">Focus fire</button><input id="slider" class="grow" type="range" min="0" max="1" step="0.1" value="0"><span id="clock">0.0 min</span><select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="4">4×</option><option value="10">10×</option></select></div>
+  <div class="legend"><span><i style="background:#7ccf70"></i>live</span><span><i style="background:#ff6b2c"></i>burning</span><span><i style="background:#b98548"></i>scorched</span><span><i style="background:#6e4931"></i>torched</span><span><i style="background:#1c1510"></i>consumed</span><span><i style="background:#8b9aa3"></i>smoke</span></div>
+  <div id="status">Drag to orbit · scroll to zoom · space to play · terrain hillshade from DEM · synthetic stems</div>
+</div>
+<script id="scene-data" type="application/json">__SCENE_DATA__</script>
+<script type="module">
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+const DATA=JSON.parse(document.getElementById("scene-data").textContent||"null");
+if(!DATA||!DATA.trees){document.body.innerHTML="<p style='padding:2rem'>Scene data unavailable.</p>";throw new Error("no data");}
+const canvas=document.getElementById("c");
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:"high-performance"});
+renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.18;
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x07100f);
+const b=DATA.bounds, w=Math.max(1,b.max_x-b.min_x), d=Math.max(1,b.max_y-b.min_y), maxDim=Math.max(w,d), cx=(b.min_x+b.max_x)/2, cz=(b.min_y+b.max_y)/2;
+const camera=new THREE.PerspectiveCamera(42,innerWidth/innerHeight,1,80000);camera.position.set(cx-maxDim*.18,maxDim*.62,cz+maxDim*.34);
+const controls=new OrbitControls(camera,renderer.domElement);controls.target.set(cx,0,cz);controls.enableDamping=true;controls.dampingFactor=.08;controls.maxPolarAngle=Math.PI/2.03;controls.minDistance=25;controls.maxDistance=maxDim*4;
+scene.add(new THREE.HemisphereLight(0xd8f0ff,0x2b2418,1.9));scene.add(new THREE.AmbientLight(0xcfe2e0,.45));
+const sun=new THREE.DirectionalLight(0xffe0b0,1.7);sun.position.set(cx-maxDim,maxDim*1.5,cz-maxDim);scene.add(sun);
+const fireLight=new THREE.PointLight(0xff6b2c,0,0,0);scene.add(fireLight);
+// terrain / ground
+const tex=new THREE.TextureLoader().load(DATA.ground_texture||"terrain.png");tex.colorSpace=THREE.SRGBColorSpace;tex.wrapS=tex.wrapT=THREE.RepeatWrapping;
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(w*2.4,d*2.4),new THREE.MeshLambertMaterial({map:tex,color:0xffffff}));ground.rotation.x=-Math.PI/2;ground.position.set(cx,-.4,cz);scene.add(ground);
+// stand outlines
+const lineMat=new THREE.LineBasicMaterial({color:0x9dbb86,transparent:true,opacity:.35});
+for(const stand of DATA.stands||[]){const poly=stand.polygon;if(!Array.isArray(poly)||poly.length<3)continue;const pts=poly.map(p=>new THREE.Vector3(p[0],.2,p[1]));pts.push(pts[0].clone());scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),lineMat));}
+// trees
+const n=DATA.trees.length;const trunkG=new THREE.CylinderGeometry(.06,.1,1,5);trunkG.translate(0,.5,0);const crownG=new THREE.ConeGeometry(1,1,7);crownG.translate(0,.5,0);
+const matT=new THREE.MeshLambertMaterial({color:0xffffff});const matC=new THREE.MeshLambertMaterial({color:0xffffff});
+const trunks=new THREE.InstancedMesh(trunkG,matT,n),crowns=new THREE.InstancedMesh(crownG,matC,n);trunks.frustumCulled=false;crowns.frustumCulled=false;scene.add(trunks,crowns);
+trunks.instanceColor=new THREE.InstancedBufferAttribute(new Float32Array(n*3),3);crowns.instanceColor=new THREE.InstancedBufferAttribute(new Float32Array(n*3),3);
+const m4=new THREE.Matrix4(),q=new THREE.Quaternion(),col=new THREE.Color();
+const C_LIVE=new THREE.Color(0x8fe37a),C_BURN=new THREE.Color(0xff6b2c),C_SCORCH=new THREE.Color(0xb98548),C_TORCH=new THREE.Color(0x6e4931),C_CONSUMED=new THREE.Color(0x1c1510),C_TRUNK=new THREE.Color(0x7a5234),C_BURNT=new THREE.Color(0x2a1d16);
+const trees=DATA.trees.map(t=>{const th=Math.max(1.2,t.height_m*.62),ch=Math.max(.9,t.height_m*.55),r=Math.max(.8,t.crown_radius_m*2.2);return {...t,th,ch,r,state:0};});
+for(let i=0;i<n;i++){const t=trees[i];m4.compose(new THREE.Vector3(t.x,0,t.y),q,new THREE.Vector3(.7,t.th,.7));trunks.setMatrixAt(i,m4);m4.compose(new THREE.Vector3(t.x,t.th,t.y),q,new THREE.Vector3(t.r,t.ch,t.r));crowns.setMatrixAt(i,m4);col.copy(C_LIVE);crowns.setColorAt(i,col);col.copy(C_TRUNK);trunks.setColorAt(i,col);}
+trunks.instanceMatrix.needsUpdate=true;crowns.instanceMatrix.needsUpdate=true;crowns.instanceColor.needsUpdate=true;trunks.instanceColor.needsUpdate=true;
+let tx=0,tz=0;for(const t of trees){tx+=t.x;tz+=t.y;}tx/=n;tz/=n;
+const view=Math.min(maxDim*.08,350);controls.target.set(tx,0,tz);camera.position.set(tx-view*.4,view*1.1,tz+view*.5);controls.update();
+// particles
+function makePoints(count,size,color,blend){const g=new THREE.BufferGeometry();const p=new Float32Array(count*3),c=new Float32Array(count*3);for(let i=0;i<count;i++){p[i*3+1]=-999;c[i*3]=color.r;c[i*3+1]=color.g;c[i*3+2]=color.b;}g.setAttribute("position",new THREE.BufferAttribute(p,3));g.setAttribute("color",new THREE.BufferAttribute(c,3));const m=new THREE.PointsMaterial({size,vertexColors:true,transparent:true,opacity:.9,blending:blend,depthWrite:false});const pts=new THREE.Points(g,m);scene.add(pts);return {pts,pos:g.attributes.position,count};}
+const fire=makePoints(1500,5,new THREE.Color(0xff5a1f),THREE.AdditiveBlending),smoke=makePoints(500,28,new THREE.Color(0x87949a),THREE.NormalBlending);
+const time={t:0,playing:false,speed:1,last:performance.now(),fps:0};
+const slider=document.getElementById("slider"),clock=document.getElementById("clock"),play=document.getElementById("play");
+slider.max=String(DATA.timeline.end);
+function stateAt(t,tr){if(tr.burn_time==null||t<tr.burn_time)return 0;if(t<=tr.burn_time+tr.burn_duration)return 1;const s=tr.post_fire_state;return s==="consumed"?4:s==="torched"?3:s==="scorched"?2:0;}
+function refresh(t){let burning=0,burnt=0,fi=0,si=0;for(let i=0;i<n;i++){const tr=trees[i];const st=stateAt(t,tr);if(st!==tr.state){tr.state=st;col.copy(st===0?C_LIVE:st===1?C_BURN:st===2?C_SCORCH:st===3?C_TORCH:C_CONSUMED);crowns.setColorAt(i,col);col.copy(st===0?C_TRUNK:C_BURNT);trunks.setColorAt(i,col);}if(st===1)burning++;if(st>=2)burnt++;if(st===1&&fi<fire.count){fire.pos.array[fi*3]=tr.x+(Math.random()-.5)*tr.r*1.4;fire.pos.array[fi*3+1]=tr.th+Math.random()*tr.ch;fire.pos.array[fi*3+2]=tr.y+(Math.random()-.5)*tr.r*1.4;fi++;}if(st===1&&si<smoke.count){smoke.pos.array[si*3]=tr.x+(Math.random()-.5)*tr.r*2;smoke.pos.array[si*3+1]=tr.th+tr.ch+Math.random()*4;smoke.pos.array[si*3+2]=tr.y+(Math.random()-.5)*tr.r*2;si++;}}
+for(let i=fi;i<fire.count;i++)fire.pos.array[i*3+1]=-999;for(let i=si;i<smoke.count;i++)smoke.pos.array[i*3+1]=-999;
+fire.pos.needsUpdate=true;smoke.pos.needsUpdate=true;crowns.instanceColor.needsUpdate=true;trunks.instanceColor.needsUpdate=true;
+document.getElementById("s-burning").textContent=burning;document.getElementById("s-burnt").textContent=burnt;clock.textContent=t.toFixed(1)+" min";
+}
+function setTime(v){time.t=Math.max(0,Math.min(DATA.timeline.end,v));slider.value=String(time.t);refresh(time.t);}
+slider.addEventListener("input",()=>{time.playing=false;play.textContent="Play";setTime(Number(slider.value));});
+play.addEventListener("click",()=>{if(time.t>=DATA.timeline.end)setTime(0);time.playing=!time.playing;play.textContent=time.playing?"Pause":"Play";});
+document.getElementById("reset").addEventListener("click",()=>{time.playing=false;play.textContent="Play";setTime(0);});
+document.getElementById("speed").addEventListener("change",e=>time.speed=Number(e.target.value));
+document.getElementById("focus").addEventListener("click",()=>{const target=trees.filter(t=>t.state===1);const use=target.length?target:trees;let sx=0,sz=0;for(const t of use){sx+=t.x;sz+=t.y;}sx/=use.length;sz/=use.length;controls.target.set(sx,0,sz);camera.position.set(sx-view*.4,view*1.1,sz+view*.5);controls.update();});
+addEventListener("keydown",e=>{if(e.code==="Space"){e.preventDefault();play.click();}});
+function resize(){camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false);}addEventListener("resize",resize);resize();
+document.getElementById("s-trees").textContent=n.toLocaleString();
+setTime(0);
+let frames=0,t0=performance.now();
+function frame(now){const dt=Math.min(.05,(now-time.last)/1000);time.last=now;if(time.playing){setTime(time.t+dt*time.speed);if(time.t>=DATA.timeline.end){time.playing=false;play.textContent="Play";}}controls.update();renderer.render(scene,camera);frames++;if(now-t0>1000){document.getElementById("s-fps").textContent=Math.round(frames*1000/(now-t0));frames=0;t0=now;}requestAnimationFrame(frame);}requestAnimationFrame(frame);
+</script>
+</body></html>
