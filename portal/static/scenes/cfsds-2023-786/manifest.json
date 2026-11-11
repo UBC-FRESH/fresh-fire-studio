@@ -7,7 +7,7 @@
   "burn_duration_years": 2.0,
   "fragment_count": 34,
   "particle_budget": 7000,
-  "run_replay_token": "23abf8228373be7f683653552a084dcd6224f8fffc85033b596414a1d1630a05",
+  "run_replay_token": "a1074ef84fcb9522afd018ea463786a4beb1c7d9493a14ad0034a5d468ec2eb1",
   "scenario_id": "cfsds-2023-786",
   "scene_id": "cfsds-2023-786",
   "schema_version": "ws4.fire.scene.v1",
@@ -15,5 +15,5 @@
   "source": "synthetic block mosaic over a public benchmark fire; Nemora stem placement; nemora=nemora; crs=local; ws4.nemora.adapter.v1",
   "synthetic_trees": true,
   "time_unit": "minutes",
-  "tree_count": 16014
+  "tree_count": 15991
 }

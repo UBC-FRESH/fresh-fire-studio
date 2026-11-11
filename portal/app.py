@@ -179,7 +179,7 @@ iframe{{position:fixed;inset:0;width:100%;height:100%;border:0;background:#06090
 .brief{{pointer-events:auto;max-width:420px;background:rgba(9,11,12,.76);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:14px 16px;backdrop-filter:blur(14px)}}
 .brief h1{{margin:0;font-size:22px;letter-spacing:-.04em}} .brief p{{margin:5px 0 10px;color:#b9afa1;font-size:12px}} .facts{{display:flex;gap:12px;flex-wrap:wrap;color:#80776d;font:10px "DM Mono",monospace}} .facts b{{color:#f4efe7}}
 @media(max-width:700px){{.brief{{display:none}}}}
-</style></head><body><iframe src="/static/scenes/{slug}/viewer.html" title="{title} 3D fire scene" allowfullscreen></iframe>
+</style></head><body><iframe src="/static/scenes/{slug}/viewer.html?autoplay=1" title="{title} 3D fire scene" allowfullscreen></iframe>
 <div class="top"><a class="back" href="/">← Fresh Fire</a><div class="brief"><h1>{title}</h1><p>{subtitle}. {story}</p><div class="facts"><span><b>{area}</b> observed</span><span><b>IoU {iou_text}</b></span><span><b>{html.escape(str(case["weather"]))}</b></span></div><div class="facts" style="margin-top:8px"><span>{provenance}</span></div></div></div></body></html>"""
 
 

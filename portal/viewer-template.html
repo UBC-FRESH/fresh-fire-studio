@@ -9,7 +9,7 @@
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#07100f;color:var(--ink);font:13px/1.4 Manrope,system-ui,sans-serif}
 #c{position:fixed;inset:0;width:100%;height:100%;display:block}
 .hud{position:fixed;z-index:3;background:var(--panel);border:1px solid var(--line);border-radius:14px;backdrop-filter:blur(14px);box-shadow:0 18px 48px rgba(0,0,0,.35)}
-#title{top:16px;left:16px;max-width:390px;padding:13px 15px}#title h1{margin:0 0 4px;font-size:17px;letter-spacing:-.02em}#title p{margin:0;color:var(--muted);font-size:12px;line-height:1.45}
+#title{top:16px;left:16px;max-width:390px;padding:13px 15px}#title h1{margin:0 0 4px;font-size:17px;letter-spacing:-.02em}#title p{margin:0;color:var(--muted);font-size:12px;line-height:1.45}#title .badge{display:inline-block;margin-bottom:7px;padding:3px 7px;border:1px solid rgba(255,179,71,.45);border-radius:999px;color:var(--warm);font:10px "DM Mono",monospace;letter-spacing:.12em}
 #stats{top:16px;right:16px;min-width:190px;padding:11px 13px}#stats div{display:flex;justify-content:space-between;gap:18px;padding:3px 0;color:var(--muted);font-size:12px}#stats b{color:var(--ink);font-weight:600}
 #bar{left:16px;right:16px;bottom:16px;padding:10px 13px}#bar .row{display:flex;align-items:center;gap:11px;flex-wrap:wrap}#bar .grow{flex:1;min-width:180px}
 button,select{background:#12201f;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 11px;font:inherit;cursor:pointer}button:hover,select:hover{border-color:rgba(255,179,71,.7)}button.primary{background:var(--hot);border-color:var(--hot);color:#1a0b04;font-weight:800}
@@ -22,7 +22,7 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px "DM Mono",monospace;c
 </head>
 <body>
 <canvas id="c"></canvas>
-<div id="title" class="hud"><h1>__CASE_TITLE__</h1><p>Synthetic Nemora stems over a public benchmark fire. WS4/FBP growth; each tree samples the local arrival time.</p></div>
+<div id="title" class="hud"><h1>__CASE_TITLE__</h1><span class="badge">OBSERVED EXTENT</span><p>Synthetic Nemora stems clipped to the observed final perimeter. WS4/FBP arrival timing inside the mapped burn shape.</p></div>
 <div id="stats" class="hud"><div><span>trees</span><b id="s-trees">—</b></div><div><span>burning</span><b id="s-burning">0</b></div><div><span>burnt</span><b id="s-burnt">0</b></div><div><span>fps</span><b id="s-fps">—</b></div></div>
 <div id="bar" class="hud">
   <div class="row"><button id="play" class="primary">Play</button><button id="reset">Reset</button><button id="focus">Focus fire</button><input id="slider" class="grow" type="range" min="0" max="1" step="0.1" value="0"><span id="clock">0.0 min</span><select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="4">4×</option><option value="10">10×</option></select></div>
@@ -47,7 +47,8 @@ const sun=new THREE.DirectionalLight(0xffe0b0,1.7);sun.position.set(cx-maxDim,ma
 const fireLight=new THREE.PointLight(0xff6b2c,0,0,0);scene.add(fireLight);
 // terrain / ground
 const tex=new THREE.TextureLoader().load(DATA.ground_texture||"terrain.png");tex.colorSpace=THREE.SRGBColorSpace;tex.wrapS=tex.wrapT=THREE.RepeatWrapping;
-const ground=new THREE.Mesh(new THREE.PlaneGeometry(w*2.4,d*2.4),new THREE.MeshLambertMaterial({map:tex,color:0xffffff}));ground.rotation.x=-Math.PI/2;ground.position.set(cx,-.4,cz);scene.add(ground);
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(w*2.4,d*2.4),new THREE.MeshLambertMaterial({color:0x17241d}));ground.rotation.x=-Math.PI/2;ground.position.set(cx,-.4,cz);scene.add(ground);
+for(const ring of DATA.domain||[]){if(!Array.isArray(ring)||ring.length<3)continue;const shape=new THREE.Shape();ring.forEach((p,i)=>{if(i===0)shape.moveTo(p[0],p[1]);else shape.lineTo(p[0],p[1]);});shape.closePath();const domainMesh=new THREE.Mesh(new THREE.ShapeGeometry(shape),new THREE.MeshLambertMaterial({color:0x3f6545,transparent:true,opacity:.96}));domainMesh.rotation.x=-Math.PI/2;domainMesh.position.y=-.22;scene.add(domainMesh);}
 // stand outlines
 const lineMat=new THREE.LineBasicMaterial({color:0x9dbb86,transparent:true,opacity:.35});
 for(const stand of DATA.stands||[]){const poly=stand.polygon;if(!Array.isArray(poly)||poly.length<3)continue;const pts=poly.map(p=>new THREE.Vector3(p[0],.2,p[1]));pts.push(pts[0].clone());scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),lineMat));}
@@ -65,7 +66,7 @@ let tx=0,tz=0;for(const t of trees){tx+=t.x;tz+=t.y;}tx/=n;tz/=n;
 const view=Math.min(maxDim*.08,350);controls.target.set(tx,0,tz);camera.position.set(tx-view*.4,view*1.1,tz+view*.5);controls.update();
 // particles
 function makePoints(count,size,color,blend){const g=new THREE.BufferGeometry();const p=new Float32Array(count*3),c=new Float32Array(count*3);for(let i=0;i<count;i++){p[i*3+1]=-999;c[i*3]=color.r;c[i*3+1]=color.g;c[i*3+2]=color.b;}g.setAttribute("position",new THREE.BufferAttribute(p,3));g.setAttribute("color",new THREE.BufferAttribute(c,3));const m=new THREE.PointsMaterial({size,vertexColors:true,transparent:true,opacity:.9,blending:blend,depthWrite:false});const pts=new THREE.Points(g,m);scene.add(pts);return {pts,pos:g.attributes.position,count};}
-const fire=makePoints(1500,5,new THREE.Color(0xff5a1f),THREE.AdditiveBlending),smoke=makePoints(500,28,new THREE.Color(0x87949a),THREE.NormalBlending);
+const fire=makePoints(1800,8,new THREE.Color(0xff5a1f),THREE.AdditiveBlending),smoke=makePoints(600,34,new THREE.Color(0x87949a),THREE.NormalBlending);
 const time={t:0,playing:false,speed:1,last:performance.now(),fps:0};
 const slider=document.getElementById("slider"),clock=document.getElementById("clock"),play=document.getElementById("play");
 slider.max=String(DATA.timeline.end);
@@ -85,6 +86,7 @@ addEventListener("keydown",e=>{if(e.code==="Space"){e.preventDefault();play.clic
 function resize(){camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false);}addEventListener("resize",resize);resize();
 document.getElementById("s-trees").textContent=n.toLocaleString();
 setTime(0);
+const auto=new URLSearchParams(location.search).has("autoplay");if(auto){setTime(DATA.timeline.end*.12);time.playing=true;play.textContent="Pause";}
 let frames=0,t0=performance.now();
 function frame(now){const dt=Math.min(.05,(now-time.last)/1000);time.last=now;if(time.playing){setTime(time.t+dt*time.speed);if(time.t>=DATA.timeline.end){time.playing=false;play.textContent="Play";}}controls.update();renderer.render(scene,camera);frames++;if(now-t0>1000){document.getElementById("s-fps").textContent=Math.round(frames*1000/(now-t0));frames=0;t0=now;}requestAnimationFrame(frame);}requestAnimationFrame(frame);
 </script>

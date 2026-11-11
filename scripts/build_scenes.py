@@ -81,6 +81,53 @@ def _hillshade(fire: ObservedFire, path: Path) -> None:
     Image.fromarray(rgb).save(path)
 
 
+def _terrain_payload(
+    fire: ObservedFire,
+    min_x: float,
+    min_y: float,
+    max_x: float,
+    max_y: float,
+    trees: list[dict[str, object]],
+    nx: int = 72,
+    ny: int = 72,
+) -> dict[str, object]:
+    """Return a local terrain grid and set tree elevations."""
+    width = max(1.0, max_x - min_x)
+    depth = max(1.0, max_y - min_y)
+    elevation = np.asarray(fire.elevation_m, dtype=float)
+    valid = np.isfinite(elevation) & (elevation > 0)
+    base = float(np.nanmin(elevation[valid])) if valid.any() else 0.0
+    cell = float(fire.grid.cell_size_m)
+    xll = float(fire.grid.xll)
+    yll = float(fire.grid.yll)
+    nrows, ncols = elevation.shape
+
+    def sample(x: float, y: float) -> float:
+        col = int(np.floor((x - xll) / cell))
+        row = nrows - 1 - int(np.floor((y - yll) / cell))
+        if 0 <= row < nrows and 0 <= col < ncols and valid[row, col]:
+            return float(elevation[row, col] - base)
+        return 0.0
+
+    heights: list[list[float]] = []
+    for j in range(ny):
+        y = min_y + (j / (ny - 1)) * depth
+        row: list[float] = []
+        for i in range(nx):
+            x = min_x + (i / (nx - 1)) * width
+            row.append(sample(x, y))
+        heights.append(row)
+    for tree in trees:
+        tree["z"] = sample(float(tree["x"]) + min_x, float(tree["y"]) + min_y)
+    return {
+        "nx": nx,
+        "ny": ny,
+        "dx": width / (nx - 1),
+        "dy": depth / (ny - 1),
+        "heights": heights,
+    }
+
+
 def _case_specs() -> list[dict[str, object]]:
     """Return the scene build recipes."""
     return [
@@ -193,9 +240,17 @@ def _block_polygons(
             y1 = y0 + step_y
             ring = ((x0, y0), (x1, y0), (x1, y1), (x0, y1))
             block = Polygon(ring)
-            if not block.intersects(final_polygon):
+            clipped = block.intersection(final_polygon)
+            if clipped.is_empty:
                 continue
-            result.append((fragment, ring, step_x * step_y / 10_000.0))
+            if clipped.geom_type == "MultiPolygon":
+                clipped = max(clipped.geoms, key=lambda item: item.area)
+            if clipped.geom_type != "Polygon" or clipped.area <= 0.0:
+                continue
+            clipped_ring = tuple(
+                (float(x), float(y)) for x, y in list(clipped.exterior.coords)[:-1]
+            )
+            result.append((fragment, clipped_ring, clipped.area / 10_000.0))
             fragment += 1
     return result
 
@@ -444,6 +499,13 @@ def build_case(spec: dict[str, object], out_root: Path) -> dict[str, object]:
             "max_y": max_y - min_y,
         }
         payload["origin_projected"] = [min_x, min_y]
+        payload["domain"] = [
+            [[float(x) - min_x, float(y) - min_y] for x, y in ring]
+            for ring in (fire.perimeters[-1].rings_projected if fire.perimeters else ())
+        ]
+        payload["terrain"] = _terrain_payload(
+            fire, min_x, min_y, max_x, max_y, payload.get("trees", [])
+        )
         payload["ground_texture"] = "terrain.png"
         viewer = (
             viewer[: match.start(2)]
