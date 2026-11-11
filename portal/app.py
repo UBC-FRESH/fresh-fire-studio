@@ -1,4 +1,4 @@
-"""Fresh Fire Studio public portal.
+"""FRESH Fire Studio public portal.
 
 A small FastAPI portal that serves a landing page, case briefs, and standalone
 WS4 vector-fire scenes. It has no write path and requires no private data.
@@ -20,7 +20,7 @@ STATIC = ROOT / "portal" / "static"
 CASES_PATH = ROOT / "config" / "cases.json"
 SUMMARIES_PATH = ROOT / "config" / "scene_summaries.json"
 
-app = FastAPI(title="Fresh Fire Studio", docs_url=None, redoc_url=None)
+app = FastAPI(title="FRESH Fire Studio", docs_url=None, redoc_url=None)
 
 
 def _load_cases() -> list[dict[str, Any]]:
@@ -79,7 +79,7 @@ def _landing() -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fresh Fire Studio · UBC FRESH</title>
+<title>FRESH Fire Studio · UBC FRESH</title>
 <meta name="description" content="Interactive 3D wildfire behaviour over public Canadian benchmark fires.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -171,7 +171,7 @@ def _case_page(case: dict[str, Any]) -> str:
     area = _fmt(case.get("area_ha"), " ha")
     iou = case.get("iou")
     iou_text = "—" if iou is None else f"{float(iou):.3f}"
-    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title} · Fresh Fire</title><style>
+    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title} · FRESH Fire Studio</title><style>
 html,body{{margin:0;height:100%;background:#06090a;color:#f4efe7;font:13px/1.4 Manrope,system-ui,sans-serif;overflow:hidden}}
 iframe{{position:fixed;inset:0;width:100%;height:100%;border:0;background:#06090a}}
 .top{{position:fixed;z-index:4;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;pointer-events:none}}
@@ -179,19 +179,22 @@ iframe{{position:fixed;inset:0;width:100%;height:100%;border:0;background:#06090
 .brief{{pointer-events:auto;max-width:420px;background:rgba(9,11,12,.76);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:14px 16px;backdrop-filter:blur(14px)}}
 .brief h1{{margin:0;font-size:22px;letter-spacing:-.04em}} .brief p{{margin:5px 0 10px;color:#b9afa1;font-size:12px}} .facts{{display:flex;gap:12px;flex-wrap:wrap;color:#80776d;font:10px "DM Mono",monospace}} .facts b{{color:#f4efe7}}
 @media(max-width:700px){{.brief{{display:none}}}}
-</style></head><body><iframe src="/static/scenes/{slug}/viewer.html?autoplay=1" title="{title} 3D fire scene" allowfullscreen></iframe>
-<div class="top"><a class="back" href="/">← Fresh Fire</a><div class="brief"><h1>{title}</h1><p>{subtitle}. {story}</p><div class="facts"><span><b>{area}</b> observed</span><span><b>IoU {iou_text}</b></span><span><b>{html.escape(str(case["weather"]))}</b></span></div><div class="facts" style="margin-top:8px"><span>{provenance}</span></div></div></div></body></html>"""
+</style></head><body><iframe src="/static/scenes/{slug}/viewer.html?autoplay=1&embedded=1" title="{title} 3D fire scene" allowfullscreen></iframe>
+<div class="top"><a class="back" href="/">← FRESH Fire Studio</a><div class="brief"><h1>{title}</h1><p>{subtitle}. {story}</p><div class="facts"><span><b>{area}</b> observed</span><span><b>IoU {iou_text}</b></span><span><b>{html.escape(str(case["weather"]))}</b></span></div><div class="facts" style="margin-top:8px"><span>{provenance}</span></div></div></div></body></html>"""
 
 
 def _methods_page() -> str:
-    return """<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Methods · Fresh Fire</title><style>
+    science = ROOT / "portal" / "science.html"
+    if science.is_file():
+        return science.read_text(encoding="utf-8")
+    return """<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Methods · FRESH Fire Studio</title><style>
 body{margin:0;background:#090b0c;color:#f4efe7;font:15px/1.65 Manrope,system-ui,sans-serif}
 .wrap{max-width:920px;margin:0 auto;padding:44px 28px 80px}a{color:#ffb347;text-decoration:none}
 h1{font-size:clamp(38px,6vw,68px);line-height:.98;letter-spacing:-.055em;margin:18px 0 22px}h2{font-size:24px;letter-spacing:-.03em;margin:36px 0 10px}
 p,li{color:#b9afa1}code{color:#ffcf8b;font:12px "DM Mono",monospace}.rule{border-top:1px solid rgba(255,255,255,.12);margin:26px 0}
 .kicker{font:11px "DM Mono",monospace;letter-spacing:.15em;text-transform:uppercase;color:#ffb347}
-</style></head><body><div class="wrap"><a href="/">← Fresh Fire Studio</a><div class="kicker" style="margin-top:28px">Methods and limits</div><h1>The model is the point.</h1>
-<p>Fresh Fire is a public demonstration of the WS4 fire modelling stack from the UBC FRESH Lab. It is designed to make model behaviour inspectable, not to sell a black box.</p>
+</style></head><body><div class="wrap"><a href="/">← FRESH Fire Studio</a><div class="kicker" style="margin-top:28px">Methods and limits</div><h1>The model is the point.</h1>
+<p>FRESH Fire is a public demonstration of the WS4 fire modelling stack from the UBC FRESH Lab. It is designed to make model behaviour inspectable, not to sell a black box.</p>
 <h2>What is real</h2><ul><li>Public benchmark fire perimeters and event windows.</li><li>Hourly weather: ECCC stations or Open-Meteo reanalysis, recorded per case.</li><li>FBP fuel and FireSTARR/ NRCan terrain inputs.</li><li>WS4 surface fire, crown fire, FWI, growth, spotting, and perimeter comparison.</li></ul>
 <h2>What is synthetic</h2><ul><li>The individual-tree layer. Nemora places plausible stems inside stand blocks; it is not a measured inventory.</li><li>The visual tree geometry and fire particles. Tree outcomes are visual classes derived from the model, not a validated mortality observation.</li></ul>
 <h2>What this demo does not claim</h2><ul><li>Operational fire prediction.</li><li>Regional calibration.</li><li>That a free-burn model matches a suppressed fire. P176 shows the model fills the burnable basin; small fires are suppression-dominated.</li><li>That the 3D scene is a measurement product.</li></ul>

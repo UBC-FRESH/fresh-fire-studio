@@ -1,4 +1,4 @@
-# Fresh Fire Studio
+# FRESH Fire Studio
 
 A public 3D benchmark-fire portal from the UBC FRESH Lab.
 

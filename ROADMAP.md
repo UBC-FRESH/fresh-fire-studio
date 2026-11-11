@@ -1,4 +1,4 @@
-# Fresh Fire Studio roadmap
+# FRESH Fire Studio roadmap
 
 ## P1 · Public studio
 

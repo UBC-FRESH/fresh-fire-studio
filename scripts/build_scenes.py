@@ -1,4 +1,4 @@
-"""Build the benchmark fire scenes for the Fresh Fire portal.
+"""Build the benchmark fire scenes for the FRESH Fire portal.
 
 Each scene is a standalone WS4 3D viewer plus a summary JSON. The tree layer is a
 Nemora-derived synthetic stem population, not a measured inventory.
@@ -49,7 +49,7 @@ from ws4.scene import (  # type: ignore[import-not-found]
 BLOCKS_X = 6
 BLOCKS_Y = 6
 MAX_TREES = 16000
-TREE_BURN_MINUTES = 90.0
+TREE_BURN_MINUTES = 15.0
 
 
 def _hillshade(fire: ObservedFire, path: Path) -> None:
@@ -449,7 +449,7 @@ def build_case(spec: dict[str, object], out_root: Path) -> dict[str, object]:
     paths = scene.write(out)
     viewer = paths.viewer.read_text(encoding="utf-8")
     viewer = viewer.replace(
-        "<title>WS4 fire scene</title>", f"<title>{spec['title']} · Fresh Fire</title>"
+        "<title>WS4 fire scene</title>", f"<title>{spec['title']} · FRESH Fire Studio</title>"
     )
     viewer = viewer.replace("<h1>WS4 fire scene</h1>", f"<h1>{spec['title']}</h1>")
     viewer = viewer.replace(
@@ -528,6 +528,12 @@ def build_case(spec: dict[str, object], out_root: Path) -> dict[str, object]:
             "max_y": max_y - min_y,
         }
         payload["origin_projected"] = [min_x, min_y]
+        ignition_values = animation["ignition_time"].dropna()
+        if not ignition_values.empty:
+            hero = float(ignition_values.quantile(0.25) - 2.0)
+            payload["hero_time"] = max(float(ignition_values.min()), hero)
+        else:
+            payload["hero_time"] = float(payload["timeline"]["end"] * 0.3)
         payload["domain"] = [
             [[float(x) - min_x, float(y) - min_y] for x, y in ring]
             for ring in (fire.perimeters[-1].rings_projected if fire.perimeters else ())

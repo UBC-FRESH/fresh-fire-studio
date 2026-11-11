@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The science · FRESH Fire Studio</title>
+<style>
+:root{--ink:#f4efe7;--muted:#b7aa9b;--dim:#7d7267;--bg:#080a0b;--panel:#101416;--line:rgba(244,239,231,.13);--hot:#ff6b2c;--warm:#ffb347;--cool:#9ad1c8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.68 Manrope,system-ui,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(900px 500px at 12% -10%,rgba(255,107,44,.13),transparent 60%),radial-gradient(800px 500px at 100% 10%,rgba(154,209,200,.06),transparent 55%)}
+.wrap{position:relative;max-width:1080px;margin:0 auto;padding:0 28px 100px}
+a{color:var(--warm);text-decoration:none}a:hover{text-decoration:underline}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:13px}
+.brand{color:var(--ink);font-weight:800;letter-spacing:-.02em}.brand i{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--hot);margin-right:8px;vertical-align:-2px;box-shadow:0 0 18px rgba(255,107,44,.5)}
+.kicker{font:11px/1.4 "DM Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--warm);margin-top:52px}
+h1{font-size:clamp(42px,7vw,82px);line-height:.94;letter-spacing:-.055em;margin:14px 0 22px;max-width:900px}
+h1 em{font-style:normal;color:var(--hot)}.lede{font-size:clamp(17px,2.1vw,22px);line-height:1.5;color:#d8cdc0;max-width:760px}
+h2{font-size:clamp(28px,4vw,44px);line-height:1.02;letter-spacing:-.045em;margin:64px 0 14px;border-top:1px solid var(--line);padding-top:24px}
+h3{font-size:19px;letter-spacing:-.02em;margin:28px 0 7px;color:#f7eee4}
+p{color:var(--muted);max-width:840px}ul,ol{color:var(--muted);max-width:840px;padding-left:22px}li{margin:5px 0}
+strong,b{color:var(--ink);font-weight:650}.small{font-size:12px;color:var(--dim)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}.card{border:1px solid var(--line);background:rgba(16,20,22,.72);border-radius:14px;padding:18px}.card h3{margin:0 0 6px;font-size:16px}.card p{margin:0;font-size:13px}.card .num{font:12px "DM Mono",monospace;color:var(--hot);letter-spacing:.08em}
+.eq{border:1px solid var(--line);background:#0b1012;border-radius:12px;padding:16px 18px;margin:18px 0;font:15px/1.8 "DM Mono",monospace;color:#ffd7b4;overflow:auto}
+.eq span{color:var(--muted);font-family:Manrope,sans-serif;font-size:12px;display:block;margin-top:6px}
+.table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13px}.table th,.table td{text-align:left;border-bottom:1px solid var(--line);padding:9px 10px;vertical-align:top}.table th{color:var(--dim);font:10px "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase}.table td{color:var(--muted)}.table td b{color:var(--ink)}
+.pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:24px 0}.pipe{background:#0d1214;padding:14px}.pipe b{display:block;font-size:12px;color:var(--ink)}.pipe span{display:block;font-size:11px;color:var(--dim);margin-top:4px}
+.callout{border-left:3px solid var(--hot);padding:12px 16px;background:rgba(255,107,44,.06);margin:22px 0;color:#d8cdc0}
+.refs{font-size:13px;color:var(--muted)}.refs li{margin:8px 0}
+footer{border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:var(--dim);font-size:12px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:800px){.grid,.pipeline{grid-template-columns:1fr}.pipeline{gap:1px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><a class="brand" href="/"><i></i>FRESH Fire Studio</a><span><a href="/">Studio</a> · <a href="/#cases">Benchmarks</a> · <a href="/methods">Science</a></span></nav>
+<div class="kicker">Model card · the science behind the studio</div>
+<h1>Fire is a <em>process</em>, not a perimeter.</h1>
+<p class="lede">FRESH Fire Studio is a deterministic visual replay of the WS4 fire-behaviour stack: FBP surface fire, crown fire, the Canadian FWI System, Huygens growth, terrain, fuel and weather. This page is the model card — what is solved, what is assumed, where it fails, and what we are testing next.</p>
+
+<div class="pipeline">
+  <div class="pipe"><b>Fuel + terrain</b><span>FBP fuel type, CFB, elevation, slope, aspect</span></div>
+  <div class="pipe"><b>Weather</b><span>Hourly ECCC or Open-Meteo reanalysis</span></div>
+  <div class="pipe"><b>Moisture</b><span>FFMC · DMC · DC · BUI · ISI · FWI</span></div>
+  <div class="pipe"><b>Spread</b><span>Rothermel/FBP surface, crown, spotting</span></div>
+  <div class="pipe"><b>Envelope</b><span>Huygens arrival-time field and perimeter</span></div>
+</div>
+
+<h2>1 · The fire-behaviour kernel</h2>
+<p>The core is the Canadian Forest Fire Behavior Prediction System, implemented in WS4. Surface fire rate of spread follows the Rothermel form, with the FBP fuel-specific empirical constants and the Canadian slope/wind adjustments. The kernel is not a machine-learned surrogate: every cell is evaluated from fuel, moisture, wind and terrain.</p>
+<div class="eq">R = (I<sub>R</sub> · ξ · (1 + φ<sub>w</sub> + φ<sub>s</sub>)) / (ρ<sub>b</sub> · ε · Q<sub>ig</sub>)<span>Rothermel surface rate of spread. I<sub>R</sub> reaction intensity; ξ propagating flux ratio; φ<sub>w</sub>, φ<sub>s</sub> wind and slope factors; ρ<sub>b</sub> bulk density; ε effective heating number; Q<sub>ig</sub> heat of preignition.</span></div>
+<p>Moisture is carried by the standard FWI System. FFMC controls fine-fuel ignition; DMC and DC carry the slower drought memory; BUI combines them; ISI combines FFMC and wind; FWI combines ISI and BUI. The studio shows the daily codes in each case brief, not a hidden “wetness” slider.</p>
+<div class="eq">FFMC, DMC, DC → BUI; ISI = f(FFMC, wind); FWI = f(ISI, BUI)<span>Canadian Forest Fire Weather Index System. The hourly model advances FFMC from hourly temperature, RH, wind and rain; BUI is held at the event-day value because there is no defensible hourly BUI conversion.</span></div>
+<p>Crown fire follows Van Wagner. Crown initiation needs sufficient surface intensity and crown bulk density; active crown fire needs the critical spread rate. The studio distinguishes surface, passive crown, active crown and post-fire tree outcomes.</p>
+<div class="eq">I<sub>0</sub> = (0.01 · CBH · (460 + 25.9 · FMC))<sup>1.5</sup><span>Van Wagner crown initiation intensity, kW/m. CBH = crown base height; FMC = foliar moisture content.</span></div>
+<div class="eq">R<sub>0</sub> = 3.0 / CBS<span>Critical active-crown rate of spread, m/min. CBS = crown bulk density, kg/m³.</span></div>
+
+<h2>2 · Growth: the Huygens arrival-time field</h2>
+<p>A fire is not drawn as a polygon. Each cell stores the earliest arrival time of the front. The front advances by propagating an elliptical wave from every burning cell; the perimeter at time <em>t</em> is the envelope of all cells whose arrival time is ≤ <em>t</em>. This is the same Huygens construction used by FARSITE and Prometheus, implemented on a regular grid.</p>
+<div class="eq">t<sub>arrival</sub>(j) = min<sub>i∈neighbours(j)</sub> [ t<sub>arrival</sub>(i) + d<sub>ij</sub> / R(θ<sub>ij</sub>) ]<span>Discrete Huygens propagation. d is cell-centre distance; R(θ) is the directional FBP rate of spread; θ is the direction relative to the effective wind/slope vector.</span></div>
+<p>Wind and slope are folded into an effective wind vector per cell. The model supports heterogeneous fuel type grids, per-cell slope/aspect, conifer/dead-fir blends, crown closure, and a seeded spotting process. Spotting is a screening assumption, not a validated physical ember model.</p>
+
+<h2>3 · What the 3D studio actually shows</h2>
+<p>The 3D layer is an <b>observed-extent replay</b>. The tree and stand geometry is clipped to the mapped final fire perimeter. The arrival time of each synthetic tree is sampled from the WS4 growth field at that tree's location; trees then resolve to live, burning, scorched, torched or consumed visual states.</p>
+<div class="callout"><b>This is not a prediction of the square AOI.</b> The default scene is the observed burn shape. The <b>Model extent</b> button overlays the free-burn model footprint in orange, so the difference between observed extent and basin-filling model behaviour is visible.</div>
+<p>The tree population is synthetic. Nemora places stems from a species/DBH distribution; it is a plausible realization, not a measured inventory. Tree-scale mortality is a visual classification, not a validated FOFEM output. The 3D scene is a communication and inspection tool; the authoritative output is the gridded arrival-time field and the perimeter metrics.</p>
+
+<h2>4 · Validation ladder</h2>
+<p>We deliberately do not use one fire or one IoU as a pass mark. The ladder has six tiers:</p>
+<table class="table">
+<tr><th>Tier</th><th>Question</th><th>Current evidence</th></tr>
+<tr><td><b>Standard cases</b></td><td>Does the kernel reproduce FBP/Rothermel standard cases?</td><td>Surface, crown, FWI and ellipse benchmarks pass in WS4 tests.</td></tr>
+<tr><td><b>Event reconstruction</b></td><td>Does the simulated perimeter match a public observed fire?</td><td>Dogrib and Hay River are the depth cases; multi-fire reanalysis cases are reported separately.</td></tr>
+<tr><td><b>Burn probability</b></td><td>Are probabilities calibrated and discriminative?</td><td>FSim-style top-20% capture and LSS are the published reference class; P164.3 is paused until a public occurrence dataset is acquired.</td></tr>
+<tr><td><b>Treatment response</b></td><td>Do fuel treatments change risk in the right direction and magnitude?</td><td>Open for P164.4; containment/firebreak scenarios are now a first-class input.</td></tr>
+<tr><td><b>Tree effects</b></td><td>Do scorch, torch and mortality match FOFEM/Ryan-type evidence?</td><td>FOFEM ±20% stand-level is the benchmark; the 3D classes are not mortality validation.</td></tr>
+<tr><td><b>Decision quality</b></td><td>Does uncertainty change the chosen plan?</td><td>Open for P164.5.</td></tr>
+</table>
+
+<h2>5 · What we found, including the uncomfortable parts</h2>
+<p>Published event models are modest. Across the WildfireAV/ELMFIRE and FARSITE comparisons, mean event Jaccard is about <b>0.18</b>; Prometheus Dogrib is <b>0.21</b> on the difficult case and <b>0.568</b> on the better-conditioned case. Our own six-case reanalysis benchmark is in that range: median IoU <b>0.096</b>, area bias <b>+6.7× to +11.6×</b>.</p>
+<p>We did not hide that. The failures are diagnostic:</p>
+<ul>
+<li><b>Point ignition was wrong.</b> Several fires already had a large first-day perimeter. First-perimeter seeding is now supported.</li>
+<li><b>Weather was not the culprit.</b> Reanalysis FFMC/ISI were close to CFSDS; terrain and fuel heterogeneity were ruled out by sensitivity runs.</li>
+<li><b>The model fills the burnable basin.</b> Across 12 cases, median simulated area was <b>0.995</b> of the connected basin while observed area was <b>0.130</b>. That is a stopping/containment failure, not a hidden ROS multiplier.</li>
+<li><b>Small fires are suppression-dominated.</b> Large fires show a much smaller bias — median area bias <b>2.89×</b>, IoU <b>0.238</b> — and residual 100 m bias of <b>1.4–3.7×</b>. We use large/free-burn cases for ROS evidence and small cases only for containment scenarios.</li>
+</ul>
+
+<h2>6 · Inputs and provenance</h2>
+<table class="table">
+<tr><th>Input</th><th>Source</th><th>Use</th></tr>
+<tr><td>Observed perimeters / progression</td><td>Prometheus Dogrib sample, CFSDS v1.1 (OSF f48ry)</td><td>Event geometry and comparison</td></tr>
+<tr><td>Hourly weather</td><td>ECCC station data or Open-Meteo historical reanalysis</td><td>FWI, wind, temperature, RH, rain</td></tr>
+<tr><td>Fuel / terrain</td><td>FireSTARR 2023 fuel, NRCan DEM; VRI where available</td><td>FBP fuel type, slope, aspect, elevation</td></tr>
+<tr><td>Tree layer</td><td>Nemora synthetic stems</td><td>Visual scale and tree-state communication</td></tr>
+<tr><td>Validation references</td><td>WildfireAV, Prometheus, FSim, FOFEM</td><td>Published envelopes, not pass marks</td></tr>
+</table>
+<p>Every case records its source, access date, licence, grid, event window, weather mode and ignition mode. The data are public; the derived fixtures are small; raw archives stay out of the portal.</p>
+
+<h2>7 · Where this is weak</h2>
+<ul>
+<li><b>Suppression is not solved.</b> Containment masks and firebreaks are scenario inputs; we do not claim to predict suppression.</li>
+<li><b>Reanalysis weather is not a station.</b> Small-fire timing is sensitive to local wind and rain.</li>
+<li><b>The tree layer is synthetic.</b> It is for legibility, not inventory or mortality validation.</li>
+<li><b>Observed-extent replay is not free-burn prediction.</b> The model-extent toggle exists precisely to show that.</li>
+<li><b>Burn probability is not resumed.</b> P164.3 needs a public occurrence dataset and a pre-registered skill target.</li>
+</ul>
+
+<h2>8 · What we are testing next</h2>
+<ol>
+<li><b>Free-burn vs observed toggle as a first-class comparison</b> — show both extents without confusing them.</li>
+<li><b>Containment/firebreak scenarios</b> — a management input, not a tuned parameter.</li>
+<li><b>Treatment-effect validation</b> — direction, magnitude and ranking stability against public experiments.</li>
+<li><b>Tree-mortality evidence</b> — FOFEM/Ryan relationships, with the 3D classes kept separate.</li>
+<li><b>Decision quality</b> — does uncertainty change the plan?</li>
+</ol>
+
+<h2>References</h2>
+<ol class="refs">
+<li>Rothermel, R.C. 1972. <i>A mathematical model for predicting fire spread in wildland fuels.</i> USDA Forest Service Research Paper INT-115.</li>
+<li>Van Wagner, C.E. 1977. Conditions for the start and spread of crown fire. <i>Canadian Journal of Forest Research</i> 7: 23–34.</li>
+<li>Forestry Canada Fire Danger Group. 1992. <i>Development and structure of the Canadian Forest Fire Behavior Prediction System.</i> Information Report ST-X-3.</li>
+<li>Lawson, B.D., and Armitage, O.B. 2008. <i>Weather guide for the Canadian Forest Fire Danger Rating System.</i> Natural Resources Canada, Canadian Forest Service.</li>
+<li>Finney, M.A. 1998. <i>FARSITE: Fire Area Simulator — model development and evaluation.</i> USDA Forest Service RMRS-RP-4.</li>
+<li>Hood, S.M., et al. 2007. Predicting tree mortality and fuel consumption with FOFEM. <i>International Journal of Wildland Fire</i>.</li>
+<li>Canadian Fire Spread Dataset v1.1. OSF <code>f48ry</code>.</li>
+<li>Open-Meteo historical weather API. <code>archive-api.open-meteo.com</code>.</li>
+<li>WildfireAV / ELMFIRE and FARSITE event-validation summaries.</li>
+<li>Moran, C., et al. 2025. FSim burn-probability evaluation, California.</li>
+</ol>
+<footer><span>FRESH Lab · Forest Resources and Ecosystem Services Hub · UBC Forestry</span><span><a href="/">Back to the studio ↗</a></span></footer>
+</div>
+</body>
+</html>

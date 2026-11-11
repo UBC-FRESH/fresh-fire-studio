@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>__CASE_TITLE__ · Fresh Fire</title>
+<title>__CASE_TITLE__ · FRESH Fire Studio</title>
 <style>
 :root{color-scheme:dark;--ink:#f4efe7;--muted:#a99e90;--panel:rgba(9,12,13,.82);--line:rgba(255,255,255,.15);--hot:#ff6b2c;--warm:#ffb347}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#07100f;color:var(--ink);font:13px/1.4 Manrope,system-ui,sans-serif}
@@ -34,6 +34,8 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px "DM Mono",monospace;c
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 const DATA=JSON.parse(document.getElementById("scene-data").textContent||"null");
+const embedded=new URLSearchParams(location.search).has("embedded");
+if(embedded){document.getElementById("title").style.display="none";document.getElementById("stats").style.display="none";}
 if(!DATA||!DATA.trees){document.body.innerHTML="<p style='padding:2rem'>Scene data unavailable.</p>";throw new Error("no data");}
 const canvas=document.getElementById("c");
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:"high-performance"});
@@ -92,7 +94,7 @@ addEventListener("keydown",e=>{if(e.code==="Space"){e.preventDefault();play.clic
 function resize(){camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false);}addEventListener("resize",resize);resize();
 document.getElementById("s-trees").textContent=n.toLocaleString();
 setTime(0);
-const auto=new URLSearchParams(location.search).has("autoplay");if(auto){setTime(DATA.timeline.end*.30);time.playing=true;play.textContent="Pause";}
+const auto=new URLSearchParams(location.search).has("autoplay");if(auto){setTime(DATA.hero_time||DATA.timeline.end*.30);time.playing=true;play.textContent="Pause";}
 let frames=0,t0=performance.now();
 function frame(now){const dt=Math.min(.05,(now-time.last)/1000);time.last=now;if(time.playing){setTime(time.t+dt*time.speed);if(time.t>=DATA.timeline.end){time.playing=false;play.textContent="Play";}}controls.update();renderer.render(scene,camera);frames++;if(now-t0>1000){document.getElementById("s-fps").textContent=Math.round(frames*1000/(now-t0));frames=0;t0=now;}requestAnimationFrame(frame);}requestAnimationFrame(frame);
 </script>

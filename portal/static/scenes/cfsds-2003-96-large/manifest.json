@@ -4,7 +4,7 @@
     "grid_m": 500.0,
     "synthetic": true
   },
-  "burn_duration_years": 90.0,
+  "burn_duration_years": 15.0,
   "fragment_count": 36,
   "particle_budget": 7000,
   "run_replay_token": "53054f53809e267f7ecc70c74f48b963851dd10524166d80c114a9265b21cc53",

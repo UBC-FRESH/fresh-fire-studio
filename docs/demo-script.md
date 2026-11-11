@@ -1,4 +1,4 @@
-# Fresh Fire Studio demo script
+# FRESH Fire Studio demo script
 
 ## 60-second opening
 
