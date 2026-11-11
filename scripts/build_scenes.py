@@ -52,7 +52,7 @@ from ws4.scene import (  # type: ignore[import-not-found]
 
 BLOCKS_X = 6
 BLOCKS_Y = 6
-MAX_TREES = 16000
+MAX_TREES = 24000
 TREE_BURN_MINUTES = 15.0
 OBSERVED_BURN_MINUTES = 45.0
 SUBCELL_JITTER_MINUTES = 240.0
@@ -191,7 +191,7 @@ def _observed_burn_times(
     for tree in trees.trees:  # type: ignore[attr-defined]
         lon, lat = transformer.transform(tree.x, tree.y)
         try:
-            col, row = source.index(lon, lat)
+            row, col = source.index(lon, lat)
             value = int(source.read(1, window=((row, row + 1), (col, col + 1)))[0, 0])
         except (IndexError, ValueError):
             continue
@@ -199,6 +199,34 @@ def _observed_burn_times(
             times[tree.tree_id] = (value - first_day) * 1440.0 + 12.0 * 60.0
     source.close()
     return times
+
+
+def _radial_observed_times(
+    fire: ObservedFire,
+    trees: object,
+    observed_times: dict[str, float],
+) -> dict[str, float]:
+    """Order observed tree ignitions radially within each mapped burn day."""
+    if not observed_times:
+        return {}
+    ignition_x, ignition_y = fire.ignition_xy
+    groups: dict[int, list[tuple[object, float]]] = {}
+    for tree in trees.trees:  # type: ignore[attr-defined]
+        value = observed_times.get(tree.tree_id)
+        if value is None:
+            continue
+        day = int(value // 1440.0)
+        distance = float(np.hypot(tree.x - ignition_x, tree.y - ignition_y))
+        groups.setdefault(day, []).append((tree, distance))
+    ordered: dict[str, float] = {}
+    for day, items in groups.items():
+        distances = [distance for _, distance in items]
+        low, high = min(distances), max(distances)
+        span = max(1.0, high - low)
+        for tree, distance in items:
+            fraction = (distance - low) / span
+            ordered[tree.tree_id] = day * 1440.0 + 6.0 * 60.0 + fraction * 12.0 * 60.0
+    return ordered
 
 
 def _case_specs() -> list[dict[str, object]]:
@@ -297,12 +325,11 @@ def _block_polygons(
                 ),
             ]
         )
-    centre = final_polygon.centroid
-    half = 900.0  # 1.8 km stand-scale detail window; case metrics still describe the full fire
-    xll = float(centre.x - half)
-    yll = float(centre.y - half)
-    step_x = (half * 2.0) / BLOCKS_X
-    step_y = (half * 2.0) / BLOCKS_Y
+    min_x, min_y, max_x, max_y = final_polygon.bounds
+    step_x = max(1.0, (max_x - min_x) / BLOCKS_X)
+    step_y = max(1.0, (max_y - min_y) / BLOCKS_Y)
+    xll = float(min_x)
+    yll = float(min_y)
     result: list[tuple[int, tuple[tuple[float, float], ...], float]] = []
     fragment = 1
     for row in range(BLOCKS_Y):
@@ -436,6 +463,7 @@ def build_case(
         nemora_version="nemora",
     )
     observed_times = _observed_burn_times(fire, trees, cfsds_root)
+    observed_times = _radial_observed_times(fire, trees, observed_times)
     total_area = sum(item[2] for item in blocks)
     _, state, edges = synthetic_grid(
         BLOCKS_Y,
@@ -623,7 +651,7 @@ def build_case(
             payload["observed_mode"] = "daily_raster"
         else:
             payload["observed_mode"] = "model_timing"
-        jitter_span = SUBCELL_JITTER_MINUTES if observed_times else 30.0
+        jitter_span = 0.0 if observed_times else 30.0
         for tree in payload.get("trees", []):
             base = tree.get("burn_time")
             if base is None:
@@ -632,7 +660,8 @@ def build_case(
                 hashlib.blake2b(str(tree["tree_id"]).encode(), digest_size=4).digest(),
                 "big",
             )
-            tree["burn_time"] = float(base) + (digest % int(jitter_span))
+            if jitter_span > 0:
+                tree["burn_time"] = float(base) + (digest % int(jitter_span))
             if observed_times:
                 tree["burn_duration"] = OBSERVED_BURN_MINUTES
         ignition_values = [

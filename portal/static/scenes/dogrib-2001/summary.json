@@ -1,8 +1,8 @@
 {
   "slug": "dogrib-2001",
   "title": "Dogrib 2001",
-  "trees": 15996,
-  "fragments": 31,
+  "trees": 24001,
+  "fragments": 20,
   "grid_m": 100.0,
   "area_ha": 10219.0,
   "sim_area_ha": 29509.0,

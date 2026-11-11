@@ -3,8 +3,8 @@
     {
       "slug": "dogrib-2001",
       "title": "Dogrib 2001",
-      "trees": 15996,
-      "fragments": 31,
+      "trees": 24001,
+      "fragments": 20,
       "grid_m": 100.0,
       "area_ha": 10219.0,
       "sim_area_ha": 29509.0,
@@ -19,8 +19,8 @@
     {
       "slug": "hay-river-2023",
       "title": "Hay River 2023",
-      "trees": 15984,
-      "fragments": 36,
+      "trees": 24004,
+      "fragments": 32,
       "grid_m": 100.0,
       "area_ha": 2987.0,
       "sim_area_ha": 10846.0,
@@ -35,8 +35,8 @@
     {
       "slug": "cfsds-2003-526",
       "title": "2003_526",
-      "trees": 15990,
-      "fragments": 35,
+      "trees": 24001,
+      "fragments": 27,
       "grid_m": 100.0,
       "area_ha": 520.0,
       "sim_area_ha": 5325.0,
@@ -51,8 +51,8 @@
     {
       "slug": "cfsds-2023-786",
       "title": "2023_786",
-      "trees": 15991,
-      "fragments": 34,
+      "trees": 24004,
+      "fragments": 25,
       "grid_m": 100.0,
       "area_ha": 1124.0,
       "sim_area_ha": 14165.0,
@@ -61,14 +61,14 @@
       "ffmc": 93.5035247802734,
       "bui": 83.1968765258789,
       "viewer": "/static/scenes/cfsds-2023-786/viewer.html",
-      "observed_mode": "model_timing",
+      "observed_mode": "daily_raster",
       "model_area_ha": 14165.0
     },
     {
       "slug": "cfsds-2003-96-large",
       "title": "2003_96",
-      "trees": 15984,
-      "fragments": 36,
+      "trees": 23999,
+      "fragments": 26,
       "grid_m": 500.0,
       "area_ha": 31200.0,
       "sim_area_ha": 159700.0,
@@ -83,8 +83,8 @@
     {
       "slug": "cfsds-2003-663-large",
       "title": "2003_663",
-      "trees": 15984,
-      "fragments": 36,
+      "trees": 24003,
+      "fragments": 27,
       "grid_m": 500.0,
       "area_ha": 25600.0,
       "sim_area_ha": 68225.0,
@@ -93,7 +93,7 @@
       "ffmc": 92.6866034305456,
       "bui": 122.185150146484,
       "viewer": "/static/scenes/cfsds-2003-663-large/viewer.html",
-      "observed_mode": "model_timing",
+      "observed_mode": "daily_raster",
       "model_area_ha": 68225.0
     }
   ]

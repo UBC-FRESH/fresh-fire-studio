@@ -1,8 +1,8 @@
 {
   "slug": "cfsds-2003-663-large",
   "title": "2003_663",
-  "trees": 15984,
-  "fragments": 36,
+  "trees": 24003,
+  "fragments": 27,
   "grid_m": 500.0,
   "area_ha": 25600.0,
   "sim_area_ha": 68225.0,
@@ -11,6 +11,6 @@
   "ffmc": 92.6866034305456,
   "bui": 122.185150146484,
   "viewer": "/static/scenes/cfsds-2003-663-large/viewer.html",
-  "observed_mode": "model_timing",
+  "observed_mode": "daily_raster",
   "model_area_ha": 68225.0
 }

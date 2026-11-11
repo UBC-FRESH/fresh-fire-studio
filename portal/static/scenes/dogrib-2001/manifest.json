@@ -5,9 +5,9 @@
     "synthetic": true
   },
   "burn_duration_years": 15.0,
-  "fragment_count": 31,
+  "fragment_count": 20,
   "particle_budget": 7000,
-  "run_replay_token": "4238182989612afed63cf641555d5e6504a887828930a3898bfaca779fe81e36",
+  "run_replay_token": "cfcf7d02fc9f285d99019cc5a1f50319971ebbe5756c55a740ad0a7965dbc482",
   "scenario_id": "dogrib-2001",
   "scene_id": "dogrib-2001",
   "schema_version": "ws4.fire.scene.v1",
@@ -15,5 +15,5 @@
   "source": "synthetic block mosaic over a public benchmark fire; Nemora stem placement; nemora=nemora; crs=local; ws4.nemora.adapter.v1",
   "synthetic_trees": true,
   "time_unit": "minutes",
-  "tree_count": 15996
+  "tree_count": 24001
 }

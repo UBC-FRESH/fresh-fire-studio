@@ -5,9 +5,9 @@
     "synthetic": true
   },
   "burn_duration_years": 15.0,
-  "fragment_count": 36,
+  "fragment_count": 32,
   "particle_budget": 7000,
-  "run_replay_token": "18f93e9c52ce0a9d11420cf85b2b3216d3c66354b341b75dbf4c4baf4c87858b",
+  "run_replay_token": "1354e2bd1e43c436309e167c82b17770bf0264edc68f9b61e5e7d21e9e712c0d",
   "scenario_id": "hay-river-2023",
   "scene_id": "hay-river-2023",
   "schema_version": "ws4.fire.scene.v1",
@@ -15,5 +15,5 @@
   "source": "synthetic block mosaic over a public benchmark fire; Nemora stem placement; nemora=nemora; crs=local; ws4.nemora.adapter.v1",
   "synthetic_trees": true,
   "time_unit": "minutes",
-  "tree_count": 15984
+  "tree_count": 24004
 }
