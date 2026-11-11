@@ -11,10 +11,13 @@ import json
 import sys
 from dataclasses import replace
 from pathlib import Path
+from typing import Any
 
 import numpy as np
 import pandas as pd
 from PIL import Image
+from rasterio.features import shapes
+from rasterio.transform import from_origin
 from shapely.geometry import Polygon
 from shapely.ops import unary_union
 
@@ -46,7 +49,7 @@ from ws4.scene import (  # type: ignore[import-not-found]
 BLOCKS_X = 6
 BLOCKS_Y = 6
 MAX_TREES = 16000
-TREE_BURN_MINUTES = 2.0
+TREE_BURN_MINUTES = 90.0
 
 
 def _hillshade(fire: ObservedFire, path: Path) -> None:
@@ -126,6 +129,32 @@ def _terrain_payload(
         "dy": depth / (ny - 1),
         "heights": heights,
     }
+
+
+def _model_extent_rings(fire: ObservedFire, growth: Any) -> list[list[list[float]]]:
+    """Return the simulated free-burn extent as projected rings."""
+    mask = np.isfinite(growth.ignition_time_min)
+    if not mask.any():
+        return []
+    transform = from_origin(
+        fire.grid.xll,
+        fire.grid.yll + fire.grid.nrows * fire.grid.cell_size_m,
+        fire.grid.cell_size_m,
+        fire.grid.cell_size_m,
+    )
+    rings: list[list[list[float]]] = []
+    for geometry, value in shapes(
+        mask.astype(np.uint8), mask=mask, transform=transform
+    ):
+        if value != 1:
+            continue
+        coords = geometry["coordinates"]
+        polygons = coords if geometry["type"] == "MultiPolygon" else [coords]
+        for polygon in polygons:
+            ring = [[float(x), float(y)] for x, y in polygon[0]]
+            if len(ring) >= 3:
+                rings.append(ring)
+    return rings
 
 
 def _case_specs() -> list[dict[str, object]]:
@@ -502,6 +531,10 @@ def build_case(spec: dict[str, object], out_root: Path) -> dict[str, object]:
         payload["domain"] = [
             [[float(x) - min_x, float(y) - min_y] for x, y in ring]
             for ring in (fire.perimeters[-1].rings_projected if fire.perimeters else ())
+        ]
+        payload["model_extent"] = [
+            [[float(x) - min_x, float(y) - min_y] for x, y in ring]
+            for ring in _model_extent_rings(fire, result.growth)
         ]
         payload["terrain"] = _terrain_payload(
             fire, min_x, min_y, max_x, max_y, payload.get("trees", [])
