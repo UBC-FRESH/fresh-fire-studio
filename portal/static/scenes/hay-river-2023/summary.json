@@ -10,5 +10,7 @@
   "duration_min": 9300.0,
   "ffmc": 92.92,
   "bui": 73.28,
-  "viewer": "/static/scenes/hay-river-2023/viewer.html"
+  "viewer": "/static/scenes/hay-river-2023/viewer.html",
+  "observed_mode": "daily_raster",
+  "model_area_ha": 10846.0
 }

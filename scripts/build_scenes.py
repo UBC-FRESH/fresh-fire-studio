@@ -15,7 +15,9 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
+import rasterio
 from PIL import Image
+from pyproj import Transformer
 from rasterio.features import shapes
 from rasterio.transform import from_origin
 from shapely.geometry import Polygon
@@ -24,6 +26,7 @@ from shapely.ops import unary_union
 PORTAL = Path(__file__).resolve().parents[1]
 DEFAULT_WS4 = Path("/srv/shared-data/gep/ws4/.opencode/tmp/opencode/ws4-p176")
 DEFAULT_NEMORA = Path("/srv/shared-data/gep/ws4/nemora/src")
+DEFAULT_CFSDS = Path("/srv/shared-data/gep/ws4/.opencode/tmp/opencode/cfsds")
 sys.path.insert(0, str(DEFAULT_WS4))
 sys.path.insert(0, str(DEFAULT_NEMORA))
 
@@ -50,6 +53,7 @@ BLOCKS_X = 6
 BLOCKS_Y = 6
 MAX_TREES = 16000
 TREE_BURN_MINUTES = 15.0
+OBSERVED_BURN_MINUTES = 360.0
 
 
 def _hillshade(fire: ObservedFire, path: Path) -> None:
@@ -155,6 +159,44 @@ def _model_extent_rings(fire: ObservedFire, growth: Any) -> list[list[list[float
             if len(ring) >= 3:
                 rings.append(ring)
     return rings
+
+
+def _observed_burn_times(
+    fire: ObservedFire,
+    trees: object,
+    cfsds_root: Path,
+) -> dict[str, float]:
+    """Map CFSDS day-of-burn cells to tree ignition times, when available."""
+    case_id = fire.fire_id
+    if "_" not in case_id:
+        return {}
+    year = case_id.split("_", 1)[0]
+    archive = cfsds_root / f"{year}_fireDOYrasters.zip"
+    if not archive.is_file():
+        return {}
+    try:
+        source = rasterio.open(f"/vsizip/{archive.resolve()}/{case_id}_krig.tif")
+    except rasterio.errors.RasterioIOError:
+        return {}
+    transformer = Transformer.from_crs("EPSG:26911", source.crs, always_xy=True)
+    valid = source.read(1)
+    days = valid[(valid > 0) & (valid != np.iinfo(valid.dtype).max)]
+    if not len(days):
+        source.close()
+        return {}
+    first_day = int(days.min())
+    times: dict[str, float] = {}
+    for tree in trees.trees:  # type: ignore[attr-defined]
+        lon, lat = transformer.transform(tree.x, tree.y)
+        try:
+            col, row = source.index(lon, lat)
+            value = int(source.read(1, window=((row, row + 1), (col, col + 1)))[0, 0])
+        except (IndexError, ValueError):
+            continue
+        if 1 <= value <= 366:
+            times[tree.tree_id] = (value - first_day) * 1440.0 + 12.0 * 60.0
+    source.close()
+    return times
 
 
 def _case_specs() -> list[dict[str, object]]:
@@ -360,7 +402,9 @@ def _write_trees(
     )
 
 
-def build_case(spec: dict[str, object], out_root: Path) -> dict[str, object]:
+def build_case(
+    spec: dict[str, object], out_root: Path, cfsds_root: Path
+) -> dict[str, object]:
     """Build one scene and return its summary."""
     fire, ffmc, bui, duration = _load(spec)
     slug = str(spec["slug"])
@@ -389,6 +433,7 @@ def build_case(spec: dict[str, object], out_root: Path) -> dict[str, object]:
         crs="local",
         nemora_version="nemora",
     )
+    observed_times = _observed_burn_times(fire, trees, cfsds_root)
     total_area = sum(item[2] for item in blocks)
     _, state, edges = synthetic_grid(
         BLOCKS_Y,
@@ -449,7 +494,8 @@ def build_case(spec: dict[str, object], out_root: Path) -> dict[str, object]:
     paths = scene.write(out)
     viewer = paths.viewer.read_text(encoding="utf-8")
     viewer = viewer.replace(
-        "<title>WS4 fire scene</title>", f"<title>{spec['title']} · FRESH Fire Studio</title>"
+        "<title>WS4 fire scene</title>",
+        f"<title>{spec['title']} · FRESH Fire Studio</title>",
     )
     viewer = viewer.replace("<h1>WS4 fire scene</h1>", f"<h1>{spec['title']}</h1>")
     viewer = viewer.replace(
@@ -528,12 +574,34 @@ def build_case(spec: dict[str, object], out_root: Path) -> dict[str, object]:
             "max_y": max_y - min_y,
         }
         payload["origin_projected"] = [min_x, min_y]
-        ignition_values = animation["ignition_time"].dropna()
-        if not ignition_values.empty:
-            hero = float(ignition_values.quantile(0.25) - 2.0)
-            payload["hero_time"] = max(float(ignition_values.min()), hero)
+        payload["observed_ha"] = float(result.metrics.area_obs_ha)
+        payload["model_ha"] = float(
+            np.isfinite(result.growth.ignition_time_min).sum()
+            * (fire.grid.cell_size_m**2)
+            / 10_000.0
+        )
+        if observed_times:
+            for tree in payload.get("trees", []):
+                observed = observed_times.get(str(tree["tree_id"]))
+                if observed is not None:
+                    tree["burn_time"] = observed
+                    tree["burn_duration"] = TREE_BURN_MINUTES
+            observed_values = [
+                float(tree["burn_time"])
+                for tree in payload["trees"]
+                if tree.get("burn_time") is not None
+            ]
+            payload["timeline"]["end"] = max(observed_values) + TREE_BURN_MINUTES * 2.0
+            payload["observed_mode"] = "daily_raster"
+            payload["hero_time"] = float(np.quantile(observed_values, 0.25))
         else:
-            payload["hero_time"] = float(payload["timeline"]["end"] * 0.3)
+            payload["observed_mode"] = "model_timing"
+            ignition_values = animation["ignition_time"].dropna()
+            if not ignition_values.empty:
+                hero = float(ignition_values.quantile(0.25) - 2.0)
+                payload["hero_time"] = max(float(ignition_values.min()), hero)
+            else:
+                payload["hero_time"] = float(payload["timeline"]["end"] * 0.3)
         payload["domain"] = [
             [[float(x) - min_x, float(y) - min_y] for x, y in ring]
             for ring in (fire.perimeters[-1].rings_projected if fire.perimeters else ())
@@ -588,6 +656,12 @@ def build_case(spec: dict[str, object], out_root: Path) -> dict[str, object]:
         "ffmc": ffmc,
         "bui": bui,
         "viewer": f"/static/scenes/{slug}/viewer.html",
+        "observed_mode": "daily_raster" if observed_times else "model_timing",
+        "model_area_ha": float(
+            np.isfinite(result.growth.ignition_time_min).sum()
+            * (fire.grid.cell_size_m**2)
+            / 10_000.0
+        ),
     }
     (out / "summary.json").write_text(
         json.dumps(summary, indent=2) + "\n", encoding="utf-8"
@@ -602,6 +676,7 @@ def main() -> None:
         "--out", type=Path, default=PORTAL / "portal" / "static" / "scenes"
     )
     parser.add_argument("--only", nargs="*", default=None)
+    parser.add_argument("--cfsds-root", type=Path, default=DEFAULT_CFSDS)
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
     summaries = []
@@ -609,7 +684,7 @@ def main() -> None:
         if args.only and spec["slug"] not in args.only:
             continue
         print(f"building {spec['slug']}...", flush=True)
-        summaries.append(build_case(spec, args.out))
+        summaries.append(build_case(spec, args.out, args.cfsds_root))
     (PORTAL / "config" / "scene_summaries.json").write_text(
         json.dumps({"scenes": summaries}, indent=2) + "\n", encoding="utf-8"
     )

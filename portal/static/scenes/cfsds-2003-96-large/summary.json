@@ -10,5 +10,7 @@
   "duration_min": 97080.0,
   "ffmc": 88.0287475585938,
   "bui": 40.7482643127441,
-  "viewer": "/static/scenes/cfsds-2003-96-large/viewer.html"
+  "viewer": "/static/scenes/cfsds-2003-96-large/viewer.html",
+  "observed_mode": "daily_raster",
+  "model_area_ha": 159700.0
 }

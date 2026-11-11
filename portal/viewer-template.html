@@ -15,13 +15,14 @@
 button,select{background:#12201f;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 11px;font:inherit;cursor:pointer}button:hover,select:hover{border-color:rgba(255,179,71,.7)}button.primary{background:var(--hot);border-color:var(--hot);color:#1a0b04;font-weight:800}
 input[type=range]{accent-color:var(--hot)}#clock{font:12px "DM Mono",monospace;color:var(--ink);min-width:88px;text-align:right}
 .legend{display:flex;gap:13px;flex-wrap:wrap;margin-top:7px;color:var(--muted);font-size:11px}.legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
-#status{color:var(--muted);font-size:11px;margin-top:5px}
+#status{color:var(--muted);font-size:11px;margin-top:5px}#compare{top:16px;left:50%;transform:translateX(-50%);padding:7px 12px;font:11px "DM Mono",monospace;color:var(--warm);white-space:nowrap}
 @media(max-width:700px){#title{max-width:250px}#stats{display:none}#bar .row{gap:7px}}
 </style>
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
 </head>
 <body>
 <canvas id="c"></canvas>
+<div id="compare" class="hud"><span id="compare-text">Observed extent</span></div>
 <div id="title" class="hud"><h1>__CASE_TITLE__</h1><span class="badge">OBSERVED EXTENT</span><p>Synthetic Nemora stems clipped to the observed final perimeter. WS4/FBP arrival timing inside the mapped burn shape.</p></div>
 <div id="stats" class="hud"><div><span>trees</span><b id="s-trees">—</b></div><div><span>burning</span><b id="s-burning">0</b></div><div><span>burnt</span><b id="s-burnt">0</b></div><div><span>fps</span><b id="s-fps">—</b></div></div>
 <div id="bar" class="hud">
@@ -34,7 +35,7 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px "DM Mono",monospace;c
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 const DATA=JSON.parse(document.getElementById("scene-data").textContent||"null");
-const embedded=new URLSearchParams(location.search).has("embedded");
+const embedded=new URLSearchParams(location.search).has("embedded");const badge=document.querySelector("#title .badge");if(badge)badge.textContent=DATA.observed_mode==="daily_raster"?"OBSERVED DAILY PROGRESS":"OBSERVED EXTENT";const observedHa=Number(DATA.observed_ha||0),modelHa=Number(DATA.model_ha||0);const compareText=document.getElementById("compare-text");if(compareText)compareText.textContent=`Observed ${observedHa.toLocaleString()} ha`;
 if(embedded){document.getElementById("title").style.display="none";document.getElementById("stats").style.display="none";}
 if(!DATA||!DATA.trees){document.body.innerHTML="<p style='padding:2rem'>Scene data unavailable.</p>";throw new Error("no data");}
 const canvas=document.getElementById("c");
@@ -52,7 +53,7 @@ const tex=new THREE.TextureLoader().load(DATA.ground_texture||"terrain.png");tex
 const ground=new THREE.Mesh(new THREE.PlaneGeometry(w*2.4,d*2.4),new THREE.MeshLambertMaterial({color:0x17241d}));ground.rotation.x=-Math.PI/2;ground.position.set(cx,-.4,cz);scene.add(ground);
 for(const ring of DATA.domain||[]){if(!Array.isArray(ring)||ring.length<3)continue;const shape=new THREE.Shape();ring.forEach((p,i)=>{if(i===0)shape.moveTo(p[0],p[1]);else shape.lineTo(p[0],p[1]);});shape.closePath();const domainMesh=new THREE.Mesh(new THREE.ShapeGeometry(shape),new THREE.MeshLambertMaterial({color:0x3f6545,transparent:true,opacity:.96}));domainMesh.rotation.x=-Math.PI/2;domainMesh.position.y=-.22;scene.add(domainMesh);}
 const modelGroup=new THREE.Group();scene.add(modelGroup);
-for(const ring of DATA.model_extent||[]){if(!Array.isArray(ring)||ring.length<3)continue;const pts=ring.map(p=>new THREE.Vector3(p[0],1.2,p[1]));pts.push(pts[0].clone());modelGroup.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:0xffb347,transparent:true,opacity:.95})));}
+for(const ring of DATA.model_extent||[]){if(!Array.isArray(ring)||ring.length<3)continue;const pts=ring.map(p=>new THREE.Vector3(p[0],1.2,p[1]));pts.push(pts[0].clone());modelGroup.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:0xffb347,transparent:true,opacity:.95})));const shape=new THREE.Shape();ring.forEach((p,i)=>{if(i===0)shape.moveTo(p[0],p[1]);else shape.lineTo(p[0],p[1]);});shape.closePath();const fill=new THREE.Mesh(new THREE.ShapeGeometry(shape),new THREE.MeshBasicMaterial({color:0xffb347,transparent:true,opacity:.10,side:THREE.DoubleSide,depthWrite:false}));fill.rotation.x=-Math.PI/2;fill.position.y=.9;modelGroup.add(fill);}
 modelGroup.visible=false;
 // stand outlines
 const lineMat=new THREE.LineBasicMaterial({color:0x9dbb86,transparent:true,opacity:.35});
@@ -69,7 +70,7 @@ for(let i=0;i<n;i++){const t=trees[i];m4.compose(new THREE.Vector3(t.x,0,t.y),q,
 trunks.instanceMatrix.needsUpdate=true;crowns.instanceMatrix.needsUpdate=true;crowns.instanceColor.needsUpdate=true;trunks.instanceColor.needsUpdate=true;
 let tx=0,tz=0;for(const t of trees){tx+=t.x;tz+=t.y;}tx/=n;tz/=n;
 const view=Math.min(maxDim*.08,350);controls.target.set(tx,0,tz);camera.position.set(tx-view*.4,view*1.1,tz+view*.5);controls.update();
-let modelOn=false;const modelButton=document.getElementById("model");const badge=document.querySelector("#title .badge");modelButton.disabled=(DATA.model_extent||[]).length===0;modelButton.addEventListener("click",()=>{modelOn=!modelOn;modelGroup.visible=modelOn;modelButton.textContent=modelOn?"Observed extent":"Model extent";badge.textContent=modelOn?"MODEL FREE-BURN":"OBSERVED EXTENT";if(modelOn){controls.target.set(cx,0,cz);camera.position.set(cx,maxDim*1.6,cz+maxDim*.7);}else{controls.target.set(tx,0,tz);camera.position.set(tx-view*.4,view*1.1,tz+view*.5);}controls.update();});
+let modelOn=false;const modelButton=document.getElementById("model");modelButton.disabled=(DATA.model_extent||[]).length===0;modelButton.addEventListener("click",()=>{modelOn=!modelOn;modelGroup.visible=modelOn;modelButton.textContent=modelOn?"Observed extent":"Model extent";badge.textContent=modelOn?"MODEL FREE-BURN":(DATA.observed_mode==="daily_raster"?"OBSERVED DAILY PROGRESS":"OBSERVED EXTENT");if(compareText)compareText.textContent=modelOn?`Observed ${observedHa.toLocaleString()} ha · Model ${modelHa.toLocaleString()} ha`:`Observed ${observedHa.toLocaleString()} ha`;if(modelOn){controls.target.set(cx,0,cz);camera.position.set(cx,maxDim*1.6,cz+maxDim*.7);}else{controls.target.set(tx,0,tz);camera.position.set(tx-view*.4,view*1.1,tz+view*.5);}controls.update();});
 // particles
 function softTexture(){const c=document.createElement("canvas");c.width=c.height=128;const g=c.getContext("2d");const grad=g.createRadialGradient(64,64,2,64,64,62);grad.addColorStop(0,"rgba(255,255,255,1)");grad.addColorStop(.35,"rgba(255,255,255,.85)");grad.addColorStop(1,"rgba(255,255,255,0)");g.fillStyle=grad;g.fillRect(0,0,128,128);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t;}
 const soft=softTexture();

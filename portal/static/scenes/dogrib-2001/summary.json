@@ -10,5 +10,7 @@
   "duration_min": 1372.0,
   "ffmc": 92.70489548149253,
   "bui": 98.74296640468506,
-  "viewer": "/static/scenes/dogrib-2001/viewer.html"
+  "viewer": "/static/scenes/dogrib-2001/viewer.html",
+  "observed_mode": "model_timing",
+  "model_area_ha": 29509.0
 }
