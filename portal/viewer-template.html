@@ -15,14 +15,14 @@
 button,select{background:#12201f;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 11px;font:inherit;cursor:pointer}button:hover,select:hover{border-color:rgba(255,179,71,.7)}button.primary{background:var(--hot);border-color:var(--hot);color:#1a0b04;font-weight:800}
 input[type=range]{accent-color:var(--hot)}#clock{font:12px "DM Mono",monospace;color:var(--ink);min-width:88px;text-align:right}
 .legend{display:flex;gap:13px;flex-wrap:wrap;margin-top:7px;color:var(--muted);font-size:11px}.legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
-#status{color:var(--muted);font-size:11px;margin-top:5px}#compare{top:16px;left:50%;transform:translateX(-50%);padding:7px 12px;font:11px "DM Mono",monospace;color:var(--warm);white-space:nowrap}
+#status{color:var(--muted);font-size:11px;margin-top:5px}#compare{top:16px;left:50%;transform:translateX(-50%);padding:9px 12px;width:390px;color:var(--warm);font:11px "DM Mono",monospace}#compare-text{white-space:nowrap;color:var(--ink);font-weight:600}#chart{width:100%;height:82px;display:block;margin:6px 0 2px}#compare-sub{color:var(--muted);white-space:nowrap;font-size:10px}
 @media(max-width:700px){#title{max-width:250px}#stats{display:none}#bar .row{gap:7px}}
 </style>
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
 </head>
 <body>
 <canvas id="c"></canvas>
-<div id="compare" class="hud"><span id="compare-text">Observed extent</span></div>
+<div id="compare" class="hud"><div id="compare-text">Observed extent</div><canvas id="chart" width="360" height="82"></canvas><div id="compare-sub">Model comparison</div></div>
 <div id="title" class="hud"><h1>__CASE_TITLE__</h1><span class="badge">OBSERVED EXTENT</span><p>Synthetic Nemora stems clipped to the observed final perimeter. WS4/FBP arrival timing inside the mapped burn shape.</p></div>
 <div id="stats" class="hud"><div><span>trees</span><b id="s-trees">—</b></div><div><span>burning</span><b id="s-burning">0</b></div><div><span>burnt</span><b id="s-burnt">0</b></div><div><span>fps</span><b id="s-fps">—</b></div></div>
 <div id="bar" class="hud">
@@ -36,6 +36,8 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 const DATA=JSON.parse(document.getElementById("scene-data").textContent||"null");
 const embedded=new URLSearchParams(location.search).has("embedded");const badge=document.querySelector("#title .badge");if(badge)badge.textContent=DATA.observed_mode==="daily_raster"?"OBSERVED DAILY PROGRESS":"OBSERVED EXTENT";const observedHa=Number(DATA.observed_ha||0),modelHa=Number(DATA.model_ha||0);const compareText=document.getElementById("compare-text");if(compareText)compareText.textContent=`Observed ${observedHa.toLocaleString()} ha`;
+const compareSub=document.getElementById("compare-sub");const chart=document.getElementById("chart");
+function drawChart(t){if(!chart||!chart.getContext)return;const ctx=chart.getContext("2d");const obs=DATA.observed_daily_area_ha||[],mod=DATA.model_daily_area_ha||[];const n=Math.max(obs.length,mod.length);ctx.clearRect(0,0,chart.width,chart.height);if(n<2){chart.style.display="none";return;}chart.style.display="block";const maxY=Math.max(1,...obs,...mod);const pad=8;const x=i=>pad+(i/(n-1))*(chart.width-pad*2);const y=v=>chart.height-pad-(v/maxY)*(chart.height-pad*2);ctx.strokeStyle="rgba(255,255,255,.14)";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pad,chart.height-pad);ctx.lineTo(chart.width-pad,chart.height-pad);ctx.stroke();const line=(arr,color)=>{if(!arr.length)return;ctx.strokeStyle=color;ctx.lineWidth=1.8;ctx.beginPath();arr.forEach((v,i)=>{const px=x(i),py=y(v);if(i===0)ctx.moveTo(px,py);else ctx.lineTo(px,py);});ctx.stroke();};line(obs,"#9ad1c8");line(mod,"#ffb347");const d=Math.min(n-1,Math.max(0,t/1440));ctx.strokeStyle="rgba(255,255,255,.35)";ctx.beginPath();ctx.moveTo(x(d),pad);ctx.lineTo(x(d),chart.height-pad);ctx.stroke();if(compareSub){const obsNow=obs.length?obs[Math.min(obs.length-1,Math.round(d))]:observedHa;const modNow=mod.length?mod[Math.min(mod.length-1,Math.round(d))]:modelHa;compareSub.textContent=`day ${d.toFixed(1)} · observed ${Math.round(obsNow).toLocaleString()} ha · model ${Math.round(modNow).toLocaleString()} ha${DATA.divergence_day?` · divergence day ${DATA.divergence_day}`:""}`;}}
 if(embedded){document.getElementById("title").style.display="none";document.getElementById("stats").style.display="none";}
 if(!DATA||!DATA.trees){document.body.innerHTML="<p style='padding:2rem'>Scene data unavailable.</p>";throw new Error("no data");}
 const canvas=document.getElementById("c");
@@ -83,7 +85,7 @@ function stateAt(t,tr){if(tr.burn_time==null||t<tr.burn_time)return 0;if(t<=tr.b
 function refresh(t){let burning=0,burnt=0,fi=0,si=0;for(let i=0;i<n;i++){const tr=trees[i];const st=stateAt(t,tr);if(st!==tr.state){tr.state=st;col.copy(st===0?C_LIVE:st===1?C_BURN:st===2?C_SCORCH:st===3?C_TORCH:C_CONSUMED);crowns.setColorAt(i,col);col.copy(st===0?C_TRUNK:C_BURNT);trunks.setColorAt(i,col);}if(st===1)burning++;if(st>=2)burnt++;if(st===1&&fi<fire.count){fire.pos.array[fi*3]=tr.x+(Math.random()-.5)*tr.r*1.4;fire.pos.array[fi*3+1]=tr.th+Math.random()*tr.ch;fire.pos.array[fi*3+2]=tr.y+(Math.random()-.5)*tr.r*1.4;fi++;}if(st===1&&si<smoke.count){smoke.pos.array[si*3]=tr.x+(Math.random()-.5)*tr.r*2;smoke.pos.array[si*3+1]=tr.th+tr.ch+Math.random()*4;smoke.pos.array[si*3+2]=tr.y+(Math.random()-.5)*tr.r*2;si++;}}
 for(let i=fi;i<fire.count;i++)fire.pos.array[i*3+1]=-999;for(let i=si;i<smoke.count;i++)smoke.pos.array[i*3+1]=-999;
 fire.pos.needsUpdate=true;smoke.pos.needsUpdate=true;crowns.instanceColor.needsUpdate=true;trunks.instanceColor.needsUpdate=true;
-document.getElementById("s-burning").textContent=burning;document.getElementById("s-burnt").textContent=burnt;clock.textContent=t.toFixed(1)+" min";
+document.getElementById("s-burning").textContent=burning;document.getElementById("s-burnt").textContent=burnt;clock.textContent=t.toFixed(1)+" min";drawChart(t);
 }
 function setTime(v){time.t=Math.max(0,Math.min(DATA.timeline.end,v));slider.value=String(time.t);refresh(time.t);}
 slider.addEventListener("input",()=>{time.playing=false;play.textContent="Play";setTime(Number(slider.value));});
@@ -92,7 +94,7 @@ document.getElementById("reset").addEventListener("click",()=>{time.playing=fals
 document.getElementById("speed").addEventListener("change",e=>time.speed=Number(e.target.value));
 document.getElementById("focus").addEventListener("click",()=>{const target=trees.filter(t=>t.state===1);const use=target.length?target:trees;let sx=0,sz=0;for(const t of use){sx+=t.x;sz+=t.y;}sx/=use.length;sz/=use.length;controls.target.set(sx,0,sz);camera.position.set(sx-view*.4,view*1.1,sz+view*.5);controls.update();});
 addEventListener("keydown",e=>{if(e.code==="Space"){e.preventDefault();play.click();}});
-function resize(){camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false);}addEventListener("resize",resize);resize();
+function resize(){camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false);drawChart(time.t);}addEventListener("resize",resize);resize();
 document.getElementById("s-trees").textContent=n.toLocaleString();
 setTime(0);
 const auto=new URLSearchParams(location.search).has("autoplay");if(auto){setTime(DATA.hero_time||DATA.timeline.end*.30);time.playing=true;play.textContent="Pause";}

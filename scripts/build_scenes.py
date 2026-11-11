@@ -7,6 +7,7 @@ Nemora-derived synthetic stem population, not a measured inventory.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 from dataclasses import replace
@@ -53,7 +54,8 @@ BLOCKS_X = 6
 BLOCKS_Y = 6
 MAX_TREES = 16000
 TREE_BURN_MINUTES = 15.0
-OBSERVED_BURN_MINUTES = 360.0
+OBSERVED_BURN_MINUTES = 45.0
+SUBCELL_JITTER_MINUTES = 240.0
 
 
 def _hillshade(fire: ObservedFire, path: Path) -> None:
@@ -580,28 +582,71 @@ def build_case(
             * (fire.grid.cell_size_m**2)
             / 10_000.0
         )
+        metadata_path = Path(str(spec["path"])) / "metadata.json"
+        observed_daily: list[float] = []
+        if metadata_path.is_file():
+            observed_daily = [
+                float(value)
+                for value in json.loads(metadata_path.read_text(encoding="utf-8")).get(
+                    "daily_cumuarea_ha", []
+                )
+            ]
+        model_days = int(np.ceil(duration / 1440.0)) + 1
+        arrival = result.growth.ignition_time_min
+        model_daily = [
+            float(
+                (np.isfinite(arrival) & (arrival <= day * 1440.0)).sum()
+                * (fire.grid.cell_size_m**2)
+                / 10_000.0
+            )
+            for day in range(model_days)
+        ]
+        payload["observed_daily_area_ha"] = observed_daily
+        payload["model_daily_area_ha"] = model_daily
+        if observed_daily:
+            count = min(len(observed_daily), len(model_daily))
+            divergence = next(
+                (
+                    index + 1
+                    for index in range(count)
+                    if model_daily[index] > 1.5 * observed_daily[index] + 25.0
+                ),
+                None,
+            )
+            payload["divergence_day"] = divergence
         if observed_times:
             for tree in payload.get("trees", []):
                 observed = observed_times.get(str(tree["tree_id"]))
                 if observed is not None:
                     tree["burn_time"] = observed
-                    tree["burn_duration"] = TREE_BURN_MINUTES
-            observed_values = [
-                float(tree["burn_time"])
-                for tree in payload["trees"]
-                if tree.get("burn_time") is not None
-            ]
-            payload["timeline"]["end"] = max(observed_values) + TREE_BURN_MINUTES * 2.0
+                    tree["burn_duration"] = OBSERVED_BURN_MINUTES
             payload["observed_mode"] = "daily_raster"
-            payload["hero_time"] = float(np.quantile(observed_values, 0.25))
         else:
             payload["observed_mode"] = "model_timing"
-            ignition_values = animation["ignition_time"].dropna()
-            if not ignition_values.empty:
-                hero = float(ignition_values.quantile(0.25) - 2.0)
-                payload["hero_time"] = max(float(ignition_values.min()), hero)
-            else:
-                payload["hero_time"] = float(payload["timeline"]["end"] * 0.3)
+        jitter_span = SUBCELL_JITTER_MINUTES if observed_times else 30.0
+        for tree in payload.get("trees", []):
+            base = tree.get("burn_time")
+            if base is None:
+                continue
+            digest = int.from_bytes(
+                hashlib.blake2b(str(tree["tree_id"]).encode(), digest_size=4).digest(),
+                "big",
+            )
+            tree["burn_time"] = float(base) + (digest % int(jitter_span))
+            if observed_times:
+                tree["burn_duration"] = OBSERVED_BURN_MINUTES
+        ignition_values = [
+            float(tree["burn_time"])
+            for tree in payload.get("trees", [])
+            if tree.get("burn_time") is not None
+        ]
+        if ignition_values:
+            payload["timeline"]["end"] = (
+                max(ignition_values) + OBSERVED_BURN_MINUTES * 2.0
+            )
+            payload["hero_time"] = float(np.quantile(ignition_values, 0.55))
+        else:
+            payload["hero_time"] = float(payload["timeline"]["end"] * 0.3)
         payload["domain"] = [
             [[float(x) - min_x, float(y) - min_y] for x, y in ring]
             for ring in (fire.perimeters[-1].rings_projected if fire.perimeters else ())
