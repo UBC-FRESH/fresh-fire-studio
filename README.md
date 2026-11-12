@@ -15,7 +15,10 @@ The preview host is behind the lab Cloudflare Access gate.
 
 - six public benchmark fires, from Dogrib 2001 to the 2023 Hay River event;
 - one standalone 3D fire studio per case;
-- Nemora-derived synthetic individual-tree layer;
+- Nemora-derived synthetic individual-tree layer with **foveated LOD**:
+  - canopy impostors over the full observed extent;
+  - a generated near-field stand at **500 stems/ha** around the camera target;
+  - individual trunks, crowns, flames and smoke only in that detail patch;
 - FBP/WS4 fire behaviour replay with surface, crown and post-fire tree states;
 - DEM-derived terrain hillshade;
 - public-data provenance and a methods page.
@@ -39,6 +42,8 @@ Port 8800 is deliberate: community forests 8796, woodlots 8795, Nemora 8799.
 
 ## Caveats
 
-The tree layer is synthetic. The 3D scene is a model replay, not an operational
-prediction. Small suppressed fires are not ROS-skill evidence. See `/methods`
-and the WS4 P164–P178 reports.
+The tree layer is synthetic. The 500 stems/ha near-field stand is a visual
+density target, not a measured inventory; the browser generates it from the
+stand footprint and samples ignition from a compact burn-time field. The 3D
+scene is a model replay, not an operational prediction. Small suppressed fires
+are not ROS-skill evidence. See `/methods` and the WS4 P164–P178 reports.

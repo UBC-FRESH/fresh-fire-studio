@@ -8,9 +8,9 @@
 
 ## 0:10–0:25 · The observed fire
 
-**Visual:** `Dogrib 2001` studio, autoplay. Orbit slightly. Show the observed extent and tree-level front.
+**Visual:** `Dogrib 2001` studio, autoplay. Orbit slightly. Show the observed extent, then zoom until the near-field LOD resolves into individual stems.
 
-**Voice:** “This is a public benchmark fire. Real terrain, real weather, and a synthetic tree population you can inspect. The fire moves tree to tree.”
+**Voice:** “This is a public benchmark fire. Real terrain, real weather, and a synthetic tree population you can inspect. The overview is a canopy impostor; up close, the near field resolves to 500 stems per hectare. The fire moves tree to tree.”
 
 ## 0:25–0:40 · The model
 

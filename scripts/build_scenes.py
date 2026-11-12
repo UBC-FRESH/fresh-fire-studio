@@ -21,6 +21,7 @@ from PIL import Image
 from pyproj import Transformer
 from rasterio.features import shapes
 from rasterio.transform import from_origin
+from scipy.spatial import cKDTree
 from shapely.geometry import Polygon
 from shapely.ops import unary_union
 
@@ -241,6 +242,77 @@ def _radial_observed_times(
             fraction = (distance - low) / span
             ordered[tree.tree_id] = day * 1440.0 + 6.0 * 60.0 + fraction * 12.0 * 60.0
     return ordered
+
+
+def _burn_time_field(
+    fire: ObservedFire,
+    growth: Any,
+    trees: object,
+    observed_times: dict[str, float],
+    min_x: float,
+    min_y: float,
+    max_x: float,
+    max_y: float,
+    nx: int = 160,
+    ny: int = 160,
+) -> dict[str, object]:
+    """Write a compact arrival-time raster for the near-field tree LOD.
+
+    Observed CFSDS scenes use the nearest observed tree day; Dogrib/Hay River
+    use the WS4/FBP arrival field. The detail layer samples this raster instead
+    of storing millions of individual tree records.
+    """
+    width = max(1.0, max_x - min_x)
+    depth = max(1.0, max_y - min_y)
+    values = np.full((ny, nx), np.nan, dtype=float)
+    if observed_times:
+        points: list[tuple[float, float]] = []
+        times: list[float] = []
+        for tree in trees.trees:  # type: ignore[attr-defined]
+            value = observed_times.get(tree.tree_id)
+            if value is None:
+                continue
+            points.append((float(tree.x) - min_x, float(tree.y) - min_y))
+            times.append(float(value))
+        if points:
+            tree = cKDTree(np.asarray(points, dtype=float))
+            for j in range(ny):
+                y = min_y + (j / (ny - 1)) * depth
+                for i in range(nx):
+                    x = min_x + (i / (nx - 1)) * width
+                    _, index = tree.query((x - min_x, y - min_y))
+                    values[j, i] = times[int(index)]
+        mode = "observed_daily"
+    else:
+        arrival = np.asarray(growth.ignition_time_min, dtype=float)
+        nrows, ncols = arrival.shape
+        cell = float(fire.grid.cell_size_m)
+        xll = float(fire.grid.xll)
+        yll = float(fire.grid.yll)
+        for j in range(ny):
+            y = min_y + (j / (ny - 1)) * depth
+            row = nrows - 1 - int(np.floor((y - yll) / cell))
+            if not (0 <= row < nrows):
+                continue
+            for i in range(nx):
+                x = min_x + (i / (nx - 1)) * width
+                col = int(np.floor((x - xll) / cell))
+                if 0 <= col < ncols and np.isfinite(arrival[row, col]):
+                    values[j, i] = float(arrival[row, col])
+        mode = "model_arrival"
+    times_payload = [
+        [None if not np.isfinite(value) else round(float(value), 2) for value in row]
+        for row in values
+    ]
+    return {
+        "nx": nx,
+        "ny": ny,
+        "dx": width / (nx - 1),
+        "dy": depth / (ny - 1),
+        "times": times_payload,
+        "duration_min": OBSERVED_BURN_MINUTES if observed_times else TREE_BURN_MINUTES,
+        "mode": mode,
+    }
 
 
 def _case_specs() -> list[dict[str, object]]:
@@ -704,6 +776,25 @@ def build_case(
         payload["terrain"] = _terrain_payload(
             fire, min_x, min_y, max_x, max_y, payload.get("trees", [])
         )
+        payload["burn_field"] = _burn_time_field(
+            fire,
+            result.growth,
+            trees,
+            observed_times,
+            min_x,
+            min_y,
+            max_x,
+            max_y,
+        )
+        payload["detail"] = {
+            "stems_per_ha": 500,
+            "radius_m": 200,
+            "min_radius_m": 130,
+            "max_radius_m": 300,
+            "radius_fraction": 0.65,
+            "capacity": 12000,
+            "lod_distance_fraction": 0.22,
+        }
         payload["ground_texture"] = "terrain.png"
         viewer = (
             viewer[: match.start(2)]
