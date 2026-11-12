@@ -23,11 +23,11 @@ The scene now has two representations.
    tree-silhouette impostors. It is cheap, covers the whole observed extent,
    and is labelled as a visual sample — not an inventory.
 
-2. **Near-field detail.** When the camera enters the detail LOD, the browser
-   generates a local stand at **500 stems/ha** inside a radius around the
-   camera target. The radius scales with camera distance (130–300 m). Density
-   stays full to about 70% of the radius, then feathers down to zero at the
-   edge, so the sharp patch does not end on a hard circle.
+2. **Near-field detail.** The browser generates **160 m world-space tiles**
+   at **500 stems/ha**. Tiles within 280 m of the camera target are loaded,
+   up to a 12,000-instance cap; the outer active ring is stochastically
+   thinned. Tiles and per-tree ignition times are cached, so zooming or
+   revisiting an area does not rebuild or reset the stand.
 
 3. **Mid-field impostors.** A wider field of **140 stems/ha tree silhouettes**
    overlaps the detail patch and extends out to roughly **800 m**. It uses the
@@ -69,10 +69,11 @@ east–west under a normal Three.js camera.
 - fire/smoke particles: shared pool, spawned only from active detail trees
   when the detail LOD is active.
 
-The detail footprint is a fixed **260 m** world-space radius; it no longer
-changes with zoom. Detail ignition times are cached by world grid key, so
-panning, focusing, zooming out and zooming back in preserve the burn state of a
-tree instead of creating a new unburned population.
+Detail is stored in fixed **160 m world-space tiles** with a **280 m** active
+radius, not in a radius that changes with zoom. Ignition times are cached by
+world grid key, so panning, focusing, zooming out and zooming back in preserve
+the burn state of a tree instead of creating a new unburned population. The
+**Overview** button returns smoothly to the full-extent camera.
 
 The LOD now fades between **1400 m and 800 m** camera distance rather than
 switching at a hard threshold. Detail material opacity, mid-field opacity and
