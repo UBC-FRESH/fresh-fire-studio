@@ -8,12 +8,18 @@ from __future__ import annotations
 
 import html
 import json
+import os
+import time
 from pathlib import Path
 from typing import Any
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel, Field
+
+from .assistant import ask as ask_assistant
 
 ROOT = Path(__file__).resolve().parents[1]
 STATIC = ROOT / "portal" / "static"
@@ -22,8 +28,20 @@ SUMMARIES_PATH = ROOT / "config" / "scene_summaries.json"
 PILOT_PATH = ROOT / "portal" / "pilot.html"
 BRIEFS = ROOT / "portal" / "briefs"
 REEL_PATH = ROOT / "docs" / "reel" / "index.html"
+ASK_HITS: dict[str, list[float]] = {}
 
 app = FastAPI(title="FRESH Fire Studio", docs_url=None, redoc_url=None)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://ubc-fresh.github.io",
+        "https://fresh-fire.01101.dev",
+        "http://127.0.0.1:8800",
+        "http://localhost:8800",
+    ],
+    allow_methods=["POST", "GET", "OPTIONS"],
+    allow_headers=["*"],
+)
 
 
 def _load_cases() -> list[dict[str, Any]]:
@@ -197,6 +215,7 @@ def _landing(audience: str | None = None) -> str:
 <meta name="twitter:description" content="{copy["lede"]}">
 <meta name="twitter:image" content="https://ubc-fresh.github.io/fresh-fire-studio/static/social-card.jpg">
 <script src="/static/analytics.js" defer></script>
+<script src="/static/assistant.js" defer></script>
 <meta name="description" content="{copy["meta_desc"]}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -218,8 +237,19 @@ nav{{display:flex;align-items:center;justify-content:space-between;padding:20px 
 .brand-mark{{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 210deg,var(--hot),#ffd27a,var(--hot));box-shadow:0 0 28px rgba(255,107,44,.4)}}
 .navlinks{{display:flex;gap:22px;color:var(--muted);font-size:13px}}
 .navlinks a:hover{{color:var(--ink)}}
-.navlinks a.ask{{padding:7px 11px;border:1px solid rgba(255,179,71,.5);border-radius:999px;color:var(--hot2)}}
-.navlinks a.ask:hover{{border-color:rgba(255,179,71,.9);color:var(--ink)}}
+.navlinks button.ask{{padding:7px 11px;border:1px solid rgba(255,179,71,.5);border-radius:999px;color:var(--hot2);background:transparent;font:inherit;cursor:pointer}}
+.navlinks button.ask:hover{{border-color:rgba(255,179,71,.9);color:var(--ink)}}
+#assistant-backdrop{{position:fixed;inset:0;z-index:20;background:rgba(3,8,7,.62);backdrop-filter:blur(5px)}}
+#assistant-panel{{position:fixed;z-index:21;right:20px;bottom:20px;width:min(440px,calc(100vw - 32px));max-height:min(720px,calc(100vh - 40px));display:flex;flex-direction:column;background:#0d1415;border:1px solid rgba(255,255,255,.18);border-radius:18px;box-shadow:0 24px 80px rgba(0,0,0,.6);overflow:hidden}}
+#assistant-panel[hidden],#assistant-backdrop[hidden]{{display:none!important}}
+.assistant-head{{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:15px 16px 10px;border-bottom:1px solid var(--line)}}
+.assistant-head strong{{display:block;font-size:17px;letter-spacing:-.03em}}.assistant-head span{{display:block;color:var(--muted);font:10px "DM Mono",monospace;margin-top:4px}}
+.assistant-head-actions{{display:flex;gap:8px;align-items:center}}.assistant-close,.assistant-clear{{border:0;background:transparent;color:var(--muted);cursor:pointer;font:12px Manrope,sans-serif}}.assistant-close{{font-size:24px;line-height:1;padding:0 2px}}
+.assistant-quick{{display:flex;gap:6px;flex-wrap:wrap;padding:10px 14px 0}}.assistant-quick button{{font-size:11px;padding:6px 8px;border-radius:999px;background:#14201e;color:var(--muted);border:1px solid var(--line);cursor:pointer}}
+#assistant-log{{min-height:170px;max-height:320px;overflow:auto;padding:12px 14px;display:flex;flex-direction:column;gap:9px}}
+.assistant-message{{max-width:92%;padding:9px 11px;border-radius:11px;font-size:12px;line-height:1.45;white-space:pre-wrap}}.assistant-message.user{{align-self:flex-end;background:#233b35;color:#f4efe7}}.assistant-message.assistant{{align-self:flex-start;background:#141e1d;color:#d7cdbf;border:1px solid var(--line)}}.assistant-message.error{{border-color:rgba(255,107,44,.45);color:#ffb9a0}}
+#assistant-form{{display:flex;gap:8px;padding:10px 14px 8px;border-top:1px solid var(--line)}}#assistant-question{{flex:1;min-height:42px;max-height:110px;resize:vertical;background:#0a1010;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px;font:12px Manrope,sans-serif}}#assistant-submit{{align-self:flex-end;border:0;border-radius:10px;background:var(--hot);color:#1b0c05;padding:10px 13px;font-weight:800;cursor:pointer}}#assistant-submit:disabled{{opacity:.5;cursor:wait}}
+#assistant-status{{padding:0 14px 12px;color:var(--dim);font:10px/1.4 "DM Mono",monospace}}
 .hero{{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:end;padding:86px 0 54px}}
 .eyebrow{{font:12px/1.4 "DM Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--hot2)}}
 h1{{font-size:clamp(44px,7vw,96px);line-height:.94;letter-spacing:-.055em;margin:18px 0 24px;max-width:930px}}
@@ -264,12 +294,12 @@ footer{{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--dim);fo
 </head>
 <body>
 <div class="wrap">
-<nav><div class="brand"><span class="brand-mark"></span> FRESH Fire Studio</div><div class="navlinks"><a href="#cases">Benchmark fires</a><a href="/methods">Science</a><a href="/pilot">Pilot</a><a href="/bc">BC</a><a href="/cfs">CFS</a><a class="ask" href="mailto:gregory.paradis@ubc.ca?subject=FRESH%20Fire%20Studio%20question">+ Ask</a><a href="/case/{first}">Launch demo ↗</a></div></nav>
+<nav><div class="brand"><span class="brand-mark"></span> FRESH Fire Studio</div><div class="navlinks"><a href="#cases">Benchmark fires</a><a href="/methods">Science</a><a href="/pilot">Pilot</a><a href="/bc">BC</a><a href="/cfs">CFS</a><button class="ask" type="button" data-assistant-open aria-expanded="false" aria-controls="assistant-panel">+ Ask</button><a href="/case/{first}">Launch demo ↗</a></div></nav>
 <section class="hero">
   <div><div class="eyebrow">{copy["eyebrow"]}</div>
   <h1>{copy["headline"]}</h1>
   <p class="lede">{copy["lede"]}</p>
-  <div class="hero-actions"><a class="btn primary" href="{primary_href}">{copy["primary_label"]}</a><a class="btn" href="{copy["secondary_href"]}">{copy["secondary_label"]}</a><a class="btn" href="mailto:gregory.paradis@ubc.ca?subject=FRESH%20Fire%20Studio%20question">+ Ask</a></div></div>
+  <div class="hero-actions"><a class="btn primary" href="{primary_href}">{copy["primary_label"]}</a><a class="btn" href="{copy["secondary_href"]}">{copy["secondary_label"]}</a><button class="btn" type="button" data-assistant-open aria-expanded="false" aria-controls="assistant-panel">+ Ask</button></div></div>
   <aside class="hero-panel"><div class="big">3D</div><div class="row"><span>Benchmark fires</span><b>{len(CASES)}</b></div><div class="row"><span>Near-field density</span><b>500 stems/ha</b></div><div class="row"><span>Model</span><b>WS4 · FBP · FWI</b></div><div class="row"><span>Data</span><b>Public only</b></div><div class="row"><span>Status</span><b>{copy["status"]}</b></div></aside>
 </section>
 <div class="strip"><div><b>{len(CASES)}</b><span>public benchmark fires</span></div><div><b>500/ha</b><span>foveated near-field stems</span></div><div><b>LOD</b><span>canopy overview + tree detail</span></div><div><b>0</b><span>proprietary inputs</span></div></div>
@@ -277,6 +307,14 @@ footer{{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--dim);fo
 <div class="case-grid">{cards}</div>
 <section class="split"><div><div class="eyebrow">What you are seeing</div><h2>Fire behaviour, not a video.</h2><p>The front is a model result. Trees are a plausible synthetic population placed inside public stand geometry; ground fuel and terrain drive the local spread.</p></div><div class="points"><div class="point"><b>01</b><span><b>Surface + crown fire.</b> Rothermel/FBP surface spread, crown initiation, and consumption are evaluated cell by cell.</span></div><div class="point"><b>02</b><span><b>Foveated tree detail.</b> The overview uses a canopy impostor; zoom in and the near field resolves to a synthetic 500 stems/ha stand, ringed by a wider tree-silhouette mid-field so there is no keyhole. Ignition is sampled from a compact burn-time field, then advanced locally from crown to crown.</span></div><div class="point"><b>03</b><span><b>Individual trees.</b> Nemora places and sizes stems; each tree samples the local arrival time and resolves to scorched, torched, or consumed.</span></div><div class="point"><b>04</b><span><b>Atmosphere.</b> Wind, slope, fuel moisture, smoke, embers, and a moving fire light are rendered in the browser.</span></div><div class="point"><b>05</b><span><b>Honest evidence.</b> Public perimeters, hourly weather, and a recorded validation ladder. No operational claim; no hidden tuning.</span></div></div></section>
 <section class="cta"><div><div class="eyebrow">{copy["cta_eyebrow"]}</div><h2>{copy["cta_title"]}</h2><p>{copy["cta_copy"]}</p></div><a class="btn primary" href="{copy["cta_href"]}">Start a pilot ↗</a></section>
+<div id="assistant-backdrop" hidden></div>
+<aside id="assistant-panel" hidden aria-labelledby="assistant-title" aria-modal="true" role="dialog">
+  <div class="assistant-head"><div><strong id="assistant-title">Ask FRESH Fire Studio</strong><span>public context · not an operational forecast</span></div><div class="assistant-head-actions"><button class="assistant-clear" id="assistant-clear" type="button">Clear</button><button class="assistant-close" id="assistant-close" type="button" aria-label="Close assistant">×</button></div></div>
+  <div class="assistant-quick"><button type="button" data-assistant-prompt="What is the difference between observed extent and model extent?">Observed vs model</button><button type="button" data-assistant-prompt="What is synthetic in the 3D scenes?">What is synthetic?</button><button type="button" data-assistant-prompt="What does the G50872 VRI pilot show?">G50872 pilot</button><button type="button" data-assistant-prompt="What would a pilot cover?">Pilot scope</button></div>
+  <div id="assistant-log" aria-live="polite" aria-relevant="additions"></div>
+  <form id="assistant-form"><textarea id="assistant-question" maxlength="1200" placeholder="Ask about the fires, model, VRI pilots, or a pilot…" aria-label="Your question"></textarea><button id="assistant-submit" type="submit">Ask</button></form>
+  <div id="assistant-status">Ask about the fire, the model, the VRI pilots, or a pilot.</div>
+</aside>
 <footer><span><a href="https://fresh.forestry.ubc.ca">UBC FRESH Lab</a> · Forest Resources and Ecosystem Services Hub · UBC Faculty of Forestry & Environmental Stewardship</span><span><a href="/reel">70s reel</a> · <a href="/bc">BC</a> · <a href="/cfs">CFS</a> · synthetic tree layer · research use</span></footer>
 </div></body></html>"""
 
@@ -319,6 +357,36 @@ p,li{color:#b9afa1}code{color:#ffcf8b;font:12px "DM Mono",monospace}.rule{border
 <h2>What is synthetic</h2><ul><li>The individual-tree layer. Nemora places plausible stems inside stand blocks; it is not a measured inventory.</li><li>The visual tree geometry and fire particles. Tree outcomes are visual classes derived from the model, not a validated mortality observation.</li></ul>
 <h2>What this demo does not claim</h2><ul><li>Operational fire prediction.</li><li>Regional calibration.</li><li>That a free-burn model matches a suppressed fire. P176 shows the model fills the burnable basin; small fires are suppression-dominated.</li><li>That the 3D scene is a measurement product.</li></ul>
 <div class="rule"></div><p>Evidence chain: P156–P178. Key reports live in the WS4 repository: <code>notes/reports/</code>. The scene schema is <code>ws4.fire.scene.v1</code>.</p><p><a href="/">Back to the studio ↗</a></p></div></body></html>"""
+
+
+class AskRequest(BaseModel):
+    question: str = Field(min_length=3, max_length=1200)
+
+
+@app.get("/api/ask/status")
+def ask_status() -> JSONResponse:
+    return JSONResponse({"available": True})
+
+
+@app.post("/api/ask")
+def ask_endpoint(payload: AskRequest, request: Request) -> JSONResponse:
+    now = time.time()
+    client = (
+        request.headers.get("cf-connecting-ip")
+        or (request.client.host if request.client else "unknown")
+    )
+    hits = [stamp for stamp in ASK_HITS.get(client, []) if now - stamp < 60]
+    if len(hits) >= 8:
+        raise HTTPException(status_code=429, detail="Too many questions; try again shortly.")
+    hits.append(now)
+    ASK_HITS[client] = hits
+    try:
+        result = ask_assistant(payload.question, CASES, ROOT)
+    except ValueError as error:
+        raise HTTPException(status_code=400, detail=str(error)) from error
+    except Exception as error:
+        raise HTTPException(status_code=503, detail=str(error)) from error
+    return JSONResponse(result)
 
 
 @app.get("/", response_class=HTMLResponse)

@@ -21,6 +21,7 @@ Implementation: `portal/static/analytics.js`.
 | `bc-home` | BC landing variant |
 | `cfs-home` | CFS landing variant |
 | `reel` | 70-second reel page |
+| `ask` | assistant drawer opened |
 
 The counter service is Abacus:
 

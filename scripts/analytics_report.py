@@ -31,6 +31,7 @@ EVENTS = [
     "methods",
     "pilot",
     "reel",
+    "ask",
     "scene-vri-pilot",
     "scene-g50872-vri",
 ]

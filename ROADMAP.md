@@ -16,6 +16,7 @@
 - [x] social preview image
 - [x] short screen-capture reel
 - [x] anonymous page/scene counters
+- [x] read-only LLM assistant drawer
 - [x] agency-specific landing variants (BC / CFS)
 
 ## P3 · Agency pilot
