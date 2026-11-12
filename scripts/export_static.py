@@ -32,6 +32,7 @@ def main() -> None:
     if OUT.exists():
         shutil.rmtree(OUT)
     (OUT / "case").mkdir(parents=True)
+    (OUT / ".nojekyll").write_text("", encoding="utf-8")
     (OUT / "index.html").write_text(_rewrite_index(home()), encoding="utf-8")
     for case_row in CASES:
         slug = str(case_row["slug"])
