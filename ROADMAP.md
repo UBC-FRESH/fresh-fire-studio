@@ -12,7 +12,7 @@
 
 ## P2 · Public deployment
 
-- [ ] permanent public URL and TLS
+- [x] permanent public URL and TLS
 - [x] social preview image
 - [x] short screen-capture reel
 - [ ] agency-specific landing variants (BC / CFS)
