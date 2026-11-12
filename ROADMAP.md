@@ -14,7 +14,7 @@
 
 - [ ] permanent public URL and TLS
 - [x] social preview image
-- [ ] short screen-capture reel
+- [x] short screen-capture reel
 - [ ] agency-specific landing variants (BC / CFS)
 
 ## P3 · Agency pilot

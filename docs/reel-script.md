@@ -1,5 +1,8 @@
 # FRESH Fire Studio — 90-second reel
 
+Recorded screen capture: [`docs/reel/fresh-fire-studio-reel.webm`](reel/fresh-fire-studio-reel.webm)
+
+
 ## 0:00–0:10 · The problem
 
 **Visual:** a static fire perimeter map. Slow zoom.
