@@ -253,8 +253,8 @@ def _burn_time_field(
     min_y: float,
     max_x: float,
     max_y: float,
-    nx: int = 160,
-    ny: int = 160,
+    nx: int = 384,
+    ny: int = 384,
 ) -> dict[str, object]:
     """Write a compact arrival-time raster for the near-field tree LOD.
 

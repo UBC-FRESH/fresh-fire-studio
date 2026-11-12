@@ -25,13 +25,15 @@ The scene now has two representations.
 
 2. **Near-field detail.** When the camera enters the detail LOD, the browser
    generates a local stand at **500 stems/ha** inside a radius around the
-   camera target. The radius scales with camera distance (130–300 m) so the
-   sharp patch covers the foveal view instead of ending abruptly on screen.
+   camera target. The radius scales with camera distance (130–300 m). Density
+   stays full to about 70% of the radius, then feathers down to zero at the
+   edge, so the sharp patch does not end on a hard circle.
 
-3. **Mid-field impostors.** A wider ring of **140 stems/ha tree silhouettes**
-   extends from just inside the detail edge out to roughly **800 m**. It uses
-   the same burn-time field, so background patches change colour with the
-   fire. This is the layer that removes the keyhole.
+3. **Mid-field impostors.** A wider field of **140 stems/ha tree silhouettes**
+   overlaps the detail patch and extends out to roughly **800 m**. It uses the
+   same burn-time field, so background patches change colour with the fire.
+   The outer 28% of the mid-field is stochastically thinned to blend into the
+   canopy. This is the layer that removes the keyhole.
 
 The detail patch contains full trunks, crowns, fire particles, smoke and
 post-fire tree states. The mid-field and canopy impostors carry the periphery
@@ -39,14 +41,19 @@ without adding millions of triangles.
 
 ## Ignition without millions of records
 
-A compact **burn-time field** (160 × 160) is built for each case:
+A compact **burn-time field** (384 × 384) is built for each case:
 
 - CFSDS observed-daily cases: nearest observed tree day;
 - Dogrib / Hay River: WS4/FBP arrival time.
 
-Each generated detail tree samples that field for its ignition time. A
-deterministic hash assigns height, crown size, and post-fire class. No
+Each generated tree samples the field bilinearly and adds a deterministic
+per-tree ignition jitter. This avoids whole raster cells flipping at once.
+A deterministic hash assigns height, crown size, and post-fire class. No
 per-tree records are stored for the detail population.
+
+The scene uses the standard right-handed geographic mapping: east `+X`,
+north `−Z`. The earlier viewer mapped north to `+Z`, which mirrored the scene
+east–west under a normal Three.js camera.
 
 ## Rendering budget
 
