@@ -46,9 +46,9 @@ CASE_BY_SLUG = {str(case["slug"]): case for case in CASES}
 VRI_CASE: dict[str, Any] = {
     "slug": "vri-pilot",
     "title": "VRI pilot · TSA 24",
-    "subtitle": "Public VRI block geometry, synthetic Nemora stems, and a synthetic C3 fire scenario",
-    "story": "A pilot prototype, not an observed fire. It exercises the real VRI geometry and stand shapes; terrain is flat and the fire is a synthetic growth run.",
-    "provenance": "Public TSA 24 block geometry; synthetic Nemora stems; synthetic C3 fire",
+    "subtitle": "Public VRI block geometry, real SRTM terrain, synthetic Nemora stems, and a synthetic C3 fire scenario",
+    "story": "A pilot prototype, not an observed fire. It exercises the real VRI geometry, stand shapes and public SRTM terrain; fuel and fire growth remain synthetic.",
+    "provenance": "Public TSA 24 block geometry; SRTM 1 arcsec terrain; synthetic Nemora stems; synthetic C3 fire",
     "area_ha": 104.9,
     "area_label": "burnable cluster",
     "weather": "C3 · synthetic",
