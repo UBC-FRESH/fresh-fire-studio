@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from portal.app import CASES, brief, case, home, methods, pilot
+from portal.app import CASES, _landing, brief, case, home, methods, pilot
 
 OUT = ROOT / "public"
 
@@ -19,6 +19,11 @@ def _rewrite_index(payload: str) -> str:
     payload = payload.replace('href="/case/', 'href="case/')
     payload = payload.replace('href="/methods"', 'href="methods.html"')
     payload = payload.replace('href="/pilot"', 'href="pilot.html"')
+    payload = payload.replace('href="/bc"', 'href="bc.html"')
+    payload = payload.replace('href="/cfs"', 'href="cfs.html"')
+    payload = payload.replace('href="/reel"', 'href="reel/index.html"')
+    payload = payload.replace('href="/briefs/bc"', 'href="briefs/bc.html"')
+    payload = payload.replace('href="/briefs/cfs"', 'href="briefs/cfs.html"')
     payload = payload.replace('src="/static/', 'src="static/')
     # Cases are exported as .html files.
     for case_row in CASES:
@@ -34,6 +39,10 @@ def main() -> None:
     (OUT / "case").mkdir(parents=True)
     (OUT / ".nojekyll").write_text("", encoding="utf-8")
     (OUT / "index.html").write_text(_rewrite_index(home()), encoding="utf-8")
+    for audience in ("bc", "cfs"):
+        (OUT / f"{audience}.html").write_text(
+            _rewrite_index(_landing(audience)), encoding="utf-8"
+        )
     for case_row in CASES:
         slug = str(case_row["slug"])
         payload = case(slug)

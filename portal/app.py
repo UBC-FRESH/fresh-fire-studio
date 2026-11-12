@@ -74,29 +74,97 @@ def _case_card(case: dict[str, Any]) -> str:
     </a>"""
 
 
-def _landing() -> str:
-    cards = "\n".join(_case_card(case) for case in CASES)
-    first = html.escape(str(CASES[0]["slug"])) if CASES else ""
+AUDIENCE_COPY: dict[str, dict[str, object]] = {
+    "default": {
+        "meta_title": "FRESH Fire Studio · UBC FRESH",
+        "meta_desc": "Walk through public benchmark wildfires in 3D. Real terrain, public weather, and transparent model limits from the UBC FRESH Lab.",
+        "eyebrow": "UBC FRESH Lab · public fire modelling",
+        "headline": "See a wildfire <em>before</em> it happens.",
+        "lede": "An interactive 3D fire studio built on public benchmark fires, real terrain, real weather, and audited Canadian fire behaviour — with synthetic trees you can walk through.",
+        "primary_label": "Launch the studio ↗",
+        "primary_href": "",
+        "secondary_label": "How the science works",
+        "secondary_href": "/methods",
+        "section_eyebrow": "The evidence set",
+        "section_title": "Walk through a fire.",
+        "section_copy": "Each scene is a deterministic replay of a public event. Pick a fire, orbit the landscape, and scrub the front.",
+        "cta_eyebrow": "For BC and CFS teams",
+        "cta_title": "Bring your landscape.",
+        "cta_copy": "We can stand up a private instance over your VRI, terrain, fuel and weather, or run a joint benchmark on a fire you already know. The public studio is the front door.",
+        "cta_href": "/pilot",
+        "status": "Research demo",
+        "case_order": ["dogrib-2001", "hay-river-2023", "cfsds-2003-526", "cfsds-2023-786", "cfsds-2003-96-large", "cfsds-2003-663-large"],
+    },
+    "bc": {
+        "meta_title": "FRESH Fire Studio · BC community forests",
+        "meta_desc": "A 3D fire-behaviour studio for BC community forests: public benchmark fires, terrain, fuel and a transparent model-limits memo.",
+        "eyebrow": "UBC FRESH Lab · BC community forests",
+        "headline": "See the fuel. <em>See the risk.</em> Before the fire.",
+        "lede": "A 3D fire-behaviour studio for community forest planning. Start with a public benchmark, inspect the terrain and fuel, and see where the model stops being useful.",
+        "primary_label": "Open the compact case ↗",
+        "primary_href": "/case/cfsds-2003-526",
+        "secondary_label": "Printable BC brief",
+        "secondary_href": "/briefs/bc",
+        "section_eyebrow": "For BC teams",
+        "section_title": "Start with a landscape you know.",
+        "section_copy": "Compare the observed extent, the free-burn model and the suppression problem on public events before applying the same workflow to your VRI and fuel data.",
+        "cta_eyebrow": "BC pilot",
+        "cta_title": "Bring your community forest.",
+        "cta_copy": "Use one VRI, terrain and fuel landscape. We will build the 3D case, observed-versus-model comparison and a model-limits memo with your team.",
+        "cta_href": "/pilot",
+        "status": "BC pilot framing",
+        "case_order": ["cfsds-2003-526", "cfsds-2003-663-large", "hay-river-2023", "cfsds-2023-786", "dogrib-2001", "cfsds-2003-96-large"],
+    },
+    "cfs": {
+        "meta_title": "FRESH Fire Studio · CFS benchmark validation",
+        "meta_desc": "A public 3D benchmark harness for Canadian fire behaviour: observed perimeters, WS4/FBP replay and a transparent validation ladder.",
+        "eyebrow": "UBC FRESH Lab · CFS benchmark validation",
+        "headline": "Test the model. <em>See the limits.</em> Together.",
+        "lede": "A public benchmark harness for Canadian fire behaviour. Inspect observed perimeters, free-burn model divergence, and the failure modes that should shape the next validation target.",
+        "primary_label": "Open Dogrib 2001 ↗",
+        "primary_href": "/case/dogrib-2001",
+        "secondary_label": "Printable CFS brief",
+        "secondary_href": "/briefs/cfs",
+        "section_eyebrow": "For CFS teams",
+        "section_title": "Compare the model to the record.",
+        "section_copy": "The evidence set starts with Dogrib, then moves through large free-burn cases. The methods page records what is real, what is synthetic and what is not claimed.",
+        "cta_eyebrow": "CFS pilot",
+        "cta_title": "Bring one benchmark.",
+        "cta_copy": "We will run the public harness on one of your known fires or landscapes, compare the observed and free-burn extents, and write down where the model fails.",
+        "cta_href": "/pilot",
+        "status": "CFS benchmark framing",
+        "case_order": ["dogrib-2001", "cfsds-2003-96-large", "cfsds-2003-663-large", "cfsds-2023-786", "hay-river-2023", "cfsds-2003-526"],
+    },
+}
+
+
+def _landing(audience: str | None = None) -> str:
+    copy = AUDIENCE_COPY[audience or "default"]
+    ordered = [CASE_BY_SLUG[slug] for slug in copy["case_order"] if slug in CASE_BY_SLUG]
+    cards = "\n".join(_case_card(case) for case in ordered)
+    first = html.escape(str(ordered[0]["slug"])) if ordered else ""
+    primary_href = str(copy["primary_href"] or f"/case/{first}")
+    meta_url = f"https://ubc-fresh.github.io/fresh-fire-studio/{audience}.html" if audience else "https://ubc-fresh.github.io/fresh-fire-studio/"
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FRESH Fire Studio · UBC FRESH</title>
-<meta name="description" content="Walk through public benchmark wildfires in 3D. Real terrain, public weather, and transparent model limits from the UBC FRESH Lab.">
+<title>{copy["meta_title"]}</title>
+<meta name="description" content="{copy["meta_desc"]}">
 <meta property="og:type" content="website">
-<meta property="og:title" content="FRESH Fire Studio · UBC FRESH">
-<meta property="og:description" content="Walk through a wildfire. See the model. See the limits.">
-<meta property="og:url" content="https://ubc-fresh.github.io/fresh-fire-studio/">
+<meta property="og:title" content="{copy["meta_title"]}">
+<meta property="og:description" content="{copy["lede"]}">
+<meta property="og:url" content="{meta_url}">
 <meta property="og:image" content="https://ubc-fresh.github.io/fresh-fire-studio/static/social-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FRESH Fire Studio · UBC FRESH">
-<meta name="twitter:description" content="Walk through a wildfire. See the model. See the limits.">
+<meta name="twitter:title" content="{copy["meta_title"]}">
+<meta name="twitter:description" content="{copy["lede"]}">
 <meta name="twitter:image" content="https://ubc-fresh.github.io/fresh-fire-studio/static/social-card.jpg">
 <script src="/static/analytics.js" defer></script>
-<meta name="description" content="Interactive 3D wildfire behaviour over public Canadian benchmark fires.">
+<meta name="description" content="{copy["meta_desc"]}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -161,20 +229,20 @@ footer{{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--dim);fo
 </head>
 <body>
 <div class="wrap">
-<nav><div class="brand"><span class="brand-mark"></span> FRESH Fire Studio</div><div class="navlinks"><a href="#cases">Benchmark fires</a><a href="/methods">Science</a><a href="/pilot">Pilot</a><a href="/case/{first}">Launch demo ↗</a></div></nav>
+<nav><div class="brand"><span class="brand-mark"></span> FRESH Fire Studio</div><div class="navlinks"><a href="#cases">Benchmark fires</a><a href="/methods">Science</a><a href="/pilot">Pilot</a><a href="/bc">BC</a><a href="/cfs">CFS</a><a href="/case/{first}">Launch demo ↗</a></div></nav>
 <section class="hero">
-  <div><div class="eyebrow">UBC FRESH Lab · public fire modelling</div>
-  <h1>See a wildfire <em>before</em> it happens.</h1>
-  <p class="lede">An interactive 3D fire studio built on public benchmark fires, real terrain, real weather, and audited Canadian fire behaviour — with synthetic trees you can walk through.</p>
-  <div class="hero-actions"><a class="btn primary" href="/case/{first}">Launch the studio ↗</a><a class="btn" href="/methods">How the science works</a></div></div>
-  <aside class="hero-panel"><div class="big">3D</div><div class="row"><span>Benchmark fires</span><b>{len(CASES)}</b></div><div class="row"><span>Near-field density</span><b>500 stems/ha</b></div><div class="row"><span>Model</span><b>WS4 · FBP · FWI</b></div><div class="row"><span>Data</span><b>Public only</b></div><div class="row"><span>Status</span><b>Research demo</b></div></aside>
+  <div><div class="eyebrow">{copy["eyebrow"]}</div>
+  <h1>{copy["headline"]}</h1>
+  <p class="lede">{copy["lede"]}</p>
+  <div class="hero-actions"><a class="btn primary" href="{primary_href}">{copy["primary_label"]}</a><a class="btn" href="{copy["secondary_href"]}">{copy["secondary_label"]}</a></div></div>
+  <aside class="hero-panel"><div class="big">3D</div><div class="row"><span>Benchmark fires</span><b>{len(CASES)}</b></div><div class="row"><span>Near-field density</span><b>500 stems/ha</b></div><div class="row"><span>Model</span><b>WS4 · FBP · FWI</b></div><div class="row"><span>Data</span><b>Public only</b></div><div class="row"><span>Status</span><b>{copy["status"]}</b></div></aside>
 </section>
 <div class="strip"><div><b>{len(CASES)}</b><span>public benchmark fires</span></div><div><b>500/ha</b><span>foveated near-field stems</span></div><div><b>LOD</b><span>canopy overview + tree detail</span></div><div><b>0</b><span>proprietary inputs</span></div></div>
-<div id="cases" class="section-head"><div><div class="eyebrow">The evidence set</div><h2>Walk through a fire.</h2></div><p>Each scene is a deterministic replay of a public event. Pick a fire, orbit the landscape, and scrub the front.</p></div>
+<div id="cases" class="section-head"><div><div class="eyebrow">{copy["section_eyebrow"]}</div><h2>{copy["section_title"]}</h2></div><p>{copy["section_copy"]}</p></div>
 <div class="case-grid">{cards}</div>
 <section class="split"><div><div class="eyebrow">What you are seeing</div><h2>Fire behaviour, not a video.</h2><p>The front is a model result. Trees are a plausible synthetic population placed inside public stand geometry; ground fuel and terrain drive the local spread.</p></div><div class="points"><div class="point"><b>01</b><span><b>Surface + crown fire.</b> Rothermel/FBP surface spread, crown initiation, and consumption are evaluated cell by cell.</span></div><div class="point"><b>02</b><span><b>Foveated tree detail.</b> The overview uses a canopy impostor; zoom in and the near field resolves to a synthetic 500 stems/ha stand, ringed by a wider tree-silhouette mid-field so there is no keyhole. Ignition is sampled from a compact burn-time field, then advanced locally from crown to crown.</span></div><div class="point"><b>03</b><span><b>Individual trees.</b> Nemora places and sizes stems; each tree samples the local arrival time and resolves to scorched, torched, or consumed.</span></div><div class="point"><b>04</b><span><b>Atmosphere.</b> Wind, slope, fuel moisture, smoke, embers, and a moving fire light are rendered in the browser.</span></div><div class="point"><b>05</b><span><b>Honest evidence.</b> Public perimeters, hourly weather, and a recorded validation ladder. No operational claim; no hidden tuning.</span></div></div></section>
-<section class="cta"><div><div class="eyebrow">For BC and CFS teams</div><h2>Bring your landscape.</h2><p>We can stand up a private instance over your VRI, terrain, fuel and weather, or run a joint benchmark on a fire you already know. The public studio is the front door.</p></div><a class="btn primary" href="/pilot">Start a pilot ↗</a></section>
-<footer><span><a href="https://fresh.forestry.ubc.ca">UBC FRESH Lab</a> · Forest Resources and Ecosystem Services Hub · UBC Faculty of Forestry & Environmental Stewardship</span><span><a href="/reel">70s reel</a> · public benchmark demo · synthetic tree layer · research use</span></footer>
+<section class="cta"><div><div class="eyebrow">{copy["cta_eyebrow"]}</div><h2>{copy["cta_title"]}</h2><p>{copy["cta_copy"]}</p></div><a class="btn primary" href="{copy["cta_href"]}">Start a pilot ↗</a></section>
+<footer><span><a href="https://fresh.forestry.ubc.ca">UBC FRESH Lab</a> · Forest Resources and Ecosystem Services Hub · UBC Faculty of Forestry & Environmental Stewardship</span><span><a href="/reel">70s reel</a> · <a href="/bc">BC</a> · <a href="/cfs">CFS</a> · synthetic tree layer · research use</span></footer>
 </div></body></html>"""
 
 
@@ -220,6 +288,16 @@ p,li{color:#b9afa1}code{color:#ffcf8b;font:12px "DM Mono",monospace}.rule{border
 @app.get("/", response_class=HTMLResponse)
 def home() -> str:
     return _landing()
+
+
+@app.get("/bc", response_class=HTMLResponse)
+def bc_landing() -> str:
+    return _landing("bc")
+
+
+@app.get("/cfs", response_class=HTMLResponse)
+def cfs_landing() -> str:
+    return _landing("cfs")
 
 
 @app.get("/case/{slug}", response_class=HTMLResponse)

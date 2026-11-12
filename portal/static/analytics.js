@@ -23,6 +23,10 @@
     event = "methods";
   } else if (path.includes("/pilot")) {
     event = "pilot";
+  } else if (path.includes("/bc")) {
+    event = "bc";
+  } else if (path.includes("/cfs")) {
+    event = "cfs";
   } else if (path.includes("/reel")) {
     event = "reel";
   }
