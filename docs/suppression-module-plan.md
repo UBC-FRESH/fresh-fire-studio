@@ -54,6 +54,39 @@ There is currently no model of:
 - command, prioritization, escalation or resource constraints;
 - 3D suppression entities and task animation.
 
+## P179.0 contract status
+
+Implemented in this repository:
+
+- `suppression/models.py` — resource, task, line, drop and effect contract.
+- `suppression/scenario.schema.json` — generated JSON schema.
+- `suppression/scenarios/2003-526-demo.json` — schematic six-resource scenario.
+- `scripts/validate_suppression_scenario.py` — validates a scenario and prints effects.
+- `scripts/export_suppression_schema.py` — regenerates the schema.
+- `tests/test_suppression_models.py` — validation and effect-contract tests.
+
+Run:
+
+```bash
+python scripts/validate_suppression_scenario.py   suppression/scenarios/2003-526-demo.json --effects
+pytest -q tests/test_suppression_models.py
+```
+
+The contract enforces:
+
+- unique resource/task/line/drop ids;
+- known bases and resources;
+- resource availability windows;
+- no double-booked resource tasks;
+- line construction inside its task window;
+- drops inside their task window;
+- drop volume against aircraft capacity;
+- a time-bounded spatial effect event for every line and drop.
+
+The effect event is the hand-off to the fire kernel. A consumer can rasterize
+the line/drop geometry at its cell size, apply `fuel_removed`, `moisture`,
+`coverage_l_m2`, `strength` and `decay_min`, and update the fire grid.
+
 ## Evidence base: Martell and collaborators
 
 David Martell's work gives us a mature operations-research spine, not a single

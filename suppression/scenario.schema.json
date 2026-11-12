@@ -1,0 +1,602 @@
+{
+  "$defs": {
+    "Base": {
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "default": "",
+          "title": "Label",
+          "type": "string"
+        },
+        "x": {
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "title": "Y",
+          "type": "number"
+        },
+        "kind": {
+          "default": "ground",
+          "enum": [
+            "airtanker",
+            "helicopter",
+            "ground",
+            "command"
+          ],
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "x",
+        "y"
+      ],
+      "title": "Base",
+      "type": "object"
+    },
+    "Drop": {
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "task_id": {
+          "title": "Task Id",
+          "type": "string"
+        },
+        "resource_id": {
+          "title": "Resource Id",
+          "type": "string"
+        },
+        "suppressant": {
+          "$ref": "#/$defs/Suppressant",
+          "default": "water"
+        },
+        "start_min": {
+          "minimum": 0,
+          "title": "Start Min",
+          "type": "number"
+        },
+        "end_min": {
+          "minimum": 0,
+          "title": "End Min",
+          "type": "number"
+        },
+        "center": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Center",
+          "type": "array"
+        },
+        "length_m": {
+          "exclusiveMinimum": 0,
+          "title": "Length M",
+          "type": "number"
+        },
+        "width_m": {
+          "exclusiveMinimum": 0,
+          "title": "Width M",
+          "type": "number"
+        },
+        "coverage_l_m2": {
+          "exclusiveMinimum": 0,
+          "title": "Coverage L M2",
+          "type": "number"
+        },
+        "effect_duration_min": {
+          "default": 15.0,
+          "exclusiveMinimum": 0,
+          "title": "Effect Duration Min",
+          "type": "number"
+        },
+        "canopy_penetration": {
+          "default": 1.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Canopy Penetration",
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "task_id",
+        "resource_id",
+        "start_min",
+        "end_min",
+        "center",
+        "length_m",
+        "width_m",
+        "coverage_l_m2"
+      ],
+      "title": "Drop",
+      "type": "object"
+    },
+    "Line": {
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "task_id": {
+          "title": "Task Id",
+          "type": "string"
+        },
+        "points": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "minItems": 2,
+          "title": "Points",
+          "type": "array"
+        },
+        "width_m": {
+          "default": 2.0,
+          "exclusiveMinimum": 0,
+          "title": "Width M",
+          "type": "number"
+        },
+        "constructed_start_min": {
+          "minimum": 0,
+          "title": "Constructed Start Min",
+          "type": "number"
+        },
+        "constructed_end_min": {
+          "minimum": 0,
+          "title": "Constructed End Min",
+          "type": "number"
+        },
+        "state": {
+          "$ref": "#/$defs/LineState",
+          "default": "planned"
+        },
+        "fuel_removed": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Fuel Removed",
+          "type": "number"
+        },
+        "moisture": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Moisture",
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "task_id",
+        "points",
+        "constructed_start_min",
+        "constructed_end_min"
+      ],
+      "title": "Line",
+      "type": "object"
+    },
+    "LineState": {
+      "enum": [
+        "planned",
+        "building",
+        "held",
+        "breached",
+        "abandoned"
+      ],
+      "title": "LineState",
+      "type": "string"
+    },
+    "Objective": {
+      "properties": {
+        "containment_area_ha": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Containment Area Ha"
+        },
+        "max_area_ha": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Area Ha"
+        },
+        "deadline_min": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Deadline Min"
+        },
+        "priority": {
+          "default": "community",
+          "enum": [
+            "life",
+            "community",
+            "resource",
+            "ecological"
+          ],
+          "title": "Priority",
+          "type": "string"
+        }
+      },
+      "title": "Objective",
+      "type": "object"
+    },
+    "Resource": {
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "default": "",
+          "title": "Label",
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/$defs/ResourceKind"
+        },
+        "home_base_id": {
+          "title": "Home Base Id",
+          "type": "string"
+        },
+        "crew_size": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Crew Size",
+          "type": "integer"
+        },
+        "speed_kmh": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Speed Kmh",
+          "type": "number"
+        },
+        "line_rate_m_h": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Line Rate M H",
+          "type": "number"
+        },
+        "flow_l_min": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Flow L Min",
+          "type": "number"
+        },
+        "capacity_l": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Capacity L",
+          "type": "number"
+        },
+        "available_start_min": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Available Start Min",
+          "type": "number"
+        },
+        "available_end_min": {
+          "default": 1440,
+          "minimum": 0,
+          "title": "Available End Min",
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "home_base_id"
+      ],
+      "title": "Resource",
+      "type": "object"
+    },
+    "ResourceKind": {
+      "enum": [
+        "ia_crew",
+        "ground_crew",
+        "engine",
+        "dozer",
+        "helicopter",
+        "airtanker",
+        "water_tender",
+        "pump",
+        "command"
+      ],
+      "title": "ResourceKind",
+      "type": "string"
+    },
+    "Suppressant": {
+      "enum": [
+        "water",
+        "foam",
+        "retardant"
+      ],
+      "title": "Suppressant",
+      "type": "string"
+    },
+    "Task": {
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "resource_id": {
+          "title": "Resource Id",
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/$defs/TaskKind"
+        },
+        "start_min": {
+          "minimum": 0,
+          "title": "Start Min",
+          "type": "number"
+        },
+        "end_min": {
+          "minimum": 0,
+          "title": "End Min",
+          "type": "number"
+        },
+        "target": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Target",
+          "type": "array"
+        },
+        "line_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Line Id"
+        },
+        "drop_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Drop Id"
+        },
+        "note": {
+          "default": "",
+          "title": "Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "resource_id",
+        "kind",
+        "start_min",
+        "end_min"
+      ],
+      "title": "Task",
+      "type": "object"
+    },
+    "TaskKind": {
+      "enum": [
+        "mobilize",
+        "travel",
+        "assess",
+        "anchor",
+        "construct_line",
+        "lay_hose",
+        "set_pump",
+        "drop",
+        "patrol",
+        "mop_up",
+        "demobilize"
+      ],
+      "title": "TaskKind",
+      "type": "string"
+    },
+    "WaterSource": {
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "default": "",
+          "title": "Label",
+          "type": "string"
+        },
+        "x": {
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "title": "Y",
+          "type": "number"
+        },
+        "capacity_l": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Capacity L"
+        },
+        "refill_rate_l_min": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Refill Rate L Min"
+        }
+      },
+      "required": [
+        "id",
+        "x",
+        "y"
+      ],
+      "title": "WaterSource",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "scenario_id": {
+      "minLength": 1,
+      "title": "Scenario Id",
+      "type": "string"
+    },
+    "fire_slug": {
+      "title": "Fire Slug",
+      "type": "string"
+    },
+    "label": {
+      "default": "",
+      "title": "Label",
+      "type": "string"
+    },
+    "timeline_start_min": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Timeline Start Min",
+      "type": "number"
+    },
+    "timeline_end_min": {
+      "default": 1440,
+      "minimum": 0,
+      "title": "Timeline End Min",
+      "type": "number"
+    },
+    "bases": {
+      "items": {
+        "$ref": "#/$defs/Base"
+      },
+      "title": "Bases",
+      "type": "array"
+    },
+    "water_sources": {
+      "items": {
+        "$ref": "#/$defs/WaterSource"
+      },
+      "title": "Water Sources",
+      "type": "array"
+    },
+    "resources": {
+      "items": {
+        "$ref": "#/$defs/Resource"
+      },
+      "title": "Resources",
+      "type": "array"
+    },
+    "tasks": {
+      "items": {
+        "$ref": "#/$defs/Task"
+      },
+      "title": "Tasks",
+      "type": "array"
+    },
+    "lines": {
+      "items": {
+        "$ref": "#/$defs/Line"
+      },
+      "title": "Lines",
+      "type": "array"
+    },
+    "drops": {
+      "items": {
+        "$ref": "#/$defs/Drop"
+      },
+      "title": "Drops",
+      "type": "array"
+    },
+    "objective": {
+      "$ref": "#/$defs/Objective"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    }
+  },
+  "required": [
+    "scenario_id",
+    "fire_slug"
+  ],
+  "title": "Scenario",
+  "type": "object"
+}

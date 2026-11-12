@@ -15,6 +15,7 @@ A public 3D benchmark-fire portal from the UBC FRESH Lab.
 - G50872 notes: [`docs/g50872-pilot.md`](docs/g50872-pilot.md)
 - Anonymous counters: [`docs/analytics.md`](docs/analytics.md)
 - Assistant: [`docs/assistant.md`](docs/assistant.md) (`+ Ask` on the main pages)
+- Suppression plan and P179.0 contract: [`docs/suppression-module-plan.md`](docs/suppression-module-plan.md)
 - Current edge: <https://fresh-fire.01101.dev/>
 - Local portal: <http://127.0.0.1:8800/>
 - Lab preview: <https://fresh01.01101.dev/jupyterhub18/user/gep/proxy/8791/fire-studio/index.html>

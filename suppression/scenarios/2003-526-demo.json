@@ -1,0 +1,52 @@
+{
+  "scenario_id": "2003-526-suppression-demo",
+  "fire_slug": "cfsds-2003-526",
+  "label": "Schematic initial-attack and aerial support scenario",
+  "timeline_start_min": 0,
+  "timeline_end_min": 1440,
+  "metadata": {
+    "status": "schematic",
+    "coordinate_system": "scene-local",
+    "note": "Resource counts and positions are illustrative. Replace with a real dispatch log and local coordinates before any validation."
+  },
+  "objective": {
+    "containment_area_ha": 250,
+    "max_area_ha": 520,
+    "deadline_min": 720,
+    "priority": "community"
+  },
+  "bases": [
+    {"id": "ground-base", "label": "Initial-attack base", "x": 0, "y": 0, "kind": "ground"},
+    {"id": "air-base", "label": "Air-attack base", "x": 2800, "y": 600, "kind": "airtanker"}
+  ],
+  "water_sources": [
+    {"id": "lake-1", "label": "Schematic lake", "x": 900, "y": 1800, "capacity_l": 1000000, "refill_rate_l_min": 3000}
+  ],
+  "resources": [
+    {"id": "ia-crew-1", "label": "IA crew 1", "kind": "ia_crew", "home_base_id": "ground-base", "crew_size": 4, "speed_kmh": 45, "line_rate_m_h": 180, "available_start_min": 0, "available_end_min": 1440},
+    {"id": "engine-1", "label": "Engine 1", "kind": "engine", "home_base_id": "ground-base", "crew_size": 3, "speed_kmh": 50, "flow_l_min": 800, "capacity_l": 3000, "available_start_min": 0, "available_end_min": 1440},
+    {"id": "dozer-1", "label": "Dozer 1", "kind": "dozer", "home_base_id": "ground-base", "crew_size": 1, "speed_kmh": 25, "line_rate_m_h": 350, "available_start_min": 0, "available_end_min": 1440},
+    {"id": "heli-1", "label": "Helicopter 1", "kind": "helicopter", "home_base_id": "air-base", "speed_kmh": 180, "capacity_l": 1200, "available_start_min": 0, "available_end_min": 1440},
+    {"id": "airtanker-1", "label": "Airtanker 1", "kind": "airtanker", "home_base_id": "air-base", "speed_kmh": 350, "capacity_l": 6000, "available_start_min": 0, "available_end_min": 1440},
+    {"id": "pump-1", "label": "Pump 1", "kind": "pump", "home_base_id": "ground-base", "flow_l_min": 1000, "available_start_min": 0, "available_end_min": 1440}
+  ],
+  "tasks": [
+    {"id": "t-assess", "resource_id": "ia-crew-1", "kind": "assess", "start_min": 20, "end_min": 50, "target": [[500, 500]]},
+    {"id": "t-line-crew", "resource_id": "ia-crew-1", "kind": "construct_line", "start_min": 50, "end_min": 240, "line_id": "line-crew", "target": [[400, 400], [700, 420]]},
+    {"id": "t-line-dozer", "resource_id": "dozer-1", "kind": "construct_line", "start_min": 80, "end_min": 260, "line_id": "line-dozer", "target": [[700, 420], [900, 700]]},
+    {"id": "t-hose", "resource_id": "engine-1", "kind": "lay_hose", "start_min": 50, "end_min": 200, "target": [[400, 400], [700, 420]]},
+    {"id": "t-pump", "resource_id": "pump-1", "kind": "set_pump", "start_min": 45, "end_min": 80, "target": [[900, 1800]]},
+    {"id": "t-air1", "resource_id": "heli-1", "kind": "drop", "start_min": 120, "end_min": 140, "drop_id": "drop-heli-1", "target": [[800, 400]]},
+    {"id": "t-air2", "resource_id": "heli-1", "kind": "drop", "start_min": 180, "end_min": 200, "drop_id": "drop-heli-2", "target": [[850, 450]]},
+    {"id": "t-tanker", "resource_id": "airtanker-1", "kind": "drop", "start_min": 150, "end_min": 165, "drop_id": "drop-tanker-1", "target": [[950, 600]]}
+  ],
+  "lines": [
+    {"id": "line-crew", "task_id": "t-line-crew", "points": [[400, 400], [700, 420]], "width_m": 3, "constructed_start_min": 50, "constructed_end_min": 240, "state": "held", "fuel_removed": 0.8, "moisture": 0.4},
+    {"id": "line-dozer", "task_id": "t-line-dozer", "points": [[700, 420], [900, 700]], "width_m": 6, "constructed_start_min": 80, "constructed_end_min": 260, "state": "held", "fuel_removed": 0.95, "moisture": 0.1}
+  ],
+  "drops": [
+    {"id": "drop-heli-1", "task_id": "t-air1", "resource_id": "heli-1", "suppressant": "water", "start_min": 120, "end_min": 140, "center": [800, 400], "length_m": 120, "width_m": 20, "coverage_l_m2": 0.3, "effect_duration_min": 8, "canopy_penetration": 0.7},
+    {"id": "drop-heli-2", "task_id": "t-air2", "resource_id": "heli-1", "suppressant": "water", "start_min": 180, "end_min": 200, "center": [850, 450], "length_m": 120, "width_m": 20, "coverage_l_m2": 0.3, "effect_duration_min": 8, "canopy_penetration": 0.7},
+    {"id": "drop-tanker-1", "task_id": "t-tanker", "resource_id": "airtanker-1", "suppressant": "retardant", "start_min": 150, "end_min": 165, "center": [950, 600], "length_m": 180, "width_m": 30, "coverage_l_m2": 0.8, "effect_duration_min": 45, "canopy_penetration": 0.85}
+  ]
+}
