@@ -6,6 +6,7 @@ A public 3D benchmark-fire portal from the UBC FRESH Lab.
 
 - Permanent portal: <https://ubc-fresh.github.io/fresh-fire-studio/>
 - Reel: <https://ubc-fresh.github.io/fresh-fire-studio/reel/>
+- Anonymous counters: [`docs/analytics.md`](docs/analytics.md)
 - Current edge: <https://fresh-fire.01101.dev/>
 - Local portal: <http://127.0.0.1:8800/>
 - Lab preview: <https://fresh01.01101.dev/jupyterhub18/user/gep/proxy/8791/fire-studio/index.html>

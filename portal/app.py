@@ -95,6 +95,7 @@ def _landing() -> str:
 <meta name="twitter:title" content="FRESH Fire Studio · UBC FRESH">
 <meta name="twitter:description" content="Walk through a wildfire. See the model. See the limits.">
 <meta name="twitter:image" content="https://ubc-fresh.github.io/fresh-fire-studio/static/social-card.jpg">
+<script src="/static/analytics.js" defer></script>
 <meta name="description" content="Interactive 3D wildfire behaviour over public Canadian benchmark fires.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -186,7 +187,7 @@ def _case_page(case: dict[str, Any]) -> str:
     area = _fmt(case.get("area_ha"), " ha")
     iou = case.get("iou")
     iou_text = "—" if iou is None else f"{float(iou):.3f}"
-    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title} · FRESH Fire Studio</title><style>
+    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title} · FRESH Fire Studio</title><script src="../static/analytics.js" defer></script><style>
 html,body{{margin:0;height:100%;background:#06090a;color:#f4efe7;font:13px/1.4 Manrope,system-ui,sans-serif;overflow:hidden}}
 iframe{{position:fixed;inset:0;width:100%;height:100%;border:0;background:#06090a}}
 .case-loading{{position:fixed;inset:0;z-index:2;display:grid;place-items:center;background:#07100f url('../static/thumbs/{slug}.jpg') center/cover;color:#f4efe7;font:12px "DM Mono",monospace;letter-spacing:.1em;transition:opacity .45s ease}}.case-loading:before{{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,12,11,.30),rgba(5,12,11,.72))}}.case-loading span{{position:relative;padding:10px 14px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(9,12,13,.72);backdrop-filter:blur(12px)}}.case-loading.hidden{{opacity:0;pointer-events:none}}.top{{position:fixed;z-index:4;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;pointer-events:none}}

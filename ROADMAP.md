@@ -15,6 +15,7 @@
 - [x] permanent public URL and TLS
 - [x] social preview image
 - [x] short screen-capture reel
+- [x] anonymous page/scene counters
 - [ ] agency-specific landing variants (BC / CFS)
 
 ## P3 · Agency pilot
