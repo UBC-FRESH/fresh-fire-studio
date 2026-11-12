@@ -18,7 +18,9 @@ The preview host is behind the lab Cloudflare Access gate.
 - Nemora-derived synthetic individual-tree layer with **foveated LOD**:
   - canopy impostors over the full observed extent;
   - a generated near-field stand at **500 stems/ha** around the camera target;
-  - individual trunks, crowns, flames and smoke only in that detail patch;
+  - an overlapping mid-field ring of **tree-silhouette impostors** so the
+    detail patch does not end in a keyhole;
+  - individual trunks, crowns, flames and smoke only in the near-field patch;
 - FBP/WS4 fire behaviour replay with surface, crown and post-fire tree states;
 - DEM-derived terrain hillshade;
 - public-data provenance and a methods page.

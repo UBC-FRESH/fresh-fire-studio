@@ -19,18 +19,23 @@ Rendering every stem globally is not practical:
 
 The scene now has two representations.
 
-1. **Overview canopy.** The existing 32,000-stem sample is rendered as a
-   canopy impostor. It is cheap, covers the whole observed extent, and is
-   labelled as a visual sample — not an inventory.
+1. **Overview canopy.** The existing 32,000-stem sample is rendered as
+   tree-silhouette impostors. It is cheap, covers the whole observed extent,
+   and is labelled as a visual sample — not an inventory.
 
 2. **Near-field detail.** When the camera enters the detail LOD, the browser
    generates a local stand at **500 stems/ha** inside a radius around the
    camera target. The radius scales with camera distance (130–300 m) so the
    sharp patch covers the foveal view instead of ending abruptly on screen.
 
+3. **Mid-field impostors.** A wider ring of **140 stems/ha tree silhouettes**
+   extends from just inside the detail edge out to roughly **800 m**. It uses
+   the same burn-time field, so background patches change colour with the
+   fire. This is the layer that removes the keyhole.
+
 The detail patch contains full trunks, crowns, fire particles, smoke and
-post-fire tree states. The far canopy stays visible at low opacity to carry the
-periphery.
+post-fire tree states. The mid-field and canopy impostors carry the periphery
+without adding millions of triangles.
 
 ## Ignition without millions of records
 
@@ -47,16 +52,20 @@ per-tree records are stored for the detail population.
 
 - near-field tree capacity: **12,000** instances;
 - detail density: **500 stems/ha**;
-- canopy impostor: 32,000 points;
+- mid-field impostors: up to **40,000** silhouettes at **140 stems/ha**;
+- overview canopy: 32,000 points;
 - fire/smoke particles: shared pool, spawned only from active detail trees
   when the detail LOD is active.
 
 The detail patch is regenerated when the camera target moves more than 30 m or
-the radius changes by 22%.
+the radius changes by 22%. The mid-field ring is regenerated on the same
+schedule, with a wider movement threshold.
 
 ## Limits
 
 - The 500 stems/ha value is a visual density target, not a measured inventory.
 - The burn-time field is a compact interpolation, not a per-tree simulation.
-- The canopy is an impostor, not a canopy-radiative-transfer model.
+- The canopy and mid-field are impostors, not a canopy-radiative-transfer model.
+- The mid-field forest continues beyond the observed perimeter for visual
+  continuity; it is unburned impostor vegetation, not an observed fuel map.
 - The detail patch is synthetic; tree outcomes remain visual classes.
