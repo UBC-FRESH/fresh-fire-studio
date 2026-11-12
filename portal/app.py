@@ -82,6 +82,18 @@ def _landing() -> str:
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FRESH Fire Studio · UBC FRESH</title>
+<meta name="description" content="Walk through public benchmark wildfires in 3D. Real terrain, public weather, and transparent model limits from the UBC FRESH Lab.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FRESH Fire Studio · UBC FRESH">
+<meta property="og:description" content="Walk through a wildfire. See the model. See the limits.">
+<meta property="og:url" content="https://fresh-fire.01101.dev/">
+<meta property="og:image" content="https://fresh-fire.01101.dev/static/social-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FRESH Fire Studio · UBC FRESH">
+<meta name="twitter:description" content="Walk through a wildfire. See the model. See the limits.">
+<meta name="twitter:image" content="https://fresh-fire.01101.dev/static/social-card.jpg">
 <meta name="description" content="Interactive 3D wildfire behaviour over public Canadian benchmark fires.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
