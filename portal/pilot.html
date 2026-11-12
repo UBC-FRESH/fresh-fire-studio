@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start a pilot · FRESH Fire Studio</title>
+<style>
+:root{--ink:#f4efe7;--muted:#b7aa9b;--dim:#7d7267;--bg:#080a0b;--line:rgba(244,239,231,.13);--hot:#ff6b2c;--warm:#ffb347;--cool:#9ad1c8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 Manrope,system-ui,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(900px 500px at 15% -10%,rgba(255,107,44,.15),transparent 60%),radial-gradient(800px 500px at 100% 5%,rgba(154,209,200,.07),transparent 55%)}
+.wrap{position:relative;max-width:1100px;margin:0 auto;padding:0 28px 100px}
+a{color:var(--warm);text-decoration:none}a:hover{text-decoration:underline}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:13px}
+.brand{color:var(--ink);font-weight:800;letter-spacing:-.02em}.brand i{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--hot);margin-right:8px;vertical-align:-2px;box-shadow:0 0 18px rgba(255,107,44,.5)}
+.kicker{font:11px/1.4 "DM Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--warm);margin-top:56px}
+h1{font-size:clamp(42px,7vw,84px);line-height:.94;letter-spacing:-.055em;margin:14px 0 22px;max-width:920px}h1 em{font-style:normal;color:var(--hot)}
+.lede{font-size:clamp(17px,2.1vw,22px);line-height:1.5;color:#d8cdc0;max-width:740px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;padding:12px 17px;border:1px solid var(--line);border-radius:999px;font-size:13px;font-weight:700}.btn.primary{background:var(--hot);border-color:var(--hot);color:#1a0b04;box-shadow:0 12px 34px rgba(255,107,44,.25)}.btn:hover{border-color:var(--warm)}
+h2{font-size:clamp(28px,4vw,44px);line-height:1.02;letter-spacing:-.045em;margin:62px 0 14px;border-top:1px solid var(--line);padding-top:24px}h3{font-size:19px;margin:24px 0 6px}p{color:var(--muted);max-width:850px}ul,ol{color:var(--muted);max-width:850px;padding-left:22px}li{margin:5px 0}strong{color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0}.card{border:1px solid var(--line);background:rgba(16,20,22,.72);border-radius:16px;padding:18px}.card h3{margin:0 0 6px;font-size:17px}.card p,.card li{font-size:13px}.card .tag{font:10px "DM Mono",monospace;color:var(--hot);letter-spacing:.1em;text-transform:uppercase}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}.box{border:1px solid var(--line);background:rgba(16,20,22,.55);border-radius:16px;padding:20px}
+.table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13px}.table th,.table td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}.table th{color:var(--dim);font:10px "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase}.table td{color:var(--muted)}.table td b{color:var(--ink)}
+.callout{border-left:3px solid var(--warm);background:rgba(255,179,71,.07);padding:12px 16px;margin:22px 0;color:#d8cdc0}
+footer{border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:var(--dim);font-size:12px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:850px){.grid,.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><a class="brand" href="/"><i></i>FRESH Fire Studio</a><span><a href="/">Studio</a> · <a href="/#cases">Benchmarks</a> · <a href="/methods">Science</a> · <a href="/pilot">Pilot</a></span></nav>
+<div class="kicker">For BC and Canadian Forest Service teams</div>
+<h1>Bring us one fire.<br><em>We’ll build the proof with you.</em></h1>
+<p class="lede">The public studio is the front door. A pilot turns one landscape or one benchmark fire into a runnable 3D case study, an observed-versus-model comparison, and a model-limits memo your team can actually use.</p>
+<div class="hero-actions"><a class="btn primary" href="mailto:for.recep@ubc.ca?subject=FRESH%20Fire%20Studio%20pilot">Start a pilot conversation ↗</a><a class="btn" href="/methods">Read the model card</a><a class="btn" href="/static/briefs/bc.pdf">BC one-pager PDF</a><a class="btn" href="/static/briefs/cfs.pdf">CFS one-pager PDF</a></div>
+
+<h2>Two pilot tracks</h2>
+<div class="grid">
+  <div class="card"><div class="tag">BC · landscape</div><h3>Community forest / fuel-treatment pilot</h3><p>One community forest or management unit. Your VRI, terrain, fuel and weather. A 3D fire replay, treatment/firebreak scenarios, and a decision brief.</p><ul><li>3D stand-scale case study</li><li>treatment / containment comparison</li><li>risk and uncertainty memo</li></ul></div>
+  <div class="card"><div class="tag">CFS · benchmark</div><h3>Benchmark / event pilot</h3><p>One event or a small benchmark set. We apply the full validation ladder, report observed vs free-burn extent, and publish a technical model card.</p><ul><li>event metrics and divergence days</li><li>multi-fire envelope</li><li>public or internal technical report</li></ul></div>
+  <div class="card"><div class="tag">Joint</div><h3>Joint public benchmark</h3><p>Add a defensible public case to FRESH Fire Studio with your team named as a collaborator. Public data only, or data cleared for release.</p><ul><li>permanent public case</li><li>joint methods note</li><li>demo and briefing assets</li></ul></div>
+</div>
+
+<h2>What you get</h2>
+<table class="table">
+<tr><th>Output</th><th>What it is</th><th>Why it matters</th></tr>
+<tr><td><b>Interactive 3D case</b></td><td>A runnable observed-extent replay with tree-level fire, smoke and post-fire states.</td><td>Makes the process legible to staff, councils and the public.</td></tr>
+<tr><td><b>Observed vs model comparison</b></td><td>Cumulative area chart, divergence day, and free-burn extent overlay.</td><td>Shows where the model is credible and where it is not.</td></tr>
+<tr><td><b>Model-limits memo</b></td><td>Inputs, assumptions, validation tier, failure modes, and what would change our mind.</td><td>Gives your team something defensible to cite.</td></tr>
+<tr><td><b>Decision brief</b></td><td>Treatment, containment, or risk interpretation for the pilot landscape.</td><td>Connects the fire model to a planning decision.</td></tr>
+<tr><td><b>Optional public case</b></td><td>A permanent benchmark page and demo assets, if data and approvals allow.</td><td>Creates visible joint leadership.</td></tr>
+</table>
+
+<h2>What we need from you</h2>
+<div class="two"><div class="box"><h3>Minimum</h3><ul><li>AOI or event boundary</li><li>observed perimeter(s), or a public benchmark event</li><li>hourly weather, or a station/reanalysis source</li><li>fuel and terrain, or agreement to use public layers</li><li>a named technical contact</li></ul></div><div class="box"><h3>Ideal</h3><ul><li>VRI or stand inventory</li><li>treatment / firebreak polygons</li><li>suppression or containment notes</li><li>local fire-behaviour observations</li><li>data-sharing and release decision</li></ul></div></div>
+
+<h2>What a pilot is not</h2>
+<div class="callout"><b>Not an operational prediction service.</b> We will not tune the model to one fire, hide a failed validation tier, or put private data in a public demo without written approval. The pilot is a joint technical proof, not a product sale.</div>
+
+<h2>Timeline</h2>
+<table class="table">
+<tr><th>Week</th><th>Activity</th><th>Output</th></tr>
+<tr><td>0</td><td>Scoping call, data inventory, success criteria</td><td>One-page pilot agreement</td></tr>
+<tr><td>1</td><td>Data ingest, fixture build, provenance review</td><td>Runnable case</td></tr>
+<tr><td>2</td><td>Model runs, observed comparison, sensitivity</td><td>Charts and limits memo</td></tr>
+<tr><td>3</td><td>Briefing, revisions, release decision</td><td>Decision brief + optional public case</td></tr>
+</table>
+
+<h2>Who does the work</h2>
+<p>FRESH Lab at UBC, in the Faculty of Forestry &amp; Environmental Stewardship. The pilot is led by the lab’s fire-modelling team, with your technical contact embedded in the scoping and review. We use public data and open code; deliverables are written so your team can rerun and audit them.</p>
+
+<h2>Start</h2>
+<p>Send a one-line note with the landscape or fire, the decision you are trying to support, and the data you can share.</p>
+<p><a class="btn primary" href="mailto:for.recep@ubc.ca?subject=FRESH%20Fire%20Studio%20pilot">Email the FRESH Lab ↗</a></p>
+<p class="small">Please use the faculty reception address; it will route to the lab. Do not send sensitive data in the first email.</p>
+
+<footer><span>FRESH Lab · Forest Resources and Ecosystem Services Hub · UBC Faculty of Forestry &amp; Environmental Stewardship</span><span><a href="/">Studio</a> · <a href="/methods">Science</a></span></footer>
+</div>
+</body>
+</html>

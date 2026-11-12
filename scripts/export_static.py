@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from portal.app import CASES, case, home, methods
+from portal.app import CASES, brief, case, home, methods, pilot
 
 OUT = ROOT / "public"
 
@@ -18,6 +18,7 @@ OUT = ROOT / "public"
 def _rewrite_index(payload: str) -> str:
     payload = payload.replace('href="/case/', 'href="case/')
     payload = payload.replace('href="/methods"', 'href="methods.html"')
+    payload = payload.replace('href="/pilot"', 'href="pilot.html"')
     payload = payload.replace('src="/static/', 'src="static/')
     # Cases are exported as .html files.
     for case_row in CASES:
@@ -44,6 +45,15 @@ def main() -> None:
     methods_payload = methods()
     methods_payload = methods_payload.replace('href="/"', 'href="index.html"')
     (OUT / "methods.html").write_text(methods_payload, encoding="utf-8")
+    pilot_payload = pilot()
+    pilot_payload = pilot_payload.replace('href="/"', 'href="index.html"')
+    pilot_payload = pilot_payload.replace('href="/methods"', 'href="methods.html"')
+    pilot_payload = pilot_payload.replace('href="/pilot"', 'href="pilot.html"')
+    pilot_payload = pilot_payload.replace('href="/static/', 'href="static/')
+    (OUT / "pilot.html").write_text(pilot_payload, encoding="utf-8")
+    (OUT / "briefs").mkdir(exist_ok=True)
+    for name in ("bc", "cfs"):
+        (OUT / "briefs" / f"{name}.html").write_text(brief(name), encoding="utf-8")
     shutil.copytree(ROOT / "portal" / "static", OUT / "static")
     print(f"exported {len(CASES)} cases to {OUT}")
 
