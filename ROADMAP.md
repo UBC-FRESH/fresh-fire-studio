@@ -21,7 +21,7 @@
 ## P3 · Agency pilot
 
 - [ ] load one BC VRI/terrain/fuel landscape
-  - [~] VRI pilot prototype in the current LOD viewer: real TSA 24 block geometry, public SRTM terrain, synthetic Nemora stems, synthetic C3 fire
+  - [~] VRI pilot prototype in the current LOD viewer: real TSA 24 block geometry, public SRTM terrain, public C2 fuel, Open-Meteo weather, synthetic Nemora stems, real G50266 observed-perimeter overlay
 - [ ] load one CFS benchmark or operational fire
 - [ ] run a joint benchmark
 - [ ] treatment/firebreak scenario comparison

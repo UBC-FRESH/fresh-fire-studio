@@ -13,7 +13,7 @@ geometry. It is deliberately separate from the six benchmark-fire cases.
 | Fuel | FireSTARR 2023 C2 sample | public |
 | Fire growth | WS4/FBP synthetic run | synthetic |
 | Weather | Open-Meteo 2023-07-08 reanalysis | public |
-| Observed perimeter | none | not applicable |
+| Observed perimeter | BC G50266 (2013), 1.8 ha | public |
 
 
 The fixture is translation-only relative to EPSG:3005:
@@ -35,7 +35,7 @@ The output is `portal/static/scenes/vri-pilot/viewer.html`.
 
 ## Limitations
 
-- No observed fire perimeter.
+- The observed perimeter is the small 1.8 ha G50266 (2013) footprint inside the cluster; there is no daily progression or ignition point.
 - The fuel layer is a public 100 m C2 sample; the weather is a reanalysis day, not a local station record.
 - Synthetic stems and synthetic fire timing.
 - The scene is a UI and terrain-integration prototype, not an operational

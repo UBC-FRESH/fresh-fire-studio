@@ -16,7 +16,7 @@ from pathlib import Path
 import numpy as np
 from pyproj import Transformer
 from scipy.spatial import cKDTree
-from shapely.geometry import Point, Polygon
+from shapely.geometry import Point, Polygon, shape
 
 WS4_GPU = Path("/srv/shared-data/gep/ws4/ws4-gpu")
 if str(WS4_GPU) not in sys.path:
@@ -30,6 +30,7 @@ FIXTURE = ROOT / "data" / "vri-pilot" / "fixture"
 TEMPLATE = ROOT / "portal" / "viewer-template.html"
 OUT = ROOT / "portal" / "static" / "scenes" / "vri-pilot" / "viewer.html"
 DEM = ROOT / "data" / "vri-pilot" / "dem" / "N55W125.hgt.gz"
+OBSERVED = ROOT / "data" / "vri-pilot" / "observed-g50266.geojson"
 # The VRI fixture is the TSA 24 source geometry translated to a local origin.
 LOCAL_ORIGIN = (1088291.2231, 1124190.4741)
 
@@ -94,6 +95,24 @@ FUEL_TYPE = str(FUEL_SAMPLE["dominant_fuel_type"])
 WEATHER = json.loads(
     (ROOT / "data" / "vri-pilot" / "weather.json").read_text(encoding="utf-8")
 )
+
+
+def _observed_extent() -> tuple[list[list[list[float]]], float, str]:
+    if not OBSERVED.is_file():
+        return [], 0.0, ""
+    data = json.loads(OBSERVED.read_text(encoding="utf-8"))
+    feature = data["features"][0]
+    geometry = shape(feature["geometry"])
+    polygons = list(geometry.geoms) if hasattr(geometry, "geoms") else [geometry]
+    rings: list[list[list[float]]] = []
+    for polygon in polygons:
+        ring = [
+            [float(x) - LOCAL_ORIGIN[0], float(y) - LOCAL_ORIGIN[1]]
+            for x, y in list(polygon.exterior.coords)[:-1]
+        ]
+        rings.append(ring)
+    props = feature["properties"]
+    return rings, float(props.get("FIRE_SIZE_HECTARES", 0.0)), str(props.get("FIRE_LABEL", "G50266"))
 
 
 def main() -> None:
@@ -226,6 +245,7 @@ def main() -> None:
         "dy": depth / (ny - 1),
         "heights": heights,
     }
+    observed_extent, observed_fire_ha, observed_fire_id = _observed_extent()
     payload = {
         "schema_version": "ws4.fire.scene.v1",
         "manifest": {
@@ -248,6 +268,9 @@ def main() -> None:
         "model_daily_area_ha": daily,
         "hero_time": float(np.quantile(burn_times, 0.55)) if burn_times else timeline_end * 0.55,
         "observed_mode": "synthetic_pilot",
+        "observed_extent": observed_extent,
+        "observed_fire_ha": observed_fire_ha,
+        "observed_fire_id": observed_fire_id,
         "domain": domain,
         "model_extent": domain,
         "terrain": terrain,
@@ -263,7 +286,9 @@ def main() -> None:
             "weather": WEATHER,
             "dem_source": dem_source,
             "fire_model": "WS4/FBP synthetic growth run",
-            "observed_perimeter": False,
+            "observed_perimeter": bool(observed_extent),
+            "observed_fire_id": observed_fire_id,
+            "observed_fire_ha": observed_fire_ha,
         },
     }
     template = TEMPLATE.read_text(encoding="utf-8")
