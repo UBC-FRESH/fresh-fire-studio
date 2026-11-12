@@ -1,0 +1,14 @@
+{
+  "source": "Open-Meteo historical reanalysis",
+  "latitude": 55.1151,
+  "longitude": -124.5938,
+  "timezone": "America/Vancouver",
+  "date": "2023-07-08",
+  "temperature_c": 26.6,
+  "relative_humidity_percent": 33,
+  "wind_kmh": 10.9,
+  "wind_direction_deg": 238,
+  "precipitation_mm": 0.1,
+  "ffmc": 91.59,
+  "bui": 27.34
+}

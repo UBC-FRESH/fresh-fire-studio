@@ -10,10 +10,11 @@ geometry. It is deliberately separate from the six benchmark-fire cases.
 | Block polygons | Public TSA 24 stand geometry, EPSG:3005 | real |
 | Tree stems | Nemora synthetic placement | synthetic |
 | Terrain | SRTM 1 arcsec tile N55W125 | public |
-| Fuel | FBP C3 | scenario |
+| Fuel | FireSTARR 2023 C2 sample | public |
 | Fire growth | WS4/FBP synthetic run | synthetic |
+| Weather | Open-Meteo 2023-07-08 reanalysis | public |
 | Observed perimeter | none | not applicable |
-| Weather | C3 scenario conditions | synthetic |
+
 
 The fixture is translation-only relative to EPSG:3005:
 
@@ -35,7 +36,7 @@ The output is `portal/static/scenes/vri-pilot/viewer.html`.
 ## Limitations
 
 - No observed fire perimeter.
-- No measured fuel inventory or local weather station.
+- The fuel layer is a public 100 m C2 sample; the weather is a reanalysis day, not a local station record.
 - Synthetic stems and synthetic fire timing.
 - The scene is a UI and terrain-integration prototype, not an operational
   prediction.

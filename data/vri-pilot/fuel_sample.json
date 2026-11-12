@@ -1,0 +1,11 @@
+{
+  "source": "FireSTARR Fuel 2023 v1.0, 100 m tile fuel_10_5 (NAD83 UTM 10N)",
+  "provider": "NRCan/CFS; Jordan Evens",
+  "dominant_fuel_type": "C2",
+  "dominant_description": "Boreal Spruce",
+  "block_codes": {
+    "1": 2, "54140": 2, "180440": 2, "338778": 2,
+    "145199": 2, "65673": 3, "413082": 2, "3467": 2,
+    "416441": 2, "299237": 3, "114387": 2, "299930": 2
+  }
+}
