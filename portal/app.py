@@ -49,7 +49,7 @@ VRI_CASE: dict[str, Any] = {
     "subtitle": "Public VRI block geometry, synthetic Nemora stems, and a synthetic C3 fire scenario",
     "story": "A pilot prototype, not an observed fire. It exercises the real VRI geometry and stand shapes; terrain is flat and the fire is a synthetic growth run.",
     "provenance": "Public TSA 24 block geometry; synthetic Nemora stems; synthetic C3 fire",
-    "area_ha": 95.42,
+    "area_ha": 104.9,
     "area_label": "burnable cluster",
     "weather": "C3 · synthetic",
     "duration": "240 min",
