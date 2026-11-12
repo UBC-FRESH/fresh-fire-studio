@@ -43,6 +43,22 @@ def _load_cases() -> list[dict[str, Any]]:
 CASES = _load_cases()
 CASE_BY_SLUG = {str(case["slug"]): case for case in CASES}
 
+VRI_CASE: dict[str, Any] = {
+    "slug": "vri-pilot",
+    "title": "VRI pilot · TSA 24",
+    "subtitle": "Public VRI block geometry, synthetic Nemora stems, and a synthetic C3 fire scenario",
+    "story": "A pilot prototype, not an observed fire. It exercises the real VRI geometry and stand shapes; terrain is flat and the fire is a synthetic growth run.",
+    "provenance": "Public TSA 24 block geometry; synthetic Nemora stems; synthetic C3 fire",
+    "area_ha": 95.42,
+    "area_label": "burnable cluster",
+    "weather": "C3 · synthetic",
+    "duration": "240 min",
+    "region": "BC",
+    "year": 2026,
+    "tone": "community",
+    "iou": None,
+}
+
 
 def _fmt(value: object, suffix: str = "") -> str:
     if value is None:
@@ -59,6 +75,7 @@ def _case_card(case: dict[str, Any]) -> str:
     region = html.escape(str(case["region"]))
     tone = html.escape(str(case.get("tone", "benchmark")))
     area = _fmt(case.get("area_ha"), " ha")
+    area_label = html.escape(str(case.get("area_label", "observed")))
     return f"""
     <a class="case-card tone-{tone}" href="/case/{slug}">
       <div class="case-art">
@@ -253,6 +270,7 @@ def _case_page(case: dict[str, Any]) -> str:
     story = html.escape(str(case["story"]))
     provenance = html.escape(str(case["provenance"]))
     area = _fmt(case.get("area_ha"), " ha")
+    area_label = html.escape(str(case.get("area_label", "observed")))
     iou = case.get("iou")
     iou_text = "—" if iou is None else f"{float(iou):.3f}"
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title} · FRESH Fire Studio</title><script src="../static/analytics.js" defer></script><style>
@@ -264,7 +282,7 @@ iframe{{position:fixed;inset:0;width:100%;height:100%;border:0;background:#06090
 .brief h1{{margin:0;font-size:22px;letter-spacing:-.04em}} .brief p{{margin:5px 0 10px;color:#b9afa1;font-size:12px}} .facts{{display:flex;gap:12px;flex-wrap:wrap;color:#80776d;font:10px "DM Mono",monospace}} .facts b{{color:#f4efe7}}
 @media(max-width:700px){{.brief{{display:none}}}}
 </style></head><body><div class="case-loading" id="case-loading"><span>LOADING 3D SCENE…</span></div><iframe src="/static/scenes/{slug}/viewer.html?autoplay=1&embedded=1" title="{title} 3D fire scene" allowfullscreen onload="document.getElementById('case-loading').classList.add('hidden')"></iframe>
-<div class="top"><a class="back" href="/">← FRESH Fire Studio</a><div class="brief"><h1>{title}</h1><p>{subtitle}. {story}</p><div class="facts"><span><b>{area}</b> observed</span><span><b>IoU {iou_text}</b></span><span><b>{html.escape(str(case["weather"]))}</b></span></div><div class="facts" style="margin-top:8px"><span>{provenance}</span></div></div></div></body></html>"""
+<div class="top"><a class="back" href="/">← FRESH Fire Studio</a><div class="brief"><h1>{title}</h1><p>{subtitle}. {story}</p><div class="facts"><span><b>{area}</b> {area_label}</span><span><b>IoU {iou_text}</b></span><span><b>{html.escape(str(case["weather"]))}</b></span></div><div class="facts" style="margin-top:8px"><span>{provenance}</span></div></div></div></body></html>"""
 
 
 def _methods_page() -> str:
@@ -306,6 +324,11 @@ def case(slug: str) -> str:
     if case_data is None:
         raise HTTPException(status_code=404, detail="case not found")
     return _case_page(case_data)
+
+
+@app.get("/pilot/vri", response_class=HTMLResponse)
+def pilot_vri() -> str:
+    return _case_page(VRI_CASE)
 
 
 @app.get("/pilot", response_class=HTMLResponse)
