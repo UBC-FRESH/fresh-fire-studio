@@ -120,7 +120,7 @@ function updateParticles(sys,dt){const p=sys.pos.array;for(let i=0;i<sys.count;i
 const time={t:0,playing:false,speed:1,last:performance.now(),fps:0};
 const slider=document.getElementById("slider"),clock=document.getElementById("clock"),play=document.getElementById("play");
 slider.max=String(DATA.timeline.end);
-function stateAt(t,tr){if(tr.burn_time==null||t<tr.burn_time)return 0;if(t<=tr.burn_time+tr.burn_duration)return 1;const s=tr.post_fire_state;return s==="consumed"?4:s==="torched"?3:s==="scorched"?2:0;}
+function stateAt(t,tr){if(tr.burn_time==null||t<tr.burn_time)return 0;if(t<=tr.burn_time+tr.burn_duration)return 1;const s=tr.post_fire_state;if(s==="consumed")return 4;if(s==="torched")return 3;return 2;}
 function refresh(t){let burning=0,burnt=0;burningTrees=[];for(let i=0;i<n;i++){const tr=trees[i];const st=stateAt(t,tr);if(st!==tr.state){tr.state=st;col.copy(st===0?C_LIVE:st===1?C_BURN:st===2?C_SCORCH:st===3?C_TORCH:C_CONSUMED);crowns.setColorAt(i,col);col.copy(st===0?C_TRUNK:C_BURNT);trunks.setColorAt(i,col);}if(st===1){burning++;burningTrees.push(tr);}if(st>=2)burnt++;}crowns.instanceColor.needsUpdate=true;trunks.instanceColor.needsUpdate=true;coarseBurntCount=burnt;refreshDetail(t);refreshMid(t);document.getElementById("s-burning").textContent=burning;document.getElementById("s-burnt").textContent=burnt;clock.textContent=t.toFixed(1)+" min";drawChart(t);}
 function setTime(v){time.t=Math.max(0,Math.min(DATA.timeline.end,v));slider.value=String(time.t);refresh(time.t);}
 slider.addEventListener("input",()=>{time.playing=false;play.textContent="Play";setTime(Number(slider.value));});
