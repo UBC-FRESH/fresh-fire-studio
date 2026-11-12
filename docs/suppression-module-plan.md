@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract and P179.1 diagnostic proof implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof and P179.2a time-aware schedule implemented. Not operational.
 
 ## Open containment issues
 
@@ -69,6 +69,12 @@ Implemented in this repository:
 - `scripts/prove_suppression_2003_526.py` — P179.1 proof runner.
 - `suppression/proofs/2003-526.json` — proof artifact.
 - `docs/p179-1-proof.md` — method, results and limits.
+- `suppression/temporal.py` — time-aware line/drop schedule.
+- `suppression/scenarios/2003-526-temporal-proof.json` — 24-hour line build.
+- `scripts/prove_temporal_suppression_2003_526.py` — chunked temporal proof.
+- `suppression/proofs/2003-526-temporal.json` — temporal artifact.
+- `tests/test_suppression_temporal.py` — schedule, decay and artifact tests.
+- `docs/p179-2-proof.md` — temporal method, results and limits.
 
 Run:
 
@@ -107,6 +113,27 @@ grid and reruns the P177 kernel with that line as a containment mask.
 This is a contract proof, not a calibrated suppression result. Centroid error
 and orientation error get worse; the mask truncates the basin but does not
 reproduce the observed perimeter. See [`p179-1-proof.md`](p179-1-proof.md).
+
+## P179.2a time-aware effect schedule
+
+P179.2a adds a schedule layer without changing the P177 kernel:
+
+- lines grow by length between `constructed_start_min` and
+  `constructed_end_min`;
+- held lines remain, breached/abandoned lines stop containing;
+- drops decay linearly after `end_min`;
+- `effects_at(t)` rasterizes only the effects active at time `t`.
+
+The diagnostic temporal run builds a synthetic 100 m line over 24 hours and
+steps the fire in 60-minute chunks. It reduces area from **5,325 ha** to
+**3,112 ha (41.6%)**, within **1 ha** of the static P179.1 line. The line is
+complete before most growth, so this validates the schedule and chunk hand-off,
+not a late-arrival failure case.
+
+The chunked harness is an approximation: it seeds each chunk with all
+previously burned cells and the P177 kernel has no native time-dependent mask.
+Drop moisture is scheduled but not yet coupled to growth. See
+[`p179-2-proof.md`](p179-2-proof.md).
 
 ## Evidence base: Martell and collaborators
 
@@ -386,6 +413,8 @@ Visual labels must distinguish:
 
 ### P179.2 — ground response
 
+- Status: time-aware line/drop schedule implemented (P179.2a); dispatch,
+  crew productivity and ground-resource simulation pending.
 - IA crew, engine, dozer, pump and hose.
 - Travel, setup, line production, water supply, holding/breach.
 - Discrete-event playback.
