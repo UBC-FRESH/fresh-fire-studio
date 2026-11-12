@@ -218,6 +218,8 @@ nav{{display:flex;align-items:center;justify-content:space-between;padding:20px 
 .brand-mark{{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 210deg,var(--hot),#ffd27a,var(--hot));box-shadow:0 0 28px rgba(255,107,44,.4)}}
 .navlinks{{display:flex;gap:22px;color:var(--muted);font-size:13px}}
 .navlinks a:hover{{color:var(--ink)}}
+.navlinks a.ask{{padding:7px 11px;border:1px solid rgba(255,179,71,.5);border-radius:999px;color:var(--hot2)}}
+.navlinks a.ask:hover{{border-color:rgba(255,179,71,.9);color:var(--ink)}}
 .hero{{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:end;padding:86px 0 54px}}
 .eyebrow{{font:12px/1.4 "DM Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--hot2)}}
 h1{{font-size:clamp(44px,7vw,96px);line-height:.94;letter-spacing:-.055em;margin:18px 0 24px;max-width:930px}}
@@ -262,12 +264,12 @@ footer{{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--dim);fo
 </head>
 <body>
 <div class="wrap">
-<nav><div class="brand"><span class="brand-mark"></span> FRESH Fire Studio</div><div class="navlinks"><a href="#cases">Benchmark fires</a><a href="/methods">Science</a><a href="/pilot">Pilot</a><a href="/bc">BC</a><a href="/cfs">CFS</a><a href="/case/{first}">Launch demo ↗</a></div></nav>
+<nav><div class="brand"><span class="brand-mark"></span> FRESH Fire Studio</div><div class="navlinks"><a href="#cases">Benchmark fires</a><a href="/methods">Science</a><a href="/pilot">Pilot</a><a href="/bc">BC</a><a href="/cfs">CFS</a><a class="ask" href="mailto:gregory.paradis@ubc.ca?subject=FRESH%20Fire%20Studio%20question">+ Ask</a><a href="/case/{first}">Launch demo ↗</a></div></nav>
 <section class="hero">
   <div><div class="eyebrow">{copy["eyebrow"]}</div>
   <h1>{copy["headline"]}</h1>
   <p class="lede">{copy["lede"]}</p>
-  <div class="hero-actions"><a class="btn primary" href="{primary_href}">{copy["primary_label"]}</a><a class="btn" href="{copy["secondary_href"]}">{copy["secondary_label"]}</a></div></div>
+  <div class="hero-actions"><a class="btn primary" href="{primary_href}">{copy["primary_label"]}</a><a class="btn" href="{copy["secondary_href"]}">{copy["secondary_label"]}</a><a class="btn" href="mailto:gregory.paradis@ubc.ca?subject=FRESH%20Fire%20Studio%20question">+ Ask</a></div></div>
   <aside class="hero-panel"><div class="big">3D</div><div class="row"><span>Benchmark fires</span><b>{len(CASES)}</b></div><div class="row"><span>Near-field density</span><b>500 stems/ha</b></div><div class="row"><span>Model</span><b>WS4 · FBP · FWI</b></div><div class="row"><span>Data</span><b>Public only</b></div><div class="row"><span>Status</span><b>{copy["status"]}</b></div></aside>
 </section>
 <div class="strip"><div><b>{len(CASES)}</b><span>public benchmark fires</span></div><div><b>500/ha</b><span>foveated near-field stems</span></div><div><b>LOD</b><span>canopy overview + tree detail</span></div><div><b>0</b><span>proprietary inputs</span></div></div>
