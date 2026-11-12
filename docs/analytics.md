@@ -18,8 +18,8 @@ Implementation: `portal/static/analytics.js`.
 | `scene-<slug>` | 3D viewer |
 | `methods` | methods page |
 | `pilot` | pilot page |
-| `bc` | BC landing variant |
-| `cfs` | CFS landing variant |
+| `bc-home` | BC landing variant |
+| `cfs-home` | CFS landing variant |
 | `reel` | 70-second reel page |
 
 The counter service is Abacus:

@@ -24,9 +24,9 @@
   } else if (path.includes("/pilot")) {
     event = "pilot";
   } else if (path.includes("/bc")) {
-    event = "bc";
+    event = "bc-home";
   } else if (path.includes("/cfs")) {
-    event = "cfs";
+    event = "cfs-home";
   } else if (path.includes("/reel")) {
     event = "reel";
   }
