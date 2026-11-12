@@ -56,6 +56,7 @@ def main() -> None:
     for name in ("bc", "cfs"):
         (OUT / "briefs" / f"{name}.html").write_text(brief(name), encoding="utf-8")
     shutil.copytree(ROOT / "portal" / "static", OUT / "static")
+    shutil.copytree(ROOT / "docs" / "reel", OUT / "reel")
     print(f"exported {len(CASES)} cases to {OUT}")
 
 

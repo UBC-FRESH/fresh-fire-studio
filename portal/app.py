@@ -21,6 +21,7 @@ CASES_PATH = ROOT / "config" / "cases.json"
 SUMMARIES_PATH = ROOT / "config" / "scene_summaries.json"
 PILOT_PATH = ROOT / "portal" / "pilot.html"
 BRIEFS = ROOT / "portal" / "briefs"
+REEL_PATH = ROOT / "docs" / "reel" / "index.html"
 
 app = FastAPI(title="FRESH Fire Studio", docs_url=None, redoc_url=None)
 
@@ -86,14 +87,14 @@ def _landing() -> str:
 <meta property="og:type" content="website">
 <meta property="og:title" content="FRESH Fire Studio · UBC FRESH">
 <meta property="og:description" content="Walk through a wildfire. See the model. See the limits.">
-<meta property="og:url" content="https://fresh-fire.01101.dev/">
-<meta property="og:image" content="https://fresh-fire.01101.dev/static/social-card.jpg">
+<meta property="og:url" content="https://ubc-fresh.github.io/fresh-fire-studio/">
+<meta property="og:image" content="https://ubc-fresh.github.io/fresh-fire-studio/static/social-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="FRESH Fire Studio · UBC FRESH">
 <meta name="twitter:description" content="Walk through a wildfire. See the model. See the limits.">
-<meta name="twitter:image" content="https://fresh-fire.01101.dev/static/social-card.jpg">
+<meta name="twitter:image" content="https://ubc-fresh.github.io/fresh-fire-studio/static/social-card.jpg">
 <meta name="description" content="Interactive 3D wildfire behaviour over public Canadian benchmark fires.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -172,7 +173,7 @@ footer{{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--dim);fo
 <div class="case-grid">{cards}</div>
 <section class="split"><div><div class="eyebrow">What you are seeing</div><h2>Fire behaviour, not a video.</h2><p>The front is a model result. Trees are a plausible synthetic population placed inside public stand geometry; ground fuel and terrain drive the local spread.</p></div><div class="points"><div class="point"><b>01</b><span><b>Surface + crown fire.</b> Rothermel/FBP surface spread, crown initiation, and consumption are evaluated cell by cell.</span></div><div class="point"><b>02</b><span><b>Foveated tree detail.</b> The overview uses a canopy impostor; zoom in and the near field resolves to a synthetic 500 stems/ha stand, ringed by a wider tree-silhouette mid-field so there is no keyhole. Ignition is sampled from a compact burn-time field, then advanced locally from crown to crown.</span></div><div class="point"><b>03</b><span><b>Individual trees.</b> Nemora places and sizes stems; each tree samples the local arrival time and resolves to scorched, torched, or consumed.</span></div><div class="point"><b>04</b><span><b>Atmosphere.</b> Wind, slope, fuel moisture, smoke, embers, and a moving fire light are rendered in the browser.</span></div><div class="point"><b>05</b><span><b>Honest evidence.</b> Public perimeters, hourly weather, and a recorded validation ladder. No operational claim; no hidden tuning.</span></div></div></section>
 <section class="cta"><div><div class="eyebrow">For BC and CFS teams</div><h2>Bring your landscape.</h2><p>We can stand up a private instance over your VRI, terrain, fuel and weather, or run a joint benchmark on a fire you already know. The public studio is the front door.</p></div><a class="btn primary" href="/pilot">Start a pilot ↗</a></section>
-<footer><span><a href="https://fresh.forestry.ubc.ca">UBC FRESH Lab</a> · Forest Resources and Ecosystem Services Hub · UBC Faculty of Forestry & Environmental Stewardship</span><span>Public benchmark demo · synthetic tree layer · research use</span></footer>
+<footer><span><a href="https://fresh.forestry.ubc.ca">UBC FRESH Lab</a> · Forest Resources and Ecosystem Services Hub · UBC Faculty of Forestry & Environmental Stewardship</span><span><a href="/reel">70s reel</a> · public benchmark demo · synthetic tree layer · research use</span></footer>
 </div></body></html>"""
 
 
@@ -270,3 +271,4 @@ def health() -> JSONResponse:
 
 
 app.mount("/static", StaticFiles(directory=STATIC), name="static")
+app.mount("/reel", StaticFiles(directory=ROOT / "docs" / "reel", html=True), name="reel")
