@@ -795,6 +795,16 @@ def build_case(
             "capacity": 12000,
             "lod_distance_fraction": 0.22,
         }
+        # The viewer only needs these tree attributes. Keep the embedded scene
+        # compact; the model-side records remain in the build output.
+        keep_tree = {
+            "x", "y", "z", "height_m", "crown_radius_m",
+            "burn_time", "burn_duration", "post_fire_state",
+        }
+        for tree in payload.get("trees", []):
+            for key in list(tree.keys()):
+                if key not in keep_tree:
+                    del tree[key]
         payload["ground_texture"] = "terrain.png"
         viewer = (
             viewer[: match.start(2)]

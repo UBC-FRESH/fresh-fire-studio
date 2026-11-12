@@ -71,6 +71,11 @@ east–west under a normal Three.js camera.
 - fire/smoke particles: shared pool, spawned only from active detail trees
   when the detail LOD is active.
 
+The embedded scene payload was also reduced from about **15.9 MB to 8.1–8.3 MB**
+by stripping unused tree attributes before serialization. The viewer has a
+loading overlay, caps device pixel ratio at 1.5, and adaptively reduces the
+mid-field draw range when frame rate falls below 22 fps.
+
 Detail is stored in fixed **160 m world-space tiles** with a **620 m**
 feathered active radius, not in a radius that changes with zoom. Ignition times are cached by
 world grid key, so panning, focusing, zooming out and zooming back in preserve
