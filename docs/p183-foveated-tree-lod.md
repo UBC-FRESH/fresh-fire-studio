@@ -47,9 +47,14 @@ A compact **burn-time field** (384 × 384) is built for each case:
 - Dogrib / Hay River: WS4/FBP arrival time.
 
 Each generated tree samples the field bilinearly and adds a deterministic
-per-tree ignition jitter. This avoids whole raster cells flipping at once.
-A deterministic hash assigns height, crown size, and post-fire class. No
-per-tree records are stored for the detail population.
+per-tree ignition jitter. A local neighbour graph then lets ignition advance
+crown-to-crown: trees within 12 m pass ignition to neighbours with a
+distance-dependent delay plus a deterministic resistance term. Two passes are
+used, and ignition can advance at most 120 minutes ahead of the coarse field.
+This avoids whole raster cells flipping at once without letting the local rule
+overwhelm the observed/model timing. A deterministic hash assigns height,
+crown size, and post-fire class. No per-tree records are stored for the detail
+population.
 
 The scene uses the standard right-handed geographic mapping: east `+X`,
 north `−Z`. The earlier viewer mapped north to `+Z`, which mirrored the scene
@@ -71,7 +76,10 @@ schedule, with a wider movement threshold.
 ## Limits
 
 - The 500 stems/ha value is a visual density target, not a measured inventory.
-- The burn-time field is a compact interpolation, not a per-tree simulation.
+- The burn-time field is a compact interpolation; the local detail graph is a
+  visual propagation rule, not a coupled fire-atmosphere simulation.
+- The local spread advances ignition by at most 120 minutes ahead of the
+  coarse field; it is not an independent ROS model.
 - The canopy and mid-field are impostors, not a canopy-radiative-transfer model.
 - The mid-field forest continues beyond the observed perimeter for visual
   continuity; it is unburned impostor vegetation, not an observed fuel map.

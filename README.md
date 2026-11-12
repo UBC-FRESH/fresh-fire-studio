@@ -21,6 +21,7 @@ The preview host is behind the lab Cloudflare Access gate.
   - an overlapping mid-field ring of **tree-silhouette impostors** so the
     detail patch does not end in a keyhole;
   - individual trunks, crowns, flames and smoke only in the near-field patch;
+  - local crown-to-crown ignition advance inside the detail patch;
 - FBP/WS4 fire behaviour replay with surface, crown and post-fire tree states;
 - DEM-derived terrain hillshade;
 - public-data provenance and a methods page.
