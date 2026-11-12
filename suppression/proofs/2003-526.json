@@ -1,0 +1,53 @@
+{
+  "proof": "P179.1 static line-effect raster",
+  "case_id": "2003_526",
+  "scenario_id": "2003-526-static-line-proof",
+  "grid": {
+    "crs": "EPSG:26911",
+    "xll": 487700.0,
+    "yll": 5722700.0,
+    "ncols": 90,
+    "nrows": 76,
+    "cell_size_m": 100.0
+  },
+  "effect_layers": {
+    "line_cells": 152,
+    "water_cells": 0,
+    "foam_cells": 0,
+    "retardant_cells": 0
+  },
+  "free_burn": {
+    "area_sim_ha": 5325.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 9.240384615384615,
+    "perimeter_sim_m": 116800.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 4.959183673469388,
+    "centroid_distance_m": 174.69119277442272,
+    "iou": 0.09559512652296158,
+    "sorensen": 0.174508126603935,
+    "orientation_error_deg": 21.642970351518244
+  },
+  "contained": {
+    "area_sim_ha": 3113.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 4.986538461538461,
+    "perimeter_sim_m": 72200.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 2.683673469387755,
+    "centroid_distance_m": 1908.0702978210652,
+    "iou": 0.13354134165366616,
+    "sorensen": 0.23561794660060556,
+    "orientation_error_deg": 72.17883641122965
+  },
+  "delta": {
+    "area_reduction_ha": 2212.0,
+    "area_reduction_pct": 41.539906103286384,
+    "iou_change": 0.03794621513070458
+  },
+  "limits": [
+    "The line is synthetic and applied statically for the whole run.",
+    "Drop effects are rasterized but not yet fed into the fire kernel.",
+    "This is a diagnostic contract proof, not a calibrated suppression result."
+  ]
+}

@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: proposal only. Do not merge or present as operational capability.
+Status: P179.0 contract and P179.1 diagnostic proof implemented. Not operational.
 
 ## Open containment issues
 
@@ -64,12 +64,18 @@ Implemented in this repository:
 - `scripts/validate_suppression_scenario.py` — validates a scenario and prints effects.
 - `scripts/export_suppression_schema.py` — regenerates the schema.
 - `tests/test_suppression_models.py` — validation and effect-contract tests.
+- `suppression/effects.py` — rasterizes effect events onto the fire grid.
+- `suppression/scenarios/2003-526-proof.json` — diagnostic static line.
+- `scripts/prove_suppression_2003_526.py` — P179.1 proof runner.
+- `suppression/proofs/2003-526.json` — proof artifact.
+- `docs/p179-1-proof.md` — method, results and limits.
 
 Run:
 
 ```bash
-python scripts/validate_suppression_scenario.py   suppression/scenarios/2003-526-demo.json --effects
-pytest -q tests/test_suppression_models.py
+python scripts/validate_suppression_scenario.py \
+  suppression/scenarios/2003-526-demo.json --effects
+pytest -q tests/
 ```
 
 The contract enforces:
@@ -86,6 +92,21 @@ The contract enforces:
 The effect event is the hand-off to the fire kernel. A consumer can rasterize
 the line/drop geometry at its cell size, apply `fuel_removed`, `moisture`,
 `coverage_l_m2`, `strength` and `decay_min`, and update the fire grid.
+
+## P179.1 static effect-raster proof
+
+The first proof applies one synthetic 100 m north–south line to the `2003_526`
+grid and reruns the P177 kernel with that line as a containment mask.
+
+- free burn: **5,325 ha**, IoU **0.096**
+- static line: **3,113 ha**, IoU **0.134**
+- observed: **520 ha**
+- area reduction: **2,212 ha (41.5%)**
+- line cells: **152**
+
+This is a contract proof, not a calibrated suppression result. Centroid error
+and orientation error get worse; the mask truncates the basin but does not
+reproduce the observed perimeter. See [`p179-1-proof.md`](p179-1-proof.md).
 
 ## Evidence base: Martell and collaborators
 
@@ -356,6 +377,8 @@ Visual labels must distinguish:
 
 ### P179.1 — containment effect proof
 
+- Status: static line proof on `2003_526`; drop rasterization exists but is not
+  yet coupled to growth.
 - Line and drop footprints modify the fire grid.
 - Compare free-burn vs containment mask vs dynamic suppression.
 - One benchmark fire.
