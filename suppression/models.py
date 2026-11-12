@@ -113,6 +113,7 @@ class Line(BaseModel):
     constructed_start_min: float = Field(ge=0)
     constructed_end_min: float = Field(ge=0)
     state: LineState = LineState.PLANNED
+    breached_at_min: float | None = Field(default=None, ge=0)
     fuel_removed: float = Field(default=0.0, ge=0, le=1)
     moisture: float = Field(default=0.0, ge=0, le=1)
 
@@ -120,6 +121,11 @@ class Line(BaseModel):
     def _line_order(self) -> Line:
         if self.constructed_end_min < self.constructed_start_min:
             raise ValueError("line construction end must be >= start")
+        if self.breached_at_min is not None:
+            if self.state != LineState.BREACHED:
+                raise ValueError("breached_at_min requires line state breached")
+            if self.breached_at_min < self.constructed_end_min:
+                raise ValueError("breached_at_min must be after construction end")
         return self
 
 
@@ -220,6 +226,8 @@ class Scenario(BaseModel):
             task = task_by_id[line.task_id]
             if line.constructed_start_min < task.start_min - 1e-6 or line.constructed_end_min > task.end_min + 1e-6:
                 raise ValueError(f"line {line.id} construction must fall within task {task.id}")
+            if line.breached_at_min is not None and line.breached_at_min > self.timeline_end_min + 1e-6:
+                raise ValueError(f"line {line.id} breach is after the scenario timeline")
         for drop in self.drops:
             if drop.task_id not in task_ids:
                 raise ValueError(f"drop {drop.id} references unknown task {drop.task_id}")

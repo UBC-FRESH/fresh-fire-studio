@@ -29,6 +29,12 @@ def line_fraction_at(line: Line, t: float) -> float:
         return 0.0
     if t < line.constructed_start_min:
         return 0.0
+    if (
+        line.state == LineState.BREACHED
+        and line.breached_at_min is not None
+        and t >= line.breached_at_min
+    ):
+        return 0.0
     if line.constructed_end_min <= line.constructed_start_min:
         fraction = 1.0
     else:
@@ -36,10 +42,11 @@ def line_fraction_at(line: Line, t: float) -> float:
             (t - line.constructed_start_min)
             / (line.constructed_end_min - line.constructed_start_min)
         )
-    if t >= line.constructed_end_min and line.state in {
-        LineState.BREACHED,
-        LineState.ABANDONED,
-    }:
+    if (
+        t >= line.constructed_end_min
+        and line.state in {LineState.BREACHED, LineState.ABANDONED}
+        and line.breached_at_min is None
+    ):
         return 0.0
     return fraction
 
@@ -173,6 +180,8 @@ def timeline_breaks(scenario: Scenario) -> tuple[float, ...]:
     for line in scenario.lines:
         times.add(line.constructed_start_min)
         times.add(line.constructed_end_min)
+        if line.breached_at_min is not None:
+            times.add(line.breached_at_min)
     for drop in scenario.drops:
         times.add(drop.start_min)
         times.add(drop.end_min)

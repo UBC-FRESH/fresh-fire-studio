@@ -175,6 +175,19 @@
           "$ref": "#/$defs/LineState",
           "default": "planned"
         },
+        "breached_at_min": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Breached At Min"
+        },
         "fuel_removed": {
           "default": 0.0,
           "maximum": 1,

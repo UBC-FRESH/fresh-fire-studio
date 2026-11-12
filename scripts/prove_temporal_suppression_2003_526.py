@@ -157,8 +157,31 @@ def main() -> None:
         )
         return burned | np.isfinite(growth.ignition_time_min)
 
-    checkpoints = [0.0, 60.0, 240.0, 720.0, 1440.0, 1441.0, duration]
-    checkpoints = sorted({time for time in checkpoints if 0 <= time <= duration})
+    checkpoint_set = {
+        0.0,
+        60.0,
+        240.0,
+        720.0,
+        1440.0,
+        1441.0,
+        duration,
+        scenario.timeline_end_min,
+    }
+    for line in scenario.lines:
+        checkpoint_set.update(
+            {
+                line.constructed_start_min,
+                line.constructed_end_min,
+            }
+        )
+        if line.breached_at_min is not None:
+            checkpoint_set.add(line.breached_at_min)
+            checkpoint_set.add(max(0.0, line.breached_at_min - args.step_min))
+    for drop in scenario.drops:
+        checkpoint_set.add(drop.start_min)
+        checkpoint_set.add(drop.end_min)
+        checkpoint_set.add(drop.end_min + drop.effect_duration_min)
+    checkpoints = sorted({time for time in checkpoint_set if 0 <= time <= duration})
     areas: dict[str, float] = {
         "0.0": float(burned.sum() * fire.grid.cell_size_m**2 / 10_000)
     }

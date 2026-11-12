@@ -1,0 +1,82 @@
+{
+  "scenario_id": "2003-526-breach-proof",
+  "fire_slug": "cfsds-2003-526",
+  "label": "Diagnostic held-then-breached containment line on the 2003_526 grid",
+  "timeline_start_min": 0,
+  "timeline_end_min": 22200,
+  "metadata": {
+    "status": "diagnostic",
+    "coordinate_system": "EPSG:26911",
+    "note": "A synthetic north-south line built over 24 hours and breached at minute 7,200. It tests time-aware failure, not a real suppression operation."
+  },
+  "objective": {
+    "containment_area_ha": 2500,
+    "deadline_min": 7200,
+    "priority": "resource"
+  },
+  "bases": [
+    {
+      "id": "proof-base",
+      "x": 487700,
+      "y": 5722700,
+      "kind": "ground"
+    }
+  ],
+  "water_sources": [],
+  "resources": [
+    {
+      "id": "proof-dozer",
+      "label": "Diagnostic line dozer",
+      "kind": "dozer",
+      "home_base_id": "proof-base",
+      "crew_size": 1,
+      "line_rate_m_h": 350,
+      "available_start_min": 0,
+      "available_end_min": 22200
+    }
+  ],
+  "tasks": [
+    {
+      "id": "proof-line-task",
+      "resource_id": "proof-dozer",
+      "kind": "construct_line",
+      "start_min": 0,
+      "end_min": 1440,
+      "line_id": "proof-line",
+      "target": [
+        [
+          493200,
+          5722700
+        ],
+        [
+          493200,
+          5730300
+        ]
+      ]
+    }
+  ],
+  "lines": [
+    {
+      "id": "proof-line",
+      "task_id": "proof-line-task",
+      "points": [
+        [
+          493200,
+          5722700
+        ],
+        [
+          493200,
+          5730300
+        ]
+      ],
+      "width_m": 100,
+      "constructed_start_min": 0,
+      "constructed_end_min": 1440,
+      "state": "breached",
+      "fuel_removed": 1.0,
+      "moisture": 0.0,
+      "breached_at_min": 7200
+    }
+  ],
+  "drops": []
+}

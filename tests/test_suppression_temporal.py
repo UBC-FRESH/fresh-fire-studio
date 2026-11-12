@@ -17,6 +17,8 @@ ROOT = Path(__file__).resolve().parents[1]
 TEMPORAL = ROOT / "suppression" / "scenarios" / "2003-526-temporal-proof.json"
 DEMO = ROOT / "suppression" / "scenarios" / "2003-526-demo.json"
 ARTIFACT = ROOT / "suppression" / "proofs" / "2003-526-temporal.json"
+BREACH_ARTIFACT = ROOT / "suppression" / "proofs" / "2003-526-breach.json"
+LATE_ARTIFACT = ROOT / "suppression" / "proofs" / "2003-526-late-line.json"
 GRID = dict(xll=487700.0, yll=5722700.0, nrows=76, ncols=90, cell_size_m=100.0)
 DEMO_GRID = dict(xll=0.0, yll=0.0, nrows=20, ncols=20, cell_size_m=100.0)
 
@@ -36,9 +38,14 @@ def test_line_fraction_follows_construction_window() -> None:
 def test_breached_and_planned_lines_stop_containing() -> None:
     line = load(TEMPORAL).lines[0]
     breached = line.model_copy(update={"state": LineState.BREACHED})
+    timed_breach = line.model_copy(
+        update={"state": LineState.BREACHED, "breached_at_min": 7200}
+    )
     planned = line.model_copy(update={"state": LineState.PLANNED})
     assert line_fraction_at(breached, 720) == 0.5
     assert line_fraction_at(breached, 1440) == 0
+    assert line_fraction_at(timed_breach, 6000) == 1
+    assert line_fraction_at(timed_breach, 7200) == 0
     assert line_fraction_at(planned, 1440) == 0
 
 
@@ -86,3 +93,17 @@ def test_temporal_artifact_preserves_area_reduction() -> None:
     assert payload["line_cells_by_time"]["0.0"] == 0
     assert payload["line_cells_by_time"]["1440.0"] == 152
     assert payload["line_cells_by_time"]["22200.0"] == 152
+
+
+def test_breach_artifact_shows_line_removal() -> None:
+    payload = json.loads(BREACH_ARTIFACT.read_text(encoding="utf-8"))
+    assert payload["line_cells_by_time"]["7140.0"] == 152
+    assert payload["line_cells_by_time"]["7200.0"] == 0
+    assert payload["temporal"]["area_sim_ha"] > payload["free_burn"]["area_sim_ha"] - 10
+
+
+def test_late_artifact_shows_no_early_containment() -> None:
+    payload = json.loads(LATE_ARTIFACT.read_text(encoding="utf-8"))
+    assert payload["line_cells_by_time"]["18000.0"] == 0
+    assert payload["line_cells_by_time"]["19440.0"] == 152
+    assert payload["temporal"]["area_sim_ha"] > payload["free_burn"]["area_sim_ha"] - 10

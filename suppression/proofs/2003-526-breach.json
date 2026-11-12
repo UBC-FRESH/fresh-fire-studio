@@ -1,0 +1,91 @@
+{
+  "proof": "P179.2 time-aware line construction",
+  "case_id": "2003_526",
+  "scenario_id": "2003-526-breach-proof",
+  "method": {
+    "chunk_min": 60.0,
+    "seed": "all previously burned cells",
+    "line_mask": "active at the start of each chunk",
+    "drop_growth": "not coupled in this proof"
+  },
+  "grid": {
+    "crs": "EPSG:26911",
+    "xll": 487700.0,
+    "yll": 5722700.0,
+    "ncols": 90,
+    "nrows": 76,
+    "cell_size_m": 100.0
+  },
+  "free_burn": {
+    "area_sim_ha": 5325.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 9.240384615384615,
+    "perimeter_sim_m": 116800.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 4.959183673469388,
+    "centroid_distance_m": 174.69119277442272,
+    "iou": 0.09559512652296158,
+    "sorensen": 0.174508126603935,
+    "orientation_error_deg": 21.642970351518244
+  },
+  "temporal": {
+    "area_sim_ha": 5323.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 9.236538461538462,
+    "perimeter_sim_m": 116400.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 4.938775510204081,
+    "centroid_distance_m": 175.62641212078924,
+    "iou": 0.0956309769360585,
+    "sorensen": 0.17456785897655314,
+    "orientation_error_deg": 21.673776249240973
+  },
+  "static_full_line": {
+    "area_sim_ha": 3113.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 4.986538461538461,
+    "perimeter_sim_m": 72200.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 2.683673469387755,
+    "centroid_distance_m": 1908.0702978210652,
+    "iou": 0.13354134165366616,
+    "sorensen": 0.23561794660060556,
+    "orientation_error_deg": 72.17883641122965
+  },
+  "area_by_time_ha": {
+    "0.0": 1.0,
+    "60.0": 9.0,
+    "240.0": 16.0,
+    "720.0": 16.0,
+    "1440.0": 16.0,
+    "7140.0": 609.0,
+    "7200.0": 609.0,
+    "22200.0": 5323.0
+  },
+  "line_cells_by_time": {
+    "0.0": 0,
+    "60.0": 8,
+    "240.0": 28,
+    "720.0": 78,
+    "1440.0": 152,
+    "7140.0": 152,
+    "7200.0": 0,
+    "22200.0": 0
+  },
+  "delta_vs_free": {
+    "area_reduction_ha": 2.0,
+    "area_reduction_pct": 0.03755868544600939,
+    "iou_change": 3.585041309692172e-05
+  },
+  "delta_vs_static": {
+    "area_difference_ha": 2210.0,
+    "iou_change": -0.037910364717607656
+  },
+  "limits": [
+    "The line is synthetic and built over 24 hours.",
+    "The P177 kernel is static; this harness rebuilds its seed every chunk.",
+    "Seeding the whole burned area at each chunk is an approximation.",
+    "Drop moisture and decay are scheduled but not fed into growth.",
+    "This is a diagnostic contract proof, not a calibrated suppression result."
+  ]
+}

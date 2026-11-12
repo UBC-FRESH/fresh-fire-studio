@@ -59,3 +59,18 @@ def test_line_must_fit_its_task() -> None:
     payload["lines"][0]["constructed_end_min"] = 300
     with pytest.raises(ValidationError, match="must fall within task"):
         Scenario.model_validate(payload)
+
+
+def test_breach_timestamp_requires_breached_state() -> None:
+    payload = load()
+    payload["lines"][0]["breached_at_min"] = 300
+    with pytest.raises(ValidationError, match="requires line state breached"):
+        Scenario.model_validate(payload)
+
+
+def test_breach_timestamp_must_follow_construction() -> None:
+    payload = load()
+    payload["lines"][0]["state"] = "breached"
+    payload["lines"][0]["breached_at_min"] = 100
+    with pytest.raises(ValidationError, match="after construction end"):
+        Scenario.model_validate(payload)

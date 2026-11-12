@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof and P179.2a time-aware schedule implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule and P179.2b failure proofs implemented. Not operational.
 
 ## Open containment issues
 
@@ -75,6 +75,11 @@ Implemented in this repository:
 - `suppression/proofs/2003-526-temporal.json` — temporal artifact.
 - `tests/test_suppression_temporal.py` — schedule, decay and artifact tests.
 - `docs/p179-2-proof.md` — temporal method, results and limits.
+- `suppression/scenarios/2003-526-breach-proof.json` — held-then-breached line.
+- `suppression/scenarios/2003-526-late-line-proof.json` — late-arrival line.
+- `suppression/proofs/2003-526-breach.json` — breach artifact.
+- `suppression/proofs/2003-526-late-line.json` — late-arrival artifact.
+- `docs/p179-2b-failure-proofs.md` — failure results and limits.
 
 Run:
 
@@ -134,6 +139,21 @@ The chunked harness is an approximation: it seeds each chunk with all
 previously burned cells and the P177 kernel has no native time-dependent mask.
 Drop moisture is scheduled but not yet coupled to growth. See
 [`p179-2-proof.md`](p179-2-proof.md).
+
+## P179.2b failure proofs: breach and late arrival
+
+Two diagnostic cases show that the schedule can represent failure:
+
+- **Breach:** the line holds through minute 7,140, then is breached at 7,200.
+  Final area is **5,323 ha**, within 2 ha of the 5,325 ha free burn. The line
+  delays growth but does not contain the fire after the breach.
+- **Late arrival:** the line is built from 18,000 to 19,440 minutes, after the
+  fire has crossed the barrier. Final area is **5,323 ha**, a 2 ha reduction
+  from free burn.
+
+These are not effectiveness estimates; the 2 ha difference is a chunking
+artifact. They do show that the same event stream can model held, breached and
+late lines. See [`p179-2b-failure-proofs.md`](p179-2b-failure-proofs.md).
 
 ## Evidence base: Martell and collaborators
 
@@ -413,8 +433,9 @@ Visual labels must distinguish:
 
 ### P179.2 — ground response
 
-- Status: time-aware line/drop schedule implemented (P179.2a); dispatch,
-  crew productivity and ground-resource simulation pending.
+- Status: time-aware line/drop schedule and failure proofs implemented
+  (P179.2a/P179.2b); dispatch, crew productivity and ground-resource
+  simulation pending.
 - IA crew, engine, dozer, pump and hose.
 - Travel, setup, line production, water supply, holding/breach.
 - Discrete-event playback.
