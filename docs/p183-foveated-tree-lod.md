@@ -69,9 +69,18 @@ east–west under a normal Three.js camera.
 - fire/smoke particles: shared pool, spawned only from active detail trees
   when the detail LOD is active.
 
-The detail patch is regenerated when the camera target moves more than 30 m or
-the radius changes by 22%. The mid-field ring is regenerated on the same
-schedule, with a wider movement threshold.
+The detail footprint is a fixed **260 m** world-space radius; it no longer
+changes with zoom. Detail ignition times are cached by world grid key, so
+panning, focusing, zooming out and zooming back in preserve the burn state of a
+tree instead of creating a new unburned population.
+
+The LOD now fades between **1400 m and 800 m** camera distance rather than
+switching at a hard threshold. Detail material opacity, mid-field opacity and
+canopy opacity are blended over that band. Focus, North-up and model-extent
+camera moves are animated over 850 ms instead of jumping.
+
+The detail patch is regenerated only when the camera target moves more than
+60 m. The mid-field ring uses a wider 80 m threshold.
 
 ## Limits
 
@@ -80,6 +89,9 @@ schedule, with a wider movement threshold.
   visual propagation rule, not a coupled fire-atmosphere simulation.
 - The local spread advances ignition by at most 120 minutes ahead of the
   coarse field; it is not an independent ROS model.
+- The detail footprint follows the camera target when it moves more than 60 m;
+  ignition times are cached, but newly revealed ground is generated at the
+  current coarse-field timing.
 - The canopy and mid-field are impostors, not a canopy-radiative-transfer model.
 - The mid-field forest continues beyond the observed perimeter for visual
   continuity; it is unburned impostor vegetation, not an observed fuel map.
