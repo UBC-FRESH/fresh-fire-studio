@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from portal.app import CASES, VRI_CASE, _case_page, _landing, brief, case, home, methods, pilot
+from portal.app import CASES, G50872_CASE, VRI_CASE, _case_page, _landing, brief, case, home, methods, pilot
 
 OUT = ROOT / "public"
 
@@ -60,12 +60,17 @@ def main() -> None:
     pilot_payload = pilot_payload.replace('href="/methods"', 'href="methods.html"')
     pilot_payload = pilot_payload.replace('href="/pilot"', 'href="pilot.html"')
     pilot_payload = pilot_payload.replace('href="/pilot/vri"', 'href="pilot-vri.html"')
+    pilot_payload = pilot_payload.replace('href="/pilot/g50872"', 'href="pilot-g50872.html"')
     pilot_payload = pilot_payload.replace('href="/static/', 'href="static/')
     (OUT / "pilot.html").write_text(pilot_payload, encoding="utf-8")
-    vri_payload = _case_page(VRI_CASE)
-    vri_payload = vri_payload.replace('href="/"', 'href="index.html"')
-    vri_payload = vri_payload.replace('src="/static/scenes/vri-pilot/', 'src="static/scenes/vri-pilot/')
-    (OUT / "pilot-vri.html").write_text(vri_payload, encoding="utf-8")
+    for name, case_data in (("pilot-vri", VRI_CASE), ("pilot-g50872", G50872_CASE)):
+        payload = _case_page(case_data)
+        payload = payload.replace('href="/"', 'href="index.html"')
+        payload = payload.replace(
+            f'src="/static/scenes/{case_data["slug"]}/',
+            f'src="static/scenes/{case_data["slug"]}/',
+        )
+        (OUT / f"{name}.html").write_text(payload, encoding="utf-8")
     (OUT / "briefs").mkdir(exist_ok=True)
     for name in ("bc", "cfs"):
         (OUT / "briefs" / f"{name}.html").write_text(brief(name), encoding="utf-8")

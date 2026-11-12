@@ -1,0 +1,17 @@
+{
+  "source": "FireSTARR Fuel 2023 v1.0, 100 m tile fuel_10_5",
+  "dominant_fuel_type": "C3",
+  "dominant_description": "Mature Jack or Lodgepole Pine",
+  "counts": {
+    "C3": 422,
+    "M-1/M-2 (75 PC)": 172,
+    "M-1/M-2 (50 PC)": 79,
+    "C2": 68,
+    "M-1/M-2 (25 PC)": 48,
+    "D-1": 35,
+    "M-1 (15 PC)": 31,
+    "D-1/D-2": 8,
+    "O-1a": 5,
+    "Non-fuel/water": 3
+  }
+}

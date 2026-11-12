@@ -43,6 +43,22 @@ def _load_cases() -> list[dict[str, Any]]:
 CASES = _load_cases()
 CASE_BY_SLUG = {str(case["slug"]): case for case in CASES}
 
+G50872_CASE: dict[str, Any] = {
+    "slug": "g50872-vri",
+    "title": "G50872 · TSA 24 VRI",
+    "subtitle": "Real BC G50872 observed final perimeter over public TSA 24 VRI blocks",
+    "story": "The observed final extent is real. Tree placement and ignition timing are synthetic; terrain, fuel and weather come from public layers.",
+    "provenance": "BC G50872 2023 final perimeter; TSA 24 VRI blocks; SRTM terrain; FireSTARR C3 fuel; Open-Meteo reanalysis; synthetic stems and timing",
+    "area_ha": 17338.0,
+    "area_label": "observed final extent",
+    "weather": "C3 · Open-Meteo 2023-06-24",
+    "duration": "280 min synthetic",
+    "region": "BC",
+    "year": 2023,
+    "tone": "large",
+    "iou": None,
+}
+
 VRI_CASE: dict[str, Any] = {
     "slug": "vri-pilot",
     "title": "VRI pilot · TSA 24",
@@ -324,6 +340,11 @@ def case(slug: str) -> str:
     if case_data is None:
         raise HTTPException(status_code=404, detail="case not found")
     return _case_page(case_data)
+
+
+@app.get("/pilot/g50872", response_class=HTMLResponse)
+def pilot_g50872() -> str:
+    return _case_page(G50872_CASE)
 
 
 @app.get("/pilot/vri", response_class=HTMLResponse)

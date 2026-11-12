@@ -10,7 +10,9 @@ A public 3D benchmark-fire portal from the UBC FRESH Lab.
 - CFS framing: <https://ubc-fresh.github.io/fresh-fire-studio/cfs.html>
 - VRI pilot prototype: <https://ubc-fresh.github.io/fresh-fire-studio/pilot-vri.html>
 - VRI build: `python scripts/build_vri_pilot.py` (public TSA 24 geometry + SRTM terrain)
-- VRI notes: [`docs/vri-pilot.md`](docs/vri-pilot.md) (includes BC G50266 observed-perimeter overlay)
+- VRI notes: [`docs/vri-pilot.md`](docs/vri-pilot.md)
+- G50872 VRI pilot: <https://ubc-fresh.github.io/fresh-fire-studio/pilot-g50872.html>
+- G50872 notes: [`docs/g50872-pilot.md`](docs/g50872-pilot.md)
 - Anonymous counters: [`docs/analytics.md`](docs/analytics.md)
 - Current edge: <https://fresh-fire.01101.dev/>
 - Local portal: <http://127.0.0.1:8800/>
