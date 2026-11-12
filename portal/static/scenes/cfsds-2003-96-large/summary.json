@@ -1,7 +1,7 @@
 {
   "slug": "cfsds-2003-96-large",
   "title": "2003_96",
-  "trees": 23999,
+  "trees": 31998,
   "fragments": 26,
   "grid_m": 500.0,
   "area_ha": 31200.0,
@@ -12,5 +12,6 @@
   "bui": 40.7482643127441,
   "viewer": "/static/scenes/cfsds-2003-96-large/viewer.html",
   "observed_mode": "daily_raster",
+  "visual_stems_per_ha": 1.0255769230769232,
   "model_area_ha": 159700.0
 }

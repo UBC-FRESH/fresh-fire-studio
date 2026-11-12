@@ -52,7 +52,7 @@ from ws4.scene import (  # type: ignore[import-not-found]
 
 BLOCKS_X = 6
 BLOCKS_Y = 6
-MAX_TREES = 24000
+MAX_TREES = 32000
 TREE_BURN_MINUTES = 15.0
 OBSERVED_BURN_MINUTES = 45.0
 SUBCELL_JITTER_MINUTES = 240.0
@@ -126,8 +126,22 @@ def _terrain_payload(
             x = min_x + (i / (nx - 1)) * width
             row.append(sample(x, y))
         heights.append(row)
+
+    def surface(x: float, y: float) -> float:
+        fx = min(max((x - min_x) / width, 0.0), 1.0) * (nx - 1)
+        fy = min(max((y - min_y) / depth, 0.0), 1.0) * (ny - 1)
+        i0 = int(np.floor(fx))
+        j0 = int(np.floor(fy))
+        i1 = min(i0 + 1, nx - 1)
+        j1 = min(j0 + 1, ny - 1)
+        tx = fx - i0
+        ty = fy - j0
+        a = heights[j0][i0] * (1 - tx) + heights[j0][i1] * tx
+        b = heights[j1][i0] * (1 - tx) + heights[j1][i1] * tx
+        return float(a * (1 - ty) + b * ty)
+
     for tree in trees:
-        tree["z"] = sample(float(tree["x"]) + min_x, float(tree["y"]) + min_y)
+        tree["z"] = surface(float(tree["x"]) + min_x, float(tree["y"]) + min_y) + 0.15
     return {
         "nx": nx,
         "ny": ny,
@@ -605,6 +619,9 @@ def build_case(
         }
         payload["origin_projected"] = [min_x, min_y]
         payload["observed_ha"] = float(result.metrics.area_obs_ha)
+        payload["visual_stems_per_ha"] = float(
+            len(trees.trees) / max(1.0, result.metrics.area_obs_ha)
+        )
         payload["model_ha"] = float(
             np.isfinite(result.growth.ignition_time_min).sum()
             * (fire.grid.cell_size_m**2)
@@ -731,6 +748,9 @@ def build_case(
         "bui": bui,
         "viewer": f"/static/scenes/{slug}/viewer.html",
         "observed_mode": "daily_raster" if observed_times else "model_timing",
+        "visual_stems_per_ha": float(
+            len(trees.trees) / max(1.0, result.metrics.area_obs_ha)
+        ),
         "model_area_ha": float(
             np.isfinite(result.growth.ignition_time_min).sum()
             * (fire.grid.cell_size_m**2)

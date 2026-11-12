@@ -1,7 +1,7 @@
 {
   "slug": "hay-river-2023",
   "title": "Hay River 2023",
-  "trees": 24004,
+  "trees": 31994,
   "fragments": 32,
   "grid_m": 100.0,
   "area_ha": 2987.0,
@@ -12,5 +12,6 @@
   "bui": 73.28,
   "viewer": "/static/scenes/hay-river-2023/viewer.html",
   "observed_mode": "daily_raster",
+  "visual_stems_per_ha": 10.71108135252762,
   "model_area_ha": 10846.0
 }

@@ -15,5 +15,5 @@
   "source": "synthetic block mosaic over a public benchmark fire; Nemora stem placement; nemora=nemora; crs=local; ws4.nemora.adapter.v1",
   "synthetic_trees": true,
   "time_unit": "minutes",
-  "tree_count": 24003
+  "tree_count": 31998
 }

@@ -1,7 +1,7 @@
 {
   "slug": "dogrib-2001",
   "title": "Dogrib 2001",
-  "trees": 24001,
+  "trees": 32000,
   "fragments": 20,
   "grid_m": 100.0,
   "area_ha": 10219.0,
@@ -12,5 +12,6 @@
   "bui": 98.74296640468506,
   "viewer": "/static/scenes/dogrib-2001/viewer.html",
   "observed_mode": "model_timing",
+  "visual_stems_per_ha": 3.1314218612388687,
   "model_area_ha": 29509.0
 }

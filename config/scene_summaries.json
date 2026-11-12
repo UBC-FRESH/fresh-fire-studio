@@ -3,7 +3,7 @@
     {
       "slug": "dogrib-2001",
       "title": "Dogrib 2001",
-      "trees": 24001,
+      "trees": 32000,
       "fragments": 20,
       "grid_m": 100.0,
       "area_ha": 10219.0,
@@ -14,12 +14,13 @@
       "bui": 98.74296640468506,
       "viewer": "/static/scenes/dogrib-2001/viewer.html",
       "observed_mode": "model_timing",
+      "visual_stems_per_ha": 3.1314218612388687,
       "model_area_ha": 29509.0
     },
     {
       "slug": "hay-river-2023",
       "title": "Hay River 2023",
-      "trees": 24004,
+      "trees": 31994,
       "fragments": 32,
       "grid_m": 100.0,
       "area_ha": 2987.0,
@@ -30,12 +31,13 @@
       "bui": 73.28,
       "viewer": "/static/scenes/hay-river-2023/viewer.html",
       "observed_mode": "daily_raster",
+      "visual_stems_per_ha": 10.71108135252762,
       "model_area_ha": 10846.0
     },
     {
       "slug": "cfsds-2003-526",
       "title": "2003_526",
-      "trees": 24001,
+      "trees": 32000,
       "fragments": 27,
       "grid_m": 100.0,
       "area_ha": 520.0,
@@ -46,12 +48,13 @@
       "bui": 74.1177673339844,
       "viewer": "/static/scenes/cfsds-2003-526/viewer.html",
       "observed_mode": "daily_raster",
+      "visual_stems_per_ha": 61.53846153846154,
       "model_area_ha": 5325.0
     },
     {
       "slug": "cfsds-2023-786",
       "title": "2023_786",
-      "trees": 24004,
+      "trees": 31999,
       "fragments": 25,
       "grid_m": 100.0,
       "area_ha": 1124.0,
@@ -62,12 +65,13 @@
       "bui": 83.1968765258789,
       "viewer": "/static/scenes/cfsds-2023-786/viewer.html",
       "observed_mode": "daily_raster",
+      "visual_stems_per_ha": 28.468861209964412,
       "model_area_ha": 14165.0
     },
     {
       "slug": "cfsds-2003-96-large",
       "title": "2003_96",
-      "trees": 23999,
+      "trees": 31998,
       "fragments": 26,
       "grid_m": 500.0,
       "area_ha": 31200.0,
@@ -78,12 +82,13 @@
       "bui": 40.7482643127441,
       "viewer": "/static/scenes/cfsds-2003-96-large/viewer.html",
       "observed_mode": "daily_raster",
+      "visual_stems_per_ha": 1.0255769230769232,
       "model_area_ha": 159700.0
     },
     {
       "slug": "cfsds-2003-663-large",
       "title": "2003_663",
-      "trees": 24003,
+      "trees": 31998,
       "fragments": 27,
       "grid_m": 500.0,
       "area_ha": 25600.0,
@@ -94,6 +99,7 @@
       "bui": 122.185150146484,
       "viewer": "/static/scenes/cfsds-2003-663-large/viewer.html",
       "observed_mode": "daily_raster",
+      "visual_stems_per_ha": 1.249921875,
       "model_area_ha": 68225.0
     }
   ]

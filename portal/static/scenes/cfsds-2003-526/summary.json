@@ -1,7 +1,7 @@
 {
   "slug": "cfsds-2003-526",
   "title": "2003_526",
-  "trees": 24001,
+  "trees": 32000,
   "fragments": 27,
   "grid_m": 100.0,
   "area_ha": 520.0,
@@ -12,5 +12,6 @@
   "bui": 74.1177673339844,
   "viewer": "/static/scenes/cfsds-2003-526/viewer.html",
   "observed_mode": "daily_raster",
+  "visual_stems_per_ha": 61.53846153846154,
   "model_area_ha": 5325.0
 }
