@@ -24,16 +24,17 @@ The scene now has two representations.
    and is labelled as a visual sample — not an inventory.
 
 2. **Near-field detail.** The browser generates **160 m world-space tiles**
-   at **500 stems/ha**. Tiles within 280 m of the camera target are loaded,
-   up to a 12,000-instance cap; the outer active ring is stochastically
-   thinned. Tiles and per-tree ignition times are cached, so zooming or
-   revisiting an area does not rebuild or reset the stand.
+   at **500 stems/ha**. Tiles within 620 m of the camera target are loaded,
+   with density held full to 140 m and then faded smoothly to zero at 620 m.
+   A 20,000-instance cap is enforced by uniform stochastic selection, not by
+   distance truncation. Tiles and per-tree ignition times are cached, so
+   zooming or revisiting an area does not rebuild or reset the stand.
 
-3. **Mid-field impostors.** A wider field of **140 stems/ha tree silhouettes**
-   overlaps the detail patch and extends out to roughly **800 m**. It uses the
-   same burn-time field, so background patches change colour with the fire.
-   The outer 28% of the mid-field is stochastically thinned to blend into the
-   canopy. This is the layer that removes the keyhole.
+3. **Mid-field impostors.** A much wider field of **tree silhouettes**
+   overlaps the detail and extends to roughly **1600 m**. Density falls
+   smoothly from 140 stems/ha in the centre to zero at the outer edge. It uses
+   the same burn-time field, so background patches change colour with the
+   fire. This is the layer that removes the remaining rings.
 
 The detail patch contains full trunks, crowns, fire particles, smoke and
 post-fire tree states. The mid-field and canopy impostors carry the periphery
@@ -64,13 +65,14 @@ east–west under a normal Three.js camera.
 
 - near-field tree capacity: **12,000** instances;
 - detail density: **500 stems/ha**;
-- mid-field impostors: up to **40,000** silhouettes at **140 stems/ha**;
+- mid-field impostors: up to **60,000** silhouettes, 140 stems/ha centre
+  density, fading to zero at 1600 m;
 - overview canopy: 32,000 points;
 - fire/smoke particles: shared pool, spawned only from active detail trees
   when the detail LOD is active.
 
-Detail is stored in fixed **160 m world-space tiles** with a **280 m** active
-radius, not in a radius that changes with zoom. Ignition times are cached by
+Detail is stored in fixed **160 m world-space tiles** with a **620 m**
+feathered active radius, not in a radius that changes with zoom. Ignition times are cached by
 world grid key, so panning, focusing, zooming out and zooming back in preserve
 the burn state of a tree instead of creating a new unburned population. The
 **Overview** button returns smoothly to the full-extent camera.
