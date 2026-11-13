@@ -305,13 +305,14 @@ def grow_fire_with_containment(
                 step_index,
             )
             factor = wet_ros_factor(nrow, ncol, time)
-            if (
+            absolute_reduction = bool(
                 ros_reduction_m_min is not None
                 and wet_schedule is not None
                 and wet_schedule.is_suppressed(nrow, ncol, time)
                 and math.isfinite(arrival)
                 and arrival > time + 1e-12
-            ):
+            )
+            if absolute_reduction:
                 pre_ros = distance / (arrival - time)
                 post_ros = max(0.0, pre_ros - ros_reduction_m_min)
                 arrival = math.inf if post_ros <= 0.0 else time + distance / post_ros
@@ -319,7 +320,7 @@ def grow_fire_with_containment(
                 arrival = time + (arrival - time) / factor
             if (
                 math.isfinite(arrival)
-                and factor > 0.0
+                and (factor > 0.0 or absolute_reduction)
                 and arrival <= config.max_time_min
                 and arrival < ignition[nrow, ncol] - 1e-12
             ):

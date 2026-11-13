@@ -87,3 +87,12 @@ Artifacts:
 - Water application efficiency, canopy interception and grid resolution remain
   uncertain.
 - No re-ignition model.
+
+## Implementation correction
+
+The first absolute-reduction implementation was unreachable when wetness was
+1.0: the code computed the absolute arrival, but the final ignition gate still
+required a nonzero multiplicative factor. That gate now accepts the absolute
+branch. The evidence scenarios and the 32-member ensemble were rerun after the
+fix; both still end at 5,325 ha because the fixed line does not intersect the
+front strongly enough.
