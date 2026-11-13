@@ -10,7 +10,7 @@ Static export: `suppression/index.html` and `suppression.html`.
 
 ## What it shows
 
-- 21 CL-415-style drop markers from the fixed 2003_526 drop-line scenario;
+- 21 CL-415-style drop markers across five independent aircraft cycles;
 - mission timeline and active-drop count;
 - a stable aircraft marker that moves along the drop line without snapping or
   spinning;

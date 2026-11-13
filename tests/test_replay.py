@@ -17,6 +17,8 @@ def test_replay_page_and_data_are_consistent() -> None:
     assert "Wheatley 2024" in page
     assert (ROOT / "portal/static/p179-case-study.pdf").exists()
     assert len(data["drops"]) == 21
+    assert len(data["aircraft"]) == 5
+    assert all(drop.get("resource_id") for drop in data["drops"])
     assert data["results"]["realistic"]["area_ha"] == 5325.0
     assert data["results"]["realistic"]["containment_probability"] == 0.0
     assert data["results"]["control"]["area_ha"] == 3574.7
