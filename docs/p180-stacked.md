@@ -22,14 +22,15 @@ drop windows around predicted arrival.
 | 30 | 3 | 54 | 54 | **10** | 44 | 5,325 ha |
 | 100 | 3 | 54 | 54 | **54** | 0 | 5,325 ha |
 | 100 | 3 | 154 | 154 | **90** | 58 | 5,325 ha |
+| 200 | 3 | 154 | 154 | **154** | 0 | 5,325 ha |
 
 The 5-target case is the first case where every treated target is **wet at
 arrival**, with combined cell depth about **1.045 mm**. The 100-aircraft,
 54-target case is the first full segment where every treated target is wet at
 arrival. The native area is still **5,325 ha**.
 
-Even a 154-target all-front mission with 90 wet-at-arrival cells leaves the
-native area at **5,325 ha**. The remaining limitation is now the effect/growth
+A 200-aircraft, 154-target mission had all **154 cells wet at arrival** and
+still ended at **5,325 ha**. The remaining limitation is now the effect/growth
 coupling, not delivery, stacking, or arrival timing.
 
 ## Artifacts

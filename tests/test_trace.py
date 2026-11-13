@@ -30,3 +30,4 @@ def test_trace_artifact_exists() -> None:
 
     root = Path(__file__).resolve().parents[1]
     assert (root / "suppression/proofs/2003-526-target-wetness-trace-5targets.json").exists()
+    assert (root / "suppression/proofs/2003-526-wet-interaction-ring-200air.json").exists()
