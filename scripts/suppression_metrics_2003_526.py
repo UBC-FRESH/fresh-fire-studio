@@ -22,6 +22,7 @@ def main() -> None:
         default=ROOT / "suppression/scenarios/2003-526-arrival-stacked-ring-200air.json",
     )
     parser.add_argument("--required-depth-mm", type=float, default=0.75)
+    parser.add_argument("--no-absolute", action="store_true", help="use the wet-cell hold rather than an absolute ROS reduction")
     parser.add_argument(
         "--out",
         type=Path,
@@ -110,7 +111,7 @@ def main() -> None:
         config,
         empty,
         wet_schedule=wet,
-        ros_reduction_m_min=0.5,
+        ros_reduction_m_min=None if args.no_absolute else 0.5,
     )
     free_times = free.growth.ignition_time_min
     wet_times = wet_growth.ignition_time_min

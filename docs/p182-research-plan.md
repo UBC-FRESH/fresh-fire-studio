@@ -145,6 +145,12 @@ For the fire:
 
 ### P182.2 — line hold and breach
 
+Result: the 71-cell full-height water line delayed 71/71 targets under a full
+wet-cell hold (mean 55.2 min), and 58/71 under the published 0.5 m/min
+reduction (mean 13.8 min). Final area remained 5,325 ha. The 20-cell static
+barrier reduced area to 3,504 ha. See
+[`p182-line-hold.md`](p182-line-hold.md).
+
 - continuous unique-target lines;
 - varying width, depth, hold and intensity;
 - measure held length and time-to-breach;
