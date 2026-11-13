@@ -145,6 +145,11 @@ For the fire:
 
 ### P182.2 — line hold and breach
 
+Positive control: a full-height 76-cell water line present from minute 600 and
+held through the run reduced the benchmark from 5,325 to **3,504 ha**. The
+native wet branch works when water is present before arrival and persists. See
+[`p182-prepositioned.md`](p182-prepositioned.md).
+
 Timing result: a full-height 76-cell water line with 60 or 600 min hold still
 ends at 5,325 ha; a nominal 22,200 min hold reaches 5,254 ha. A static
 non-burnable barrier from the start reaches 3,504 ha. The requirement is

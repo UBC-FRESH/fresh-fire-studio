@@ -22,6 +22,7 @@ def main() -> None:
     parser.add_argument("--hold-min", type=float, default=60.0)
     parser.add_argument("--pre-arrival-min", type=float, default=2.0)
     parser.add_argument("--all-rows", action="store_true", help="include every row, including non-burnable rows")
+    parser.add_argument("--target-arrival-min", type=float, default=None, help="override all target arrival times")
     parser.add_argument(
         "--out",
         type=Path,
@@ -57,9 +58,19 @@ def main() -> None:
     targets = []
     for row in range(fire.grid.nrows):
         arrival = float(free.growth.ignition_time_min[row, col])
+        if args.target_arrival_min is not None:
+            arrival = args.target_arrival_min
         if args.all_rows:
             if not np.isfinite(arrival) or arrival <= 0.0:
-                arrival = 1800.0
+                arrival = 600.0 if args.target_arrival_min is not None else 1800.0
+            targets.append(
+                TimedTarget(
+                    fire.grid.xll + (col + 0.5) * fire.grid.cell_size_m,
+                    fire.grid.yll + (fire.grid.nrows - 1 - row + 0.5) * fire.grid.cell_size_m,
+                    arrival,
+                )
+            )
+        elif args.target_arrival_min is not None and args.target_arrival_min > 0.0:
             targets.append(
                 TimedTarget(
                     fire.grid.xll + (col + 0.5) * fire.grid.cell_size_m,

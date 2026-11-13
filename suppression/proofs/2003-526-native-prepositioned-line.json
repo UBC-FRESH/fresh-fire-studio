@@ -1,0 +1,2275 @@
+{
+  "proof": "P179.3 native time-dependent containment",
+  "case_id": "2003_526",
+  "scenario_id": "2003-526-closed-barrier",
+  "method": {
+    "sampling_min": 60.0,
+    "kernel": "single WS4 minimum-travel-time run",
+    "mask": "cell containment checked at expansion time",
+    "drops": "temporary wet ROS factor at 0.75 mm, 10 m sub-cell",
+    "line_timing": "scenario"
+  },
+  "wet_schedule": {
+    "required_depth_mm": 0.75,
+    "drops": [
+      {
+        "drop_id": "barrier-drop-1",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-2",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-3",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-4",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-5",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-6",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-7",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-8",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-9",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-10",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-11",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-12",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-13",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-14",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-15",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-16",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-17",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-18",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-19",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-20",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-21",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-22",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-23",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-24",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-25",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-26",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-27",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-28",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-29",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-30",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-31",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-32",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-33",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-34",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-35",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-36",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-37",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-38",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-39",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-40",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-41",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-42",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-43",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-44",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-45",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-46",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-47",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-48",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-49",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-50",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-51",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-52",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-53",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-54",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-55",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-56",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-57",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-58",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-59",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-60",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-61",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-62",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-63",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-64",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-65",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-66",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-67",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-68",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-69",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-70",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-71",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-72",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-73",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-74",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-75",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-76",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-77",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-78",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-79",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-80",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-81",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-82",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-83",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-84",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-85",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-86",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-87",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-88",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-89",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-90",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-91",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-92",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-93",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-94",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-95",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-96",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-97",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-98",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-99",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-100",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-101",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-102",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-103",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-104",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-105",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-106",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-107",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-108",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-109",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-110",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-111",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-112",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-113",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-114",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-115",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-116",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-117",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-118",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-119",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-120",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-121",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-122",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-123",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-124",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-125",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-126",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-127",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-128",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-129",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-130",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-131",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-132",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-133",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-134",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-135",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-136",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-137",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-138",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-139",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-140",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-141",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-142",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-143",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-144",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-145",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-146",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-147",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-148",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-149",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-150",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-151",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-152",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-153",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-154",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-155",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-156",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-157",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-158",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-159",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-160",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-161",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-162",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-163",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-164",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-165",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-166",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-167",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-168",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-169",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-170",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-171",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-172",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-173",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-174",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-175",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-176",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-177",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-178",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-179",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-180",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-181",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-182",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-183",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-184",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-185",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-186",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-187",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-188",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-189",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-190",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-191",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-192",
+        "depth_mm": 1.0,
+        "start_min": 598.0,
+        "end_min": 598.0833333333334,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-193",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-194",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-195",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-196",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-197",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-198",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-199",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-200",
+        "depth_mm": 1.0,
+        "start_min": 597.9999999999999,
+        "end_min": 598.0833333333333,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-201",
+        "depth_mm": 1.0,
+        "start_min": 603.3978776271297,
+        "end_min": 603.481210960463,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-202",
+        "depth_mm": 1.0,
+        "start_min": 603.4227417809656,
+        "end_min": 603.5060751142989,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-203",
+        "depth_mm": 1.0,
+        "start_min": 603.4227417809656,
+        "end_min": 603.5060751142989,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-204",
+        "depth_mm": 1.0,
+        "start_min": 603.4227417809656,
+        "end_min": 603.5060751142989,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-205",
+        "depth_mm": 1.0,
+        "start_min": 603.4478634114141,
+        "end_min": 603.5311967447475,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-206",
+        "depth_mm": 1.0,
+        "start_min": 603.4478634114141,
+        "end_min": 603.5311967447475,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-207",
+        "depth_mm": 1.0,
+        "start_min": 603.4487519055606,
+        "end_min": 603.532085238894,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-208",
+        "depth_mm": 1.0,
+        "start_min": 603.4741210091338,
+        "end_min": 603.5574543424672,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-209",
+        "depth_mm": 1.0,
+        "start_min": 603.4741210091338,
+        "end_min": 603.5574543424672,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-210",
+        "depth_mm": 1.0,
+        "start_min": 603.4741210091338,
+        "end_min": 603.5574543424672,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-211",
+        "depth_mm": 1.0,
+        "start_min": 603.4997280027873,
+        "end_min": 603.5830613361206,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-212",
+        "depth_mm": 1.0,
+        "start_min": 603.4997280027873,
+        "end_min": 603.5830613361206,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-213",
+        "depth_mm": 1.0,
+        "start_min": 603.5015031006654,
+        "end_min": 603.5848364339988,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-214",
+        "depth_mm": 1.0,
+        "start_min": 603.5273388067051,
+        "end_min": 603.6106721400384,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-215",
+        "depth_mm": 1.0,
+        "start_min": 603.5273388067051,
+        "end_min": 603.6106721400384,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-216",
+        "depth_mm": 1.0,
+        "start_min": 603.5273388067051,
+        "end_min": 603.6106721400384,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-217",
+        "depth_mm": 1.0,
+        "start_min": 603.5533944376828,
+        "end_min": 603.6367277710161,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-218",
+        "depth_mm": 1.0,
+        "start_min": 603.5533944376828,
+        "end_min": 603.6367277710161,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-219",
+        "depth_mm": 1.0,
+        "start_min": 603.5560523785026,
+        "end_min": 603.639385711836,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-220",
+        "depth_mm": 1.0,
+        "start_min": 603.5823195222025,
+        "end_min": 603.6656528555359,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-221",
+        "depth_mm": 1.0,
+        "start_min": 603.5823195222025,
+        "end_min": 603.6656528555359,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-222",
+        "depth_mm": 1.0,
+        "start_min": 603.5823195222025,
+        "end_min": 603.6656528555359,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-223",
+        "depth_mm": 1.0,
+        "start_min": 603.6087901267994,
+        "end_min": 603.6921234601327,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-224",
+        "depth_mm": 1.0,
+        "start_min": 603.6087901267994,
+        "end_min": 603.6921234601327,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-225",
+        "depth_mm": 1.0,
+        "start_min": 603.612325318983,
+        "end_min": 603.6956586523164,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-226",
+        "depth_mm": 1.0,
+        "start_min": 603.6389916784424,
+        "end_min": 603.7223250117758,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-227",
+        "depth_mm": 1.0,
+        "start_min": 603.6389916784424,
+        "end_min": 603.7223250117758,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-228",
+        "depth_mm": 1.0,
+        "start_min": 603.6389916784424,
+        "end_min": 603.7223250117758,
+        "duration_min": 22200.0,
+        "covered_cells": 1
+      }
+    ]
+  },
+  "dispatch": null,
+  "grid": {
+    "crs": "EPSG:26911",
+    "xll": 487700.0,
+    "yll": 5722700.0,
+    "ncols": 90,
+    "nrows": 76,
+    "cell_size_m": 100.0
+  },
+  "free_burn": {
+    "area_sim_ha": 5325.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 9.240384615384615,
+    "perimeter_sim_m": 116800.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 4.959183673469388,
+    "centroid_distance_m": 174.69119277442272,
+    "iou": 0.09559512652296158,
+    "sorensen": 0.174508126603935,
+    "orientation_error_deg": 21.642970351518244
+  },
+  "native": {
+    "area_sim_ha": 3504.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 5.7384615384615385,
+    "perimeter_sim_m": 82600.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 3.2142857142857144,
+    "centroid_distance_m": 1547.3934451523323,
+    "iou": 0.13160854893138357,
+    "sorensen": 0.23260437375745527,
+    "orientation_error_deg": 71.9607442727144
+  },
+  "native_area_by_time_ha": {
+    "0": 1.0,
+    "60": 9.0,
+    "120": 21.0,
+    "180": 33.0,
+    "240": 60.0,
+    "300": 97.0,
+    "360": 145.0,
+    "420": 179.0,
+    "480": 212.0,
+    "540": 249.0,
+    "600": 291.0,
+    "660": 327.0,
+    "720": 359.0,
+    "780": 399.0,
+    "840": 430.0,
+    "900": 469.0,
+    "960": 501.0,
+    "1020": 534.0,
+    "1080": 563.0,
+    "1140": 595.0,
+    "1200": 626.0,
+    "1260": 648.0,
+    "1320": 691.0,
+    "1380": 747.0,
+    "1440": 841.0,
+    "1500": 979.0,
+    "1560": 1166.0,
+    "1620": 1360.0,
+    "1680": 1565.0,
+    "1740": 1928.0,
+    "1800": 2222.0,
+    "1860": 2470.0,
+    "1920": 2654.0,
+    "1980": 2790.0,
+    "2040": 2979.0,
+    "2100": 3218.0,
+    "2160": 3348.0,
+    "2220": 3404.0,
+    "2280": 3454.0,
+    "2340": 3483.0,
+    "2400": 3495.0,
+    "2460": 3501.0,
+    "2520": 3504.0,
+    "2580": 3504.0,
+    "2640": 3504.0,
+    "2700": 3504.0,
+    "2760": 3504.0,
+    "2820": 3504.0,
+    "2880": 3504.0,
+    "2940": 3504.0,
+    "3000": 3504.0,
+    "3060": 3504.0,
+    "3120": 3504.0,
+    "3180": 3504.0,
+    "3240": 3504.0,
+    "3300": 3504.0,
+    "3360": 3504.0,
+    "3420": 3504.0,
+    "3480": 3504.0,
+    "3540": 3504.0,
+    "3600": 3504.0,
+    "3660": 3504.0,
+    "3720": 3504.0,
+    "3780": 3504.0,
+    "3840": 3504.0,
+    "3900": 3504.0,
+    "3960": 3504.0,
+    "4020": 3504.0,
+    "4080": 3504.0,
+    "4140": 3504.0,
+    "4200": 3504.0,
+    "4260": 3504.0,
+    "4320": 3504.0,
+    "4380": 3504.0,
+    "4440": 3504.0,
+    "4500": 3504.0,
+    "4560": 3504.0,
+    "4620": 3504.0,
+    "4680": 3504.0,
+    "4740": 3504.0,
+    "4800": 3504.0,
+    "4860": 3504.0,
+    "4920": 3504.0,
+    "4980": 3504.0,
+    "5040": 3504.0,
+    "5100": 3504.0,
+    "5160": 3504.0,
+    "5220": 3504.0,
+    "5280": 3504.0,
+    "5340": 3504.0,
+    "5400": 3504.0,
+    "5460": 3504.0,
+    "5520": 3504.0,
+    "5580": 3504.0,
+    "5640": 3504.0,
+    "5700": 3504.0,
+    "5760": 3504.0,
+    "5820": 3504.0,
+    "5880": 3504.0,
+    "5940": 3504.0,
+    "6000": 3504.0,
+    "6060": 3504.0,
+    "6120": 3504.0,
+    "6180": 3504.0,
+    "6240": 3504.0,
+    "6300": 3504.0,
+    "6360": 3504.0,
+    "6420": 3504.0,
+    "6480": 3504.0,
+    "6540": 3504.0,
+    "6600": 3504.0,
+    "6660": 3504.0,
+    "6720": 3504.0,
+    "6780": 3504.0,
+    "6840": 3504.0,
+    "6900": 3504.0,
+    "6960": 3504.0,
+    "7020": 3504.0,
+    "7080": 3504.0,
+    "7140": 3504.0,
+    "7200": 3504.0,
+    "7260": 3504.0,
+    "7320": 3504.0,
+    "7380": 3504.0,
+    "7440": 3504.0,
+    "7500": 3504.0,
+    "7560": 3504.0,
+    "7620": 3504.0,
+    "7680": 3504.0,
+    "7740": 3504.0,
+    "7800": 3504.0,
+    "7860": 3504.0,
+    "7920": 3504.0,
+    "7980": 3504.0,
+    "8040": 3504.0,
+    "8100": 3504.0,
+    "8160": 3504.0,
+    "8220": 3504.0,
+    "8280": 3504.0,
+    "8340": 3504.0,
+    "8400": 3504.0,
+    "8460": 3504.0,
+    "8520": 3504.0,
+    "8580": 3504.0,
+    "8640": 3504.0,
+    "8700": 3504.0,
+    "8760": 3504.0,
+    "8820": 3504.0,
+    "8880": 3504.0,
+    "8940": 3504.0,
+    "9000": 3504.0,
+    "9060": 3504.0,
+    "9120": 3504.0,
+    "9180": 3504.0,
+    "9240": 3504.0,
+    "9300": 3504.0,
+    "9360": 3504.0,
+    "9420": 3504.0,
+    "9480": 3504.0,
+    "9540": 3504.0,
+    "9600": 3504.0,
+    "9660": 3504.0,
+    "9720": 3504.0,
+    "9780": 3504.0,
+    "9840": 3504.0,
+    "9900": 3504.0,
+    "9960": 3504.0,
+    "10020": 3504.0,
+    "10080": 3504.0,
+    "10140": 3504.0,
+    "10200": 3504.0,
+    "10260": 3504.0,
+    "10320": 3504.0,
+    "10380": 3504.0,
+    "10440": 3504.0,
+    "10500": 3504.0,
+    "10560": 3504.0,
+    "10620": 3504.0,
+    "10680": 3504.0,
+    "10740": 3504.0,
+    "10800": 3504.0,
+    "10860": 3504.0,
+    "10920": 3504.0,
+    "10980": 3504.0,
+    "11040": 3504.0,
+    "11100": 3504.0,
+    "11160": 3504.0,
+    "11220": 3504.0,
+    "11280": 3504.0,
+    "11340": 3504.0,
+    "11400": 3504.0,
+    "11460": 3504.0,
+    "11520": 3504.0,
+    "11580": 3504.0,
+    "11640": 3504.0,
+    "11700": 3504.0,
+    "11760": 3504.0,
+    "11820": 3504.0,
+    "11880": 3504.0,
+    "11940": 3504.0,
+    "12000": 3504.0,
+    "12060": 3504.0,
+    "12120": 3504.0,
+    "12180": 3504.0,
+    "12240": 3504.0,
+    "12300": 3504.0,
+    "12360": 3504.0,
+    "12420": 3504.0,
+    "12480": 3504.0,
+    "12540": 3504.0,
+    "12600": 3504.0,
+    "12660": 3504.0,
+    "12720": 3504.0,
+    "12780": 3504.0,
+    "12840": 3504.0,
+    "12900": 3504.0,
+    "12960": 3504.0,
+    "13020": 3504.0,
+    "13080": 3504.0,
+    "13140": 3504.0,
+    "13200": 3504.0,
+    "13260": 3504.0,
+    "13320": 3504.0,
+    "13380": 3504.0,
+    "13440": 3504.0,
+    "13500": 3504.0,
+    "13560": 3504.0,
+    "13620": 3504.0,
+    "13680": 3504.0,
+    "13740": 3504.0,
+    "13800": 3504.0,
+    "13860": 3504.0,
+    "13920": 3504.0,
+    "13980": 3504.0,
+    "14040": 3504.0,
+    "14100": 3504.0,
+    "14160": 3504.0,
+    "14220": 3504.0,
+    "14280": 3504.0,
+    "14340": 3504.0,
+    "14400": 3504.0,
+    "14460": 3504.0,
+    "14520": 3504.0,
+    "14580": 3504.0,
+    "14640": 3504.0,
+    "14700": 3504.0,
+    "14760": 3504.0,
+    "14820": 3504.0,
+    "14880": 3504.0,
+    "14940": 3504.0,
+    "15000": 3504.0,
+    "15060": 3504.0,
+    "15120": 3504.0,
+    "15180": 3504.0,
+    "15240": 3504.0,
+    "15300": 3504.0,
+    "15360": 3504.0,
+    "15420": 3504.0,
+    "15480": 3504.0,
+    "15540": 3504.0,
+    "15600": 3504.0,
+    "15660": 3504.0,
+    "15720": 3504.0,
+    "15780": 3504.0,
+    "15840": 3504.0,
+    "15900": 3504.0,
+    "15960": 3504.0,
+    "16020": 3504.0,
+    "16080": 3504.0,
+    "16140": 3504.0,
+    "16200": 3504.0,
+    "16260": 3504.0,
+    "16320": 3504.0,
+    "16380": 3504.0,
+    "16440": 3504.0,
+    "16500": 3504.0,
+    "16560": 3504.0,
+    "16620": 3504.0,
+    "16680": 3504.0,
+    "16740": 3504.0,
+    "16800": 3504.0,
+    "16860": 3504.0,
+    "16920": 3504.0,
+    "16980": 3504.0,
+    "17040": 3504.0,
+    "17100": 3504.0,
+    "17160": 3504.0,
+    "17220": 3504.0,
+    "17280": 3504.0,
+    "17340": 3504.0,
+    "17400": 3504.0,
+    "17460": 3504.0,
+    "17520": 3504.0,
+    "17580": 3504.0,
+    "17640": 3504.0,
+    "17700": 3504.0,
+    "17760": 3504.0,
+    "17820": 3504.0,
+    "17880": 3504.0,
+    "17940": 3504.0,
+    "18000": 3504.0,
+    "18060": 3504.0,
+    "18120": 3504.0,
+    "18180": 3504.0,
+    "18240": 3504.0,
+    "18300": 3504.0,
+    "18360": 3504.0,
+    "18420": 3504.0,
+    "18480": 3504.0,
+    "18540": 3504.0,
+    "18600": 3504.0,
+    "18660": 3504.0,
+    "18720": 3504.0,
+    "18780": 3504.0,
+    "18840": 3504.0,
+    "18900": 3504.0,
+    "18960": 3504.0,
+    "19020": 3504.0,
+    "19080": 3504.0,
+    "19140": 3504.0,
+    "19200": 3504.0,
+    "19260": 3504.0,
+    "19320": 3504.0,
+    "19380": 3504.0,
+    "19440": 3504.0,
+    "19500": 3504.0,
+    "19560": 3504.0,
+    "19620": 3504.0,
+    "19680": 3504.0,
+    "19740": 3504.0,
+    "19800": 3504.0,
+    "19860": 3504.0,
+    "19920": 3504.0,
+    "19980": 3504.0,
+    "20040": 3504.0,
+    "20100": 3504.0,
+    "20160": 3504.0,
+    "20220": 3504.0,
+    "20280": 3504.0,
+    "20340": 3504.0,
+    "20400": 3504.0,
+    "20460": 3504.0,
+    "20520": 3504.0,
+    "20580": 3504.0,
+    "20640": 3504.0,
+    "20700": 3504.0,
+    "20760": 3504.0,
+    "20820": 3504.0,
+    "20880": 3504.0,
+    "20940": 3504.0,
+    "21000": 3504.0,
+    "21060": 3504.0,
+    "21120": 3504.0,
+    "21180": 3504.0,
+    "21240": 3504.0,
+    "21300": 3504.0,
+    "21360": 3504.0,
+    "21420": 3504.0,
+    "21480": 3504.0,
+    "21540": 3504.0,
+    "21600": 3504.0,
+    "21660": 3504.0,
+    "21720": 3504.0,
+    "21780": 3504.0,
+    "21840": 3504.0,
+    "21900": 3504.0,
+    "21960": 3504.0,
+    "22020": 3504.0,
+    "22080": 3504.0,
+    "22140": 3504.0,
+    "22200": 3504.0
+  },
+  "chunked": {
+    "area_sim_ha": 3112.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 4.984615384615385,
+    "perimeter_sim_m": 72000.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 2.673469387755102,
+    "centroid_distance_m": 1907.2403225056748,
+    "iou": 0.13358302122347065,
+    "sorensen": 0.2356828193832599,
+    "orientation_error_deg": 72.23907495336407
+  },
+  "delta_vs_free": {
+    "area_reduction_ha": 1821.0,
+    "area_reduction_pct": 34.19718309859155,
+    "iou_change": 0.036013422408421994
+  },
+  "delta_vs_chunked": {
+    "area_difference_ha": 392.0,
+    "iou_change": -0.0019744722920870816
+  },
+  "limits": [
+    "The line is synthetic and construction is sampled every step_min.",
+    "Native containment is a prototype adapter around the P177 loop.",
+    "No spotting, wind grids or burning-condition gates are supported.",
+    "Drop moisture and decay are not coupled to growth.",
+    "This is a diagnostic contract proof, not a calibrated suppression result."
+  ]
+}
