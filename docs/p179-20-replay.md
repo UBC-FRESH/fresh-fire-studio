@@ -11,6 +11,7 @@ Static export: `suppression/index.html` and `suppression.html`.
 ## What it shows
 
 - 21 drop cycles across three independent aircraft, including scoop, climb, cruise, descent, drop, turn and return;
+- 126,000 L total tank capacity, mean cycle 4.25 min;
 - mission timeline and active-drop count;
 - three stable aircraft markers that follow phase-based lake-to-fire cycles;
 - a lake, fire line and 3D flight paths;

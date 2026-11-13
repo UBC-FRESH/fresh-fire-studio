@@ -489,6 +489,17 @@ These should stay separate from the suppression effect kernel. Shared inputs
 are fireline intensity, fire perimeter and the road/base network. See
 [`ws4-canadian-wildfire-notes.md`](ws4-canadian-wildfire-notes.md).
 
+## P180.0 aircraft cycle contract
+
+`suppression/cycle.py` defines phase-based sorties: scoop, climb, cruise out,
+descent, drop, turn, climb back, cruise back and descent back. `build_cycle`
+assigns targets across aircraft and reports water load and cycle-time summary.
+
+The current schematic mission uses 3 aircraft, 21 sorties, 126,000 L of tank
+capacity and a mean cycle of **4.25 min**. The page consumes the exact phase
+stream. The fire result remains 5,325 ha; the cycle geometry is now coherent,
+not proof of containment. See [`p180-cycle.md`](p180-cycle.md).
+
 ## Evidence base: Martell and collaborators
 
 David Martell's work gives us a mature operations-research spine, not a single
