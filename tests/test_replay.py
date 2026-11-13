@@ -15,6 +15,8 @@ def test_replay_page_and_data_are_consistent() -> None:
     assert "assistantScript" in page
     assert "methods-panel" in page
     assert "Persistence · perfect 15 min" in page
+    assert "#stats,#results,#phase{display:none}" in page
+    assert "@media(max-height:500px)" in page
     assert "Persistence envelope" in page
     assert "Wheatley 2024" in page
     assert (ROOT / "portal/static/p179-case-study.pdf").exists()
