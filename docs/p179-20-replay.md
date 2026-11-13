@@ -13,10 +13,18 @@ Static export: `suppression/index.html` and `suppression.html`.
 - 21 CL-415-style drop markers from the fixed 2003_526 drop-line scenario;
 - mission timeline and active-drop count;
 - a simple aircraft marker that moves toward the latest active drop;
+- an evidence-results panel;
+- a **Realistic / Control** mode switch;
 - an optional **synthetic 20-cell control barrier**;
 - a 1 km grid and north-up compass;
 - a permanent banner: **diagnostic mission geometry, not an operational
   prediction**.
+
+The results panel reports:
+
+- realistic 21-drop mission: 5,325 ha, 0% containment, placement-limited;
+- synthetic control barrier: 3,574.7 ha, 3,570–3,575 ha, ROS correlation
+  −0.78, effect model responds but is not operational.
 
 Data: `portal/static/suppression-mission.json`.
 

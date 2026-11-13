@@ -11,6 +11,7 @@
 .hud{position:fixed;z-index:3;background:var(--panel);border:1px solid var(--line);border-radius:14px;backdrop-filter:blur(14px);box-shadow:0 18px 48px rgba(0,0,0,.35)}
 #title{top:16px;left:16px;max-width:420px;padding:13px 15px}#title h1{margin:0 0 5px;font-size:17px;letter-spacing:-.02em}#title p{margin:0;color:var(--muted);font-size:12px;line-height:1.45}#title .badge{display:inline-block;margin-bottom:7px;padding:3px 7px;border:1px solid rgba(255,179,71,.45);border-radius:999px;color:var(--warm);font:10px ui-monospace,monospace;letter-spacing:.12em}
 #stats{top:16px;right:16px;min-width:210px;padding:11px 13px}#stats div{display:flex;justify-content:space-between;gap:18px;padding:3px 0;color:var(--muted);font-size:12px}#stats b{color:var(--ink);font-weight:600}
+#results{top:148px;left:16px;width:390px;padding:11px 13px}#results .eyebrow{color:var(--warm);font:10px ui-monospace,monospace;letter-spacing:.12em;margin-bottom:7px}#results .result{padding:7px 0;border-top:1px solid var(--line)}#results .result:first-of-type{border-top:0}#results .result-top{display:flex;justify-content:space-between;gap:12px;font-size:12px}#results .result-top b{color:var(--ink)}#results small{display:block;color:var(--muted);font-size:10px;line-height:1.4;margin-top:2px}#results .selected{color:var(--cyan)}.mode.active{background:var(--cyan);border-color:var(--cyan);color:#07100f;font-weight:800}
 #bar{left:16px;right:16px;bottom:16px;padding:10px 13px}#bar .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}#bar .grow{flex:1;min-width:180px}
 button{background:#12201f;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 11px;font:inherit;cursor:pointer}button:hover{border-color:rgba(255,179,71,.7)}button.primary{background:var(--hot);border-color:var(--hot);color:#1a0b04;font-weight:800}
 input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospace;min-width:90px;text-align:right}
@@ -18,7 +19,7 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospac
 #status{color:var(--muted);font-size:11px;margin-top:5px}#compass{right:16px;bottom:120px;padding:7px 10px;display:flex;align-items:center;gap:7px;color:var(--warm);font:11px ui-monospace,monospace}
 #note{position:fixed;left:50%;transform:translateX(-50%);top:16px;z-index:3;max-width:390px;padding:8px 12px;background:rgba(9,12,13,.86);border:1px solid rgba(255,179,71,.35);border-radius:10px;color:var(--warm);font:11px ui-monospace,monospace;text-align:center}
 #loading{position:fixed;inset:0;z-index:8;display:grid;place-items:center;background:#07100f;color:#a99e90;font:12px ui-monospace,monospace;letter-spacing:.08em;transition:opacity .45s ease}#loading.hidden{opacity:0;pointer-events:none}
-@media(max-width:700px){#title{max-width:255px}#stats{display:none}#note{display:none}}
+@media(max-width:700px){#title{max-width:255px}#stats,#results{display:none}#note{display:none}}
 </style>
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
 </head>
@@ -27,10 +28,11 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospac
 <div id="loading">LOADING MISSION REPLAY…</div>
 <div id="note">DIAGNOSTIC MISSION GEOMETRY · NOT AN OPERATIONAL PREDICTION</div>
 <div id="title" class="hud"><h1>Suppression mission replay</h1><span class="badge">DIAGNOSTIC · NO FIRE EFFECT</span><p>21 CL-415-style drops on a 1,200 m line near the 600-minute front. This page visualizes the mission geometry and timing only. It does not show validated fire containment.</p></div>
+<div id="results" class="hud"><div class="eyebrow">EVIDENCE ENSEMBLE · 32 SAMPLES</div><div class="result" id="result-realistic"><div class="result-top"><span>Realistic 21-drop line</span><b>5,325 ha</b></div><small>0% containment · placement-limited · all samples equal free burn</small></div><div class="result" id="result-control"><div class="result-top"><span>Synthetic control barrier</span><b>3,574.7 ha</b></div><small>3,570–3,575 ha · ROS correlation −0.78 · effect model responds, not operational</small></div></div>
 <div id="stats" class="hud"><div><span>mission drops</span><b id="s-total">—</b></div><div><span>active drops</span><b id="s-active">0</b></div><div><span>aircraft</span><b id="s-aircraft">1</b></div><div><span>fps</span><b id="s-fps">—</b></div></div>
 <div id="compass" class="hud">↑ <span>N</span></div>
 <div id="bar" class="hud">
-  <div class="row"><button id="play" class="primary">Play</button><button id="reset">Reset</button><button id="control">Control barrier</button><input id="slider" class="grow" type="range" min="0" max="900" step="1" value="0"><span id="clock">0 min</span></div>
+  <div class="row"><button id="play" class="primary">Play</button><button id="reset">Reset</button><button id="mode-realistic" class="mode active">Realistic</button><button id="mode-control" class="mode">Control</button><input id="slider" class="grow" type="range" min="0" max="900" step="1" value="0"><span id="clock">0 min</span></div>
   <div class="legend"><span><i style="background:#7ce0c6"></i>drop / water</span><span><i style="background:#70b7ff"></i>control barrier</span><span><i style="background:#ffb347"></i>aircraft</span><span><i style="background:#52635d"></i>1 km grid</span></div>
   <div id="status">Mission geometry only · drag to orbit · scroll to zoom · space to play</div>
 </div>
@@ -197,13 +199,26 @@ play.addEventListener("click", () => {
   play.textContent = state.playing ? "Pause" : "Play";
 });
 document.getElementById("reset").addEventListener("click", () => { state.playing = false; play.textContent = "Play"; setTime(0); });
-document.getElementById("control").addEventListener("click", () => {
-  const show = !barrier.visible;
-  barrier.visible = show; barrierEdge.visible = show;
-  status.textContent = show
-    ? "Synthetic control barrier visible · 20-cell permanent water band · not operational."
-    : "Control barrier hidden · mission geometry only.";
-});
+let mode = "realistic";
+const modeButtons = {
+  realistic: document.getElementById("mode-realistic"),
+  control: document.getElementById("mode-control"),
+};
+function setMode(next) {
+  mode = next;
+  const control = mode === "control";
+  barrier.visible = control;
+  barrierEdge.visible = control;
+  dropGroup.visible = !control;
+  for (const [key, button] of Object.entries(modeButtons)) button.classList.toggle("active", key === mode);
+  document.getElementById("result-realistic").classList.toggle("selected", mode === "realistic");
+  document.getElementById("result-control").classList.toggle("selected", mode === "control");
+  status.textContent = control
+    ? "Synthetic control · permanent 20-cell water band · effect model responds, not operational."
+    : "Realistic mission · 21 drops · 0% containment in the 32-member evidence ensemble.";
+}
+modeButtons.realistic.addEventListener("click", () => setMode("realistic"));
+modeButtons.control.addEventListener("click", () => setMode("control"));
 addEventListener("keydown", e => { if (e.code === "Space") { e.preventDefault(); play.click(); } });
 function resize() {
   camera.aspect = innerWidth / innerHeight;
@@ -215,6 +230,7 @@ resize();
 
 const auto = new URLSearchParams(location.search).has("autoplay");
 setTime(auto ? DATA.timeline.drop_time - 5 : 0);
+setMode("realistic");
 if (auto) { state.playing = true; play.textContent = "Pause"; }
 let frames = 0, t0 = performance.now();
 function frame(now) {

@@ -194,5 +194,22 @@
     "width": 2000.0,
     "label": "Synthetic evidence control barrier"
   },
-  "note": "Mission geometry only. Diagnostic replay, not an operational suppression prediction."
+  "note": "Mission geometry only. Diagnostic replay, not an operational suppression prediction.",
+  "results": {
+    "realistic": {
+      "label": "Realistic 21-drop line",
+      "area_ha": 5325.0,
+      "containment_probability": 0.0,
+      "note": "Placement-limited. All 32 evidence members end at the free-burn area."
+    },
+    "control": {
+      "label": "Synthetic control barrier",
+      "area_ha": 3574.7,
+      "p05_area_ha": 3573.1,
+      "p95_area_ha": 3575.0,
+      "containment_probability": 1.0,
+      "ros_correlation": -0.777,
+      "note": "Permanent 20-cell wet band. Effect model responds; not operational."
+    }
+  }
 }
