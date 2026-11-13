@@ -37,6 +37,11 @@ def main() -> None:
         default=ROOT / "suppression/proofs/2003-526-native.json",
     )
     parser.add_argument("--step-min", type=float, default=60.0)
+    parser.add_argument(
+        "--dispatch",
+        action="store_true",
+        help="derive line construction times from the dispatch prototype",
+    )
     args = parser.parse_args()
 
     sys.path.insert(0, str(ROOT))
@@ -51,6 +56,7 @@ def main() -> None:
     from ws4.fire.growth import GrowthConfig, SiteGrid, slope_aspect_from_elevation
     from ws4.fire.observed import load_cfsds_reanalysis_case
 
+    from suppression.dispatch import apply_line_timings, dispatch_scenario
     from suppression.models import Scenario
     from suppression.native_growth import (
         build_containment_schedule,
@@ -61,6 +67,10 @@ def main() -> None:
     fire = load_cfsds_reanalysis_case(fixture)
     metadata = json.loads((fixture / "metadata.json").read_text(encoding="utf-8"))
     scenario = Scenario.model_validate_json(args.scenario.read_text(encoding="utf-8"))
+    dispatch = None
+    if args.dispatch:
+        dispatch = dispatch_scenario(scenario)
+        scenario = apply_line_timings(scenario, dispatch)
     ffmc = float(metadata["ffmc"])
     bui = float(metadata["bui"])
     duration = float(metadata["duration_min"])
@@ -156,7 +166,9 @@ def main() -> None:
             "kernel": "single WS4 minimum-travel-time run",
             "mask": "cell containment checked at expansion time",
             "drops": "not coupled",
+            "line_timing": "dispatch-derived" if dispatch is not None else "scenario",
         },
+        "dispatch": dispatch.to_dict() if dispatch is not None else None,
         "grid": {
             "crs": fire.grid.crs,
             "xll": fire.grid.xll,

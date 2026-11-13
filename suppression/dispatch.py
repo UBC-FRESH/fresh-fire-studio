@@ -10,7 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from math import hypot
 
-from .models import Base, Resource, Scenario, Task
+from .models import Base, Line, Resource, Scenario, Task
 
 
 class DispatchError(RuntimeError):
@@ -91,6 +91,38 @@ def _task_target(task: Task, line_points: list[tuple[float, float]] | None) -> t
     if task.target:
         return task.target[0]
     return None
+
+
+def apply_line_timings(scenario: Scenario, result: DispatchResult) -> Scenario:
+    """Return a scenario whose line windows use derived dispatch timings.
+
+    Task windows are left as requested. This is deliberate: a dispatch-derived
+    line can finish after the requested task window, and that lateness is part
+    of the diagnostic.
+    """
+    by_line = {assignment.line_id: assignment for assignment in result.assignments if assignment.line_id}
+    lines: list[Line] = []
+    for line in scenario.lines:
+        assignment = by_line.get(line.id)
+        if assignment is None:
+            lines.append(line)
+            continue
+        if (
+            line.breached_at_min is not None
+            and line.breached_at_min < assignment.actual_end_min - 1e-6
+        ):
+            raise DispatchError(
+                f"line {line.id} would breach before dispatch-derived construction ends"
+            )
+        lines.append(
+            line.model_copy(
+                update={
+                    "constructed_start_min": assignment.actual_start_min,
+                    "constructed_end_min": assignment.actual_end_min,
+                }
+            )
+        )
+    return scenario.model_copy(update={"lines": lines})
 
 
 def dispatch_scenario(scenario: Scenario) -> DispatchResult:
@@ -180,4 +212,10 @@ def dispatch_scenario(scenario: Scenario) -> DispatchResult:
     )
 
 
-__all__ = ["Assignment", "DispatchError", "DispatchResult", "dispatch_scenario"]
+__all__ = [
+    "Assignment",
+    "DispatchError",
+    "DispatchResult",
+    "apply_line_timings",
+    "dispatch_scenario",
+]

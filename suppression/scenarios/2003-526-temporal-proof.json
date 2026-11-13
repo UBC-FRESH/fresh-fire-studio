@@ -15,7 +15,12 @@
     "priority": "resource"
   },
   "bases": [
-    {"id": "proof-base", "x": 487700, "y": 5722700, "kind": "ground"}
+    {
+      "id": "proof-base",
+      "x": 487700,
+      "y": 5722700,
+      "kind": "ground"
+    }
   ],
   "water_sources": [],
   "resources": [
@@ -27,7 +32,8 @@
       "crew_size": 1,
       "line_rate_m_h": 350,
       "available_start_min": 0,
-      "available_end_min": 22200
+      "available_end_min": 22200,
+      "speed_kmh": 25
     }
   ],
   "tasks": [
@@ -38,14 +44,32 @@
       "start_min": 0,
       "end_min": 1440,
       "line_id": "proof-line",
-      "target": [[493200, 5722700], [493200, 5730300]]
+      "target": [
+        [
+          493200,
+          5722700
+        ],
+        [
+          493200,
+          5730300
+        ]
+      ]
     }
   ],
   "lines": [
     {
       "id": "proof-line",
       "task_id": "proof-line-task",
-      "points": [[493200, 5722700], [493200, 5730300]],
+      "points": [
+        [
+          493200,
+          5722700
+        ],
+        [
+          493200,
+          5730300
+        ]
+      ],
       "width_m": 100,
       "constructed_start_min": 0,
       "constructed_end_min": 1440,

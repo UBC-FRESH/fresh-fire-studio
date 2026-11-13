@@ -32,7 +32,8 @@
       "crew_size": 1,
       "line_rate_m_h": 350,
       "available_start_min": 0,
-      "available_end_min": 22200
+      "available_end_min": 22200,
+      "speed_kmh": 25
     }
   ],
   "tasks": [

@@ -1,0 +1,96 @@
+{
+  "proof": "P179.3 native time-dependent containment",
+  "case_id": "2003_526",
+  "scenario_id": "2003-526-breach-proof",
+  "method": {
+    "sampling_min": 60.0,
+    "kernel": "single WS4 minimum-travel-time run",
+    "mask": "cell containment checked at expansion time",
+    "drops": "not coupled",
+    "line_timing": "dispatch-derived"
+  },
+  "dispatch": {
+    "assignments": [
+      {
+        "task_id": "proof-line-task",
+        "resource_id": "proof-dozer",
+        "requested_start_min": 0.0,
+        "actual_start_min": 13.2,
+        "actual_end_min": 1316.057142857143,
+        "travel_min": 13.2,
+        "service_min": 1302.857142857143,
+        "delay_min": 13.2,
+        "late": true,
+        "line_id": "proof-line",
+        "drop_id": null,
+        "line_length_m": 7600.0
+      }
+    ],
+    "utilization": {
+      "proof-dozer": 0.05868725868725869
+    },
+    "warnings": [
+      "task proof-line-task ends at 1316.1 min, after requested 60.0"
+    ]
+  },
+  "grid": {
+    "crs": "EPSG:26911",
+    "xll": 487700.0,
+    "yll": 5722700.0,
+    "ncols": 90,
+    "nrows": 76,
+    "cell_size_m": 100.0
+  },
+  "free_burn": {
+    "area_sim_ha": 5325.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 9.240384615384615,
+    "perimeter_sim_m": 116800.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 4.959183673469388,
+    "centroid_distance_m": 174.69119277442272,
+    "iou": 0.09559512652296158,
+    "sorensen": 0.174508126603935,
+    "orientation_error_deg": 21.642970351518244
+  },
+  "native": {
+    "area_sim_ha": 5325.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 9.240384615384615,
+    "perimeter_sim_m": 116800.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 4.959183673469388,
+    "centroid_distance_m": 174.69119277442272,
+    "iou": 0.09559512652296158,
+    "sorensen": 0.174508126603935,
+    "orientation_error_deg": 21.642970351518244
+  },
+  "chunked": {
+    "area_sim_ha": 5323.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 9.236538461538462,
+    "perimeter_sim_m": 116400.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 4.938775510204081,
+    "centroid_distance_m": 175.62641212078924,
+    "iou": 0.0956309769360585,
+    "sorensen": 0.17456785897655314,
+    "orientation_error_deg": 21.673776249240973
+  },
+  "delta_vs_free": {
+    "area_reduction_ha": 0.0,
+    "area_reduction_pct": 0.0,
+    "iou_change": 0.0
+  },
+  "delta_vs_chunked": {
+    "area_difference_ha": 2.0,
+    "iou_change": -3.585041309692172e-05
+  },
+  "limits": [
+    "The line is synthetic and construction is sampled every step_min.",
+    "Native containment is a prototype adapter around the P177 loop.",
+    "No spotting, wind grids or burning-condition gates are supported.",
+    "Drop moisture and decay are not coupled to growth.",
+    "This is a diagnostic contract proof, not a calibrated suppression result."
+  ]
+}

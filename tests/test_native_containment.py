@@ -51,6 +51,15 @@ def test_schedule_is_burnable_after_containment_ends() -> None:
     assert schedule.is_burnable(base, int(row), int(col), 7200)
 
 
+def test_native_dispatch_artifact_uses_dispatch_timing() -> None:
+    payload = json.loads(
+        (ROOT / "suppression/proofs/2003-526-native-dispatch.json").read_text()
+    )
+    assert payload["method"]["line_timing"] == "dispatch-derived"
+    assert payload["dispatch"] is not None
+    assert payload["native"]["area_sim_ha"] < payload["free_burn"]["area_sim_ha"]
+
+
 def test_native_artifacts_record_timing_effect() -> None:
     fast = json.loads((ROOT / "suppression/proofs/2003-526-native-fast.json").read_text())
     slow = json.loads((ROOT / "suppression/proofs/2003-526-native.json").read_text())

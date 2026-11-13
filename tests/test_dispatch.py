@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from suppression.dispatch import dispatch_scenario
+from suppression.dispatch import apply_line_timings, dispatch_scenario
 from suppression.models import (
     Base,
     Line,
@@ -82,6 +82,15 @@ def test_travel_and_line_service_time() -> None:
 def test_resource_availability_warning() -> None:
     result = dispatch_scenario(make_scenario(available_end=70.0, task_end=60.0))
     assert any("availability" in warning for warning in result.warnings)
+
+
+def test_apply_line_timings_uses_dispatch_window() -> None:
+    scenario = make_scenario()
+    result = dispatch_scenario(scenario)
+    derived = apply_line_timings(scenario, result)
+    line = derived.lines[0]
+    assert line.constructed_start_min == 16.0
+    assert line.constructed_end_min == 76.0
 
 
 def test_utilization_is_recorded() -> None:
