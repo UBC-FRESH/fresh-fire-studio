@@ -91,5 +91,6 @@ python scripts/water_requirement.py \
 
 Use `required_depths` as the target depth for a drop contour, then compare the
 target with McFayden's effective contours, stacking rules and breach criteria.
-Only after that should the model reduce local fuel availability in the native
-growth run.
+The contour layer is implemented in
+[`p179-5b-drop-contours.md`](p179-5b-drop-contours.md). Only after that should
+the model reduce local fuel availability in the native growth run.

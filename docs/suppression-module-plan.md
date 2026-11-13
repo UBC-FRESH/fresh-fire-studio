@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype and P179.5a water requirements implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements and P179.5b drop contours implemented. Not operational.
 
 Five local PDFs were mined on 2026-11-13; see
 [`martell-pdf-notes.md`](martell-pdf-notes.md). The 2015 control-time paper is
@@ -97,6 +97,9 @@ Implemented in this repository:
 - `scripts/water_requirement.py` — water-depth CLI.
 - `tests/test_water.py` — Table 3 and scaling tests.
 - `docs/p179-5-water.md` — equations, report check and limits.
+- `suppression/drop.py` — drop contours, stacking, breach and CL-415 catalogue.
+- `tests/test_drop.py` — contour, geometry, breach and catalogue tests.
+- `docs/p179-5b-drop-contours.md` — drop-pattern method, catalogue and limits.
 
 Run:
 
@@ -228,6 +231,19 @@ depths are about **0.56–0.57 mm**, or **0.56–0.57 L/m²** when spread unifor
 These are theoretical requirements, not measured drop effectiveness. Canopy
 interception, stacking and breach remain for the next layer. See
 [`p179-5-water.md`](p179-5-water.md).
+
+## P179.5b drop contours
+
+`suppression/drop.py` adds nested `DropContour` layers, `DropPattern`, effective
+contour selection, stacking counts, elliptical geometry and the half-drop-width
+breach test.
+
+The small catalogue covers the CL-415, C-2, full-canopy cases in McFayden et
+al. Tables 8-2/8-3: 130 × 50 m at 0.25 mm, 90 × 40 m at 0.5 mm, 70 × 30 m at
+0.75 mm with two drops for 100 m, and breach at 3,200 kW/m and above.
+
+This remains operational guidance encoded as geometry, not a calibrated drop
+model. See [`p179-5b-drop-contours.md`](p179-5b-drop-contours.md).
 
 ## Adjacent Canadian planning layers
 
