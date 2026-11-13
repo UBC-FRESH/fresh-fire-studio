@@ -31,6 +31,8 @@ def test_replay_page_and_data_are_consistent() -> None:
     assert data["logistics"]["water_balance"]["additional_sorties"] > 0
     assert data["delivery_sweep"]["two_pass_three_aircraft"]["deficit_l"] == 0.0
     assert data["delivery_sweep"]["two_pass_three_aircraft"]["native_area_ha"] == 5325.0
+    for name in ("2003-526-native-cycle-3pass", "2003-526-native-cycle-4pass", "2003-526-native-cycle-lead60"):
+        assert (ROOT / "suppression/proofs" / f"{name}.json").exists()
     assert data["results"]["realistic"]["area_ha"] == 5325.0
     assert data["results"]["realistic"]["containment_probability"] == 0.0
     assert data["results"]["control"]["area_ha"] == 3574.7

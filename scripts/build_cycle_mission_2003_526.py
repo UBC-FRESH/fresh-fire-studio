@@ -17,6 +17,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ws4-root", type=Path, required=True)
     parser.add_argument("--drop-time-min", type=float, default=600.0)
+    parser.add_argument("--target-time-min", type=float, default=None, help="front snapshot used to choose targets; defaults to drop time")
     parser.add_argument("--aircraft", type=int, default=3)
     parser.add_argument("--passes", type=int, default=1)
     parser.add_argument(
@@ -54,7 +55,8 @@ def main() -> None:
         initial_mask=observed_mask(fire, 0),
         neighbor_radius=2,
     )
-    burned = free.growth.ignition_time_min <= args.drop_time_min
+    target_time = args.drop_time_min if args.target_time_min is None else args.target_time_min
+    burned = free.growth.ignition_time_min <= target_time
     fuel_grid = fire.fbp_fuel_grid()
     burnable = np.array([[value is not None for value in row] for row in fuel_grid], dtype=bool)
     front = front_target_cells(burned, burnable)

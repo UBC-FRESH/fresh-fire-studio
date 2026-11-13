@@ -20,8 +20,10 @@ Three aircraft, current lake, 21 targets per pass:
 | 3 | 63 | 378,000 L | 1.42 mm | 100% | 0 | 91.5 min |
 
 The two-pass case closes the **nominal mass deficit**. It does not establish
-fire containment: the native growth run still ends at **5,325 ha**. The mass
-constraint is satisfied, but the placement, grid and effect limitations remain.
+fire containment: the native growth run still ends at **5,325 ha**. Three and
+four passes also remain at **5,325 ha**. The mass constraint is satisfied, but
+the placement, grid and effect limitations remain. See
+[`p180-saturation.md`](p180-saturation.md).
 
 ## Aircraft count
 
