@@ -1,0 +1,216 @@
+{
+  "scenario_id": "2003-526-arrival-scheduled",
+  "required_depth_mm": 0.75,
+  "targets": [
+    {
+      "x": 496050.0,
+      "y": 5726550.0,
+      "row": 37,
+      "col": 83,
+      "arrival_min": 1800.33,
+      "combined_at_arrival_mm": 1.0455,
+      "wet_at_arrival": true,
+      "max_combined_mm": 0.36,
+      "drops": [
+        {
+          "drop_id": "arrival-drop-1",
+          "start_min": 1798.33,
+          "end_min": 1798.414,
+          "duration_min": 60.0,
+          "fraction": 0.392,
+          "depth_at_start_mm": 0.36,
+          "depth_at_arrival_mm": 0.3485,
+          "depth_at_end_mm": 0.0
+        },
+        {
+          "drop_id": "arrival-drop-2",
+          "start_min": 1798.33,
+          "end_min": 1798.414,
+          "duration_min": 60.0,
+          "fraction": 0.392,
+          "depth_at_start_mm": 0.36,
+          "depth_at_arrival_mm": 0.3485,
+          "depth_at_end_mm": 0.0
+        },
+        {
+          "drop_id": "arrival-drop-3",
+          "start_min": 1798.33,
+          "end_min": 1798.414,
+          "duration_min": 60.0,
+          "fraction": 0.392,
+          "depth_at_start_mm": 0.36,
+          "depth_at_arrival_mm": 0.3485,
+          "depth_at_end_mm": 0.0
+        }
+      ]
+    },
+    {
+      "x": 495950.0,
+      "y": 5726250.0,
+      "row": 40,
+      "col": 82,
+      "arrival_min": 1801.723,
+      "combined_at_arrival_mm": 1.0455,
+      "wet_at_arrival": true,
+      "max_combined_mm": 0.36,
+      "drops": [
+        {
+          "drop_id": "arrival-drop-4",
+          "start_min": 1799.723,
+          "end_min": 1799.807,
+          "duration_min": 60.0,
+          "fraction": 0.392,
+          "depth_at_start_mm": 0.36,
+          "depth_at_arrival_mm": 0.3485,
+          "depth_at_end_mm": 0.0
+        },
+        {
+          "drop_id": "arrival-drop-5",
+          "start_min": 1799.723,
+          "end_min": 1799.807,
+          "duration_min": 60.0,
+          "fraction": 0.392,
+          "depth_at_start_mm": 0.36,
+          "depth_at_arrival_mm": 0.3485,
+          "depth_at_end_mm": 0.0
+        },
+        {
+          "drop_id": "arrival-drop-6",
+          "start_min": 1799.723,
+          "end_min": 1799.807,
+          "duration_min": 60.0,
+          "fraction": 0.392,
+          "depth_at_start_mm": 0.36,
+          "depth_at_arrival_mm": 0.3485,
+          "depth_at_end_mm": 0.0
+        }
+      ]
+    },
+    {
+      "x": 496050.0,
+      "y": 5726250.0,
+      "row": 40,
+      "col": 83,
+      "arrival_min": 1805.837,
+      "combined_at_arrival_mm": 1.0455,
+      "wet_at_arrival": true,
+      "max_combined_mm": 0.36,
+      "drops": [
+        {
+          "drop_id": "arrival-drop-7",
+          "start_min": 1803.837,
+          "end_min": 1803.92,
+          "duration_min": 60.0,
+          "fraction": 0.392,
+          "depth_at_start_mm": 0.36,
+          "depth_at_arrival_mm": 0.3485,
+          "depth_at_end_mm": 0.0
+        },
+        {
+          "drop_id": "arrival-drop-8",
+          "start_min": 1803.837,
+          "end_min": 1803.92,
+          "duration_min": 60.0,
+          "fraction": 0.392,
+          "depth_at_start_mm": 0.36,
+          "depth_at_arrival_mm": 0.3485,
+          "depth_at_end_mm": 0.0
+        },
+        {
+          "drop_id": "arrival-drop-9",
+          "start_min": 1803.837,
+          "end_min": 1803.92,
+          "duration_min": 60.0,
+          "fraction": 0.392,
+          "depth_at_start_mm": 0.36,
+          "depth_at_arrival_mm": 0.3485,
+          "depth_at_end_mm": 0.0
+        }
+      ]
+    },
+    {
+      "x": 496050.0,
+      "y": 5726650.0,
+      "row": 36,
+      "col": 83,
+      "arrival_min": 1808.346,
+      "combined_at_arrival_mm": 1.0455,
+      "wet_at_arrival": true,
+      "max_combined_mm": 0.36,
+      "drops": [
+        {
+          "drop_id": "arrival-drop-10",
+          "start_min": 1806.346,
+          "end_min": 1806.43,
+          "duration_min": 60.0,
+          "fraction": 0.392,
+          "depth_at_start_mm": 0.36,
+          "depth_at_arrival_mm": 0.3485,
+          "depth_at_end_mm": 0.0
+        },
+        {
+          "drop_id": "arrival-drop-11",
+          "start_min": 1806.346,
+          "end_min": 1806.43,
+          "duration_min": 60.0,
+          "fraction": 0.392,
+          "depth_at_start_mm": 0.36,
+          "depth_at_arrival_mm": 0.3485,
+          "depth_at_end_mm": 0.0
+        },
+        {
+          "drop_id": "arrival-drop-12",
+          "start_min": 1806.346,
+          "end_min": 1806.43,
+          "duration_min": 60.0,
+          "fraction": 0.392,
+          "depth_at_start_mm": 0.36,
+          "depth_at_arrival_mm": 0.3485,
+          "depth_at_end_mm": 0.0
+        }
+      ]
+    },
+    {
+      "x": 495950.0,
+      "y": 5726750.0,
+      "row": 35,
+      "col": 82,
+      "arrival_min": 1813.365,
+      "combined_at_arrival_mm": 1.0455,
+      "wet_at_arrival": true,
+      "max_combined_mm": 0.36,
+      "drops": [
+        {
+          "drop_id": "arrival-drop-13",
+          "start_min": 1811.365,
+          "end_min": 1811.448,
+          "duration_min": 60.0,
+          "fraction": 0.392,
+          "depth_at_start_mm": 0.36,
+          "depth_at_arrival_mm": 0.3485,
+          "depth_at_end_mm": 0.0
+        },
+        {
+          "drop_id": "arrival-drop-14",
+          "start_min": 1811.365,
+          "end_min": 1811.448,
+          "duration_min": 60.0,
+          "fraction": 0.392,
+          "depth_at_start_mm": 0.36,
+          "depth_at_arrival_mm": 0.3485,
+          "depth_at_end_mm": 0.0
+        },
+        {
+          "drop_id": "arrival-drop-15",
+          "start_min": 1811.365,
+          "end_min": 1811.448,
+          "duration_min": 60.0,
+          "fraction": 0.392,
+          "depth_at_start_mm": 0.36,
+          "depth_at_arrival_mm": 0.3485,
+          "depth_at_end_mm": 0.0
+        }
+      ]
+    }
+  ]
+}

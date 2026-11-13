@@ -1,0 +1,11 @@
+{
+  "scenario_id": "2003-526-arrival-scheduled",
+  "required_depth_mm": 0.75,
+  "wet_drops": 15,
+  "wet_cells": 5,
+  "wet_at_arrival": 5,
+  "burned_before_wet": 0,
+  "burned_after_wet": 0,
+  "unburned": 0,
+  "no_wet_window": 0
+}

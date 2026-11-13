@@ -22,6 +22,7 @@ def main() -> None:
     parser.add_argument("--hold-min", type=float, default=60.0)
     parser.add_argument("--replicates", type=int, default=1)
     parser.add_argument("--stack", type=int, default=1)
+    parser.add_argument("--pre-arrival-min", type=float, default=None)
     parser.add_argument(
         "--out",
         type=Path,
@@ -85,6 +86,7 @@ def main() -> None:
             performance=performance,
             hold_min=args.hold_min,
             stack=args.stack,
+            pre_arrival_min=args.pre_arrival_min,
             start_min=target_time - 120.0,
         )
     else:
@@ -94,6 +96,7 @@ def main() -> None:
             aircraft_ids=aircraft_ids,
             performance=performance,
             hold_min=args.hold_min,
+            pre_arrival_min=args.pre_arrival_min,
             start_min=target_time - 120.0,
         )
     resources = [

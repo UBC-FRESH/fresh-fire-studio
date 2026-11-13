@@ -12,31 +12,36 @@ drop windows around predicted arrival.
 - 60-minute hold
 - drops scheduled around `arrival - hold/2`
 
-## Result
+## Results
 
-- mean drop lateness: **14.62 min**
-- wet cells: **21**
-- wet at arrival: **0**
-- burned before wet: **0**
-- burned after wet: **0**
-- no qualifying wet window: **21**
-- native area: **5,325 ha**
+| Aircraft | Stack | Targets | Wet cells | Wet at arrival | Burned before wet | Native area |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 6 | 2 | 21 | 21 | **0** | 0 | 5,325 ha |
+| 12 | 3 | 21 | 21 | **4** | 17 | 5,325 ha |
+| 12 | 3 | 5 | 5 | **5** | 0 | 5,325 ha |
+| 30 | 3 | 54 | 54 | **10** | 44 | 5,325 ha |
 
-The scheduler produces two drops per target, but the per-cell depth at arrival
-still does not reach the required threshold. The next diagnostic must print the
-actual drop intervals and total depth for a sample target rather than assuming
-the two sorties overlap.
+The 5-target case is the first case where every treated target is **wet at
+arrival**, with combined cell depth about **1.045 mm**. The native area is still
+**5,325 ha** because only five target cells are treated; it is not a
+continuous barrier.
+
+The larger missions still lose most targets to lateness before water arrives.
 
 ## Artifacts
 
 - `suppression/scenarios/2003-526-arrival-stacked-6air.json`
-- `suppression/proofs/2003-526-wet-interaction-stacked-6air.json`
-- `suppression/proofs/2003-526-native-arrival-stacked-6air.json`
+- `suppression/scenarios/2003-526-arrival-stacked-3x-12air.json`
+- `suppression/scenarios/2003-526-arrival-stacked-5targets.json`
+- `suppression/scenarios/2003-526-arrival-stacked-fullfront.json`
+- corresponding wet-interaction, trace and native artifacts
 
 ## Limits
 
 - The scheduler assumes the first available aircraft; it does not optimize
   pairing.
-- Two drops are not guaranteed to fall within the same hold interval.
-- The cell-mean depth is still below the required depth in all targets.
+- Full-front treated cells are still lost to lateness when the target count
+  grows.
+- The five-target result proves wet-at-arrival is possible, but not that a
+  contiguous barrier is possible with the current scheduler.
 - The native model remains baseline.

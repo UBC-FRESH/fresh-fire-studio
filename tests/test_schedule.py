@@ -47,6 +47,22 @@ def test_stacked_artifact_exists() -> None:
     assert (root / "suppression/proofs/2003-526-wet-interaction-stacked-6air.json").exists()
 
 
+def test_stacked_pre_arrival_schedules_near_arrival() -> None:
+    targets = (TimedTarget(491250.0, 5726250.0, 1800.0),)
+    scheduled = schedule_stacked_targets(
+        targets,
+        lake=LAKE,
+        aircraft_ids=("a1", "a2", "a3"),
+        performance=CyclePerformance(),
+        hold_min=60.0,
+        stack=3,
+        pre_arrival_min=2.0,
+        start_min=1600.0,
+    )
+    assert len(scheduled) == 3
+    assert all(abs(item.actual_drop_min - 1798.0) < 10.0 for item in scheduled)
+
+
 def test_schedule_rejects_empty() -> None:
     import pytest
 

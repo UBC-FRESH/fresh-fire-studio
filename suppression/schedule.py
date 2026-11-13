@@ -46,6 +46,7 @@ def schedule_stacked_targets(
     performance: CyclePerformance,
     hold_min: float = 60.0,
     stack: int = 2,
+    pre_arrival_min: float | None = None,
     start_min: float = 0.0,
 ) -> tuple[ScheduledSortie, ...]:
     """Schedule overlapping drops from several aircraft on each target."""
@@ -56,7 +57,7 @@ def schedule_stacked_targets(
     ready = {aircraft_id: start_min for aircraft_id in aircraft_ids}
     scheduled: list[ScheduledSortie] = []
     for target in sorted(targets, key=lambda item: (item.arrival_min, item.y, item.x)):
-        desired = target.arrival_min - hold_min / 2.0
+        desired = target.arrival_min - (hold_min / 2.0 if pre_arrival_min is None else pre_arrival_min)
         for _ in range(stack):
             best = None
             for aircraft_id in aircraft_ids:
@@ -95,6 +96,7 @@ def schedule_arrival_targets(
     aircraft_ids: tuple[str, ...] | list[str],
     performance: CyclePerformance,
     hold_min: float = 60.0,
+    pre_arrival_min: float | None = None,
     start_min: float = 0.0,
 ) -> tuple[ScheduledSortie, ...]:
     """Schedule each target so the drop sits in the hold window around arrival."""
