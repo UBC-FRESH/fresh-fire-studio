@@ -15,6 +15,8 @@ SCENARIO = ROOT / "suppression/scenarios/2003-526-drop-proof.json"
 ARTIFACT = ROOT / "suppression/proofs/2003-526-native-drop.json"
 SUBCELL_ARTIFACT = ROOT / "suppression/proofs/2003-526-native-drop-line-subcell.json"
 FINE_ARTIFACT = ROOT / "suppression/proofs/2003-526-fine-grid.json"
+HEAD_ARTIFACT = ROOT / "suppression/proofs/2003-526-native-head-line.json"
+HEAD5_ARTIFACT = ROOT / "suppression/proofs/2003-526-native-head-line-5heli.json"
 GRID = dict(xll=487700.0, yll=5722700.0, nrows=76, ncols=90, cell_size_m=100.0)
 
 
@@ -73,6 +75,12 @@ def test_wet_artifact_records_coupling_and_resolution_limit() -> None:
     assert len(payload["wet_schedule"]["drops"]) == 3
     assert payload["wet_schedule"]["drops"][0]["covered_cells"] == 1
     assert payload["native"]["area_sim_ha"] == payload["free_burn"]["area_sim_ha"]
+
+
+def test_head_line_artifacts_show_finite_line_bypass() -> None:
+    for path in (HEAD_ARTIFACT, HEAD5_ARTIFACT):
+        payload = json.loads(path.read_text())
+        assert payload["native"]["area_sim_ha"] == payload["free_burn"]["area_sim_ha"]
 
 
 def test_fine_grid_artifact_is_a_resolution_experiment() -> None:

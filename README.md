@@ -29,6 +29,7 @@ A public 3D benchmark-fire portal from the UBC FRESH Lab.
 - P179.8 sub-cell drop raster: [`docs/p179-8-subcell.md`](docs/p179-8-subcell.md)
 - P179.9 wetness/ROS factor: [`docs/p179-9-wetness-ros.md`](docs/p179-9-wetness-ros.md)
 - P179.10 fine-grid experiment: [`docs/p179-10-fine-grid.md`](docs/p179-10-fine-grid.md)
+- P179.11 perimeter placement: [`docs/p179-11-perimeter-placement.md`](docs/p179-11-perimeter-placement.md)
 - Canadian wildfire studies notes: [`docs/ws4-canadian-wildfire-notes.md`](docs/ws4-canadian-wildfire-notes.md)
 - Current edge: <https://fresh-fire.01101.dev/>
 - Local portal: <http://127.0.0.1:8800/>

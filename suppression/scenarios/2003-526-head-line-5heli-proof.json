@@ -1,0 +1,3338 @@
+{
+  "scenario_id": "2003-526-head-line-5heli-proof",
+  "fire_slug": "cfsds-2003-526",
+  "label": "Diagnostic five-helicopter head line",
+  "timeline_start_min": 0,
+  "timeline_end_min": 22200,
+  "metadata": {
+    "status": "diagnostic",
+    "coordinate_system": "EPSG:26911",
+    "note": "Diagnostic five-helicopter head line; not a real operation."
+  },
+  "objective": {
+    "containment_area_ha": 2500,
+    "deadline_min": 1440,
+    "priority": "resource"
+  },
+  "bases": [
+    {
+      "id": "proof-base",
+      "x": 487700,
+      "y": 5722700,
+      "kind": "ground"
+    }
+  ],
+  "water_sources": [],
+  "resources": [
+    {
+      "id": "proof-heli-1",
+      "label": "Diagnostic helicopter 1",
+      "kind": "helicopter",
+      "home_base_id": "proof-base",
+      "speed_kmh": 180,
+      "capacity_l": 6000,
+      "available_start_min": 0,
+      "available_end_min": 22200
+    },
+    {
+      "id": "proof-heli-2",
+      "label": "Diagnostic helicopter 2",
+      "kind": "helicopter",
+      "home_base_id": "proof-base",
+      "speed_kmh": 180,
+      "capacity_l": 6000,
+      "available_start_min": 0,
+      "available_end_min": 22200
+    },
+    {
+      "id": "proof-heli-3",
+      "label": "Diagnostic helicopter 3",
+      "kind": "helicopter",
+      "home_base_id": "proof-base",
+      "speed_kmh": 180,
+      "capacity_l": 6000,
+      "available_start_min": 0,
+      "available_end_min": 22200
+    },
+    {
+      "id": "proof-heli-4",
+      "label": "Diagnostic helicopter 4",
+      "kind": "helicopter",
+      "home_base_id": "proof-base",
+      "speed_kmh": 180,
+      "capacity_l": 6000,
+      "available_start_min": 0,
+      "available_end_min": 22200
+    },
+    {
+      "id": "proof-heli-5",
+      "label": "Diagnostic helicopter 5",
+      "kind": "helicopter",
+      "home_base_id": "proof-base",
+      "speed_kmh": 180,
+      "capacity_l": 6000,
+      "available_start_min": 0,
+      "available_end_min": 22200
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task-h1-1",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 600.0,
+      "end_min": 601.0,
+      "drop_id": "drop-h1-1",
+      "target": [
+        [
+          492750.0,
+          5725750.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-2",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 605.0,
+      "end_min": 606.0,
+      "drop_id": "drop-h1-2",
+      "target": [
+        [
+          492750.0,
+          5725850.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-3",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 610.0,
+      "end_min": 611.0,
+      "drop_id": "drop-h1-3",
+      "target": [
+        [
+          492750.0,
+          5725950.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-4",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 615.0,
+      "end_min": 616.0,
+      "drop_id": "drop-h1-4",
+      "target": [
+        [
+          492750.0,
+          5726050.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-5",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 620.0,
+      "end_min": 621.0,
+      "drop_id": "drop-h1-5",
+      "target": [
+        [
+          492750.0,
+          5726150.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-6",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 625.0,
+      "end_min": 626.0,
+      "drop_id": "drop-h1-6",
+      "target": [
+        [
+          492750.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-7",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 630.0,
+      "end_min": 631.0,
+      "drop_id": "drop-h1-7",
+      "target": [
+        [
+          492750.0,
+          5726350.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-8",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 635.0,
+      "end_min": 636.0,
+      "drop_id": "drop-h1-8",
+      "target": [
+        [
+          492750.0,
+          5726450.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-9",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 640.0,
+      "end_min": 641.0,
+      "drop_id": "drop-h1-9",
+      "target": [
+        [
+          492750.0,
+          5726550.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-10",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 645.0,
+      "end_min": 646.0,
+      "drop_id": "drop-h1-10",
+      "target": [
+        [
+          492750.0,
+          5726650.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-11",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 650.0,
+      "end_min": 651.0,
+      "drop_id": "drop-h1-11",
+      "target": [
+        [
+          492750.0,
+          5726750.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-12",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 655.0,
+      "end_min": 656.0,
+      "drop_id": "drop-h1-12",
+      "target": [
+        [
+          492750.0,
+          5726850.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-13",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 660.0,
+      "end_min": 661.0,
+      "drop_id": "drop-h1-13",
+      "target": [
+        [
+          492750.0,
+          5726950.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-14",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 665.0,
+      "end_min": 666.0,
+      "drop_id": "drop-h1-14",
+      "target": [
+        [
+          492750.0,
+          5727050.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-15",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 670.0,
+      "end_min": 671.0,
+      "drop_id": "drop-h1-15",
+      "target": [
+        [
+          492750.0,
+          5727150.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-16",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 675.0,
+      "end_min": 676.0,
+      "drop_id": "drop-h1-16",
+      "target": [
+        [
+          492750.0,
+          5727250.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-17",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 680.0,
+      "end_min": 681.0,
+      "drop_id": "drop-h1-17",
+      "target": [
+        [
+          492750.0,
+          5727350.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-18",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 685.0,
+      "end_min": 686.0,
+      "drop_id": "drop-h1-18",
+      "target": [
+        [
+          492750.0,
+          5727450.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-19",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 690.0,
+      "end_min": 691.0,
+      "drop_id": "drop-h1-19",
+      "target": [
+        [
+          492750.0,
+          5727550.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-20",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 695.0,
+      "end_min": 696.0,
+      "drop_id": "drop-h1-20",
+      "target": [
+        [
+          492750.0,
+          5727650.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h1-21",
+      "resource_id": "proof-heli-1",
+      "kind": "drop",
+      "start_min": 700.0,
+      "end_min": 701.0,
+      "drop_id": "drop-h1-21",
+      "target": [
+        [
+          492750.0,
+          5727750.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-1",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 600.0,
+      "end_min": 601.0,
+      "drop_id": "drop-h2-1",
+      "target": [
+        [
+          492750.0,
+          5725750.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-2",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 605.0,
+      "end_min": 606.0,
+      "drop_id": "drop-h2-2",
+      "target": [
+        [
+          492750.0,
+          5725850.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-3",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 610.0,
+      "end_min": 611.0,
+      "drop_id": "drop-h2-3",
+      "target": [
+        [
+          492750.0,
+          5725950.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-4",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 615.0,
+      "end_min": 616.0,
+      "drop_id": "drop-h2-4",
+      "target": [
+        [
+          492750.0,
+          5726050.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-5",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 620.0,
+      "end_min": 621.0,
+      "drop_id": "drop-h2-5",
+      "target": [
+        [
+          492750.0,
+          5726150.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-6",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 625.0,
+      "end_min": 626.0,
+      "drop_id": "drop-h2-6",
+      "target": [
+        [
+          492750.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-7",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 630.0,
+      "end_min": 631.0,
+      "drop_id": "drop-h2-7",
+      "target": [
+        [
+          492750.0,
+          5726350.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-8",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 635.0,
+      "end_min": 636.0,
+      "drop_id": "drop-h2-8",
+      "target": [
+        [
+          492750.0,
+          5726450.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-9",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 640.0,
+      "end_min": 641.0,
+      "drop_id": "drop-h2-9",
+      "target": [
+        [
+          492750.0,
+          5726550.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-10",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 645.0,
+      "end_min": 646.0,
+      "drop_id": "drop-h2-10",
+      "target": [
+        [
+          492750.0,
+          5726650.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-11",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 650.0,
+      "end_min": 651.0,
+      "drop_id": "drop-h2-11",
+      "target": [
+        [
+          492750.0,
+          5726750.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-12",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 655.0,
+      "end_min": 656.0,
+      "drop_id": "drop-h2-12",
+      "target": [
+        [
+          492750.0,
+          5726850.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-13",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 660.0,
+      "end_min": 661.0,
+      "drop_id": "drop-h2-13",
+      "target": [
+        [
+          492750.0,
+          5726950.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-14",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 665.0,
+      "end_min": 666.0,
+      "drop_id": "drop-h2-14",
+      "target": [
+        [
+          492750.0,
+          5727050.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-15",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 670.0,
+      "end_min": 671.0,
+      "drop_id": "drop-h2-15",
+      "target": [
+        [
+          492750.0,
+          5727150.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-16",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 675.0,
+      "end_min": 676.0,
+      "drop_id": "drop-h2-16",
+      "target": [
+        [
+          492750.0,
+          5727250.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-17",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 680.0,
+      "end_min": 681.0,
+      "drop_id": "drop-h2-17",
+      "target": [
+        [
+          492750.0,
+          5727350.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-18",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 685.0,
+      "end_min": 686.0,
+      "drop_id": "drop-h2-18",
+      "target": [
+        [
+          492750.0,
+          5727450.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-19",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 690.0,
+      "end_min": 691.0,
+      "drop_id": "drop-h2-19",
+      "target": [
+        [
+          492750.0,
+          5727550.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-20",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 695.0,
+      "end_min": 696.0,
+      "drop_id": "drop-h2-20",
+      "target": [
+        [
+          492750.0,
+          5727650.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h2-21",
+      "resource_id": "proof-heli-2",
+      "kind": "drop",
+      "start_min": 700.0,
+      "end_min": 701.0,
+      "drop_id": "drop-h2-21",
+      "target": [
+        [
+          492750.0,
+          5727750.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-1",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 600.0,
+      "end_min": 601.0,
+      "drop_id": "drop-h3-1",
+      "target": [
+        [
+          492750.0,
+          5725750.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-2",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 605.0,
+      "end_min": 606.0,
+      "drop_id": "drop-h3-2",
+      "target": [
+        [
+          492750.0,
+          5725850.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-3",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 610.0,
+      "end_min": 611.0,
+      "drop_id": "drop-h3-3",
+      "target": [
+        [
+          492750.0,
+          5725950.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-4",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 615.0,
+      "end_min": 616.0,
+      "drop_id": "drop-h3-4",
+      "target": [
+        [
+          492750.0,
+          5726050.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-5",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 620.0,
+      "end_min": 621.0,
+      "drop_id": "drop-h3-5",
+      "target": [
+        [
+          492750.0,
+          5726150.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-6",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 625.0,
+      "end_min": 626.0,
+      "drop_id": "drop-h3-6",
+      "target": [
+        [
+          492750.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-7",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 630.0,
+      "end_min": 631.0,
+      "drop_id": "drop-h3-7",
+      "target": [
+        [
+          492750.0,
+          5726350.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-8",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 635.0,
+      "end_min": 636.0,
+      "drop_id": "drop-h3-8",
+      "target": [
+        [
+          492750.0,
+          5726450.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-9",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 640.0,
+      "end_min": 641.0,
+      "drop_id": "drop-h3-9",
+      "target": [
+        [
+          492750.0,
+          5726550.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-10",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 645.0,
+      "end_min": 646.0,
+      "drop_id": "drop-h3-10",
+      "target": [
+        [
+          492750.0,
+          5726650.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-11",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 650.0,
+      "end_min": 651.0,
+      "drop_id": "drop-h3-11",
+      "target": [
+        [
+          492750.0,
+          5726750.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-12",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 655.0,
+      "end_min": 656.0,
+      "drop_id": "drop-h3-12",
+      "target": [
+        [
+          492750.0,
+          5726850.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-13",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 660.0,
+      "end_min": 661.0,
+      "drop_id": "drop-h3-13",
+      "target": [
+        [
+          492750.0,
+          5726950.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-14",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 665.0,
+      "end_min": 666.0,
+      "drop_id": "drop-h3-14",
+      "target": [
+        [
+          492750.0,
+          5727050.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-15",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 670.0,
+      "end_min": 671.0,
+      "drop_id": "drop-h3-15",
+      "target": [
+        [
+          492750.0,
+          5727150.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-16",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 675.0,
+      "end_min": 676.0,
+      "drop_id": "drop-h3-16",
+      "target": [
+        [
+          492750.0,
+          5727250.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-17",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 680.0,
+      "end_min": 681.0,
+      "drop_id": "drop-h3-17",
+      "target": [
+        [
+          492750.0,
+          5727350.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-18",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 685.0,
+      "end_min": 686.0,
+      "drop_id": "drop-h3-18",
+      "target": [
+        [
+          492750.0,
+          5727450.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-19",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 690.0,
+      "end_min": 691.0,
+      "drop_id": "drop-h3-19",
+      "target": [
+        [
+          492750.0,
+          5727550.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-20",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 695.0,
+      "end_min": 696.0,
+      "drop_id": "drop-h3-20",
+      "target": [
+        [
+          492750.0,
+          5727650.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h3-21",
+      "resource_id": "proof-heli-3",
+      "kind": "drop",
+      "start_min": 700.0,
+      "end_min": 701.0,
+      "drop_id": "drop-h3-21",
+      "target": [
+        [
+          492750.0,
+          5727750.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-1",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 600.0,
+      "end_min": 601.0,
+      "drop_id": "drop-h4-1",
+      "target": [
+        [
+          492750.0,
+          5725750.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-2",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 605.0,
+      "end_min": 606.0,
+      "drop_id": "drop-h4-2",
+      "target": [
+        [
+          492750.0,
+          5725850.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-3",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 610.0,
+      "end_min": 611.0,
+      "drop_id": "drop-h4-3",
+      "target": [
+        [
+          492750.0,
+          5725950.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-4",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 615.0,
+      "end_min": 616.0,
+      "drop_id": "drop-h4-4",
+      "target": [
+        [
+          492750.0,
+          5726050.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-5",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 620.0,
+      "end_min": 621.0,
+      "drop_id": "drop-h4-5",
+      "target": [
+        [
+          492750.0,
+          5726150.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-6",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 625.0,
+      "end_min": 626.0,
+      "drop_id": "drop-h4-6",
+      "target": [
+        [
+          492750.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-7",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 630.0,
+      "end_min": 631.0,
+      "drop_id": "drop-h4-7",
+      "target": [
+        [
+          492750.0,
+          5726350.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-8",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 635.0,
+      "end_min": 636.0,
+      "drop_id": "drop-h4-8",
+      "target": [
+        [
+          492750.0,
+          5726450.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-9",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 640.0,
+      "end_min": 641.0,
+      "drop_id": "drop-h4-9",
+      "target": [
+        [
+          492750.0,
+          5726550.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-10",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 645.0,
+      "end_min": 646.0,
+      "drop_id": "drop-h4-10",
+      "target": [
+        [
+          492750.0,
+          5726650.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-11",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 650.0,
+      "end_min": 651.0,
+      "drop_id": "drop-h4-11",
+      "target": [
+        [
+          492750.0,
+          5726750.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-12",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 655.0,
+      "end_min": 656.0,
+      "drop_id": "drop-h4-12",
+      "target": [
+        [
+          492750.0,
+          5726850.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-13",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 660.0,
+      "end_min": 661.0,
+      "drop_id": "drop-h4-13",
+      "target": [
+        [
+          492750.0,
+          5726950.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-14",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 665.0,
+      "end_min": 666.0,
+      "drop_id": "drop-h4-14",
+      "target": [
+        [
+          492750.0,
+          5727050.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-15",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 670.0,
+      "end_min": 671.0,
+      "drop_id": "drop-h4-15",
+      "target": [
+        [
+          492750.0,
+          5727150.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-16",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 675.0,
+      "end_min": 676.0,
+      "drop_id": "drop-h4-16",
+      "target": [
+        [
+          492750.0,
+          5727250.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-17",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 680.0,
+      "end_min": 681.0,
+      "drop_id": "drop-h4-17",
+      "target": [
+        [
+          492750.0,
+          5727350.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-18",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 685.0,
+      "end_min": 686.0,
+      "drop_id": "drop-h4-18",
+      "target": [
+        [
+          492750.0,
+          5727450.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-19",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 690.0,
+      "end_min": 691.0,
+      "drop_id": "drop-h4-19",
+      "target": [
+        [
+          492750.0,
+          5727550.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-20",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 695.0,
+      "end_min": 696.0,
+      "drop_id": "drop-h4-20",
+      "target": [
+        [
+          492750.0,
+          5727650.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h4-21",
+      "resource_id": "proof-heli-4",
+      "kind": "drop",
+      "start_min": 700.0,
+      "end_min": 701.0,
+      "drop_id": "drop-h4-21",
+      "target": [
+        [
+          492750.0,
+          5727750.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-1",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 600.0,
+      "end_min": 601.0,
+      "drop_id": "drop-h5-1",
+      "target": [
+        [
+          492750.0,
+          5725750.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-2",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 605.0,
+      "end_min": 606.0,
+      "drop_id": "drop-h5-2",
+      "target": [
+        [
+          492750.0,
+          5725850.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-3",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 610.0,
+      "end_min": 611.0,
+      "drop_id": "drop-h5-3",
+      "target": [
+        [
+          492750.0,
+          5725950.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-4",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 615.0,
+      "end_min": 616.0,
+      "drop_id": "drop-h5-4",
+      "target": [
+        [
+          492750.0,
+          5726050.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-5",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 620.0,
+      "end_min": 621.0,
+      "drop_id": "drop-h5-5",
+      "target": [
+        [
+          492750.0,
+          5726150.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-6",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 625.0,
+      "end_min": 626.0,
+      "drop_id": "drop-h5-6",
+      "target": [
+        [
+          492750.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-7",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 630.0,
+      "end_min": 631.0,
+      "drop_id": "drop-h5-7",
+      "target": [
+        [
+          492750.0,
+          5726350.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-8",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 635.0,
+      "end_min": 636.0,
+      "drop_id": "drop-h5-8",
+      "target": [
+        [
+          492750.0,
+          5726450.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-9",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 640.0,
+      "end_min": 641.0,
+      "drop_id": "drop-h5-9",
+      "target": [
+        [
+          492750.0,
+          5726550.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-10",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 645.0,
+      "end_min": 646.0,
+      "drop_id": "drop-h5-10",
+      "target": [
+        [
+          492750.0,
+          5726650.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-11",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 650.0,
+      "end_min": 651.0,
+      "drop_id": "drop-h5-11",
+      "target": [
+        [
+          492750.0,
+          5726750.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-12",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 655.0,
+      "end_min": 656.0,
+      "drop_id": "drop-h5-12",
+      "target": [
+        [
+          492750.0,
+          5726850.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-13",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 660.0,
+      "end_min": 661.0,
+      "drop_id": "drop-h5-13",
+      "target": [
+        [
+          492750.0,
+          5726950.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-14",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 665.0,
+      "end_min": 666.0,
+      "drop_id": "drop-h5-14",
+      "target": [
+        [
+          492750.0,
+          5727050.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-15",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 670.0,
+      "end_min": 671.0,
+      "drop_id": "drop-h5-15",
+      "target": [
+        [
+          492750.0,
+          5727150.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-16",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 675.0,
+      "end_min": 676.0,
+      "drop_id": "drop-h5-16",
+      "target": [
+        [
+          492750.0,
+          5727250.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-17",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 680.0,
+      "end_min": 681.0,
+      "drop_id": "drop-h5-17",
+      "target": [
+        [
+          492750.0,
+          5727350.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-18",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 685.0,
+      "end_min": 686.0,
+      "drop_id": "drop-h5-18",
+      "target": [
+        [
+          492750.0,
+          5727450.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-19",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 690.0,
+      "end_min": 691.0,
+      "drop_id": "drop-h5-19",
+      "target": [
+        [
+          492750.0,
+          5727550.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-20",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 695.0,
+      "end_min": 696.0,
+      "drop_id": "drop-h5-20",
+      "target": [
+        [
+          492750.0,
+          5727650.0
+        ]
+      ]
+    },
+    {
+      "id": "task-h5-21",
+      "resource_id": "proof-heli-5",
+      "kind": "drop",
+      "start_min": 700.0,
+      "end_min": 701.0,
+      "drop_id": "drop-h5-21",
+      "target": [
+        [
+          492750.0,
+          5727750.0
+        ]
+      ]
+    }
+  ],
+  "lines": [],
+  "drops": [
+    {
+      "id": "drop-h1-1",
+      "task_id": "task-h1-1",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 600.0,
+      "end_min": 601.0,
+      "center": [
+        492750.0,
+        5725750.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-2",
+      "task_id": "task-h1-2",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 605.0,
+      "end_min": 606.0,
+      "center": [
+        492750.0,
+        5725850.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-3",
+      "task_id": "task-h1-3",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 610.0,
+      "end_min": 611.0,
+      "center": [
+        492750.0,
+        5725950.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-4",
+      "task_id": "task-h1-4",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 615.0,
+      "end_min": 616.0,
+      "center": [
+        492750.0,
+        5726050.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-5",
+      "task_id": "task-h1-5",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 620.0,
+      "end_min": 621.0,
+      "center": [
+        492750.0,
+        5726150.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-6",
+      "task_id": "task-h1-6",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 625.0,
+      "end_min": 626.0,
+      "center": [
+        492750.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-7",
+      "task_id": "task-h1-7",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 630.0,
+      "end_min": 631.0,
+      "center": [
+        492750.0,
+        5726350.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-8",
+      "task_id": "task-h1-8",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 635.0,
+      "end_min": 636.0,
+      "center": [
+        492750.0,
+        5726450.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-9",
+      "task_id": "task-h1-9",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 640.0,
+      "end_min": 641.0,
+      "center": [
+        492750.0,
+        5726550.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-10",
+      "task_id": "task-h1-10",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 645.0,
+      "end_min": 646.0,
+      "center": [
+        492750.0,
+        5726650.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-11",
+      "task_id": "task-h1-11",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 650.0,
+      "end_min": 651.0,
+      "center": [
+        492750.0,
+        5726750.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-12",
+      "task_id": "task-h1-12",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 655.0,
+      "end_min": 656.0,
+      "center": [
+        492750.0,
+        5726850.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-13",
+      "task_id": "task-h1-13",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 660.0,
+      "end_min": 661.0,
+      "center": [
+        492750.0,
+        5726950.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-14",
+      "task_id": "task-h1-14",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 665.0,
+      "end_min": 666.0,
+      "center": [
+        492750.0,
+        5727050.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-15",
+      "task_id": "task-h1-15",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 670.0,
+      "end_min": 671.0,
+      "center": [
+        492750.0,
+        5727150.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-16",
+      "task_id": "task-h1-16",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 675.0,
+      "end_min": 676.0,
+      "center": [
+        492750.0,
+        5727250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-17",
+      "task_id": "task-h1-17",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 680.0,
+      "end_min": 681.0,
+      "center": [
+        492750.0,
+        5727350.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-18",
+      "task_id": "task-h1-18",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 685.0,
+      "end_min": 686.0,
+      "center": [
+        492750.0,
+        5727450.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-19",
+      "task_id": "task-h1-19",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 690.0,
+      "end_min": 691.0,
+      "center": [
+        492750.0,
+        5727550.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-20",
+      "task_id": "task-h1-20",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 695.0,
+      "end_min": 696.0,
+      "center": [
+        492750.0,
+        5727650.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h1-21",
+      "task_id": "task-h1-21",
+      "resource_id": "proof-heli-1",
+      "suppressant": "water",
+      "start_min": 700.0,
+      "end_min": 701.0,
+      "center": [
+        492750.0,
+        5727750.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-1",
+      "task_id": "task-h2-1",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 600.0,
+      "end_min": 601.0,
+      "center": [
+        492750.0,
+        5725750.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-2",
+      "task_id": "task-h2-2",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 605.0,
+      "end_min": 606.0,
+      "center": [
+        492750.0,
+        5725850.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-3",
+      "task_id": "task-h2-3",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 610.0,
+      "end_min": 611.0,
+      "center": [
+        492750.0,
+        5725950.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-4",
+      "task_id": "task-h2-4",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 615.0,
+      "end_min": 616.0,
+      "center": [
+        492750.0,
+        5726050.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-5",
+      "task_id": "task-h2-5",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 620.0,
+      "end_min": 621.0,
+      "center": [
+        492750.0,
+        5726150.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-6",
+      "task_id": "task-h2-6",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 625.0,
+      "end_min": 626.0,
+      "center": [
+        492750.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-7",
+      "task_id": "task-h2-7",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 630.0,
+      "end_min": 631.0,
+      "center": [
+        492750.0,
+        5726350.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-8",
+      "task_id": "task-h2-8",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 635.0,
+      "end_min": 636.0,
+      "center": [
+        492750.0,
+        5726450.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-9",
+      "task_id": "task-h2-9",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 640.0,
+      "end_min": 641.0,
+      "center": [
+        492750.0,
+        5726550.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-10",
+      "task_id": "task-h2-10",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 645.0,
+      "end_min": 646.0,
+      "center": [
+        492750.0,
+        5726650.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-11",
+      "task_id": "task-h2-11",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 650.0,
+      "end_min": 651.0,
+      "center": [
+        492750.0,
+        5726750.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-12",
+      "task_id": "task-h2-12",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 655.0,
+      "end_min": 656.0,
+      "center": [
+        492750.0,
+        5726850.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-13",
+      "task_id": "task-h2-13",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 660.0,
+      "end_min": 661.0,
+      "center": [
+        492750.0,
+        5726950.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-14",
+      "task_id": "task-h2-14",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 665.0,
+      "end_min": 666.0,
+      "center": [
+        492750.0,
+        5727050.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-15",
+      "task_id": "task-h2-15",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 670.0,
+      "end_min": 671.0,
+      "center": [
+        492750.0,
+        5727150.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-16",
+      "task_id": "task-h2-16",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 675.0,
+      "end_min": 676.0,
+      "center": [
+        492750.0,
+        5727250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-17",
+      "task_id": "task-h2-17",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 680.0,
+      "end_min": 681.0,
+      "center": [
+        492750.0,
+        5727350.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-18",
+      "task_id": "task-h2-18",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 685.0,
+      "end_min": 686.0,
+      "center": [
+        492750.0,
+        5727450.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-19",
+      "task_id": "task-h2-19",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 690.0,
+      "end_min": 691.0,
+      "center": [
+        492750.0,
+        5727550.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-20",
+      "task_id": "task-h2-20",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 695.0,
+      "end_min": 696.0,
+      "center": [
+        492750.0,
+        5727650.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h2-21",
+      "task_id": "task-h2-21",
+      "resource_id": "proof-heli-2",
+      "suppressant": "water",
+      "start_min": 700.0,
+      "end_min": 701.0,
+      "center": [
+        492750.0,
+        5727750.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-1",
+      "task_id": "task-h3-1",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 600.0,
+      "end_min": 601.0,
+      "center": [
+        492750.0,
+        5725750.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-2",
+      "task_id": "task-h3-2",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 605.0,
+      "end_min": 606.0,
+      "center": [
+        492750.0,
+        5725850.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-3",
+      "task_id": "task-h3-3",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 610.0,
+      "end_min": 611.0,
+      "center": [
+        492750.0,
+        5725950.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-4",
+      "task_id": "task-h3-4",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 615.0,
+      "end_min": 616.0,
+      "center": [
+        492750.0,
+        5726050.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-5",
+      "task_id": "task-h3-5",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 620.0,
+      "end_min": 621.0,
+      "center": [
+        492750.0,
+        5726150.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-6",
+      "task_id": "task-h3-6",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 625.0,
+      "end_min": 626.0,
+      "center": [
+        492750.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-7",
+      "task_id": "task-h3-7",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 630.0,
+      "end_min": 631.0,
+      "center": [
+        492750.0,
+        5726350.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-8",
+      "task_id": "task-h3-8",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 635.0,
+      "end_min": 636.0,
+      "center": [
+        492750.0,
+        5726450.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-9",
+      "task_id": "task-h3-9",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 640.0,
+      "end_min": 641.0,
+      "center": [
+        492750.0,
+        5726550.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-10",
+      "task_id": "task-h3-10",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 645.0,
+      "end_min": 646.0,
+      "center": [
+        492750.0,
+        5726650.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-11",
+      "task_id": "task-h3-11",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 650.0,
+      "end_min": 651.0,
+      "center": [
+        492750.0,
+        5726750.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-12",
+      "task_id": "task-h3-12",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 655.0,
+      "end_min": 656.0,
+      "center": [
+        492750.0,
+        5726850.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-13",
+      "task_id": "task-h3-13",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 660.0,
+      "end_min": 661.0,
+      "center": [
+        492750.0,
+        5726950.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-14",
+      "task_id": "task-h3-14",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 665.0,
+      "end_min": 666.0,
+      "center": [
+        492750.0,
+        5727050.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-15",
+      "task_id": "task-h3-15",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 670.0,
+      "end_min": 671.0,
+      "center": [
+        492750.0,
+        5727150.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-16",
+      "task_id": "task-h3-16",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 675.0,
+      "end_min": 676.0,
+      "center": [
+        492750.0,
+        5727250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-17",
+      "task_id": "task-h3-17",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 680.0,
+      "end_min": 681.0,
+      "center": [
+        492750.0,
+        5727350.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-18",
+      "task_id": "task-h3-18",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 685.0,
+      "end_min": 686.0,
+      "center": [
+        492750.0,
+        5727450.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-19",
+      "task_id": "task-h3-19",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 690.0,
+      "end_min": 691.0,
+      "center": [
+        492750.0,
+        5727550.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-20",
+      "task_id": "task-h3-20",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 695.0,
+      "end_min": 696.0,
+      "center": [
+        492750.0,
+        5727650.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h3-21",
+      "task_id": "task-h3-21",
+      "resource_id": "proof-heli-3",
+      "suppressant": "water",
+      "start_min": 700.0,
+      "end_min": 701.0,
+      "center": [
+        492750.0,
+        5727750.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-1",
+      "task_id": "task-h4-1",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 600.0,
+      "end_min": 601.0,
+      "center": [
+        492750.0,
+        5725750.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-2",
+      "task_id": "task-h4-2",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 605.0,
+      "end_min": 606.0,
+      "center": [
+        492750.0,
+        5725850.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-3",
+      "task_id": "task-h4-3",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 610.0,
+      "end_min": 611.0,
+      "center": [
+        492750.0,
+        5725950.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-4",
+      "task_id": "task-h4-4",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 615.0,
+      "end_min": 616.0,
+      "center": [
+        492750.0,
+        5726050.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-5",
+      "task_id": "task-h4-5",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 620.0,
+      "end_min": 621.0,
+      "center": [
+        492750.0,
+        5726150.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-6",
+      "task_id": "task-h4-6",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 625.0,
+      "end_min": 626.0,
+      "center": [
+        492750.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-7",
+      "task_id": "task-h4-7",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 630.0,
+      "end_min": 631.0,
+      "center": [
+        492750.0,
+        5726350.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-8",
+      "task_id": "task-h4-8",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 635.0,
+      "end_min": 636.0,
+      "center": [
+        492750.0,
+        5726450.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-9",
+      "task_id": "task-h4-9",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 640.0,
+      "end_min": 641.0,
+      "center": [
+        492750.0,
+        5726550.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-10",
+      "task_id": "task-h4-10",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 645.0,
+      "end_min": 646.0,
+      "center": [
+        492750.0,
+        5726650.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-11",
+      "task_id": "task-h4-11",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 650.0,
+      "end_min": 651.0,
+      "center": [
+        492750.0,
+        5726750.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-12",
+      "task_id": "task-h4-12",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 655.0,
+      "end_min": 656.0,
+      "center": [
+        492750.0,
+        5726850.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-13",
+      "task_id": "task-h4-13",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 660.0,
+      "end_min": 661.0,
+      "center": [
+        492750.0,
+        5726950.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-14",
+      "task_id": "task-h4-14",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 665.0,
+      "end_min": 666.0,
+      "center": [
+        492750.0,
+        5727050.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-15",
+      "task_id": "task-h4-15",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 670.0,
+      "end_min": 671.0,
+      "center": [
+        492750.0,
+        5727150.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-16",
+      "task_id": "task-h4-16",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 675.0,
+      "end_min": 676.0,
+      "center": [
+        492750.0,
+        5727250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-17",
+      "task_id": "task-h4-17",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 680.0,
+      "end_min": 681.0,
+      "center": [
+        492750.0,
+        5727350.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-18",
+      "task_id": "task-h4-18",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 685.0,
+      "end_min": 686.0,
+      "center": [
+        492750.0,
+        5727450.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-19",
+      "task_id": "task-h4-19",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 690.0,
+      "end_min": 691.0,
+      "center": [
+        492750.0,
+        5727550.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-20",
+      "task_id": "task-h4-20",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 695.0,
+      "end_min": 696.0,
+      "center": [
+        492750.0,
+        5727650.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h4-21",
+      "task_id": "task-h4-21",
+      "resource_id": "proof-heli-4",
+      "suppressant": "water",
+      "start_min": 700.0,
+      "end_min": 701.0,
+      "center": [
+        492750.0,
+        5727750.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-1",
+      "task_id": "task-h5-1",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 600.0,
+      "end_min": 601.0,
+      "center": [
+        492750.0,
+        5725750.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-2",
+      "task_id": "task-h5-2",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 605.0,
+      "end_min": 606.0,
+      "center": [
+        492750.0,
+        5725850.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-3",
+      "task_id": "task-h5-3",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 610.0,
+      "end_min": 611.0,
+      "center": [
+        492750.0,
+        5725950.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-4",
+      "task_id": "task-h5-4",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 615.0,
+      "end_min": 616.0,
+      "center": [
+        492750.0,
+        5726050.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-5",
+      "task_id": "task-h5-5",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 620.0,
+      "end_min": 621.0,
+      "center": [
+        492750.0,
+        5726150.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-6",
+      "task_id": "task-h5-6",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 625.0,
+      "end_min": 626.0,
+      "center": [
+        492750.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-7",
+      "task_id": "task-h5-7",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 630.0,
+      "end_min": 631.0,
+      "center": [
+        492750.0,
+        5726350.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-8",
+      "task_id": "task-h5-8",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 635.0,
+      "end_min": 636.0,
+      "center": [
+        492750.0,
+        5726450.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-9",
+      "task_id": "task-h5-9",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 640.0,
+      "end_min": 641.0,
+      "center": [
+        492750.0,
+        5726550.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-10",
+      "task_id": "task-h5-10",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 645.0,
+      "end_min": 646.0,
+      "center": [
+        492750.0,
+        5726650.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-11",
+      "task_id": "task-h5-11",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 650.0,
+      "end_min": 651.0,
+      "center": [
+        492750.0,
+        5726750.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-12",
+      "task_id": "task-h5-12",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 655.0,
+      "end_min": 656.0,
+      "center": [
+        492750.0,
+        5726850.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-13",
+      "task_id": "task-h5-13",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 660.0,
+      "end_min": 661.0,
+      "center": [
+        492750.0,
+        5726950.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-14",
+      "task_id": "task-h5-14",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 665.0,
+      "end_min": 666.0,
+      "center": [
+        492750.0,
+        5727050.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-15",
+      "task_id": "task-h5-15",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 670.0,
+      "end_min": 671.0,
+      "center": [
+        492750.0,
+        5727150.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-16",
+      "task_id": "task-h5-16",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 675.0,
+      "end_min": 676.0,
+      "center": [
+        492750.0,
+        5727250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-17",
+      "task_id": "task-h5-17",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 680.0,
+      "end_min": 681.0,
+      "center": [
+        492750.0,
+        5727350.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-18",
+      "task_id": "task-h5-18",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 685.0,
+      "end_min": 686.0,
+      "center": [
+        492750.0,
+        5727450.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-19",
+      "task_id": "task-h5-19",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 690.0,
+      "end_min": 691.0,
+      "center": [
+        492750.0,
+        5727550.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-20",
+      "task_id": "task-h5-20",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 695.0,
+      "end_min": 696.0,
+      "center": [
+        492750.0,
+        5727650.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-h5-21",
+      "task_id": "task-h5-21",
+      "resource_id": "proof-heli-5",
+      "suppressant": "water",
+      "start_min": 700.0,
+      "end_min": 701.0,
+      "center": [
+        492750.0,
+        5727750.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    }
+  ]
+}
