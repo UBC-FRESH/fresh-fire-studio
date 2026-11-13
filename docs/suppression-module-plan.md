@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles, P179.8 sub-cell raster, P179.9 wetness/ROS factor, P179.10 fine-grid experiment, P179.11 perimeter queries, P179.12 perimeter mission, P179.13 closed box, P179.14 receding horizon, P179.15 canopy penetration, P179.16 evidence parameters and P179.17 queue implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles, P179.8 sub-cell raster, P179.9 wetness/ROS factor, P179.10 fine-grid experiment, P179.11 perimeter queries, P179.12 perimeter mission, P179.13 closed box, P179.14 receding horizon, P179.15 canopy penetration, P179.16 evidence parameters, P179.17 queue and P179.18 evidence ensemble implemented. Not operational.
 
 Five local PDFs were mined on 2026-11-13; see
 [`martell-pdf-notes.md`](martell-pdf-notes.md). The 2015 control-time paper is
@@ -143,6 +143,10 @@ Implemented in this repository:
 - `suppression/queue.py` — non-preemptive resource queue.
 - `tests/test_queue.py` — queue tests.
 - `docs/p179-17-queue.md` — queue scope and limits.
+- `suppression/uncertainty.py` — evidence ranges, sampling and summaries.
+- `scripts/evidence_ensemble_2003_526.py` — 32-sample native ensemble.
+- `suppression/proofs/2003-526-evidence-ensemble.json` — ensemble artifact.
+- `docs/p179-18-plan.md` / `docs/p179-18-model-card.md` — design and model card.
 
 Run:
 
@@ -429,6 +433,20 @@ server, reports wait/utilization and leaves infeasible requests unserved.
 
 It is a scheduling primitive for the eventual IA/aircraft dispatch layer. See
 [`p179-17-queue.md`](p179-17-queue.md).
+
+## P179.18 evidence-bounded ensemble
+
+`suppression/uncertainty.py` samples bounded evidence ranges for ROS reduction,
+hold time, water depth, canopy penetration and required depth. The ensemble
+runner projects each sample onto a fixed drop scenario and reruns native growth.
+
+The 32-sample ensemble ends at **5,325 ha** in every member. That is a model
+result: the fixed drop line does not intersect the active front strongly enough
+for the published effect parameters to change the final outcome. Geometry
+dominates.
+
+This is a diagnostic instrument, not validation. See
+[`p179-18-model-card.md`](p179-18-model-card.md).
 
 ## Adjacent Canadian planning layers
 
