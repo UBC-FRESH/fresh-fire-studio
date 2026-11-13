@@ -18,10 +18,23 @@ front segment, instead of repeating drops on 21 discrete targets.
 
 **5,325 ha** — unchanged from free burn.
 
+Two additional controls were run:
+
+| Case | Targets | Sorties | Water | Native area |
+| --- | ---: | ---: | ---: | ---: |
+| continuous one-pass | 54 | 54 | 324,000 L | 5,325 ha |
+| continuous two-pass | 54 | 108 | 648,000 L | 5,325 ha |
+| continuous two-pass at 1,800 min | ~144 | 288 | 1,728,000 L | 5,325 ha |
+
+The late, very large mission also leaves the final area unchanged. The next
+problem is not “more water” or “more targets.”
+
 Artifacts:
 
 - `suppression/scenarios/2003-526-cycle-continuous.json`
 - `suppression/proofs/2003-526-native-cycle-continuous.json`
+- `suppression/proofs/2003-526-native-cycle-continuous-2pass.json`
+- `suppression/proofs/2003-526-native-cycle-continuous-2pass-1800.json`
 
 ## What this rules out
 

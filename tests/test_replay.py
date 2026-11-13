@@ -37,6 +37,8 @@ def test_replay_page_and_data_are_consistent() -> None:
     assert (ROOT / "suppression/proofs/2003-526-fine-grid-2pass-25m.json").exists()
     assert (ROOT / "suppression/proofs/2003-526-native-cycle-adaptive.json").exists()
     assert (ROOT / "suppression/proofs/2003-526-native-cycle-continuous.json").exists()
+    assert (ROOT / "suppression/proofs/2003-526-native-cycle-continuous-2pass.json").exists()
+    assert (ROOT / "suppression/proofs/2003-526-native-cycle-continuous-2pass-1800.json").exists()
     assert data["results"]["realistic"]["area_ha"] == 5325.0
     assert data["results"]["realistic"]["containment_probability"] == 0.0
     assert data["results"]["control"]["area_ha"] == 3574.7
