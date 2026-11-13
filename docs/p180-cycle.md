@@ -38,6 +38,22 @@ reconstruction.
 This is within the range suggested by published cycle-time work for a nearby
 water source: roughly five minutes or less.
 
+## Water balance
+
+The selected head segment is about **5.3 km**. The 21 drops cover about
+**105,000 m²** of a 50 m-wide strip; the full strip is about **266,000 m²**.
+
+At 126,000 L delivered and 0.75 mm required depth:
+
+- line-mean depth: **0.47 mm**;
+- coverage: **39%** of the strip;
+- required water: **199,630 L**;
+- deficit: **73,630 L**;
+- additional sorties: **13**.
+
+The current mission is short of the nominal demand. That is the first
+operationally meaningful number in the cycle model.
+
 ## Coupling
 
 `scripts/build_cycle_mission_2003_526.py` writes:

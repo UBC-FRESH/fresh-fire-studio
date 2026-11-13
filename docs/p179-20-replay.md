@@ -32,6 +32,9 @@ Static export: `suppression/index.html` and `suppression.html`.
 
 The results panel reports:
 
+- cycle logistics: 3 aircraft, 21 sorties, mean 4.25 min, 126,000 L, 247,731 L/h;
+- water balance: 0.47 mm line-mean, 39% coverage, 13 additional sorties needed;
+
 - observed final extent: 520 ha;
 - realistic cycle mission: 5,325 ha, 0% containment, placement-limited;
 - synthetic control barrier: 3,574.7 ha, 3,570–3,575 ha, ROS correlation

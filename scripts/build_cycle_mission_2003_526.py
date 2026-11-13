@@ -37,6 +37,7 @@ def main() -> None:
     from ws4.fire.observed import load_cfsds_reanalysis_case
 
     from suppression.cycle import CyclePerformance, build_cycle, cycle_summary
+    from suppression.water_balance import water_balance
     from suppression.models import Scenario
     from suppression.perimeter import cells_to_centers, front_target_cells
 
@@ -162,12 +163,23 @@ def main() -> None:
         "end": round(max(sortie.end_min for sortie in sorties) + 4.0, 1),
         "drop_time": args.drop_time_min,
     }
+    target_line_m = sum(
+        float(np.hypot(centers[index + 1][0] - centers[index][0], centers[index + 1][1] - centers[index][1]))
+        for index in range(len(centers) - 1)
+    )
+    balance = water_balance(
+        line_length_m=target_line_m,
+        drop_length_m=100.0,
+        drop_width_m=50.0,
+        drop_count=len(sorties),
+        delivered_l=summary["total_water_l"],
+        required_depth_mm=0.75,
+        tank_l=performance.tank_l,
+    )
     page["logistics"] = {
         **summary,
-        "target_line_m": sum(
-            float(np.hypot(centers[index + 1][0] - centers[index][0], centers[index + 1][1] - centers[index][1]))
-            for index in range(len(centers) - 1)
-        ),
+        "target_line_m": target_line_m,
+        "water_balance": balance.to_dict(),
     }
     page["note"] = "Schematic lake-to-fire flight cycles: scoop, climb, cruise, descend, drop, turn, return. Three aircraft; geometry and times are illustrative, not a dispatch record."
     page["title"] = "2003_526 · schematic aerial suppression cycle"

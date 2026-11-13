@@ -5912,6 +5912,20 @@
     "elapsed_min": 30.51698051831363,
     "litres_per_hour": 247730.93116021578,
     "sorties_per_hour": 41.28848852670263,
-    "target_line_m": 5323.475384351859
+    "target_line_m": 5323.475384351859,
+    "water_balance": {
+      "line_length_m": 5323.5,
+      "target_area_m2": 266173.8,
+      "treated_area_m2": 105000.0,
+      "drop_count": 21,
+      "delivered_l": 126000.0,
+      "required_depth_mm": 0.75,
+      "line_mean_depth_mm": 0.473,
+      "treated_mean_depth_mm": 1.2,
+      "coverage_fraction": 0.394,
+      "required_l": 199630.3,
+      "deficit_l": 73630.3,
+      "additional_sorties": 13
+    }
   }
 }

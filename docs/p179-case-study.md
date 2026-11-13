@@ -59,6 +59,12 @@ public fuel/terrain, Open-Meteo/FireSTARR reanalysis weather.
 | Realistic cycle mission | **5,325 ha** | all 32 evidence samples; 0% containment |
 | Synthetic control barrier | **3,574.7 ha** | 3,570–3,575 ha; ROS correlation −0.78 |
 
+The 21 sorties deliver 126,000 L. Covering the 5.3 km selected head segment at
+0.75 mm would require about **199,630 L**; the line-mean depth is **0.47 mm**,
+coverage is **39%**, and the deficit is about **73,630 L**, or **13 additional
+sorties**. The realistic mission is therefore both placement-limited and
+water-limited.
+
 The realistic mission is **placement-limited**. The control barrier is a
 deliberately permanent, 20-cell-wide synthetic wet band. It is not an
 operational plan. Its purpose is to test whether the evidence branch responds
