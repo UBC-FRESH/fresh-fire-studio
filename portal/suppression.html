@@ -34,7 +34,7 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospac
 <div id="stats" class="hud"><div><span>mission drops</span><b id="s-total">—</b></div><div><span>active drops</span><b id="s-active">0</b></div><div><span>aircraft</span><b id="s-aircraft">1</b></div><div><span>fps</span><b id="s-fps">—</b></div></div>
 <div id="compass" class="hud">↑ <span>N</span></div>
 <div id="bar" class="hud">
-  <div class="row"><button id="play" class="primary">Play</button><button id="reset">Reset</button><button type="button" data-assistant-open aria-expanded="false" aria-controls="assistant-panel">+ Ask</button><button id="mode-realistic" class="mode active">Realistic</button><button id="mode-control" class="mode">Control</button><button id="extent">Model extent</button><button id="observed">Hide observed</button><button id="methods">Model card</button><input id="slider" class="grow" type="range" min="0" max="900" step="1" value="0"><span id="clock">0 min</span></div>
+  <div class="row"><button id="play" class="primary">Play</button><button id="reset">Reset</button><button type="button" data-assistant-open aria-expanded="false" aria-controls="assistant-panel">+ Ask</button><button id="mode-realistic" class="mode active">Realistic</button><button id="mode-control" class="mode">Control</button><button id="extent">Model extent</button><button id="observed">Hide observed</button><button id="focus">Focus mission</button><button id="overview">Overview</button><button id="methods">Model card</button><input id="slider" class="grow" type="range" min="0" max="900" step="1" value="0"><span id="clock">0 min</span></div>
   <div class="legend"><span><i style="background:#7ce0c6"></i>drop / water</span><span><i style="background:#70b7ff"></i>control barrier</span><span><i style="background:#ffb347"></i>aircraft</span><span><i style="background:#ffd27c"></i>free-burn extent</span><span><i style="background:#7ce0c6"></i>observed final</span><span><i style="background:#52635d"></i>1 km grid</span></div>
   <div id="status">Mission geometry only · drag to orbit · scroll to zoom · space to play</div>
 </div>
@@ -118,18 +118,39 @@ scene.add(grid);
 
 const lx = x => x - G.xll;
 const lz = y => -(y - G.yll);
+const missionCenter = new THREE.Vector3(
+  (lx(DATA.drops[0].x) + lx(DATA.drops[DATA.drops.length - 1].x)) / 2,
+  0,
+  (lz(DATA.drops[0].y) + lz(DATA.drops[DATA.drops.length - 1].y)) / 2
+);
+function focusMission() {
+  controls.target.copy(missionCenter);
+  camera.position.set(missionCenter.x - 650, 2100, missionCenter.z + 1700);
+  controls.update();
+}
+function overview() {
+  controls.target.copy(center);
+  camera.position.set(center.x - 3000, 6500, center.z + 7500);
+  controls.update();
+}
 
-// Aircraft marker: simple cone + shadow disc.
+// Aircraft marker: stable helicopter-like body and rotor. No spinning group.
 const aircraft = new THREE.Group();
-const body = new THREE.Mesh(new THREE.ConeGeometry(120, 360, 5), new THREE.MeshLambertMaterial({color:0xffb347}));
-body.rotation.x = Math.PI/2;
-body.position.y = 500;
+const body = new THREE.Mesh(new THREE.SphereGeometry(55, 12, 8), new THREE.MeshLambertMaterial({color:0xffb347}));
+body.position.y = 185;
 aircraft.add(body);
+const cabin = new THREE.Mesh(new THREE.BoxGeometry(125, 32, 42), new THREE.MeshLambertMaterial({color:0xffd27c}));
+cabin.position.y = 170;
+aircraft.add(cabin);
+const rotor = new THREE.Mesh(new THREE.TorusGeometry(105, 6, 8, 28), new THREE.MeshBasicMaterial({color:0xffe3a3, transparent:true, opacity:.75}));
+rotor.rotation.x = Math.PI/2;
+rotor.position.y = 240;
+aircraft.add(rotor);
 const shadow = new THREE.Mesh(new THREE.CircleGeometry(180, 24), new THREE.MeshBasicMaterial({color:0x000000, transparent:true, opacity:.25}));
 shadow.rotation.x = -Math.PI/2;
 shadow.position.y = 3;
 aircraft.add(shadow);
-aircraft.position.set(lx(491200), 0, lz(5726250));
+aircraft.position.set(lx(DATA.drops[0].x), 0, lz(DATA.drops[0].y));
 scene.add(aircraft);
 
 // Drops: visible water columns / markers at their centers.
@@ -137,12 +158,13 @@ const dropGroup = new THREE.Group();
 scene.add(dropGroup);
 const dropMeshes = DATA.drops.map((drop, index) => {
   const group = new THREE.Group();
-  const marker = new THREE.Mesh(new THREE.CircleGeometry(95, 24), new THREE.MeshBasicMaterial({color:0x7ce0c6, transparent:true, opacity:.9}));
+  const marker = new THREE.Mesh(new THREE.CircleGeometry(72, 24), new THREE.MeshBasicMaterial({color:0x7ce0c6, transparent:true, opacity:.95}));
   marker.rotation.x = -Math.PI/2;
   marker.position.y = 4;
   group.add(marker);
-  const column = new THREE.Mesh(new THREE.CylinderGeometry(26, 70, 340, 10), new THREE.MeshBasicMaterial({color:0x7ce0c6, transparent:true, opacity:.22}));
+  const column = new THREE.Mesh(new THREE.CylinderGeometry(20, 56, 300, 12), new THREE.MeshBasicMaterial({color:0x7ce0c6, transparent:true, opacity:.40}));
   column.position.y = 170;
+  column.visible = false;
   group.add(column);
   group.position.set(lx(drop.x), 0, lz(drop.y));
   group.visible = false;
@@ -150,6 +172,12 @@ const dropMeshes = DATA.drops.map((drop, index) => {
   dropGroup.add(group);
   return {group, marker, column, drop};
 });
+
+const missionLine = new THREE.Line(
+  new THREE.BufferGeometry().setFromPoints(DATA.drops.map(drop => new THREE.Vector3(lx(drop.x), 8, lz(drop.y)))),
+  new THREE.LineBasicMaterial({color:0x7ce0c6, transparent:true, opacity:.8})
+);
+scene.add(missionLine);
 
 // Synthetic control barrier (visual only).
 const controlWidth = DATA.control.width;
@@ -198,7 +226,7 @@ for (const ring of DATA.model_extent || []) {
 
 // Optional reference marker at the 600-minute front.
 const frontMarker = new THREE.Mesh(
-  new THREE.RingGeometry(180, 230, 40),
+  new THREE.RingGeometry(90, 120, 40),
   new THREE.MeshBasicMaterial({color:0xff6b2c, side:THREE.DoubleSide, transparent:true, opacity:.8})
 );
 frontMarker.rotation.x = -Math.PI/2;
@@ -210,55 +238,60 @@ const slider = document.getElementById("slider");
 const clock = document.getElementById("clock");
 const play = document.getElementById("play");
 const status = document.getElementById("status");
+slider.min = String(DATA.timeline.start);
 slider.max = String(DATA.timeline.end);
 
 function setTime(value) {
-  state.t = Math.max(0, Math.min(DATA.timeline.end, value));
+  state.t = Math.max(DATA.timeline.start, Math.min(DATA.timeline.end, value));
   slider.value = String(state.t);
   let active = 0;
   let lastActive = null;
+  let firstDrop = DATA.drops[0];
   for (const item of dropMeshes) {
     const d = item.drop;
-    const isActive = state.t >= d.start && state.t <= d.end + 60;
+    const age = state.t - d.start;
+    const isActive = age >= 0 && age <= (d.end - d.start) + 60;
     item.group.visible = isActive;
     if (isActive) {
       active += 1;
       lastActive = d;
-      const pulse = 1 + .12 * Math.sin(state.t * .15 + d.start);
+      const pulse = 1 + .10 * Math.sin(state.t * .12 + d.start);
       item.marker.scale.setScalar(pulse);
-      item.column.material.opacity = .12 + .18 * Math.max(0, 1 - (state.t - d.start) / 90);
+      item.marker.material.opacity = .9;
+      if (age <= 8) {
+        item.column.visible = true;
+        item.column.position.y = 150 + (1 - age / 8) * 220;
+        item.column.scale.y = Math.max(.08, 1 - age / 8);
+        item.column.material.opacity = .35 * (1 - age / 8);
+      } else {
+        item.column.visible = false;
+      }
     } else {
       item.marker.scale.setScalar(1);
+      item.column.visible = false;
     }
   }
   document.getElementById("s-active").textContent = active;
   document.getElementById("s-total").textContent = DATA.drops.length;
   document.getElementById("s-aircraft").textContent = DATA.aircraft.length;
   clock.textContent = `${Math.round(state.t)} min`;
-  if (lastActive) {
-    const tx = lx(lastActive.x);
-    const tz = lz(lastActive.y);
-    aircraft.position.x += (tx - aircraft.position.x) * .12;
-    aircraft.position.z += (tz - aircraft.position.z) * .12;
-  } else {
-    aircraft.position.x += (lx(491200) - aircraft.position.x) * .04;
-    aircraft.position.z += (lz(5726250) - aircraft.position.z) * .04;
-  }
-  aircraft.rotation.y = Math.atan2(aircraft.position.x - center.x, aircraft.position.z - center.z);
+  const targetDrop = lastActive || (state.t < firstDrop.start ? firstDrop : DATA.drops[DATA.drops.length - 1]);
+  aircraft.position.x += (lx(targetDrop.x) - aircraft.position.x) * .10;
+  aircraft.position.z += (lz(targetDrop.y) - aircraft.position.z) * .10;
   status.textContent = state.t < DATA.timeline.drop_time
     ? "Before the mission: 21 drops scheduled near the 600-minute front."
     : active > 0
-      ? `${active} drops active · diagnostic geometry only · no validated fire effect.`
+      ? `${active} drops active · geometry and timing only · no validated fire effect.`
       : "Mission window ended · diagnostic geometry only · no validated fire effect.";
 }
 
 slider.addEventListener("input", () => { state.playing = false; play.textContent = "Play"; setTime(Number(slider.value)); });
 play.addEventListener("click", () => {
-  if (state.t >= DATA.timeline.end) setTime(0);
+  if (state.t >= DATA.timeline.end) setTime(DATA.timeline.start);
   state.playing = !state.playing;
   play.textContent = state.playing ? "Pause" : "Play";
 });
-document.getElementById("reset").addEventListener("click", () => { state.playing = false; play.textContent = "Play"; setTime(0); });
+document.getElementById("reset").addEventListener("click", () => { state.playing = false; play.textContent = "Play"; setTime(DATA.timeline.start); });
 let mode = "realistic";
 const modeButtons = {
   realistic: document.getElementById("mode-realistic"),
@@ -270,6 +303,7 @@ function setMode(next) {
   barrier.visible = control;
   barrierEdge.visible = control;
   dropGroup.visible = !control;
+  missionLine.visible = !control;
   for (const [key, button] of Object.entries(modeButtons)) button.classList.toggle("active", key === mode);
   document.getElementById("result-realistic").classList.toggle("selected", mode === "realistic");
   document.getElementById("result-control").classList.toggle("selected", mode === "control");
@@ -280,6 +314,8 @@ function setMode(next) {
 const methodsPanel = document.getElementById("methods-panel");
 const methodsBackdrop = document.getElementById("methods-backdrop");
 function closeMethods() { methodsPanel.hidden = true; methodsBackdrop.hidden = true; }
+document.getElementById("focus").addEventListener("click", focusMission);
+document.getElementById("overview").addEventListener("click", overview);
 document.getElementById("methods").addEventListener("click", () => {
   methodsPanel.hidden = false; methodsBackdrop.hidden = false;
 });
@@ -299,18 +335,20 @@ function resize() {
 addEventListener("resize", resize);
 resize();
 
-const auto = new URLSearchParams(location.search).has("autoplay");
 setTime(DATA.timeline.drop_time);
 setMode("realistic");
-if (auto) { state.playing = true; play.textContent = "Pause"; }
+focusMission();
+state.playing = true;
+play.textContent = "Pause";
 let frames = 0, t0 = performance.now();
 function frame(now) {
   const dt = Math.min(.05, (now - state.last) / 1000);
   state.last = now;
   if (state.playing) {
-    setTime(state.t + dt * 15);
+    setTime(state.t + dt * 8);
     if (state.t >= DATA.timeline.end) { state.playing = false; play.textContent = "Play"; }
   }
+  rotor.rotation.z += dt * 8;
   controls.update();
   renderer.render(scene, camera);
   frames += 1;

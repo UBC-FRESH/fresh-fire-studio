@@ -12,7 +12,10 @@ Static export: `suppression/index.html` and `suppression.html`.
 
 - 21 CL-415-style drop markers from the fixed 2003_526 drop-line scenario;
 - mission timeline and active-drop count;
-- a simple aircraft marker that moves toward the latest active drop;
+- a stable aircraft marker that moves along the drop line without snapping or
+  spinning;
+- automatic playback from the 600-minute mission start;
+- a focused default camera with `Focus mission` and `Overview` controls;
 - an evidence-results panel;
 - a **Realistic / Control** mode switch;
 - an optional **synthetic 20-cell control barrier**;
