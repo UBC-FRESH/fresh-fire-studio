@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter and P179.4a dispatch prototype implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype and P179.5a water requirements implemented. Not operational.
 
 Five local PDFs were mined on 2026-11-13; see
 [`martell-pdf-notes.md`](martell-pdf-notes.md). The 2015 control-time paper is
@@ -93,6 +93,10 @@ Implemented in this repository:
 - `suppression/proofs/2003-526-dispatch.json` — demo dispatch artifact.
 - `tests/test_dispatch.py` — travel, line service, utilization tests.
 - `docs/p179-4-dispatch.md` — dispatch method, demo and limits.
+- `suppression/water.py` — Van Wagner–Taylor water-depth equations.
+- `scripts/water_requirement.py` — water-depth CLI.
+- `tests/test_water.py` — Table 3 and scaling tests.
+- `docs/p179-5-water.md` — equations, report check and limits.
 
 Run:
 
@@ -207,6 +211,23 @@ warnings and utilization.
 This is not an optimizer and not an aircraft-cycle model. Travel is straight
 line; there are no roads, rest rules, refills or multi-incident queues. See
 [`p179-4-dispatch.md`](p179-4-dispatch.md).
+
+## P179.5a water-depth requirements
+
+`suppression/water.py` implements the Van Wagner–Taylor heat-balance depths:
+
+- quenching depth from fireline intensity;
+- cooling depth from fuel load;
+- wetting depth from intensity, radiant intensity and rate of spread;
+- an application-efficiency divisor.
+
+The module reproduces the report's Table 3 rounded values, including the
+`I^(2/3)` scaling. At about 4,184 kW/m the theoretical cooling and wetting
+depths are about **0.56–0.57 mm**, or **0.56–0.57 L/m²** when spread uniformly.
+
+These are theoretical requirements, not measured drop effectiveness. Canopy
+interception, stacking and breach remain for the next layer. See
+[`p179-5-water.md`](p179-5-water.md).
 
 ## Evidence base: Martell and collaborators
 
