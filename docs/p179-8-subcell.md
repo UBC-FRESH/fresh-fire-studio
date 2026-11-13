@@ -57,4 +57,6 @@ not a full 100 m cell.
 
 Use `aggregate_mean()` or `aggregate_coverage()` to drive a **local ROS or
 ignition modifier** in the native growth run, or run a finer fire grid. A binary
-wet-cell threshold cannot represent partial-cell water depth.
+wet-cell threshold cannot represent partial-cell water depth. The diagnostic
+ROS factor is implemented in
+[`p179-9-wetness-ros.md`](p179-9-wetness-ros.md).

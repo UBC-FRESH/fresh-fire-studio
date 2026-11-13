@@ -13,6 +13,7 @@ import numpy as np
 
 from .drop import DropContour, DropPattern, drop_to_pattern
 from .effects import coverage_fraction
+from .subcell import rasterize_pattern
 from .models import EffectEvent, Scenario
 
 
@@ -26,6 +27,7 @@ class WetDrop:
     start_min: float
     end_min: float
     duration_min: float
+    mean_depth_grid_mm: np.ndarray | None = None
 
     @property
     def covered_cells(self) -> int:
@@ -41,6 +43,8 @@ class WetDrop:
                 0.0,
                 1.0 - (time_min - self.end_min) / self.duration_min,
             )
+        if self.mean_depth_grid_mm is not None:
+            return strength * float(self.mean_depth_grid_mm[row, col])
         return strength * float(self.fraction[row, col])
 
 
@@ -51,9 +55,16 @@ class WetSchedule:
     required_depth_mm: float
     drops: tuple[WetDrop, ...]
 
-    def is_suppressed(self, row: int, col: int, time_min: float) -> bool:
+    def wetness_at(self, row: int, col: int, time_min: float) -> float:
         depth = sum(drop.depth_at(row, col, time_min) for drop in self.drops)
-        return depth >= self.required_depth_mm
+        return max(0.0, min(1.0, depth / self.required_depth_mm))
+
+    def ros_factor_at(self, row: int, col: int, time_min: float) -> float:
+        """Diagnostic linear ROS factor: 1 dry, 0 at the required depth."""
+        return 1.0 - self.wetness_at(row, col, time_min)
+
+    def is_suppressed(self, row: int, col: int, time_min: float) -> bool:
+        return self.wetness_at(row, col, time_min) >= 1.0
 
     def event_times(self) -> tuple[float, ...]:
         times: set[float] = set()
@@ -73,6 +84,7 @@ def build_wet_schedule(
     nrows: int,
     ncols: int,
     cell_size_m: float,
+    subcell_cell_size_m: float | None = None,
 ) -> WetSchedule:
     """Rasterize scenario drops into a temporary wet-cell schedule."""
     if required_depth_mm <= 0.0:
@@ -105,6 +117,21 @@ def build_wet_schedule(
         )
         if not (fraction > 0.0).any():
             continue
+        mean_depth = None
+        if subcell_cell_size_m is not None:
+            raster = rasterize_pattern(
+                pattern,
+                drop.center,
+                cell_size_m=subcell_cell_size_m,
+                padding_cells=0,
+            )
+            mean_depth = raster.aggregate_mean(
+                fire_xll=xll,
+                fire_yll=yll,
+                fire_nrows=nrows,
+                fire_ncols=ncols,
+                fire_cell_m=cell_size_m,
+            )
         drops.append(
             WetDrop(
                 drop_id=drop.id,
@@ -113,6 +140,7 @@ def build_wet_schedule(
                 start_min=drop.start_min,
                 end_min=drop.end_min,
                 duration_min=drop.effect_duration_min,
+                mean_depth_grid_mm=mean_depth,
             )
         )
     return WetSchedule(required_depth_mm=required_depth_mm, drops=tuple(drops))

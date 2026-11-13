@@ -218,10 +218,12 @@ def grow_fire_with_containment(
 
     ignition = np.full((grid.rows, grid.cols), np.inf, dtype=float)
     def available(row: int, col: int, time_min: float) -> bool:
-        return schedule.is_burnable(burnable, row, col, time_min) and not (
-            wet_schedule is not None
-            and wet_schedule.is_suppressed(row, col, time_min)
-        )
+        return schedule.is_burnable(burnable, row, col, time_min)
+
+    def wet_ros_factor(row: int, col: int, time_min: float) -> float:
+        if wet_schedule is None:
+            return 1.0
+        return wet_schedule.ros_factor_at(row, col, time_min)
 
     queue: list[tuple[float, int, int, bool]] = []
     for row, col in config.ignition_cells:
@@ -274,7 +276,7 @@ def grow_fire_with_containment(
             break
         if not is_source and time > ignition[row, col] + 1e-12:
             continue
-        if not available(row, col, time):
+        if not available(row, col, time) or wet_ros_factor(row, col, time) <= 0.0:
             continue
         step_index = max(0, bisect.bisect_right(starts, time) - 1)
         for drow, dcol in offsets:
@@ -301,8 +303,12 @@ def grow_fire_with_containment(
                 time,
                 step_index,
             )
+            factor = wet_ros_factor(nrow, ncol, time)
+            if math.isfinite(arrival) and factor > 0.0:
+                arrival = time + (arrival - time) / factor
             if (
                 math.isfinite(arrival)
+                and factor > 0.0
                 and arrival <= config.max_time_min
                 and arrival < ignition[nrow, ncol] - 1e-12
             ):

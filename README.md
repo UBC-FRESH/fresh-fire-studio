@@ -27,6 +27,7 @@ A public 3D benchmark-fire portal from the UBC FRESH Lab.
 - P179.6 temporary wet coupling: [`docs/p179-6-wet-coupling.md`](docs/p179-6-wet-coupling.md)
 - P179.7 aircraft cycles: [`docs/p179-7-aircraft-cycles.md`](docs/p179-7-aircraft-cycles.md)
 - P179.8 sub-cell drop raster: [`docs/p179-8-subcell.md`](docs/p179-8-subcell.md)
+- P179.9 wetness/ROS factor: [`docs/p179-9-wetness-ros.md`](docs/p179-9-wetness-ros.md)
 - Canadian wildfire studies notes: [`docs/ws4-canadian-wildfire-notes.md`](docs/ws4-canadian-wildfire-notes.md)
 - Current edge: <https://fresh-fire.01101.dev/>
 - Local portal: <http://127.0.0.1:8800/>

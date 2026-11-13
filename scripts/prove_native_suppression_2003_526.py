@@ -48,6 +48,12 @@ def main() -> None:
         help="apply temporary wet cells from the scenario drops",
     )
     parser.add_argument("--required-depth-mm", type=float, default=0.75)
+    parser.add_argument(
+        "--subcell-cell-size-m",
+        type=float,
+        default=None,
+        help="aggregate nested drop depth from this sub-cell size",
+    )
     args = parser.parse_args()
 
     sys.path.insert(0, str(ROOT))
@@ -149,6 +155,7 @@ def main() -> None:
             nrows=rows,
             ncols=cols,
             cell_size_m=fire.grid.cell_size_m,
+            subcell_cell_size_m=args.subcell_cell_size_m,
         )
     growth = grow_fire_with_containment(
         grid,
@@ -185,7 +192,14 @@ def main() -> None:
             "kernel": "single WS4 minimum-travel-time run",
             "mask": "cell containment checked at expansion time",
             "drops": (
-                f"temporary wet threshold at {args.required_depth_mm:g} mm"
+                (
+                    f"temporary wet ROS factor at {args.required_depth_mm:g} mm"
+                    + (
+                        f", {args.subcell_cell_size_m:g} m sub-cell"
+                        if args.subcell_cell_size_m is not None
+                        else ""
+                    )
+                )
                 if wet is not None
                 else "not coupled"
             ),

@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles and P179.8 sub-cell drop raster implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles, P179.8 sub-cell raster and P179.9 wetness/ROS factor implemented. Not operational.
 
 Five local PDFs were mined on 2026-11-13; see
 [`martell-pdf-notes.md`](martell-pdf-notes.md). The 2015 control-time paper is
@@ -114,6 +114,9 @@ Implemented in this repository:
 - `suppression/subcell.py` — 10 m drop raster and fire-cell aggregation.
 - `tests/test_subcell.py` — nested depth and aggregation tests.
 - `docs/p179-8-subcell.md` — resolution problem, aggregation and limits.
+- `suppression/wet.py` — wetness and local ROS factor.
+- `suppression/proofs/2003-526-native-drop-line-subcell.json` — sub-cell wet-line artifact.
+- `docs/p179-9-wetness-ros.md` — wetness/ROS method and limits.
 
 Run:
 
@@ -297,6 +300,19 @@ receives a mean depth of about **0.14 mm** and a wetted fraction of about
 
 This is a geometry fix, not a fire-kernel fix. See
 [`p179-8-subcell.md`](p179-8-subcell.md).
+
+## P179.9 wetness and local ROS factor
+
+`WetSchedule` now turns active depth into `wetness = depth / required_depth`
+and a diagnostic `ros_factor = 1 - wetness`. The native kernel stretches edge
+travel time by that factor instead of using a binary wet mask.
+
+The 21-drop line still leaves final area at **5,325 ha**. The fire bypasses the
+small wetted cells. This confirms that sub-cell depth plus a scalar ROS factor
+does not solve the 100 m grid/placement problem.
+
+The ROS mapping is a placeholder, not a validated model. See
+[`p179-9-wetness-ros.md`](p179-9-wetness-ros.md).
 
 ## Adjacent Canadian planning layers
 
