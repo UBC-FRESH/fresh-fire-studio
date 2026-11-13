@@ -1,0 +1,652 @@
+{
+  "proof": "P179.18 evidence-bounded suppression ensemble",
+  "scenario_id": "2003-526-drop-line-proof",
+  "seed": 20261113,
+  "n": 32,
+  "free_burn": {
+    "area_sim_ha": 5325.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 9.240384615384615,
+    "perimeter_sim_m": 116800.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 4.959183673469388,
+    "centroid_distance_m": 174.69119277442272,
+    "iou": 0.09559512652296158,
+    "sorensen": 0.174508126603935,
+    "orientation_error_deg": 21.642970351518244
+  },
+  "samples": [
+    {
+      "ros_reduction_m_min": 1.115231448442453,
+      "hold_min": 0.25,
+      "water_depth_mm": 1.6963717953818804,
+      "canopy_penetration": 0.8253892514694727,
+      "required_depth_mm": 0.5497075506995034
+    },
+    {
+      "ros_reduction_m_min": 1.9181126030707367,
+      "hold_min": 4.0107503553249595,
+      "water_depth_mm": 1.58473529553043,
+      "canopy_penetration": 0.6004488644679968,
+      "required_depth_mm": 0.5601879579372208
+    },
+    {
+      "ros_reduction_m_min": 1.0911104396833422,
+      "hold_min": 0.25,
+      "water_depth_mm": 1.7112822071830873,
+      "canopy_penetration": 0.8780105265977245,
+      "required_depth_mm": 0.633686256241131
+    },
+    {
+      "ros_reduction_m_min": 0.7384691940672666,
+      "hold_min": 2.9716280823592163,
+      "water_depth_mm": 1.1147171192939258,
+      "canopy_penetration": 0.630763355502348,
+      "required_depth_mm": 0.5522429660920487
+    },
+    {
+      "ros_reduction_m_min": 0.20513416995723016,
+      "hold_min": 1.5337241302918465,
+      "water_depth_mm": 1.2618820287993586,
+      "canopy_penetration": 0.7040623063022539,
+      "required_depth_mm": 0.7219446357692463
+    },
+    {
+      "ros_reduction_m_min": 0.316590538871488,
+      "hold_min": 0.2681373865056922,
+      "water_depth_mm": 1.0418182262506939,
+      "canopy_penetration": 0.8270084887383757,
+      "required_depth_mm": 0.7003422702887351
+    },
+    {
+      "ros_reduction_m_min": 0.815484143950229,
+      "hold_min": 4.590213498593533,
+      "water_depth_mm": 1.3249025453960523,
+      "canopy_penetration": 0.5217860049747766,
+      "required_depth_mm": 0.8440924628505039
+    },
+    {
+      "ros_reduction_m_min": 0.6672012613261848,
+      "hold_min": 6.150867592642422,
+      "water_depth_mm": 1.8287379251769658,
+      "canopy_penetration": 0.8457455356512916,
+      "required_depth_mm": 0.6608909259480799
+    },
+    {
+      "ros_reduction_m_min": 0.8985344253607475,
+      "hold_min": 6.93443031829307,
+      "water_depth_mm": 2.5,
+      "canopy_penetration": 0.7025193251884171,
+      "required_depth_mm": 0.3613115097834548
+    },
+    {
+      "ros_reduction_m_min": 0.0,
+      "hold_min": 1.7266501176466202,
+      "water_depth_mm": 1.6079301675908382,
+      "canopy_penetration": 0.7625997425763938,
+      "required_depth_mm": 0.6592003412866375
+    },
+    {
+      "ros_reduction_m_min": 0.0,
+      "hold_min": 2.727631818412441,
+      "water_depth_mm": 2.074089060363605,
+      "canopy_penetration": 0.7417927025554926,
+      "required_depth_mm": 0.42136750162953995
+    },
+    {
+      "ros_reduction_m_min": 0.0,
+      "hold_min": 2.453787770327577,
+      "water_depth_mm": 1.714631640942771,
+      "canopy_penetration": 0.7028616469144624,
+      "required_depth_mm": 0.5625213652018978
+    },
+    {
+      "ros_reduction_m_min": 0.0,
+      "hold_min": 3.532343430056046,
+      "water_depth_mm": 2.010896907032265,
+      "canopy_penetration": 0.3831489665435179,
+      "required_depth_mm": 0.31915781415576366
+    },
+    {
+      "ros_reduction_m_min": 0.037689796323511215,
+      "hold_min": 2.355562264489077,
+      "water_depth_mm": 2.055507368223286,
+      "canopy_penetration": 0.7463215159922215,
+      "required_depth_mm": 0.5503671726306772
+    },
+    {
+      "ros_reduction_m_min": 0.2329349565656812,
+      "hold_min": 3.8246488441132325,
+      "water_depth_mm": 1.6957639738152215,
+      "canopy_penetration": 0.8258022962292642,
+      "required_depth_mm": 0.644234076615935
+    },
+    {
+      "ros_reduction_m_min": 0.030298887468627633,
+      "hold_min": 3.856052786584492,
+      "water_depth_mm": 2.5,
+      "canopy_penetration": 0.43954293766215485,
+      "required_depth_mm": 0.6163015275414369
+    },
+    {
+      "ros_reduction_m_min": 1.1978323341571109,
+      "hold_min": 1.7948380857515742,
+      "water_depth_mm": 2.26017575063807,
+      "canopy_penetration": 1.0,
+      "required_depth_mm": 0.48310792522888335
+    },
+    {
+      "ros_reduction_m_min": 0.0,
+      "hold_min": 0.7790201685854445,
+      "water_depth_mm": 1.606876949644215,
+      "canopy_penetration": 0.5327614815522934,
+      "required_depth_mm": 0.5722440383624567
+    },
+    {
+      "ros_reduction_m_min": 0.0,
+      "hold_min": 2.668911950931635,
+      "water_depth_mm": 1.389600734847917,
+      "canopy_penetration": 0.7871070985761109,
+      "required_depth_mm": 0.5240418954746293
+    },
+    {
+      "ros_reduction_m_min": 0.6664451104988098,
+      "hold_min": 0.25,
+      "water_depth_mm": 2.267635117359044,
+      "canopy_penetration": 1.0,
+      "required_depth_mm": 0.6070830559715424
+    },
+    {
+      "ros_reduction_m_min": 2.5,
+      "hold_min": 0.25,
+      "water_depth_mm": 1.6934594632073947,
+      "canopy_penetration": 0.9807456585784974,
+      "required_depth_mm": 0.7398269073587205
+    },
+    {
+      "ros_reduction_m_min": 0.6423146690396553,
+      "hold_min": 0.5006513622415063,
+      "water_depth_mm": 1.8625607058684843,
+      "canopy_penetration": 0.7379989050825753,
+      "required_depth_mm": 0.5971304373482924
+    },
+    {
+      "ros_reduction_m_min": 0.9012797889726795,
+      "hold_min": 3.8316404045785273,
+      "water_depth_mm": 2.4764275049022455,
+      "canopy_penetration": 0.9334668711498534,
+      "required_depth_mm": 0.7067749426680594
+    },
+    {
+      "ros_reduction_m_min": 0.34531008369819327,
+      "hold_min": 0.506653410212915,
+      "water_depth_mm": 1.7667757053045132,
+      "canopy_penetration": 0.5222708433614454,
+      "required_depth_mm": 0.7262803031284518
+    },
+    {
+      "ros_reduction_m_min": 0.0,
+      "hold_min": 3.774600202317256,
+      "water_depth_mm": 1.9782350767992458,
+      "canopy_penetration": 0.6014097640859019,
+      "required_depth_mm": 0.706632352854461
+    },
+    {
+      "ros_reduction_m_min": 0.9420708341006188,
+      "hold_min": 3.1847402612316023,
+      "water_depth_mm": 1.482741980970759,
+      "canopy_penetration": 0.9758811390356718,
+      "required_depth_mm": 0.7076709119840627
+    },
+    {
+      "ros_reduction_m_min": 0.0,
+      "hold_min": 1.2384709616849399,
+      "water_depth_mm": 0.8567716049935182,
+      "canopy_penetration": 0.7507137954547052,
+      "required_depth_mm": 0.601389881661486
+    },
+    {
+      "ros_reduction_m_min": 0.6855413980401649,
+      "hold_min": 1.2997480749596497,
+      "water_depth_mm": 2.5,
+      "canopy_penetration": 0.7200314320658143,
+      "required_depth_mm": 0.54433610063449
+    },
+    {
+      "ros_reduction_m_min": 0.16953332573270175,
+      "hold_min": 2.8460404439854576,
+      "water_depth_mm": 1.4780787973958107,
+      "canopy_penetration": 0.9080640084816333,
+      "required_depth_mm": 0.8085909217323718
+    },
+    {
+      "ros_reduction_m_min": 1.2003297773619117,
+      "hold_min": 3.43677335738494,
+      "water_depth_mm": 1.9128003542335474,
+      "canopy_penetration": 1.0,
+      "required_depth_mm": 0.7526561852580971
+    },
+    {
+      "ros_reduction_m_min": 1.4979894302137307,
+      "hold_min": 3.8609410836964506,
+      "water_depth_mm": 2.1003209450549343,
+      "canopy_penetration": 0.936154100355583,
+      "required_depth_mm": 0.6017499735779781
+    },
+    {
+      "ros_reduction_m_min": 0.0,
+      "hold_min": 1.7163500022513922,
+      "water_depth_mm": 1.890893561169162,
+      "canopy_penetration": 0.9656103395052034,
+      "required_depth_mm": 0.7583847126867789
+    }
+  ],
+  "outcomes": [
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    },
+    {
+      "area_sim_ha": 5325.0,
+      "area_obs_ha": 520.0,
+      "area_bias": 9.240384615384615,
+      "perimeter_sim_m": 116800.0,
+      "perimeter_obs_m": 19600.0,
+      "perimeter_bias": 4.959183673469388,
+      "centroid_distance_m": 174.69119277442272,
+      "iou": 0.09559512652296158,
+      "sorensen": 0.174508126603935,
+      "orientation_error_deg": 21.642970351518244
+    }
+  ],
+  "summary": {
+    "n": 32,
+    "mean_area_ha": 5325.0,
+    "median_area_ha": 5325.0,
+    "sd_area_ha": 0.0,
+    "p05_area_ha": 5325.0,
+    "p95_area_ha": 5325.0,
+    "free_area_ha": 5325.0,
+    "probability_any_reduction": 0.0,
+    "probability_area_below_free": 0.0,
+    "correlation_ros_reduction_m_min": 0.0,
+    "correlation_hold_min": 0.0,
+    "correlation_water_depth_mm": 0.0,
+    "correlation_canopy_penetration": 0.0,
+    "correlation_required_depth_mm": 0.0
+  },
+  "limits": [
+    "Parameters are sampled from published means and SDs, not local validation data.",
+    "The drop geometry and 100 m fire grid are fixed within the ensemble.",
+    "The Wheatley experiments are low-intensity surface fires, not 2003_526.",
+    "Zero containment probability is a model result, not an operational conclusion."
+  ]
+}

@@ -17,3 +17,5 @@ def test_replay_page_and_data_are_consistent() -> None:
     assert data["results"]["control"]["area_ha"] == 3574.7
     assert data["results"]["control"]["ros_correlation"] < -0.5
     assert len(data["model_extent"]) == 19
+    assert (ROOT / "portal/static/suppression-evidence-ensemble.json").exists()
+    assert (ROOT / "portal/static/suppression-evidence-control.json").exists()

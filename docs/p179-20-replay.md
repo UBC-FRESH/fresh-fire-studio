@@ -29,6 +29,13 @@ The results panel reports:
 
 Data: `portal/static/suppression-mission.json`.
 
+Download links on the page:
+
+- `static/suppression-mission.json`
+- `static/suppression-evidence-ensemble.json`
+- `static/suppression-evidence-control.json`
+- public model card in the GitHub repository
+
 ## What it does not show
 
 - no observed or simulated fire perimeter;
