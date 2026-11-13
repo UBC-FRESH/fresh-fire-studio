@@ -1,0 +1,65 @@
+{
+  "proof": "P179.14 receding-horizon perimeter mission",
+  "case_id": "2003_526",
+  "start_min": 600.0,
+  "interval_min": 300.0,
+  "cycles": 4,
+  "missions": [
+    {
+      "epoch_min": 600.0,
+      "targets": 39,
+      "drops": 39
+    },
+    {
+      "epoch_min": 900.0,
+      "targets": 56,
+      "drops": 56
+    },
+    {
+      "epoch_min": 1200.0,
+      "targets": 68,
+      "drops": 68
+    },
+    {
+      "epoch_min": 1500.0,
+      "targets": 103,
+      "drops": 103
+    }
+  ],
+  "free_burn": {
+    "area_sim_ha": 5325.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 9.240384615384615,
+    "perimeter_sim_m": 116800.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 4.959183673469388,
+    "centroid_distance_m": 174.69119277442272,
+    "iou": 0.09559512652296158,
+    "sorensen": 0.174508126603935,
+    "orientation_error_deg": 21.642970351518244
+  },
+  "receding": {
+    "area_sim_ha": 5325.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 9.240384615384615,
+    "perimeter_sim_m": 116800.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 4.959183673469388,
+    "centroid_distance_m": 174.69119277442272,
+    "iou": 0.09559512652296158,
+    "sorensen": 0.174508126603935,
+    "orientation_error_deg": 21.642970351518244
+  },
+  "delta": {
+    "area_reduction_ha": 0.0,
+    "iou_change": 0.0
+  },
+  "total_drops": 266,
+  "limits": [
+    "The mission is re-planned after each full 300-minute epoch, not continuously.",
+    "Aircraft have no refill, turn-around, visibility or competing-fire constraints.",
+    "The wet ROS mapping remains diagnostic.",
+    "The fire grid is 100 m.",
+    "This is a diagnostic closed-loop experiment, not an incident plan."
+  ]
+}

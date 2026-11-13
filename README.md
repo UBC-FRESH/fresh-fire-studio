@@ -32,6 +32,7 @@ A public 3D benchmark-fire portal from the UBC FRESH Lab.
 - P179.11 perimeter placement: [`docs/p179-11-perimeter-placement.md`](docs/p179-11-perimeter-placement.md)
 - P179.12 perimeter mission: [`docs/p179-12-perimeter-mission.md`](docs/p179-12-perimeter-mission.md)
 - P179.13 closed box: [`docs/p179-13-closed-box.md`](docs/p179-13-closed-box.md)
+- P179.14 receding horizon: [`docs/p179-14-receding-horizon.md`](docs/p179-14-receding-horizon.md)
 - Canadian wildfire studies notes: [`docs/ws4-canadian-wildfire-notes.md`](docs/ws4-canadian-wildfire-notes.md)
 - Current edge: <https://fresh-fire.01101.dev/>
 - Local portal: <http://127.0.0.1:8800/>

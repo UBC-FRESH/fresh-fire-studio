@@ -20,6 +20,7 @@ HEAD5_ARTIFACT = ROOT / "suppression/proofs/2003-526-native-head-line-5heli.json
 PERIM1_ARTIFACT = ROOT / "suppression/proofs/2003-526-native-perimeter-5air-1pass.json"
 PERIM2_ARTIFACT = ROOT / "suppression/proofs/2003-526-native-perimeter-5air-2pass.json"
 BOX_ARTIFACT = ROOT / "suppression/proofs/2003-526-native-box-5air-1pass.json"
+RECEDE_ARTIFACT = ROOT / "suppression/proofs/2003-526-receding-horizon.json"
 GRID = dict(xll=487700.0, yll=5722700.0, nrows=76, ncols=90, cell_size_m=100.0)
 
 
@@ -78,6 +79,13 @@ def test_wet_artifact_records_coupling_and_resolution_limit() -> None:
     assert len(payload["wet_schedule"]["drops"]) == 3
     assert payload["wet_schedule"]["drops"][0]["covered_cells"] == 1
     assert payload["native"]["area_sim_ha"] == payload["free_burn"]["area_sim_ha"]
+
+
+def test_receding_horizon_artifact_records_failure_diagnostic() -> None:
+    payload = json.loads(RECEDE_ARTIFACT.read_text())
+    assert payload["cycles"] == 4
+    assert payload["total_drops"] == 266
+    assert payload["receding"]["area_sim_ha"] == payload["free_burn"]["area_sim_ha"]
 
 
 def test_closed_box_artifact_does_not_contain() -> None:

@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles, P179.8 sub-cell raster, P179.9 wetness/ROS factor, P179.10 fine-grid experiment, P179.11 perimeter queries, P179.12 perimeter mission and P179.13 closed box implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles, P179.8 sub-cell raster, P179.9 wetness/ROS factor, P179.10 fine-grid experiment, P179.11 perimeter queries, P179.12 perimeter mission, P179.13 closed box and P179.14 receding horizon implemented. Not operational.
 
 Five local PDFs were mined on 2026-11-13; see
 [`martell-pdf-notes.md`](martell-pdf-notes.md). The 2015 control-time paper is
@@ -131,6 +131,9 @@ Implemented in this repository:
 - `suppression/scenarios/2003-526-box-5air-1pass.json` — closed-box mission.
 - `suppression/proofs/2003-526-native-box-5air-1pass.json` — closed-box result.
 - `docs/p179-13-closed-box.md` — closed-box result and time-decay limit.
+- `scripts/recede_horizon_2003_526.py` — 4-epoch receding-horizon experiment.
+- `suppression/proofs/2003-526-receding-horizon.json` — result artifact.
+- `docs/p179-14-receding-horizon.md` — method, negative result and limits.
 
 Run:
 
@@ -374,6 +377,16 @@ produced 119 drops. Final area remained **5,325 ha**.
 Closing the flanks is necessary but not sufficient. The water decays before the
 fire reaches the later perimeter, so a one-pass finite mission is bypassed. See
 [`p179-13-closed-box.md`](p179-13-closed-box.md).
+
+## P179.14 receding-horizon mission
+
+A four-epoch receding-horizon experiment re-reads the front at 600, 900, 1,200
+and 1,500 minutes, builds a five-aircraft perimeter mission at each epoch, and
+reruns the native growth with all missions.
+
+It uses **266 drops** across four missions and still ends at **5,325 ha**.
+Re-planning alone does not solve the finite-duration, placement and resolution
+problems. See [`p179-14-receding-horizon.md`](p179-14-receding-horizon.md).
 
 ## Adjacent Canadian planning layers
 
