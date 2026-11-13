@@ -46,6 +46,11 @@ Measure:
 - treated-cell ROS or edge arrival changes;
 - whether the front bypasses, breaches or extinguishes locally.
 
+Result: the 154-target wet ring delayed **124/154** treated targets, mean
+**3.83 min**, maximum **34.92 min**; area at 2,100 min fell from **5,012** to
+**4,955 ha**, while the final area remained **5,325 ha**. See
+[`p181-metrics.md`](p181-metrics.md).
+
 ## P181.2 — closed geometry, not more sorties
 
 A wet line must be closed in the burnable grid:
