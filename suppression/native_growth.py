@@ -304,23 +304,30 @@ def grow_fire_with_containment(
                 time,
                 step_index,
             )
-            factor = wet_ros_factor(nrow, ncol, time)
+            # The target is wet when the fire arrives, not when the source
+            # starts expanding. Evaluating at ``time`` was the bug that made
+            # every arrival-timed water drop ineffective.
+            arrival_factor = (
+                wet_ros_factor(nrow, ncol, arrival)
+                if math.isfinite(arrival)
+                else 1.0
+            )
             absolute_reduction = bool(
                 ros_reduction_m_min is not None
                 and wet_schedule is not None
-                and wet_schedule.is_suppressed(nrow, ncol, time)
                 and math.isfinite(arrival)
+                and wet_schedule.is_suppressed(nrow, ncol, arrival)
                 and arrival > time + 1e-12
             )
             if absolute_reduction:
                 pre_ros = distance / (arrival - time)
                 post_ros = max(0.0, pre_ros - ros_reduction_m_min)
                 arrival = math.inf if post_ros <= 0.0 else time + distance / post_ros
-            elif math.isfinite(arrival) and factor > 0.0:
-                arrival = time + (arrival - time) / factor
+            elif math.isfinite(arrival) and arrival_factor > 0.0:
+                arrival = time + (arrival - time) / arrival_factor
             if (
                 math.isfinite(arrival)
-                and (factor > 0.0 or absolute_reduction)
+                and (arrival_factor > 0.0 or absolute_reduction)
                 and arrival <= config.max_time_min
                 and arrival < ignition[nrow, ncol] - 1e-12
             ):

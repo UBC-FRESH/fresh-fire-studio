@@ -65,6 +65,7 @@ def main() -> None:
     parser.add_argument("--synthetic-barrier-start-min", type=float, default=900.0)
     parser.add_argument("--synthetic-barrier-duration-min", type=float, default=600.0)
     parser.add_argument("--synthetic-barrier-depth-mm", type=float, default=2.0)
+    parser.add_argument("--static-wet-mask", action="store_true", help="convert fully wet cells at 1800 min into a static containment mask")
     args = parser.parse_args()
 
     sys.path.insert(0, str(ROOT))
@@ -82,6 +83,7 @@ def main() -> None:
     from suppression.dispatch import apply_line_timings, dispatch_scenario
     from suppression.models import Scenario
     from suppression.native_growth import (
+        ContainmentSchedule,
         build_containment_schedule,
         grow_fire_with_containment,
     )
@@ -187,6 +189,15 @@ def main() -> None:
             cell_size_m=fire.grid.cell_size_m,
             subcell_cell_size_m=args.subcell_cell_size_m,
         )
+    if args.static_wet_mask and wet is not None:
+        mask = np.array(
+            [[wet.is_suppressed(row, col, 1800.0) for col in range(cols)] for row in range(rows)]
+        )
+        schedule = ContainmentSchedule(
+            start_min=np.where(mask, 1800.0, np.inf),
+            end_min=np.where(mask, 22200.0, np.inf),
+        )
+        wet = None
     growth = grow_fire_with_containment(
         grid,
         GrowthConfig(
