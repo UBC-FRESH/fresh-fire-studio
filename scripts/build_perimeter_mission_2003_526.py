@@ -21,6 +21,12 @@ def main() -> None:
     parser.add_argument("--passes", type=int, default=1)
     parser.add_argument("--distance-km", type=float, default=9.0)
     parser.add_argument(
+        "--box-margin-m",
+        type=float,
+        default=None,
+        help="use a closed box around the perimeter with this margin",
+    )
+    parser.add_argument(
         "--out",
         type=Path,
         default=ROOT / "suppression/scenarios/2003-526-perimeter-mission.json",
@@ -35,7 +41,12 @@ def main() -> None:
 
     from suppression.aircraft import CL415
     from suppression.mission import build_perimeter_mission
-    from suppression.perimeter import cells_to_centers, front_target_cells
+    from suppression.perimeter import (
+        cells_to_centers,
+        closed_box_centers,
+        front_target_cells,
+        perimeter_cells,
+    )
 
     fixture = args.ws4_root / "tests/fixtures/fire/cfsds_2003_526"
     fire = load_cfsds_reanalysis_case(fixture)
@@ -53,13 +64,24 @@ def main() -> None:
     fuel_grid = fire.fbp_fuel_grid()
     burnable = np.array([[value is not None for value in row] for row in fuel_grid], dtype=bool)
     cells = front_target_cells(burned, burnable)
-    centers = cells_to_centers(
-        cells,
-        xll=fire.grid.xll,
-        yll=fire.grid.yll,
-        nrows=fire.grid.nrows,
-        cell_size_m=fire.grid.cell_size_m,
-    )
+    if args.box_margin_m is not None:
+        centers = closed_box_centers(
+            perimeter_cells(burned, burnable),
+            xll=fire.grid.xll,
+            yll=fire.grid.yll,
+            nrows=fire.grid.nrows,
+            cell_size_m=fire.grid.cell_size_m,
+            margin_m=args.box_margin_m,
+            spacing_m=fire.grid.cell_size_m,
+        )
+    else:
+        centers = cells_to_centers(
+            cells,
+            xll=fire.grid.xll,
+            yll=fire.grid.yll,
+            nrows=fire.grid.nrows,
+            cell_size_m=fire.grid.cell_size_m,
+        )
     mission = build_perimeter_mission(
         centers,
         profile=CL415,

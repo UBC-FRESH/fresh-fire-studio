@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles, P179.8 sub-cell raster, P179.9 wetness/ROS factor, P179.10 fine-grid experiment, P179.11 perimeter queries and P179.12 perimeter mission implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles, P179.8 sub-cell raster, P179.9 wetness/ROS factor, P179.10 fine-grid experiment, P179.11 perimeter queries, P179.12 perimeter mission and P179.13 closed box implemented. Not operational.
 
 Five local PDFs were mined on 2026-11-13; see
 [`martell-pdf-notes.md`](martell-pdf-notes.md). The 2015 control-time paper is
@@ -128,6 +128,9 @@ Implemented in this repository:
 - `suppression/scenarios/2003-526-perimeter-5air-*.json` — 1/2-pass missions.
 - `suppression/proofs/2003-526-native-perimeter-5air-*.json` — results.
 - `docs/p179-12-perimeter-mission.md` — mission result and open-flank limit.
+- `suppression/scenarios/2003-526-box-5air-1pass.json` — closed-box mission.
+- `suppression/proofs/2003-526-native-box-5air-1pass.json` — closed-box result.
+- `docs/p179-13-closed-box.md` — closed-box result and time-decay limit.
 
 Run:
 
@@ -362,6 +365,15 @@ Both final areas remain **5,325 ha**. The 39 targets do not form a closed
 perimeter, and the fire bypasses the treated cells. This is an open-flank
 mission, not a containment test. See
 [`p179-12-perimeter-mission.md`](p179-12-perimeter-mission.md).
+
+## P179.13 closed-box mission
+
+A closed rectangle with a 300 m margin, 100 m drop spacing and 5 aircraft
+produced 119 drops. Final area remained **5,325 ha**.
+
+Closing the flanks is necessary but not sufficient. The water decays before the
+fire reaches the later perimeter, so a one-pass finite mission is bypassed. See
+[`p179-13-closed-box.md`](p179-13-closed-box.md).
 
 ## Adjacent Canadian planning layers
 

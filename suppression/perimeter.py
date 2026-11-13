@@ -102,6 +102,52 @@ def leading_edge_cells(
     return tuple(cells[index] for index in np.where(keep)[0])
 
 
+def closed_box_centers(
+    cells: tuple[tuple[int, int], ...],
+    *,
+    xll: float,
+    yll: float,
+    nrows: int,
+    cell_size_m: float,
+    margin_m: float,
+    spacing_m: float,
+) -> tuple[tuple[float, float], ...]:
+    """Return drop centers along a closed rectangle around the perimeter."""
+    if not cells:
+        return ()
+    if margin_m < 0.0 or spacing_m <= 0.0:
+        raise ValueError("margin_m must be non-negative and spacing_m positive")
+    centers = cells_to_centers(
+        cells,
+        xll=xll,
+        yll=yll,
+        nrows=nrows,
+        cell_size_m=cell_size_m,
+    )
+    xs = [point[0] for point in centers]
+    ys = [point[1] for point in centers]
+    min_x, max_x = min(xs) - margin_m, max(xs) + margin_m
+    min_y, max_y = min(ys) - margin_m, max(ys) + margin_m
+    points: list[tuple[float, float]] = []
+    for start, end in (
+        ((min_x, min_y), (max_x, min_y)),
+        ((max_x, min_y), (max_x, max_y)),
+        ((max_x, max_y), (min_x, max_y)),
+        ((min_x, max_y), (min_x, min_y)),
+    ):
+        length = abs(end[0] - start[0]) + abs(end[1] - start[1])
+        count = max(2, int(round(length / spacing_m)) + 1)
+        points.extend(
+            (
+                start[0] + (end[0] - start[0]) * index / (count - 1),
+                start[1] + (end[1] - start[1]) * index / (count - 1),
+            )
+            for index in range(count)
+        )
+    unique = list(dict.fromkeys(points))
+    return tuple(unique + [unique[0]]) if unique else ()
+
+
 def cells_to_centers(
     cells: tuple[tuple[int, int], ...],
     *,
@@ -122,6 +168,7 @@ def cells_to_centers(
 
 __all__ = [
     "cells_to_centers",
+    "closed_box_centers",
     "front_target_cells",
     "leading_edge_cells",
     "perimeter_cells",

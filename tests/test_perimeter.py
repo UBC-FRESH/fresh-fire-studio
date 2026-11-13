@@ -4,6 +4,7 @@ import numpy as np
 
 from suppression.perimeter import (
     cells_to_centers,
+    closed_box_centers,
     front_target_cells,
     leading_edge_cells,
     perimeter_cells,
@@ -46,6 +47,25 @@ def test_front_targets_are_unburned_neighbours() -> None:
     burned = np.zeros((5, 5), dtype=bool)
     burned[2, 2] = True
     assert front_target_cells(burned) == ((1, 2), (2, 1), (2, 3), (3, 2))
+
+
+def test_closed_box_centers_form_a_closed_ring() -> None:
+    points = closed_box_centers(
+        ((2, 2),),
+        xll=0.0,
+        yll=0.0,
+        nrows=5,
+        cell_size_m=10.0,
+        margin_m=10.0,
+        spacing_m=10.0,
+    )
+    assert points[0] == points[-1]
+    xs = [point[0] for point in points]
+    ys = [point[1] for point in points]
+    assert min(xs) == 15.0
+    assert max(xs) == 35.0
+    assert min(ys) == 15.0
+    assert max(ys) == 35.0
 
 
 def test_cells_to_centers_north_up() -> None:
