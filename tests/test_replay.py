@@ -11,6 +11,8 @@ def test_replay_page_and_data_are_consistent() -> None:
     data = json.loads((ROOT / "portal/static/suppression-mission.json").read_text())
     assert "EVIDENCE ENSEMBLE" in page
     assert "mode-control" in page
+    assert "assistant-panel" in page
+    assert "assistantScript" in page
     assert len(data["drops"]) == 21
     assert data["results"]["realistic"]["area_ha"] == 5325.0
     assert data["results"]["realistic"]["containment_probability"] == 0.0

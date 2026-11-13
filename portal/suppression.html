@@ -19,6 +19,7 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospac
 #status{color:var(--muted);font-size:11px;margin-top:5px}#compass{right:16px;bottom:120px;padding:7px 10px;display:flex;align-items:center;gap:7px;color:var(--warm);font:11px ui-monospace,monospace}
 #note{position:fixed;left:50%;transform:translateX(-50%);top:16px;z-index:3;max-width:390px;padding:8px 12px;background:rgba(9,12,13,.86);border:1px solid rgba(255,179,71,.35);border-radius:10px;color:var(--warm);font:11px ui-monospace,monospace;text-align:center}
 #loading{position:fixed;inset:0;z-index:8;display:grid;place-items:center;background:#07100f;color:#a99e90;font:12px ui-monospace,monospace;letter-spacing:.08em;transition:opacity .45s ease}#loading.hidden{opacity:0;pointer-events:none}
+#assistant-backdrop{position:fixed;inset:0;z-index:20;background:rgba(3,8,7,.62);backdrop-filter:blur(5px)}#assistant-panel{position:fixed;z-index:21;right:20px;bottom:20px;width:min(440px,calc(100vw - 32px));max-height:min(720px,calc(100vh - 40px));display:flex;flex-direction:column;background:#0d1415;border:1px solid rgba(255,255,255,.18);border-radius:18px;box-shadow:0 24px 80px rgba(0,0,0,.6);overflow:hidden}#assistant-panel[hidden],#assistant-backdrop[hidden]{display:none!important}.assistant-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:15px 16px 10px;border-bottom:1px solid var(--line)}.assistant-head strong{display:block;font-size:17px;letter-spacing:-.03em}.assistant-head span{display:block;color:var(--muted);font:10px ui-monospace,monospace;margin-top:4px}.assistant-head-actions{display:flex;gap:8px;align-items:center}.assistant-close,.assistant-clear{border:0;background:transparent;color:var(--muted);cursor:pointer;font:12px system-ui}.assistant-close{font-size:24px;line-height:1;padding:0 2px}.assistant-quick{display:flex;gap:6px;flex-wrap:wrap;padding:10px 14px 0}.assistant-quick button{font-size:11px;padding:6px 8px;border-radius:999px;background:#14201e;color:var(--muted);border:1px solid var(--line);cursor:pointer}#assistant-log{min-height:150px;max-height:280px;overflow:auto;padding:12px 14px;display:flex;flex-direction:column;gap:9px}.assistant-message{max-width:92%;padding:9px 11px;border-radius:11px;font-size:12px;line-height:1.45;white-space:pre-wrap}.assistant-message.user{align-self:flex-end;background:#233b35;color:#f4efe7}.assistant-message.assistant{align-self:flex-start;background:#141e1d;color:#d7cdbf;border:1px solid var(--line)}.assistant-message.error{border-color:rgba(255,107,44,.45);color:#ffb9a0}#assistant-form{display:flex;gap:8px;padding:10px 14px 8px;border-top:1px solid var(--line)}#assistant-question{flex:1;min-height:42px;max-height:110px;resize:vertical;background:#0a1010;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px;font:12px system-ui}#assistant-submit{align-self:flex-end;border:0;border-radius:10px;background:var(--hot);color:#1b0c05;padding:10px 13px;font-weight:800;cursor:pointer}#assistant-status{padding:0 14px 12px;color:var(--dim);font:10px/1.4 ui-monospace,monospace}
 @media(max-width:700px){#title{max-width:255px}#stats,#results{display:none}#note{display:none}}
 </style>
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
@@ -32,10 +33,18 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospac
 <div id="stats" class="hud"><div><span>mission drops</span><b id="s-total">—</b></div><div><span>active drops</span><b id="s-active">0</b></div><div><span>aircraft</span><b id="s-aircraft">1</b></div><div><span>fps</span><b id="s-fps">—</b></div></div>
 <div id="compass" class="hud">↑ <span>N</span></div>
 <div id="bar" class="hud">
-  <div class="row"><button id="play" class="primary">Play</button><button id="reset">Reset</button><button id="mode-realistic" class="mode active">Realistic</button><button id="mode-control" class="mode">Control</button><button id="extent">Model extent</button><button id="observed">Hide observed</button><input id="slider" class="grow" type="range" min="0" max="900" step="1" value="0"><span id="clock">0 min</span></div>
+  <div class="row"><button id="play" class="primary">Play</button><button id="reset">Reset</button><button type="button" data-assistant-open aria-expanded="false" aria-controls="assistant-panel">+ Ask</button><button id="mode-realistic" class="mode active">Realistic</button><button id="mode-control" class="mode">Control</button><button id="extent">Model extent</button><button id="observed">Hide observed</button><input id="slider" class="grow" type="range" min="0" max="900" step="1" value="0"><span id="clock">0 min</span></div>
   <div class="legend"><span><i style="background:#7ce0c6"></i>drop / water</span><span><i style="background:#70b7ff"></i>control barrier</span><span><i style="background:#ffb347"></i>aircraft</span><span><i style="background:#ffd27c"></i>free-burn extent</span><span><i style="background:#7ce0c6"></i>observed final</span><span><i style="background:#52635d"></i>1 km grid</span></div>
   <div id="status">Mission geometry only · drag to orbit · scroll to zoom · space to play</div>
 </div>
+<div id="assistant-backdrop" hidden></div>
+<aside id="assistant-panel" hidden aria-labelledby="assistant-title" aria-modal="true" role="dialog">
+  <div class="assistant-head"><div><strong id="assistant-title">Ask FRESH Fire Studio</strong><span>suppression evidence · not operational</span></div><div class="assistant-head-actions"><button class="assistant-clear" id="assistant-clear" type="button">Clear</button><button class="assistant-close" id="assistant-close" type="button" aria-label="Close assistant">×</button></div></div>
+  <div class="assistant-quick"><button type="button" data-assistant-prompt="What does the suppression replay show?">What is this?</button><button type="button" data-assistant-prompt="Is the control barrier operational?">Is the control real?</button><button type="button" data-assistant-prompt="What is the evidence for the 0.5 m/min ROS reduction?">What evidence?</button></div>
+  <div id="assistant-log" aria-live="polite" aria-relevant="additions"></div>
+  <form id="assistant-form"><textarea id="assistant-question" maxlength="1200" placeholder="Ask about the suppression replay, evidence, or control…" aria-label="Your question"></textarea><button id="assistant-submit" type="submit">Ask</button></form>
+  <div id="assistant-status">Ask about suppression evidence, ensemble results, or the control barrier.</div>
+</aside>
 <script type="module">
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -45,6 +54,10 @@ const DATA = await fetch(dataPrefix + "static/suppression-mission.json").then(r 
 document.getElementById("mission-link").href = dataPrefix + "static/suppression-mission.json";
 document.getElementById("evidence-link").href = dataPrefix + "static/suppression-evidence-ensemble.json";
 document.getElementById("control-link").href = dataPrefix + "static/suppression-evidence-control.json";
+const assistantScript = document.createElement("script");
+assistantScript.src = dataPrefix + "static/assistant.js";
+assistantScript.defer = true;
+document.head.appendChild(assistantScript);
 const canvas = document.getElementById("c");
 const renderer = new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:"high-performance"});
 renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.5));

@@ -1,7 +1,7 @@
 # Assistant
 
-The three main pages (`/`, `/bc`, `/cfs`) have a `+ Ask` button that opens the
-same-page assistant drawer.
+The main pages (`/`, `/bc`, `/cfs`) and the diagnostic `/suppression/` replay
+have a `+ Ask` button that opens the same assistant drawer.
 
 ## Behaviour
 
