@@ -33,6 +33,8 @@ def test_replay_page_and_data_are_consistent() -> None:
     assert data["delivery_sweep"]["two_pass_three_aircraft"]["native_area_ha"] == 5325.0
     for name in ("2003-526-native-cycle-3pass", "2003-526-native-cycle-4pass", "2003-526-native-cycle-lead60"):
         assert (ROOT / "suppression/proofs" / f"{name}.json").exists()
+    assert (ROOT / "suppression/proofs/2003-526-fine-grid-2pass.json").exists()
+    assert (ROOT / "suppression/proofs/2003-526-fine-grid-2pass-25m.json").exists()
     assert data["results"]["realistic"]["area_ha"] == 5325.0
     assert data["results"]["realistic"]["containment_probability"] == 0.0
     assert data["results"]["control"]["area_ha"] == 3574.7

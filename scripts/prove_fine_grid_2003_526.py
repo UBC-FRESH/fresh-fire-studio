@@ -29,6 +29,7 @@ def main() -> None:
         default=ROOT / "suppression/scenarios/2003-526-drop-line-proof.json",
     )
     parser.add_argument("--fine-cell-m", type=float, default=50.0)
+    parser.add_argument("--subcell-cell-size-m", type=float, default=10.0)
     parser.add_argument("--required-depth-mm", type=float, default=0.75)
     parser.add_argument(
         "--out",
@@ -138,7 +139,7 @@ def main() -> None:
         nrows=fine_nrows,
         ncols=fine_ncols,
         cell_size_m=args.fine_cell_m,
-        subcell_cell_size_m=10.0,
+        subcell_cell_size_m=args.subcell_cell_size_m,
     )
     free_growth, free_metrics = run(None)
     wet_growth, wet_metrics = run(wet)

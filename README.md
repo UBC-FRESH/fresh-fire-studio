@@ -41,6 +41,7 @@ A public 3D benchmark-fire portal from the UBC FRESH Lab.
 - P180 cycle contract: [`docs/p180-cycle.md`](docs/p180-cycle.md)
 - P180 water balance: [`docs/p180-delivery.md`](docs/p180-delivery.md)
 - P180 saturation: [`docs/p180-saturation.md`](docs/p180-saturation.md)
+- P180 fine-grid test: [`docs/p180-fine-grid.md`](docs/p180-fine-grid.md)
 - Diagnostic suppression replay: `/suppression/` (mission geometry only)
 - Suppression case study: [`docs/p179-case-study.md`](docs/p179-case-study.md) · [PDF](docs/p179-case-study.pdf)
 - Replay notes: [`docs/p179-20-replay.md`](docs/p179-20-replay.md)

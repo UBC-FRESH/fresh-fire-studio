@@ -1,0 +1,51 @@
+{
+  "proof": "P179.10 fine-grid drop line",
+  "case_id": "2003_526",
+  "scenario_id": "2003-526-cycle-mission-2pass",
+  "fine_cell_m": 25.0,
+  "grid": {
+    "xll": 487700.0,
+    "yll": 5722700.0,
+    "nrows": 304,
+    "ncols": 360,
+    "cell_size_m": 25.0
+  },
+  "free_burn": {
+    "area_sim_ha": 5325.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 9.240384615384615,
+    "perimeter_sim_m": 116800.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 4.959183673469388,
+    "centroid_distance_m": 174.69119277442272,
+    "iou": 0.09559512652296158,
+    "sorensen": 0.174508126603935,
+    "orientation_error_deg": 21.642970351518187
+  },
+  "wet_line": {
+    "area_sim_ha": 5325.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 9.240384615384615,
+    "perimeter_sim_m": 116800.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 4.959183673469388,
+    "centroid_distance_m": 174.69119277442272,
+    "iou": 0.09559512652296158,
+    "sorensen": 0.174508126603935,
+    "orientation_error_deg": 21.642970351518187
+  },
+  "delta": {
+    "area_reduction_ha": 0.0,
+    "iou_change": 0.0
+  },
+  "wet_schedule": {
+    "required_depth_mm": 0.75,
+    "drops": 42
+  },
+  "limits": [
+    "Fine fuel and terrain are nearest-neighbour upsampled from 100 m.",
+    "The observed masks are upsampled, not re-digitized at 50 m.",
+    "The wet ROS factor is diagnostic.",
+    "This is a resolution experiment, not a calibrated reconstruction."
+  ]
+}
