@@ -21,7 +21,9 @@ Static export: `suppression/index.html` and `suppression.html`.
 - a 1 km grid and north-up compass;
 - a permanent banner: **diagnostic mission geometry, not an operational
   prediction**;
-- an `+ Ask` assistant drawer for evidence and model-limit questions.
+- an `+ Ask` assistant drawer for evidence and model-limit questions;
+- an in-page **Model card** panel covering evidence, results, synthetic inputs
+  and limits.
 
 The results panel reports:
 

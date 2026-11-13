@@ -13,6 +13,8 @@ def test_replay_page_and_data_are_consistent() -> None:
     assert "mode-control" in page
     assert "assistant-panel" in page
     assert "assistantScript" in page
+    assert "methods-panel" in page
+    assert "Wheatley 2024" in page
     assert len(data["drops"]) == 21
     assert data["results"]["realistic"]["area_ha"] == 5325.0
     assert data["results"]["realistic"]["containment_probability"] == 0.0
