@@ -1,0 +1,30 @@
+{
+  "case": "2003_526",
+  "barrier_x": 493600.0,
+  "cases": [
+    {
+      "width_cells": 1,
+      "wet_cells": 76,
+      "area_ha": 3504.0,
+      "free_area_ha": 5325.0
+    },
+    {
+      "width_cells": 5,
+      "wet_cells": 380,
+      "area_ha": 3504.0,
+      "free_area_ha": 5325.0
+    },
+    {
+      "width_cells": 10,
+      "wet_cells": 760,
+      "area_ha": 3504.0,
+      "free_area_ha": 5325.0
+    },
+    {
+      "width_cells": 20,
+      "wet_cells": 1520,
+      "area_ha": 3504.0,
+      "free_area_ha": 5325.0
+    }
+  ]
+}

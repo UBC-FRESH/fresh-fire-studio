@@ -145,6 +145,11 @@ For the fire:
 
 ### P182.2 — line hold and breach
 
+Result: a one-cell, full-height, permanent wet band reduces the benchmark from
+5,325 to **3,504 ha**; widths 1, 5, 10 and 20 all give the same area. The native
+wet branch works. The earlier scheduled line was not closed for the full height
+or duration. See [`p182-width.md`](p182-width.md).
+
 Result: the 71-cell full-height water line delayed 71/71 targets under a full
 wet-cell hold (mean 55.2 min), and 58/71 under the published 0.5 m/min
 reduction (mean 13.8 min). Final area remained 5,325 ha. The 20-cell static
