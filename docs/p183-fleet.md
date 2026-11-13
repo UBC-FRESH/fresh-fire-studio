@@ -51,6 +51,8 @@ The line is closed at arrival, but the water expires before the later growth.
 
 ## Next
 
-Estimate the **re-wetting interval** and fleet required to keep the line closed
-through the arrival window. This is now an operational persistence calculation,
-not a water-effect question.
+P185 estimated the **re-wetting interval** and fleet lower bound. The current
+3-stack depth holds for about 17 minutes; 15-minute re-wetting contains, while
+18 minutes fails. A 30-minute interval needs at least 1.5 mm and about 54
+aircraft as a lower bound; with margin, 2.0 mm needs about 65. See
+[`p185-rewetting.md`](p185-rewetting.md).

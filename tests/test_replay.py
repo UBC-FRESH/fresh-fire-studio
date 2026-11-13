@@ -41,6 +41,7 @@ def test_replay_page_and_data_are_consistent() -> None:
     assert (ROOT / "suppression/proofs/2003-526-native-cycle-continuous-2pass-1800.json").exists()
     assert (ROOT / "suppression/proofs/2003-526-wet-interaction-arrival-6air.json").exists()
     assert (ROOT / "suppression/proofs/2003-526-line-breach-forensics.json").exists()
+    assert (ROOT / "suppression/proofs/2003-526-perfect-rewetting.json").exists()
     assert data["results"]["realistic"]["area_ha"] == 5325.0
     assert data["results"]["realistic"]["containment_probability"] == 0.0
     assert data["results"]["control"]["area_ha"] == 3574.7

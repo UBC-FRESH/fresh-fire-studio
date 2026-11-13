@@ -186,6 +186,12 @@ about 18 minutes, not 60, because the stacked depth was only about 1.17 mm
 against a 0.75 mm threshold. This is a persistence result, not a wet-branch
 failure. See [`p184-breach.md`](p184-breach.md).
 
+P185 perfect re-wetting: 15-minute re-wetting at the current 1.047 mm depth
+contains at 3,504 ha; 18 minutes fails. A 30-minute interval requires at least
+1.5 mm and implies a **54-aircraft** lower bound with no margin, or 65 aircraft
+at 2.0 mm. This is a diagnostic persistence envelope, not an operational plan.
+See [`p185-rewetting.md`](p185-rewetting.md).
+
 - static 20-cell barrier as positive control;
 - confirm containment is possible only when the effect grid is closed;
 - never describe the static control as water.

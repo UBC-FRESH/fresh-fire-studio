@@ -1,0 +1,229 @@
+{
+  "proof": "P185 perfect periodic re-wetting",
+  "case_id": "2003_526",
+  "scenario": "suppression/scenarios/2003-526-fleet3-12air.json",
+  "reference_depth_mm": 1.04735,
+  "free_area_ha": 5325.0,
+  "required_depth_mm": 0.75,
+  "decay_min": 60.0,
+  "fleet_assumptions": {
+    "line_cells": 76,
+    "reference_drops_per_cell": 3.0,
+    "cycle_min": 4.25,
+    "payload_l": 6000.0,
+    "note": "continuous perfect dispatch lower bound; not an operational plan"
+  },
+  "minimum_feasible": {
+    "burnable_line_cells": 71,
+    "held_cells": 71,
+    "breached_cells": 0,
+    "wet_at_free_arrival": 71,
+    "free_arrival_min": {
+      "min": 1345.7471593660246,
+      "max": 1850.9933454107052
+    },
+    "first_breach": null,
+    "interval_min": 30.0,
+    "depth_mm": 1.5,
+    "effective_hold_min": 30.0,
+    "native_area_ha": 3504.0,
+    "feasible": true,
+    "drops_per_cell": 5,
+    "sorties_per_application": 380,
+    "sorties_per_hour": 760.0,
+    "aircraft_lower_bound": 54,
+    "water_l_per_hour": 4560000.0
+  },
+  "results": [
+    {
+      "burnable_line_cells": 71,
+      "held_cells": 71,
+      "breached_cells": 0,
+      "wet_at_free_arrival": 71,
+      "free_arrival_min": {
+        "min": 1345.7471593660246,
+        "max": 1850.9933454107052
+      },
+      "first_breach": null,
+      "interval_min": 15.0,
+      "depth_mm": 1.04735,
+      "effective_hold_min": 17.034,
+      "native_area_ha": 3504.0,
+      "feasible": true,
+      "drops_per_cell": 3,
+      "sorties_per_application": 228,
+      "sorties_per_hour": 912.0,
+      "aircraft_lower_bound": 65,
+      "water_l_per_hour": 5472000.0
+    },
+    {
+      "burnable_line_cells": 71,
+      "held_cells": 0,
+      "breached_cells": 71,
+      "wet_at_free_arrival": 68,
+      "free_arrival_min": {
+        "min": 1345.7471593660246,
+        "max": 1850.9933454107052
+      },
+      "first_breach": {
+        "row": 56,
+        "col": 59,
+        "ignition_min": 2026.83220054962
+      },
+      "interval_min": 18.0,
+      "depth_mm": 1.04735,
+      "effective_hold_min": 17.034,
+      "native_area_ha": 5325.0,
+      "feasible": false,
+      "drops_per_cell": 3,
+      "sorties_per_application": 228,
+      "sorties_per_hour": 760.0,
+      "aircraft_lower_bound": 54,
+      "water_l_per_hour": 4560000.0
+    },
+    {
+      "burnable_line_cells": 71,
+      "held_cells": 0,
+      "breached_cells": 71,
+      "wet_at_free_arrival": 43,
+      "free_arrival_min": {
+        "min": 1345.7471593660246,
+        "max": 1850.9933454107052
+      },
+      "first_breach": {
+        "row": 20,
+        "col": 59,
+        "ignition_min": 1454.865774754358
+      },
+      "interval_min": 30.0,
+      "depth_mm": 1.04735,
+      "effective_hold_min": 17.034,
+      "native_area_ha": 5325.0,
+      "feasible": false,
+      "drops_per_cell": 3,
+      "sorties_per_application": 228,
+      "sorties_per_hour": 456.0,
+      "aircraft_lower_bound": 33,
+      "water_l_per_hour": 2736000.0
+    },
+    {
+      "burnable_line_cells": 71,
+      "held_cells": 0,
+      "breached_cells": 71,
+      "wet_at_free_arrival": 15,
+      "free_arrival_min": {
+        "min": 1345.7471593660246,
+        "max": 1850.9933454107052
+      },
+      "first_breach": {
+        "row": 19,
+        "col": 59,
+        "ignition_min": 1376.3710698705959
+      },
+      "interval_min": 60.0,
+      "depth_mm": 1.04735,
+      "effective_hold_min": 17.034,
+      "native_area_ha": 5325.0,
+      "feasible": false,
+      "drops_per_cell": 3,
+      "sorties_per_application": 228,
+      "sorties_per_hour": 228.0,
+      "aircraft_lower_bound": 17,
+      "water_l_per_hour": 1368000.0
+    },
+    {
+      "burnable_line_cells": 71,
+      "held_cells": 71,
+      "breached_cells": 0,
+      "wet_at_free_arrival": 71,
+      "free_arrival_min": {
+        "min": 1345.7471593660246,
+        "max": 1850.9933454107052
+      },
+      "first_breach": null,
+      "interval_min": 30.0,
+      "depth_mm": 1.5,
+      "effective_hold_min": 30.0,
+      "native_area_ha": 3504.0,
+      "feasible": true,
+      "drops_per_cell": 5,
+      "sorties_per_application": 380,
+      "sorties_per_hour": 760.0,
+      "aircraft_lower_bound": 54,
+      "water_l_per_hour": 4560000.0
+    },
+    {
+      "burnable_line_cells": 71,
+      "held_cells": 71,
+      "breached_cells": 0,
+      "wet_at_free_arrival": 71,
+      "free_arrival_min": {
+        "min": 1345.7471593660246,
+        "max": 1850.9933454107052
+      },
+      "first_breach": null,
+      "interval_min": 30.0,
+      "depth_mm": 2.0,
+      "effective_hold_min": 37.5,
+      "native_area_ha": 3504.0,
+      "feasible": true,
+      "drops_per_cell": 6,
+      "sorties_per_application": 456,
+      "sorties_per_hour": 912.0,
+      "aircraft_lower_bound": 65,
+      "water_l_per_hour": 5472000.0
+    },
+    {
+      "burnable_line_cells": 71,
+      "held_cells": 71,
+      "breached_cells": 0,
+      "wet_at_free_arrival": 71,
+      "free_arrival_min": {
+        "min": 1345.7471593660246,
+        "max": 1850.9933454107052
+      },
+      "first_breach": null,
+      "interval_min": 30.0,
+      "depth_mm": 3.0,
+      "effective_hold_min": 45.0,
+      "native_area_ha": 3504.0,
+      "feasible": true,
+      "drops_per_cell": 9,
+      "sorties_per_application": 684,
+      "sorties_per_hour": 1368.0,
+      "aircraft_lower_bound": 97,
+      "water_l_per_hour": 8208000.0
+    },
+    {
+      "burnable_line_cells": 71,
+      "held_cells": 0,
+      "breached_cells": 71,
+      "wet_at_free_arrival": 57,
+      "free_arrival_min": {
+        "min": 1345.7471593660246,
+        "max": 1850.9933454107052
+      },
+      "first_breach": {
+        "row": 20,
+        "col": 59,
+        "ignition_min": 1382.8515251622814
+      },
+      "interval_min": 60.0,
+      "depth_mm": 3.0,
+      "effective_hold_min": 45.0,
+      "native_area_ha": 5325.0,
+      "feasible": false,
+      "drops_per_cell": 9,
+      "sorties_per_application": 684,
+      "sorties_per_hour": 684.0,
+      "aircraft_lower_bound": 49,
+      "water_l_per_hour": 4104000.0
+    }
+  ],
+  "limits": [
+    "Perfect full-cell wetting, not an aircraft schedule.",
+    "No partial coverage, turn time, water supply or dispatch constraints.",
+    "The synthetic interval is a diagnostic bound, not an operational plan.",
+    "A successful interval must still be converted to sorties and fleet."
+  ]
+}

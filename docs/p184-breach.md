@@ -45,7 +45,7 @@ Across all 71 cells:
 The 60-minute value is the decay duration, not the time above the suppression
 threshold. Three 1 mm drops at about 0.39 cell coverage give roughly **1.17 mm**
 at the cell centre. With linear decay to zero over 60 minutes, the cell remains
-above the required **0.75 mm** for only about **18 minutes**.
+above the required **0.75 mm** for only about **17–18 minutes**.
 
 The line therefore closes at arrival, but is effective for only 18 minutes. The
 coupled fire reaches the line later and crosses after expiry.
