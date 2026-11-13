@@ -52,6 +52,13 @@ is not persistence.
 
 See [`p183-fleet.md`](p183-fleet.md).
 
+## Follow-up
+
+P184 traced the coupled run. All 71 burnable line cells breached only after the
+water expired. The effective wet interval was about **18 minutes**, not 60,
+because three 1 mm drops at 0.39 coverage give about 1.17 mm and decay through
+the 0.75 mm threshold in 18 minutes. See [`p184-breach.md`](p184-breach.md).
+
 ## Stop rule
 
 Stop when the minimum fleet that closes the line is identified. Do not run more

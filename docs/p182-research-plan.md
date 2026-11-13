@@ -180,6 +180,12 @@ barrier reduced area to 3,504 ha. See
 
 ### P182.4 — closed-barrier control
 
+P184 breach forensics: the 12-aircraft, 3-stack line was wet at free-burn
+arrival, but all 71 burnable cells breached after expiry. The effective hold was
+about 18 minutes, not 60, because the stacked depth was only about 1.17 mm
+against a 0.75 mm threshold. This is a persistence result, not a wet-branch
+failure. See [`p184-breach.md`](p184-breach.md).
+
 - static 20-cell barrier as positive control;
 - confirm containment is possible only when the effect grid is closed;
 - never describe the static control as water.
