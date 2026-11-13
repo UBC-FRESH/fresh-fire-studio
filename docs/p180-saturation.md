@@ -47,6 +47,12 @@ still insensitive.
 - The wetness/ROS mapping remains diagnostic.
 - The 100 m grid remains a hard resolution limit.
 
+## Arrival-time follow-up
+
+Re-selecting targets at each sortie's drop time produced a mean cycle of
+**4.21 min** and **254,464 L/h**, but the native outcome remained **5,325 ha**.
+See [`p180-arrival.md`](p180-arrival.md).
+
 ## Next
 
 If the aim is to make the fire respond, the next change must be structural:

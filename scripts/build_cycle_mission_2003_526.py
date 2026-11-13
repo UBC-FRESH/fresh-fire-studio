@@ -20,6 +20,8 @@ def main() -> None:
     parser.add_argument("--target-time-min", type=float, default=None, help="front snapshot used to choose targets; defaults to drop time")
     parser.add_argument("--aircraft", type=int, default=3)
     parser.add_argument("--passes", type=int, default=1)
+    parser.add_argument("--adaptive", action="store_true", help="re-select targets at each sortie drop time")
+    parser.add_argument("--arrival-iterations", type=int, default=2)
     parser.add_argument(
         "--out",
         type=Path,
@@ -38,6 +40,7 @@ def main() -> None:
     from ws4.fire.comparison import observed_mask, run_observed_case
     from ws4.fire.observed import load_cfsds_reanalysis_case
 
+    from suppression.arrival import targets_at_time
     from suppression.cycle import CyclePerformance, build_cycle, cycle_summary
     from suppression.water_balance import water_balance
     from suppression.models import Scenario
@@ -74,6 +77,31 @@ def main() -> None:
     performance = CyclePerformance()
     if args.passes < 1:
         raise SystemExit("--passes must be at least 1")
+    centers = tuple(centers)
+    if args.adaptive:
+        for _ in range(max(1, args.arrival_iterations)):
+            previous = build_cycle(
+                targets=centers,
+                lake=lake,
+                aircraft_ids=aircraft_ids,
+                performance=performance,
+                start_min=args.drop_time_min,
+            )
+            revised = []
+            for index, sortie in enumerate(previous):
+                drop_time = sortie.phase("drop").start_min
+                candidates = targets_at_time(
+                    free.growth.ignition_time_min,
+                    burnable,
+                    time_min=drop_time,
+                    count=len(centers),
+                    xll=fire.grid.xll,
+                    yll=fire.grid.yll,
+                    nrows=fire.grid.nrows,
+                    cell_size_m=fire.grid.cell_size_m,
+                )
+                revised.append(candidates[index % len(candidates)] if candidates else centers[index])
+            centers = tuple(revised)
     mission_targets = centers * args.passes
     sorties = build_cycle(
         targets=mission_targets,
@@ -144,7 +172,7 @@ def main() -> None:
     summary = cycle_summary(sorties)
     summary_path = args.out.with_suffix(".summary.json")
     summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
-    if args.passes != 1:
+    if args.passes != 1 or args.adaptive:
         print(json.dumps(summary, indent=2))
         print(f"wrote {args.out}")
         return
