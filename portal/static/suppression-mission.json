@@ -5897,5 +5897,21 @@
         }
       ]
     }
-  ]
+  ],
+  "logistics": {
+    "sorties": 21,
+    "total_water_l": 126000.0,
+    "mean_cycle_min": 4.248119637851167,
+    "min_cycle_min": 3.527876980173005,
+    "max_cycle_min": 4.738712914760299,
+    "per_aircraft": {
+      "aircraft-1": 7,
+      "aircraft-2": 7,
+      "aircraft-3": 7
+    },
+    "elapsed_min": 30.51698051831363,
+    "litres_per_hour": 247730.93116021578,
+    "sorties_per_hour": 41.28848852670263,
+    "target_line_m": 5323.475384351859
+  }
 }

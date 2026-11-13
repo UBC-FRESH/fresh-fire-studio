@@ -45,7 +45,7 @@ public fuel/terrain, Open-Meteo/FireSTARR reanalysis weather.
 - a native time-dependent containment adapter;
 - an evidence-bounded uncertainty sampler;
 - a 32-member ensemble;
-- a realistic 21-drop mission;
+- a realistic 21-target, three-aircraft cycle mission;
 - a synthetic control barrier;
 - dispatch, queueing, sub-cell drop geometry and water-depth modules;
 - a public diagnostic replay at `/suppression/`.
@@ -56,7 +56,7 @@ public fuel/terrain, Open-Meteo/FireSTARR reanalysis weather.
 | --- | ---: | --- |
 | Observed final extent | **520 ha** | public CFSDS perimeter |
 | Free burn | **5,325 ha** | model basin-filling result |
-| Realistic 21-drop line | **5,325 ha** | all 32 evidence samples; 0% containment |
+| Realistic cycle mission | **5,325 ha** | all 32 evidence samples; 0% containment |
 | Synthetic control barrier | **3,574.7 ha** | 3,570–3,575 ha; ROS correlation −0.78 |
 
 The realistic mission is **placement-limited**. The control barrier is a

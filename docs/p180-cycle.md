@@ -26,8 +26,9 @@ reconstruction.
 ## Current mission
 
 - 3 CL-415-style aircraft
-- 21 sorties
+- 21 sorties on a selected head segment about 5.3 km long
 - 126,000 L total tank capacity delivered across sorties
+- 247,731 L/h aggregate delivery rate
 - mean cycle time **4.25 min**
 - cycle range **3.53–4.74 min**
 - active targets selected from the eastern head of the model front at minute

@@ -9,5 +9,7 @@
     "aircraft-2": 7,
     "aircraft-3": 7
   },
-  "elapsed_min": 30.51698051831363
+  "elapsed_min": 30.51698051831363,
+  "litres_per_hour": 247730.93116021578,
+  "sorties_per_hour": 41.28848852670263
 }

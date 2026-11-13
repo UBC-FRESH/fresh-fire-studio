@@ -162,6 +162,13 @@ def main() -> None:
         "end": round(max(sortie.end_min for sortie in sorties) + 4.0, 1),
         "drop_time": args.drop_time_min,
     }
+    page["logistics"] = {
+        **summary,
+        "target_line_m": sum(
+            float(np.hypot(centers[index + 1][0] - centers[index][0], centers[index + 1][1] - centers[index][1]))
+            for index in range(len(centers) - 1)
+        ),
+    }
     page["note"] = "Schematic lake-to-fire flight cycles: scoop, climb, cruise, descend, drop, turn, return. Three aircraft; geometry and times are illustrative, not a dispatch record."
     page["title"] = "2003_526 · schematic aerial suppression cycle"
     args.page_out.write_text(json.dumps(page, indent=2) + "\n", encoding="utf-8")

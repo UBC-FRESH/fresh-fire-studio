@@ -202,14 +202,18 @@ def cycle_summary(sorties: tuple[Sortie, ...]) -> dict[str, object]:
     counts: dict[str, int] = {}
     for sortie in sorties:
         counts[sortie.aircraft_id] = counts.get(sortie.aircraft_id, 0) + 1
+    elapsed = max(sortie.end_min for sortie in sorties) - min(sortie.start_min for sortie in sorties)
+    total_water = sum(sortie.water_l for sortie in sorties)
     return {
         "sorties": len(sorties),
-        "total_water_l": sum(sortie.water_l for sortie in sorties),
+        "total_water_l": total_water,
         "mean_cycle_min": sum(cycles) / len(cycles),
         "min_cycle_min": min(cycles),
         "max_cycle_min": max(cycles),
         "per_aircraft": counts,
-        "elapsed_min": max(sortie.end_min for sortie in sorties) - min(sortie.start_min for sortie in sorties),
+        "elapsed_min": elapsed,
+        "litres_per_hour": total_water / elapsed * 60.0 if elapsed > 0 else 0.0,
+        "sorties_per_hour": len(sorties) / elapsed * 60.0 if elapsed > 0 else 0.0,
     }
 
 

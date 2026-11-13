@@ -53,6 +53,8 @@ def test_summary() -> None:
     assert summary["total_water_l"] == 126000.0
     assert summary["per_aircraft"] == {"a1": 7, "a2": 7, "a3": 7}
     assert summary["min_cycle_min"] <= summary["mean_cycle_min"] <= summary["max_cycle_min"]
+    assert summary["litres_per_hour"] > 0
+    assert summary["sorties_per_hour"] > 0
 
 
 def test_invalid_inputs() -> None:

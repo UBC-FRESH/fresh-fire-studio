@@ -29,8 +29,8 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospac
 <canvas id="c"></canvas>
 <div id="loading">LOADING MISSION REPLAY…</div>
 <div id="note">DIAGNOSTIC MISSION GEOMETRY · NOT AN OPERATIONAL PREDICTION</div>
-<div id="title" class="hud"><h1>Suppression mission replay</h1><span class="badge">DIAGNOSTIC · NO FIRE EFFECT</span><p>21 CL-415-style drops across three independent aircraft cycles: scoop, climb, cruise, descend, drop, turn, return. The lake, flight paths, drop line and timings are schematic, not a dispatch record.</p></div>
-<div id="results" class="hud"><div class="eyebrow">EVIDENCE ENSEMBLE · 32 SAMPLES</div><div class="result" id="result-realistic"><div class="result-top"><span>Realistic 21-drop line</span><b>5,325 ha</b></div><small>0% containment · placement-limited · all samples equal free burn</small><small>Observed final extent: 520 ha</small></div><div class="result"><div class="result-top"><span>Cycle logistics</span><b>126,000 L</b></div><small>3 aircraft · 21 sorties · mean 4.25 min · schematic</small></div>
+<div id="title" class="hud"><h1>Suppression mission replay</h1><span class="badge">DIAGNOSTIC · NO FIRE EFFECT</span><p>21 CL-415-style drops across three independent aircraft cycles on 21 selected head targets: scoop, climb, cruise, descend, drop, turn, return. The lake, flight paths, target segment and timings are schematic, not a dispatch record.</p></div>
+<div id="results" class="hud"><div class="eyebrow">EVIDENCE ENSEMBLE · 32 SAMPLES</div><div class="result" id="result-realistic"><div class="result-top"><span>Realistic cycle mission</span><b>5,325 ha</b></div><small>0% containment · placement-limited · all samples equal free burn</small><small>Observed final extent: 520 ha</small></div><div class="result"><div class="result-top"><span>Cycle logistics</span><b id="logistics-volume">—</b></div><small id="logistics-detail">—</small></div>
 <div class="result" id="result-control"><div class="result-top"><span>Synthetic control barrier</span><b>3,574.7 ha</b></div><small>3,570–3,575 ha · ROS correlation −0.78 · effect model responds, not operational</small></div><div class="links"><a id="mission-link" href="#">Mission JSON</a><a id="evidence-link" href="#">Realistic ensemble</a><a id="control-link" href="#">Control results</a><a href="https://github.com/UBC-FRESH/fresh-fire-studio/blob/main/docs/p179-18-model-card.md" target="_blank" rel="noopener">Model card ↗</a></div></div>
 <div id="phase" class="hud"><div class="eyebrow">AIRCRAFT PHASE</div><div id="phase-rows"></div></div>
 <div id="stats" class="hud"><div><span>mission drops</span><b id="s-total">—</b></div><div><span>active drops</span><b id="s-active">0</b></div><div><span>aircraft</span><b id="s-aircraft">—</b></div><div><span>fps</span><b id="s-fps">—</b></div></div>
@@ -44,11 +44,11 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospac
 <aside id="methods-panel" hidden aria-labelledby="methods-title" aria-modal="true" role="dialog">
   <div class="close-row"><div><h2 id="methods-title">Suppression model card</h2><p>Evidence-bounded diagnostic · not an operational prediction.</p></div><button id="methods-close" type="button" aria-label="Close model card">×</button></div>
   <h3>What you are seeing</h3>
-  <p>This is mission geometry and timing from a fixed 2003_526 scenario. The realistic mode shows 21 CL-415-style drops across three independent aircraft cycles, each returning to the lake to scoop. It does not show a validated fire effect or containment.</p>
+  <p>This is mission geometry and timing from a fixed 2003_526 scenario. The realistic mode shows 21 CL-415-style drops across three independent aircraft cycles, each returning to the lake to scoop. The selected head segment is about 5.3 km long. It does not show a validated fire effect or containment.</p>
   <h3>Evidence</h3>
   <table><tr><th>Source</th><th>Value used</th></tr><tr><td>Wheatley 2024, Chapter 5</td><td>ROS reduction <b>0.5 ± 0.7 m/min</b>; fireline intensity reduction <b>72 ± 159 kW/m</b>; hold <b>123 ± 117 s</b></td></tr><tr><td>Wheatley high-water</td><td>hold <b>187 s</b>; indirect high-water <b>243 s</b></td></tr><tr><td>McFayden et al. 2023</td><td>effective aerial hold <b>60 min</b>; drop contours, stacking and breach criteria</td></tr><tr><td>Van Wagner &amp; Taylor 2022</td><td>theoretical water depth from fireline intensity, fuel load and wetting</td></tr></table>
   <h3>Results</h3>
-  <table><tr><th>Case</th><th>Area</th><th>Meaning</th></tr><tr><td>Observed final extent</td><td><b>520 ha</b></td><td>Public CFSDS perimeter</td></tr><tr><td>Free burn</td><td><b>5,325 ha</b></td><td>Model basin-filling result</td></tr><tr><td>Realistic 21-drop line</td><td><b>5,325 ha</b></td><td>All 32 evidence samples; 0% containment; placement-limited</td></tr><tr><td>Synthetic control barrier</td><td><b>3,574.7 ha</b></td><td>3,570–3,575 ha; ROS correlation −0.78; not operational</td></tr></table>
+  <table><tr><th>Case</th><th>Area</th><th>Meaning</th></tr><tr><td>Observed final extent</td><td><b>520 ha</b></td><td>Public CFSDS perimeter</td></tr><tr><td>Free burn</td><td><b>5,325 ha</b></td><td>Model basin-filling result</td></tr><tr><td>Realistic cycle mission</td><td><b>5,325 ha</b></td><td>All 32 evidence samples; 0% containment; placement-limited</td></tr><tr><td>Synthetic control barrier</td><td><b>3,574.7 ha</b></td><td>3,570–3,575 ha; ROS correlation −0.78; not operational</td></tr></table>
   <h3>What is synthetic</h3>
   <ul><li>suppression mission geometry and aircraft motion;</li><li>the control barrier and its permanent 20-cell extent;</li><li>tree placement in the benchmark scenes;</li><li>ignition timing.</li></ul>
   <h3>Limits</h3>
@@ -69,6 +69,13 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 const dataPrefix = location.pathname.endsWith("/") ? "../" : "./";
 const DATA = await fetch(dataPrefix + "static/suppression-mission.json").then(r => r.json());
+if (DATA.logistics) {
+  document.getElementById("logistics-volume").textContent = `${Math.round(DATA.logistics.total_water_l).toLocaleString()} L`;
+  document.getElementById("logistics-detail").textContent =
+    `${DATA.logistics.per_aircraft && Object.keys(DATA.logistics.per_aircraft).length || 0} aircraft · ` +
+    `${DATA.logistics.sorties} sorties · mean ${Number(DATA.logistics.mean_cycle_min).toFixed(2)} min · ` +
+    `${Math.round(DATA.logistics.litres_per_hour).toLocaleString()} L/h · schematic`;
+}
 document.getElementById("mission-link").href = dataPrefix + "static/suppression-mission.json";
 document.getElementById("evidence-link").href = dataPrefix + "static/suppression-evidence-ensemble.json";
 document.getElementById("control-link").href = dataPrefix + "static/suppression-evidence-control.json";

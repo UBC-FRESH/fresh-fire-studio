@@ -10,7 +10,7 @@ Static export: `suppression/index.html` and `suppression.html`.
 
 ## What it shows
 
-- 21 drop cycles across three independent aircraft, including scoop, climb, cruise, descent, drop, turn and return;
+- 21 drop cycles across three independent aircraft on 21 selected head targets, including scoop, climb, cruise, descent, drop, turn and return;
 - 126,000 L total tank capacity, mean cycle 4.25 min;
 - mission timeline and active-drop count;
 - three stable aircraft markers that follow phase-based lake-to-fire cycles;
@@ -33,7 +33,7 @@ Static export: `suppression/index.html` and `suppression.html`.
 The results panel reports:
 
 - observed final extent: 520 ha;
-- realistic 21-drop mission: 5,325 ha, 0% containment, placement-limited;
+- realistic cycle mission: 5,325 ha, 0% containment, placement-limited;
 - synthetic control barrier: 3,574.7 ha, 3,570–3,575 ha, ROS correlation
   −0.78, effect model responds but is not operational.
 

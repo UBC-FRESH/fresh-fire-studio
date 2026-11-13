@@ -24,6 +24,9 @@ def test_replay_page_and_data_are_consistent() -> None:
     }
     assert data["lake"]["radius_m"] > 0
     assert len(data["fire_line"]) == 21
+    assert data["logistics"]["sorties"] == 21
+    assert data["logistics"]["total_water_l"] == 126000.0
+    assert data["logistics"]["litres_per_hour"] > 100000
     assert data["results"]["realistic"]["area_ha"] == 5325.0
     assert data["results"]["realistic"]["containment_probability"] == 0.0
     assert data["results"]["control"]["area_ha"] == 3574.7
