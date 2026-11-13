@@ -23,6 +23,7 @@ A public 3D benchmark-fire portal from the UBC FRESH Lab.
 - P179.4 dispatch prototype: [`docs/p179-4-dispatch.md`](docs/p179-4-dispatch.md)
 - Extracted suppression PDF notes: [`docs/martell-pdf-notes.md`](docs/martell-pdf-notes.md)
 - P179.5 water requirements: [`docs/p179-5-water.md`](docs/p179-5-water.md)
+- Canadian wildfire studies notes: [`docs/ws4-canadian-wildfire-notes.md`](docs/ws4-canadian-wildfire-notes.md)
 - Current edge: <https://fresh-fire.01101.dev/>
 - Local portal: <http://127.0.0.1:8800/>
 - Lab preview: <https://fresh01.01101.dev/jupyterhub18/user/gep/proxy/8791/fire-studio/index.html>

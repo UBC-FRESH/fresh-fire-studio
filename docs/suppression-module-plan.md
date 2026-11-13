@@ -229,6 +229,21 @@ These are theoretical requirements, not measured drop effectiveness. Canopy
 interception, stacking and breach remain for the next layer. See
 [`p179-5-water.md`](p179-5-water.md).
 
+## Adjacent Canadian planning layers
+
+Four open-access Canadian studies provide adjacent capability, not P179
+suppression physics:
+
+- **FireLossRate** — structure loss from fireline intensity and distance from
+  the fire edge;
+- **Brunet et al. 2026** — maximal-covering helitack base deployment;
+- **Moreno et al. 2026** — evacuation network design with traffic congestion;
+- **Nicoletta et al. 2026** — strategic fuel-break placement.
+
+These should stay separate from the suppression effect kernel. Shared inputs
+are fireline intensity, fire perimeter and the road/base network. See
+[`ws4-canadian-wildfire-notes.md`](ws4-canadian-wildfire-notes.md).
+
 ## Evidence base: Martell and collaborators
 
 David Martell's work gives us a mature operations-research spine, not a single
