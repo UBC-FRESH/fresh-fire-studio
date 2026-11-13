@@ -82,7 +82,7 @@ if (DATA.logistics) {
     document.getElementById("two-pass-value").textContent = `${Number(two.line_mean_depth_mm).toFixed(2)} mm`;
     document.getElementById("two-pass-detail").textContent =
       `${Math.round(two.delivered_l).toLocaleString()} L · ${Math.round(two.coverage_fraction * 100)}% coverage · ` +
-      `${two.deficit_l === 0 ? "mass deficit closed" : Math.round(two.deficit_l).toLocaleString() + " L short"} · ${Number(two.elapsed_min).toFixed(1)} min · mass only`;
+      `${two.deficit_l === 0 ? "mass deficit closed" : Math.round(two.deficit_l).toLocaleString() + " L short"} · ${Number(two.elapsed_min).toFixed(1)} min · native ${Number(two.native_area_ha).toLocaleString()} ha`;
   }
   const wb = DATA.logistics.water_balance;
   if (wb) {

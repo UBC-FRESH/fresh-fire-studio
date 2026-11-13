@@ -631,7 +631,8 @@
       "coverage_fraction": 0.789,
       "required_l": 199630.3,
       "deficit_l": 0.0,
-      "additional_sorties": 0
+      "additional_sorties": 0,
+      "native_area_ha": 5325.0
     },
     "three_pass_three_aircraft": {
       "passes": 3,

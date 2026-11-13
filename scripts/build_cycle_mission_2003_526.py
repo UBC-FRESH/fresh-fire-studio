@@ -18,6 +18,7 @@ def main() -> None:
     parser.add_argument("--ws4-root", type=Path, required=True)
     parser.add_argument("--drop-time-min", type=float, default=600.0)
     parser.add_argument("--aircraft", type=int, default=3)
+    parser.add_argument("--passes", type=int, default=1)
     parser.add_argument(
         "--out",
         type=Path,
@@ -69,8 +70,11 @@ def main() -> None:
     aircraft_ids = tuple(f"aircraft-{index}" for index in range(1, args.aircraft + 1))
     lake = (489900.0, 5725200.0)
     performance = CyclePerformance()
+    if args.passes < 1:
+        raise SystemExit("--passes must be at least 1")
+    mission_targets = centers * args.passes
     sorties = build_cycle(
-        targets=centers,
+        targets=mission_targets,
         lake=lake,
         aircraft_ids=aircraft_ids,
         performance=performance,
@@ -123,7 +127,7 @@ def main() -> None:
             }
         )
     scenario = Scenario(
-        scenario_id="2003-526-cycle-mission",
+        scenario_id="2003-526-cycle-mission" if args.passes == 1 else f"2003-526-cycle-mission-{args.passes}pass",
         fire_slug="cfsds-2003-526",
         label="Schematic lake-to-fire cycle mission",
         timeline_end_min=22200,
@@ -138,6 +142,10 @@ def main() -> None:
     summary = cycle_summary(sorties)
     summary_path = args.out.with_suffix(".summary.json")
     summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    if args.passes != 1:
+        print(json.dumps(summary, indent=2))
+        print(f"wrote {args.out}")
+        return
     page = json.loads(args.page_out.read_text(encoding="utf-8"))
     page["sorties"] = [sortie.to_dict() for sortie in sorties]
     page["fire_line"] = [[center[0], center[1]] for center in centers]

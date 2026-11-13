@@ -1,0 +1,15 @@
+{
+  "sorties": 42,
+  "total_water_l": 252000.0,
+  "mean_cycle_min": 4.248119637851167,
+  "min_cycle_min": 3.527876980173005,
+  "max_cycle_min": 4.738712914760299,
+  "per_aircraft": {
+    "aircraft-1": 14,
+    "aircraft-2": 14,
+    "aircraft-3": 14
+  },
+  "elapsed_min": 61.03396103662726,
+  "litres_per_hour": 247730.93116021578,
+  "sorties_per_hour": 41.28848852670263
+}
