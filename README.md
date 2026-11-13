@@ -39,6 +39,7 @@ A public 3D benchmark-fire portal from the UBC FRESH Lab.
 - P179.18 evidence ensemble: [`docs/p179-18-model-card.md`](docs/p179-18-model-card.md)
 - P179.19 evidence control: [`docs/p179-19-control.md`](docs/p179-19-control.md)
 - Diagnostic suppression replay: `/suppression/` (mission geometry only)
+- Suppression case study: [`docs/p179-case-study.md`](docs/p179-case-study.md) · [PDF](docs/p179-case-study.pdf)
 - Replay notes: [`docs/p179-20-replay.md`](docs/p179-20-replay.md)
 - Canadian wildfire studies notes: [`docs/ws4-canadian-wildfire-notes.md`](docs/ws4-canadian-wildfire-notes.md)
 - Current edge: <https://fresh-fire.01101.dev/>

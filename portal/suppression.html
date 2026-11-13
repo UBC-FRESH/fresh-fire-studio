@@ -51,7 +51,7 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospac
   <ul><li>suppression mission geometry and aircraft motion;</li><li>the control barrier and its permanent 20-cell extent;</li><li>tree placement in the benchmark scenes;</li><li>ignition timing.</li></ul>
   <h3>Limits</h3>
   <ul><li>100 m fire grid cannot resolve a 50–100 m drop footprint;</li><li>Wheatley evidence is from low-intensity surface fires;</li><li>the wetness/ROS mapping is diagnostic;</li><li>no field validation for 2003_526 or BC;</li><li>the realistic mission leaves open flanks.</li></ul>
-  <div class="foot">Public code and notes: github.com/UBC-FRESH/fresh-fire-studio · UBC FRESH Lab</div>
+  <div class="foot">Public code and notes: github.com/UBC-FRESH/fresh-fire-studio · <a id="case-study-link" href="#">Two-page case study PDF</a> · UBC FRESH Lab</div>
 </aside>
 <div id="assistant-backdrop" hidden></div>
 <aside id="assistant-panel" hidden aria-labelledby="assistant-title" aria-modal="true" role="dialog">
@@ -70,6 +70,7 @@ const DATA = await fetch(dataPrefix + "static/suppression-mission.json").then(r 
 document.getElementById("mission-link").href = dataPrefix + "static/suppression-mission.json";
 document.getElementById("evidence-link").href = dataPrefix + "static/suppression-evidence-ensemble.json";
 document.getElementById("control-link").href = dataPrefix + "static/suppression-evidence-control.json";
+document.getElementById("case-study-link").href = dataPrefix + "static/p179-case-study.pdf";
 const assistantScript = document.createElement("script");
 assistantScript.src = dataPrefix + "static/assistant.js";
 assistantScript.defer = true;

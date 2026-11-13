@@ -23,7 +23,8 @@ Static export: `suppression/index.html` and `suppression.html`.
   prediction**;
 - an `+ Ask` assistant drawer for evidence and model-limit questions;
 - an in-page **Model card** panel covering evidence, results, synthetic inputs
-  and limits.
+  and limits;
+- a downloadable two-page case study PDF.
 
 The results panel reports:
 
