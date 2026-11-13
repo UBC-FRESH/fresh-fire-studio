@@ -21,6 +21,7 @@ def main() -> None:
     parser.add_argument("--aircraft", type=int, default=3)
     parser.add_argument("--hold-min", type=float, default=60.0)
     parser.add_argument("--replicates", type=int, default=1)
+    parser.add_argument("--stack", type=int, default=1)
     parser.add_argument(
         "--out",
         type=Path,
@@ -35,7 +36,7 @@ def main() -> None:
 
     from suppression.cycle import CyclePerformance
     from suppression.perimeter import cells_to_centers, front_target_cells
-    from suppression.schedule import TimedTarget, schedule_arrival_targets
+    from suppression.schedule import TimedTarget, schedule_arrival_targets, schedule_stacked_targets
 
     fixture = args.ws4_root / "tests/fixtures/fire/cfsds_2003_526"
     fire = load_cfsds_reanalysis_case(fixture)
@@ -76,14 +77,25 @@ def main() -> None:
     if args.replicates < 1:
         raise SystemExit("--replicates must be at least 1")
     timed = timed * args.replicates
-    scheduled = schedule_arrival_targets(
-        timed,
-        lake=lake,
-        aircraft_ids=aircraft_ids,
-        performance=performance,
-        hold_min=args.hold_min,
-        start_min=target_time - 120.0,
-    )
+    if args.stack > 1:
+        scheduled = schedule_stacked_targets(
+            timed,
+            lake=lake,
+            aircraft_ids=aircraft_ids,
+            performance=performance,
+            hold_min=args.hold_min,
+            stack=args.stack,
+            start_min=target_time - 120.0,
+        )
+    else:
+        scheduled = schedule_arrival_targets(
+            timed,
+            lake=lake,
+            aircraft_ids=aircraft_ids,
+            performance=performance,
+            hold_min=args.hold_min,
+            start_min=target_time - 120.0,
+        )
     resources = [
         {
             "id": aircraft_id,

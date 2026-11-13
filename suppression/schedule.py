@@ -38,6 +38,56 @@ def _travel_minutes(lake: tuple[float, float], target: tuple[float, float], perf
     return distance / (performance.cruise_kmh * 1000.0 / 60.0)
 
 
+def schedule_stacked_targets(
+    targets: list[TimedTarget] | tuple[TimedTarget, ...],
+    *,
+    lake: tuple[float, float],
+    aircraft_ids: tuple[str, ...] | list[str],
+    performance: CyclePerformance,
+    hold_min: float = 60.0,
+    stack: int = 2,
+    start_min: float = 0.0,
+) -> tuple[ScheduledSortie, ...]:
+    """Schedule overlapping drops from several aircraft on each target."""
+    if stack < 1:
+        raise ValueError("stack must be at least 1")
+    if stack > len(aircraft_ids):
+        raise ValueError("stack cannot exceed the number of aircraft")
+    ready = {aircraft_id: start_min for aircraft_id in aircraft_ids}
+    scheduled: list[ScheduledSortie] = []
+    for target in sorted(targets, key=lambda item: (item.arrival_min, item.y, item.x)):
+        desired = target.arrival_min - hold_min / 2.0
+        for _ in range(stack):
+            best = None
+            for aircraft_id in aircraft_ids:
+                travel = _travel_minutes(lake, (target.x, target.y), performance)
+                lead = performance.scoop_min + performance.climb_min + travel + performance.descent_min
+                start = max(ready[aircraft_id], desired - lead)
+                actual = start + lead
+                candidate = (max(0.0, actual - desired), start, aircraft_id, actual)
+                if best is None or candidate < best:
+                    best = candidate
+            _, start, aircraft_id, actual = best
+            sortie = build_sortie(
+                aircraft_id=aircraft_id,
+                lake=lake,
+                target=(target.x, target.y),
+                start_min=start,
+                performance=performance,
+            )
+            scheduled.append(
+                ScheduledSortie(
+                    sortie=sortie,
+                    target=target,
+                    desired_drop_min=desired,
+                    actual_drop_min=sortie.phase("drop").start_min,
+                    late_min=max(0.0, sortie.phase("drop").start_min - desired),
+                )
+            )
+            ready[aircraft_id] = sortie.end_min
+    return tuple(scheduled)
+
+
 def schedule_arrival_targets(
     targets: list[TimedTarget] | tuple[TimedTarget, ...],
     *,
@@ -88,4 +138,4 @@ def schedule_arrival_targets(
     return tuple(scheduled)
 
 
-__all__ = ["ScheduledSortie", "TimedTarget", "schedule_arrival_targets"]
+__all__ = ["ScheduledSortie", "TimedTarget", "schedule_arrival_targets", "schedule_stacked_targets"]
