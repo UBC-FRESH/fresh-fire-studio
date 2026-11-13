@@ -48,6 +48,7 @@ A public 3D benchmark-fire portal from the UBC FRESH Lab.
 - P180 arrival-scheduled drops: [`docs/p180-arrival-scheduled.md`](docs/p180-arrival-scheduled.md)
 - P181 native/free parity: [`docs/p181-plan.md`](docs/p181-plan.md)
 - P181 suppression metrics: [`docs/p181-metrics.md`](docs/p181-metrics.md)
+- P181 closed barrier control: [`docs/p181-closed.md`](docs/p181-closed.md)
 - P180 stacked mission: [`docs/p180-stacked.md`](docs/p180-stacked.md)
 - P180 target traces: [`suppression/proofs/2003-526-target-wetness-trace-5targets.json`](suppression/proofs/2003-526-target-wetness-trace-5targets.json)
 - Diagnostic suppression replay: `/suppression/` (mission geometry only)

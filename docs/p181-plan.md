@@ -60,6 +60,14 @@ A wet line must be closed in the burnable grid:
 - no gaps from non-burnable or omitted cells;
 - explicit target-cell coverage and per-cell depth.
 
+## P181.2 — closed geometry, not more sorties
+
+A 20-cell-wide static barrier reduced the benchmark area from **5,325** to
+**3,504 ha** and left all 1,520 barrier cells unburned. This is the positive
+containment control. The water ring was one cell wide and partially covered the
+100 m cells, so it delayed targets but left bypass paths. See
+[`p181-closed.md`](p181-closed.md).
+
 ## P181.3 — public evaluation artifact
 
 Document:

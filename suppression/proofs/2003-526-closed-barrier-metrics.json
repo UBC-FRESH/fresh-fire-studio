@@ -1,0 +1,21 @@
+{
+  "case": "2003_526",
+  "barrier_x": 493600.0,
+  "width_cells": 20,
+  "barrier_cells": 1520,
+  "free_area_ha": 5325.0,
+  "contained_area_ha": 3504.0,
+  "observed_area_ha": 520.0,
+  "free_iou": 0.09559512652296158,
+  "contained_iou": 0.13160854893138357,
+  "area_reduction_ha": 1821.0,
+  "barrier_cells_never_burned": 1520,
+  "barrier_cells_with_delay": 0,
+  "mean_delay_min": 0.0,
+  "max_delay_min": 0.0,
+  "limits": [
+    "The barrier is a static non-burnable strip, not water.",
+    "It is a control for geometry and containment, not an operational fuel break.",
+    "The 100 m fire grid remains coarse."
+  ]
+}
