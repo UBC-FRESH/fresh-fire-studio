@@ -4,6 +4,7 @@ import numpy as np
 
 from suppression.perimeter import (
     cells_to_centers,
+    front_target_cells,
     leading_edge_cells,
     perimeter_cells,
     perimeter_mask,
@@ -39,6 +40,12 @@ def test_leading_edge_east_and_north() -> None:
     north = leading_edge_cells(mask, direction="north", band_m=0, cell_size_m=1)
     assert {cell[1] for cell in east} == {3}
     assert {cell[0] for cell in north} == {1}
+
+
+def test_front_targets_are_unburned_neighbours() -> None:
+    burned = np.zeros((5, 5), dtype=bool)
+    burned[2, 2] = True
+    assert front_target_cells(burned) == ((1, 2), (2, 1), (2, 3), (3, 2))
 
 
 def test_cells_to_centers_north_up() -> None:

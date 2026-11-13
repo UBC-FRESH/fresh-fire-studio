@@ -41,6 +41,28 @@ def perimeter_cells(
     return tuple((int(row), int(col)) for row, col in np.argwhere(perimeter_mask(burned, burnable)))
 
 
+def front_target_cells(
+    burned: np.ndarray,
+    burnable: np.ndarray | None = None,
+) -> tuple[tuple[int, int], ...]:
+    """Return unburned burnable cells adjacent to the active perimeter."""
+    burned = np.asarray(burned, dtype=bool)
+    if burnable is None:
+        burnable = np.ones_like(burned, dtype=bool)
+    else:
+        burnable = np.asarray(burnable, dtype=bool)
+        if burnable.shape != burned.shape:
+            raise ValueError("burnable must have the same shape as burned")
+    targets: set[tuple[int, int]] = set()
+    rows, cols = burned.shape
+    for row, col in perimeter_cells(burned, burnable):
+        for drow, dcol in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            nrow, ncol = row + drow, col + dcol
+            if 0 <= nrow < rows and 0 <= ncol < cols and not burned[nrow, ncol] and burnable[nrow, ncol]:
+                targets.add((nrow, ncol))
+    return tuple(sorted(targets))
+
+
 def leading_edge_cells(
     burned: np.ndarray,
     burnable: np.ndarray | None = None,
@@ -100,6 +122,7 @@ def cells_to_centers(
 
 __all__ = [
     "cells_to_centers",
+    "front_target_cells",
     "leading_edge_cells",
     "perimeter_cells",
     "perimeter_mask",

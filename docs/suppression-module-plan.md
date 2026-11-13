@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles, P179.8 sub-cell raster, P179.9 wetness/ROS factor, P179.10 fine-grid experiment and P179.11 perimeter-query/head-line tests implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles, P179.8 sub-cell raster, P179.9 wetness/ROS factor, P179.10 fine-grid experiment, P179.11 perimeter queries and P179.12 perimeter mission implemented. Not operational.
 
 Five local PDFs were mined on 2026-11-13; see
 [`martell-pdf-notes.md`](martell-pdf-notes.md). The 2015 control-time paper is
@@ -123,6 +123,11 @@ Implemented in this repository:
 - `suppression/perimeter.py` — perimeter and leading-edge queries.
 - `tests/test_perimeter.py` — perimeter-query tests.
 - `docs/p179-11-perimeter-placement.md` — head-line experiments and limits.
+- `suppression/mission.py` — perimeter targets across aircraft and passes.
+- `scripts/build_perimeter_mission_2003_526.py` — mission scenario builder.
+- `suppression/scenarios/2003-526-perimeter-5air-*.json` — 1/2-pass missions.
+- `suppression/proofs/2003-526-native-perimeter-5air-*.json` — results.
+- `docs/p179-12-perimeter-mission.md` — mission result and open-flank limit.
 
 Run:
 
@@ -342,6 +347,21 @@ flanks.
 
 This is a placement result, not an effectiveness claim. See
 [`p179-11-perimeter-placement.md`](p179-11-perimeter-placement.md).
+
+## P179.12 perimeter-target mission
+
+`suppression/mission.py` distributes targets across aircraft and passes.
+`front_target_cells()` selects unburned cells adjacent to the active perimeter,
+so drops land ahead of the front rather than on burned cells.
+
+At minute 600 the free-burn front has **39 unburned front targets** and 106
+perimeter cells. Five simulated CL-415s drop on all 39 targets in one pass; a
+second pass repeats them.
+
+Both final areas remain **5,325 ha**. The 39 targets do not form a closed
+perimeter, and the fire bypasses the treated cells. This is an open-flank
+mission, not a containment test. See
+[`p179-12-perimeter-mission.md`](p179-12-perimeter-mission.md).
 
 ## Adjacent Canadian planning layers
 

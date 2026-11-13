@@ -17,6 +17,8 @@ SUBCELL_ARTIFACT = ROOT / "suppression/proofs/2003-526-native-drop-line-subcell.
 FINE_ARTIFACT = ROOT / "suppression/proofs/2003-526-fine-grid.json"
 HEAD_ARTIFACT = ROOT / "suppression/proofs/2003-526-native-head-line.json"
 HEAD5_ARTIFACT = ROOT / "suppression/proofs/2003-526-native-head-line-5heli.json"
+PERIM1_ARTIFACT = ROOT / "suppression/proofs/2003-526-native-perimeter-5air-1pass.json"
+PERIM2_ARTIFACT = ROOT / "suppression/proofs/2003-526-native-perimeter-5air-2pass.json"
 GRID = dict(xll=487700.0, yll=5722700.0, nrows=76, ncols=90, cell_size_m=100.0)
 
 
@@ -75,6 +77,12 @@ def test_wet_artifact_records_coupling_and_resolution_limit() -> None:
     assert len(payload["wet_schedule"]["drops"]) == 3
     assert payload["wet_schedule"]["drops"][0]["covered_cells"] == 1
     assert payload["native"]["area_sim_ha"] == payload["free_burn"]["area_sim_ha"]
+
+
+def test_perimeter_mission_artifacts_show_open_flanks() -> None:
+    for path in (PERIM1_ARTIFACT, PERIM2_ARTIFACT):
+        payload = json.loads(path.read_text())
+        assert payload["native"]["area_sim_ha"] == payload["free_burn"]["area_sim_ha"]
 
 
 def test_head_line_artifacts_show_finite_line_bypass() -> None:
