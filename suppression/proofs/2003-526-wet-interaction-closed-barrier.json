@@ -1,0 +1,11 @@
+{
+  "scenario_id": "2003-526-closed-barrier",
+  "required_depth_mm": 0.75,
+  "wet_drops": 213,
+  "wet_cells": 71,
+  "wet_at_arrival": 71,
+  "burned_before_wet": 0,
+  "burned_after_wet": 0,
+  "unburned": 0,
+  "no_wet_window": 0
+}
