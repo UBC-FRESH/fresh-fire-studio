@@ -16,6 +16,7 @@ Static export: `suppression/index.html` and `suppression.html`.
 - an evidence-results panel;
 - a **Realistic / Control** mode switch;
 - an optional **synthetic 20-cell control barrier**;
+- an optional free-burn model extent overlay;
 - a 1 km grid and north-up compass;
 - a permanent banner: **diagnostic mission geometry, not an operational
   prediction**.
