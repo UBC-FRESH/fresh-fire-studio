@@ -4,9 +4,9 @@ Status: public-facing diagnostic replay. It is not a fire-effect prediction.
 
 ## Route
 
-`/suppression`
+`/suppression/` (and `/suppression.html`)
 
-Static export: `suppression.html`.
+Static export: `suppression/index.html` and `suppression.html`.
 
 ## What it shows
 

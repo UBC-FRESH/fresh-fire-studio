@@ -38,7 +38,8 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospac
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
-const DATA = await fetch("./static/suppression-mission.json").then(r => r.json());
+const dataPrefix = location.pathname.endsWith("/") ? "../" : "./";
+const DATA = await fetch(dataPrefix + "static/suppression-mission.json").then(r => r.json());
 const canvas = document.getElementById("c");
 const renderer = new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:"high-performance"});
 renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.5));
