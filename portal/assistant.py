@@ -42,6 +42,16 @@ Portal facts:
   overview canopy and mid-field are impostors.
 - The model is not calibrated for BC. Small suppressed fires are not ROS
   evidence. A no-go validation tier is a valid result.
+- `/suppression/` is a separate diagnostic mission replay. It shows suppression
+  mission geometry, not a validated fire effect. The realistic 21-drop line is
+  placement-limited: 32 evidence-ensemble members all end at 5,325 ha, with 0
+  containment probability. A deliberately synthetic 20-cell control barrier
+  ends at 3,574.7 ha and has ROS-reduction/area correlation about -0.78. The
+  control is not operational and must not be described as a suppression plan.
+- The suppression evidence comes from published sources: Wheatley 2024
+  experimental burns, McFayden et al. 2023 aerial drop guide, and Van Wagner &
+  Taylor 2022 water requirements. It is evidence-bounded, not field-validated
+  for 2003_526 or BC.
 - Public contact: Gregory Paradis, gregory.paradis@ubc.ca, UBC FRESH Lab.
 
 Benchmark rows:

@@ -26,6 +26,8 @@ The assistant prompt covers:
 - synthetic tree placement and LOD;
 - model limits and validation caveats;
 - the G50872 and G50266 VRI pilots;
+- the `/suppression/` diagnostic replay, evidence ensemble, and synthetic
+  control barrier;
 - public contact details.
 
 It is explicitly told not to invent numbers or claim operational prediction,
