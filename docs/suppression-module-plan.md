@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles, P179.8 sub-cell raster and P179.9 wetness/ROS factor implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles, P179.8 sub-cell raster, P179.9 wetness/ROS factor and P179.10 fine-grid experiment implemented. Not operational.
 
 Five local PDFs were mined on 2026-11-13; see
 [`martell-pdf-notes.md`](martell-pdf-notes.md). The 2015 control-time paper is
@@ -117,6 +117,9 @@ Implemented in this repository:
 - `suppression/wet.py` — wetness and local ROS factor.
 - `suppression/proofs/2003-526-native-drop-line-subcell.json` — sub-cell wet-line artifact.
 - `docs/p179-9-wetness-ros.md` — wetness/ROS method and limits.
+- `scripts/prove_fine_grid_2003_526.py` — 50 m resolution experiment.
+- `suppression/proofs/2003-526-fine-grid.json` — fine-grid artifact.
+- `docs/p179-10-fine-grid.md` — 50 m result and placement lesson.
 
 Run:
 
@@ -313,6 +316,16 @@ does not solve the 100 m grid/placement problem.
 
 The ROS mapping is a placeholder, not a validated model. See
 [`p179-9-wetness-ros.md`](p179-9-wetness-ros.md).
+
+## P179.10 fine-grid experiment
+
+The native kernel runs unchanged on a 50 m grid. At 50 m, a 21-drop line still
+leaves final area at **5,325 ha**. The fire bypasses the line, so finer cells
+alone do not solve the placement problem.
+
+Nearest-neighbour upsampling does not add source information. The next useful
+step is dropping against the active simulated perimeter rather than a fixed
+line. See [`p179-10-fine-grid.md`](p179-10-fine-grid.md).
 
 ## Adjacent Canadian planning layers
 
