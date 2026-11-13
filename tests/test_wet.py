@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 from suppression.drop import DropContour, DropPattern, drop_to_pattern
 from suppression.effects import coverage_fraction
@@ -54,6 +55,35 @@ def test_stacked_drops_cross_threshold_then_decay() -> None:
     assert wet.is_suppressed(row, col, 620)
     assert wet.is_suppressed(row, col, 660)
     assert not wet.is_suppressed(row, col, 900)
+
+
+def test_canopy_penetration_scales_wet_depth() -> None:
+    scenario = Scenario.model_validate_json(SCENARIO.read_text(encoding="utf-8"))
+    full = build_wet_schedule(
+        scenario,
+        required_depth_mm=0.75,
+        **GRID,
+        subcell_cell_size_m=10,
+    )
+    reduced_scenario = scenario.model_copy(
+        update={
+            "drops": [
+                drop.model_copy(update={"canopy_penetration": 0.5})
+                for drop in scenario.drops
+            ]
+        }
+    )
+    reduced = build_wet_schedule(
+        reduced_scenario,
+        required_depth_mm=0.75,
+        **GRID,
+        subcell_cell_size_m=10,
+    )
+    row = 76 - 1 - int((5726250.0 - 5722700.0) // 100)
+    col = int((492150.0 - 487700.0) // 100)
+    assert reduced.drops[0].depth_at(row, col, 620) == pytest.approx(
+        full.drops[0].depth_at(row, col, 620) * 0.5
+    )
 
 
 def test_subcell_mean_depth_drives_partial_ros_factor() -> None:

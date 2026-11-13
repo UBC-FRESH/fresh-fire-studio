@@ -28,6 +28,7 @@ class WetDrop:
     end_min: float
     duration_min: float
     mean_depth_grid_mm: np.ndarray | None = None
+    canopy_penetration: float = 1.0
 
     @property
     def covered_cells(self) -> int:
@@ -43,6 +44,7 @@ class WetDrop:
                 0.0,
                 1.0 - (time_min - self.end_min) / self.duration_min,
             )
+        strength *= self.canopy_penetration
         if self.mean_depth_grid_mm is not None:
             return strength * float(self.mean_depth_grid_mm[row, col])
         return strength * float(self.fraction[row, col])
@@ -141,6 +143,7 @@ def build_wet_schedule(
                 end_min=drop.end_min,
                 duration_min=drop.effect_duration_min,
                 mean_depth_grid_mm=mean_depth,
+                canopy_penetration=drop.canopy_penetration,
             )
         )
     return WetSchedule(required_depth_mm=required_depth_mm, drops=tuple(drops))

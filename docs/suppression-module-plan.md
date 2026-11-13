@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles, P179.8 sub-cell raster, P179.9 wetness/ROS factor, P179.10 fine-grid experiment, P179.11 perimeter queries, P179.12 perimeter mission, P179.13 closed box and P179.14 receding horizon implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles, P179.8 sub-cell raster, P179.9 wetness/ROS factor, P179.10 fine-grid experiment, P179.11 perimeter queries, P179.12 perimeter mission, P179.13 closed box, P179.14 receding horizon and P179.15 canopy penetration implemented. Not operational.
 
 Five local PDFs were mined on 2026-11-13; see
 [`martell-pdf-notes.md`](martell-pdf-notes.md). The 2015 control-time paper is
@@ -134,6 +134,8 @@ Implemented in this repository:
 - `scripts/recede_horizon_2003_526.py` — 4-epoch receding-horizon experiment.
 - `suppression/proofs/2003-526-receding-horizon.json` — result artifact.
 - `docs/p179-14-receding-horizon.md` — method, negative result and limits.
+- `suppression/wet.py` — applies canopy penetration to effective depth.
+- `docs/p179-15-canopy-penetration.md` — parameter and limits.
 
 Run:
 
@@ -387,6 +389,15 @@ reruns the native growth with all missions.
 It uses **266 drops** across four missions and still ends at **5,325 ha**.
 Re-planning alone does not solve the finite-duration, placement and resolution
 problems. See [`p179-14-receding-horizon.md`](p179-14-receding-horizon.md).
+
+## P179.15 canopy penetration
+
+The `Drop.canopy_penetration` field is now applied to the wet-cell depth. A
+value of 0.5 halves the effective water depth and scales the wetness/ROS factor
+accordingly.
+
+It is still an input, not a measured interception model. See
+[`p179-15-canopy-penetration.md`](p179-15-canopy-penetration.md).
 
 ## Adjacent Canadian planning layers
 
