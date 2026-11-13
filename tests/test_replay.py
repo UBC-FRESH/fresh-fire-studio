@@ -16,9 +16,14 @@ def test_replay_page_and_data_are_consistent() -> None:
     assert "methods-panel" in page
     assert "Wheatley 2024" in page
     assert (ROOT / "portal/static/p179-case-study.pdf").exists()
-    assert len(data["drops"]) == 21
-    assert len(data["aircraft"]) == 5
-    assert all(drop.get("resource_id") for drop in data["drops"])
+    assert len(data["sorties"]) == 21
+    assert len(data["aircraft"]) == 3
+    assert all(sortie["phases"] for sortie in data["sorties"])
+    assert {"scoop", "climb", "cruise_out", "drop", "turn", "cruise_back"} <= {
+        phase["kind"] for sortie in data["sorties"] for phase in sortie["phases"]
+    }
+    assert data["lake"]["radius_m"] > 0
+    assert len(data["fire_line"]) == 21
     assert data["results"]["realistic"]["area_ha"] == 5325.0
     assert data["results"]["realistic"]["containment_probability"] == 0.0
     assert data["results"]["control"]["area_ha"] == 3574.7

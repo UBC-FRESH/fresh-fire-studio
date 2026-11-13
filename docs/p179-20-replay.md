@@ -10,10 +10,10 @@ Static export: `suppression/index.html` and `suppression.html`.
 
 ## What it shows
 
-- 21 CL-415-style drop markers across five independent aircraft cycles;
+- 21 drop cycles across three independent aircraft, including scoop, climb, cruise, descent, drop, turn and return;
 - mission timeline and active-drop count;
-- a stable aircraft marker that moves along the drop line without snapping or
-  spinning;
+- three stable aircraft markers that follow phase-based lake-to-fire cycles;
+- a lake, fire line and 3D flight paths;
 - automatic playback from the 600-minute mission start;
 - a focused default camera with `Focus mission` and `Overview` controls;
 - an evidence-results panel;

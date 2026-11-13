@@ -29,7 +29,7 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospac
 <canvas id="c"></canvas>
 <div id="loading">LOADING MISSION REPLAY…</div>
 <div id="note">DIAGNOSTIC MISSION GEOMETRY · NOT AN OPERATIONAL PREDICTION</div>
-<div id="title" class="hud"><h1>Suppression mission replay</h1><span class="badge">DIAGNOSTIC · NO FIRE EFFECT</span><p>21 CL-415-style drops across five independent aircraft cycles on a 1,200 m line near the 600-minute front. This page visualizes the mission geometry and timing only. It does not show validated fire containment.</p></div>
+<div id="title" class="hud"><h1>Suppression mission replay</h1><span class="badge">DIAGNOSTIC · NO FIRE EFFECT</span><p>21 CL-415-style drops across three independent aircraft cycles: scoop, climb, cruise, descend, drop, turn, return. The lake, flight paths, drop line and timings are schematic, not a dispatch record.</p></div>
 <div id="results" class="hud"><div class="eyebrow">EVIDENCE ENSEMBLE · 32 SAMPLES</div><div class="result" id="result-realistic"><div class="result-top"><span>Realistic 21-drop line</span><b>5,325 ha</b></div><small>0% containment · placement-limited · all samples equal free burn</small><small>Observed final extent: 520 ha</small></div><div class="result" id="result-control"><div class="result-top"><span>Synthetic control barrier</span><b>3,574.7 ha</b></div><small>3,570–3,575 ha · ROS correlation −0.78 · effect model responds, not operational</small></div><div class="links"><a id="mission-link" href="#">Mission JSON</a><a id="evidence-link" href="#">Realistic ensemble</a><a id="control-link" href="#">Control results</a><a href="https://github.com/UBC-FRESH/fresh-fire-studio/blob/main/docs/p179-18-model-card.md" target="_blank" rel="noopener">Model card ↗</a></div></div>
 <div id="stats" class="hud"><div><span>mission drops</span><b id="s-total">—</b></div><div><span>active drops</span><b id="s-active">0</b></div><div><span>aircraft</span><b id="s-aircraft">—</b></div><div><span>fps</span><b id="s-fps">—</b></div></div>
 <div id="compass" class="hud">↑ <span>N</span></div>
@@ -42,7 +42,7 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospac
 <aside id="methods-panel" hidden aria-labelledby="methods-title" aria-modal="true" role="dialog">
   <div class="close-row"><div><h2 id="methods-title">Suppression model card</h2><p>Evidence-bounded diagnostic · not an operational prediction.</p></div><button id="methods-close" type="button" aria-label="Close model card">×</button></div>
   <h3>What you are seeing</h3>
-  <p>This is mission geometry and timing from a fixed 2003_526 scenario. The realistic mode shows 21 CL-415-style drops across five independent aircraft cycles on a 1,200 m line. It does not show a validated fire effect or containment.</p>
+  <p>This is mission geometry and timing from a fixed 2003_526 scenario. The realistic mode shows 21 CL-415-style drops across three independent aircraft cycles, each returning to the lake to scoop. It does not show a validated fire effect or containment.</p>
   <h3>Evidence</h3>
   <table><tr><th>Source</th><th>Value used</th></tr><tr><td>Wheatley 2024, Chapter 5</td><td>ROS reduction <b>0.5 ± 0.7 m/min</b>; fireline intensity reduction <b>72 ± 159 kW/m</b>; hold <b>123 ± 117 s</b></td></tr><tr><td>Wheatley high-water</td><td>hold <b>187 s</b>; indirect high-water <b>243 s</b></td></tr><tr><td>McFayden et al. 2023</td><td>effective aerial hold <b>60 min</b>; drop contours, stacking and breach criteria</td></tr><tr><td>Van Wagner &amp; Taylor 2022</td><td>theoretical water depth from fireline intensity, fuel load and wetting</td></tr></table>
   <h3>Results</h3>
@@ -75,208 +75,269 @@ const assistantScript = document.createElement("script");
 assistantScript.src = dataPrefix + "static/assistant.js";
 assistantScript.defer = true;
 document.head.appendChild(assistantScript);
+
 const canvas = document.getElementById("c");
 const renderer = new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:"high-performance"});
 renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.5));
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.05;
-
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x07100f);
-scene.fog = new THREE.Fog(0x07100f, 9000, 23000);
+scene.fog = new THREE.Fog(0x07100f, 8000, 24000);
 const G = DATA.grid;
-const center = new THREE.Vector3(G.width / 2, 0, -G.height / 2);
+const center = new THREE.Vector3(G.width/2, 0, -G.height/2);
 const camera = new THREE.PerspectiveCamera(42, innerWidth/innerHeight, 1, 50000);
-camera.position.set(center.x - 3000, 6500, center.z + 7500);
+camera.position.set(center.x - 2600, 5600, center.z + 5800);
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.target.copy(center);
+controls.target.set(center.x - 350, 0, center.z + 300);
 controls.enableDamping = true;
 controls.dampingFactor = .08;
-controls.maxPolarAngle = Math.PI / 2.03;
-controls.minDistance = 200;
+controls.maxPolarAngle = Math.PI/2.03;
+controls.minDistance = 150;
 controls.maxDistance = 30000;
-
 scene.add(new THREE.HemisphereLight(0xd8f0ff, 0x2b2418, 1.35));
-scene.add(new THREE.AmbientLight(0xcfe2e0, .3));
+scene.add(new THREE.AmbientLight(0xcfe2e0, .30));
 const sun = new THREE.DirectionalLight(0xffe0b0, 1.2);
 sun.position.set(-4000, 7000, 3000);
 scene.add(sun);
 
+const lx = x => x - G.xll;
+const lz = y => -(y - G.yll);
+const targetPoints = DATA.fire_line.map(([x,y]) => new THREE.Vector3(lx(x), 0, lz(y)));
+const lake = DATA.lake;
+const lakePoint = new THREE.Vector3(lx(lake.x), 0, lz(lake.y));
+const missionCenter = lakePoint.clone().add(targetPoints[targetPoints.length-1]).multiplyScalar(.5);
+
+function focusMission() {
+  controls.target.copy(missionCenter);
+  camera.position.set(missionCenter.x - 900, 3200, missionCenter.z + 2800);
+  controls.update();
+}
+function overview() {
+  controls.target.copy(center);
+  camera.position.set(center.x - 2600, 5600, center.z + 5800);
+  controls.update();
+}
+
 const ground = new THREE.Mesh(
   new THREE.PlaneGeometry(G.width, G.height),
-  new THREE.MeshLambertMaterial({color:0x14201a, transparent:true, opacity:.85})
+  new THREE.MeshLambertMaterial({color:0x14201a, transparent:true, opacity:.88})
 );
 ground.rotation.x = -Math.PI/2;
 ground.position.set(center.x, -2, center.z);
 scene.add(ground);
 const grid = new THREE.GridHelper(10000, 100, 0x52635d, 0x26332d);
 grid.position.set(center.x, 0, center.z);
-grid.material.opacity = .35;
+grid.material.opacity = .32;
 grid.material.transparent = true;
 scene.add(grid);
 
-const lx = x => x - G.xll;
-const lz = y => -(y - G.yll);
-const missionCenter = new THREE.Vector3(
-  (lx(DATA.drops[0].x) + lx(DATA.drops[DATA.drops.length - 1].x)) / 2,
-  0,
-  (lz(DATA.drops[0].y) + lz(DATA.drops[DATA.drops.length - 1].y)) / 2
+// Water source.
+const lakeMesh = new THREE.Mesh(
+  new THREE.CircleGeometry(lake.radius_m, 40),
+  new THREE.MeshBasicMaterial({color:0x2d7ea8, transparent:true, opacity:.55, side:THREE.DoubleSide})
 );
-function focusMission() {
-  controls.target.copy(missionCenter);
-  camera.position.set(missionCenter.x - 650, 2100, missionCenter.z + 1700);
-  controls.update();
-}
-function overview() {
-  controls.target.copy(center);
-  camera.position.set(center.x - 3000, 6500, center.z + 7500);
-  controls.update();
+lakeMesh.rotation.x = -Math.PI/2;
+lakeMesh.position.set(lakePoint.x, 2, lakePoint.z);
+scene.add(lakeMesh);
+const lakeRing = new THREE.Mesh(
+  new THREE.RingGeometry(lake.radius_m, lake.radius_m + 35, 40),
+  new THREE.MeshBasicMaterial({color:0x70b7ff, side:THREE.DoubleSide, transparent:true, opacity:.8})
+);
+lakeRing.rotation.x = -Math.PI/2;
+lakeRing.position.set(lakePoint.x, 4, lakePoint.z);
+scene.add(lakeRing);
+
+// Fire line and target points.
+const fireGroup = new THREE.Group();
+scene.add(fireGroup);
+const fireLine = new THREE.Line(
+  new THREE.BufferGeometry().setFromPoints(targetPoints.map(p => new THREE.Vector3(p.x, 6, p.z))),
+  new THREE.LineBasicMaterial({color:0xff6b2c, transparent:true, opacity:.95})
+);
+fireGroup.add(fireLine);
+for (const p of targetPoints) {
+  const marker = new THREE.Mesh(new THREE.CircleGeometry(55, 16), new THREE.MeshBasicMaterial({color:0xff6b2c, transparent:true, opacity:.55}));
+  marker.rotation.x = -Math.PI/2;
+  marker.position.set(p.x, 7, p.z);
+  fireGroup.add(marker);
 }
 
-// Aircraft markers: one per independent aircraft cycle. No single long flight.
-const aircraftColors = [0xffb347, 0x7ce0c6, 0x70b7ff, 0xffd27c, 0xff9f6b];
+// Flight paths: lake -> drop -> lake, coloured by aircraft.
+const pathGroups = new Map();
+const pathColors = new Map(DATA.aircraft.map(a => [a.id, new THREE.Color(a.color)]));
+for (const sortie of DATA.sorties) {
+  if (!pathGroups.has(sortie.aircraft_id)) {
+    const group = new THREE.Group();
+    group.visible = true;
+    scene.add(group);
+    pathGroups.set(sortie.aircraft_id, group);
+  }
+  const points = [];
+  for (const phase of sortie.phases) {
+    points.push(new THREE.Vector3(lx(phase.from[0]), phase.from[2], lz(phase.from[1])));
+  }
+  const last = sortie.phases[sortie.phases.length - 1];
+  points.push(new THREE.Vector3(lx(last.to[0]), last.to[2], lz(last.to[1])));
+  const path = new THREE.Line(
+    new THREE.BufferGeometry().setFromPoints(points),
+    new THREE.LineBasicMaterial({color: pathColors.get(sortie.aircraft_id), transparent:true, opacity:.08})
+  );
+  pathGroups.get(sortie.aircraft_id).add(path);
+}
+
+// Aircraft markers.
 const aircraftMarkers = new Map();
-function makeAircraft(id, color, index) {
+const aircraftColors = [0xffb347, 0x7ce0c6, 0x70b7ff];
+function makeAircraft(item, index) {
   const group = new THREE.Group();
-  const body = new THREE.Mesh(new THREE.SphereGeometry(55, 12, 8), new THREE.MeshLambertMaterial({color}));
-  body.position.y = 185;
+  const body = new THREE.Mesh(new THREE.SphereGeometry(48, 12, 8), new THREE.MeshLambertMaterial({color: aircraftColors[index % aircraftColors.length]}));
+  body.position.y = 160;
   group.add(body);
-  const cabin = new THREE.Mesh(new THREE.BoxGeometry(125, 32, 42), new THREE.MeshLambertMaterial({color:0xffd27c}));
-  cabin.position.y = 170;
+  const cabin = new THREE.Mesh(new THREE.BoxGeometry(110, 28, 38), new THREE.MeshLambertMaterial({color:0xffd27c}));
+  cabin.position.y = 150;
   group.add(cabin);
-  const rotor = new THREE.Mesh(new THREE.TorusGeometry(105, 6, 8, 28), new THREE.MeshBasicMaterial({color:0xffe3a3, transparent:true, opacity:.75}));
+  const rotor = new THREE.Mesh(new THREE.TorusGeometry(92, 5, 8, 28), new THREE.MeshBasicMaterial({color:0xffe3a3, transparent:true, opacity:.8}));
   rotor.rotation.x = Math.PI/2;
-  rotor.position.y = 240;
+  rotor.position.y = 210;
   group.add(rotor);
-  const shadow = new THREE.Mesh(new THREE.CircleGeometry(180, 24), new THREE.MeshBasicMaterial({color:0x000000, transparent:true, opacity:.25}));
+  const shadow = new THREE.Mesh(new THREE.CircleGeometry(120, 20), new THREE.MeshBasicMaterial({color:0x000000, transparent:true, opacity:.22}));
   shadow.rotation.x = -Math.PI/2;
   shadow.position.y = 3;
   group.add(shadow);
-  const source = DATA.water_source || DATA.drops[0];
-  group.position.set(lx(source.x), 0, lz(source.y));
+  group.position.copy(lakePoint);
+  group.position.y = 0;
   scene.add(group);
-  const marker = {id, group, rotor, index};
-  aircraftMarkers.set(id, marker);
+  const marker = {id:item.id, group, rotor};
+  aircraftMarkers.set(item.id, marker);
   return marker;
 }
-DATA.aircraft.forEach((item, index) => makeAircraft(item.id, aircraftColors[index % aircraftColors.length], index));
-const waterSource = DATA.water_source || DATA.drops[0];
-const waterMarker = new THREE.Mesh(new THREE.CircleGeometry(150, 32), new THREE.MeshBasicMaterial({color:0x70b7ff, transparent:true, opacity:.65}));
-waterMarker.rotation.x = -Math.PI/2;
-waterMarker.position.set(lx(waterSource.x), 5, lz(waterSource.y));
-scene.add(waterMarker);
+DATA.aircraft.forEach(makeAircraft);
 
-// Drops: visible water columns / markers at their centers.
-const dropGroup = new THREE.Group();
-scene.add(dropGroup);
-const dropMeshes = DATA.drops.map((drop, index) => {
+// Drop markers.
+const dropMarkers = DATA.sorties.map(sortie => {
+  const point = new THREE.Vector3(lx(sortie.target[0]), 0, lz(sortie.target[1]));
   const group = new THREE.Group();
-  const marker = new THREE.Mesh(new THREE.CircleGeometry(72, 24), new THREE.MeshBasicMaterial({color:0x7ce0c6, transparent:true, opacity:.95}));
+  const marker = new THREE.Mesh(new THREE.CircleGeometry(52, 16), new THREE.MeshBasicMaterial({color:0x7ce0c6, transparent:true, opacity:.95}));
   marker.rotation.x = -Math.PI/2;
-  marker.position.y = 4;
+  marker.position.y = 5;
   group.add(marker);
-  const column = new THREE.Mesh(new THREE.CylinderGeometry(20, 56, 300, 12), new THREE.MeshBasicMaterial({color:0x7ce0c6, transparent:true, opacity:.40}));
-  column.position.y = 170;
+  const column = new THREE.Mesh(new THREE.CylinderGeometry(16, 40, 230, 10), new THREE.MeshBasicMaterial({color:0x7ce0c6, transparent:true, opacity:.35}));
+  column.position.y = 115;
   column.visible = false;
   group.add(column);
-  group.position.set(lx(drop.x), 0, lz(drop.y));
+  group.position.set(point.x, 0, point.z);
   group.visible = false;
-  group.userData = {...drop, index};
-  dropGroup.add(group);
-  return {group, marker, column, drop};
+  scene.add(group);
+  return {sortie, group, marker, column};
 });
 
-const missionLine = new THREE.Line(
-  new THREE.BufferGeometry().setFromPoints(DATA.drops.map(drop => new THREE.Vector3(lx(drop.x), 8, lz(drop.y)))),
-  new THREE.LineBasicMaterial({color:0x7ce0c6, transparent:true, opacity:.8})
-);
-scene.add(missionLine);
-
-// Synthetic control barrier (visual only).
-const controlWidth = DATA.control.width;
+// Synthetic control barrier.
 const barrierX = lx(DATA.control.x);
 const barrier = new THREE.Mesh(
-  new THREE.BoxGeometry(controlWidth, 160, G.height),
-  new THREE.MeshBasicMaterial({color:0x70b7ff, transparent:true, opacity:.08})
+  new THREE.BoxGeometry(DATA.control.width, 120, G.height),
+  new THREE.MeshBasicMaterial({color:0x70b7ff, transparent:true, opacity:.07})
 );
-barrier.position.set(barrierX, 80, center.z);
+barrier.position.set(barrierX, 60, center.z);
 barrier.visible = false;
 scene.add(barrier);
 const barrierEdge = new THREE.LineSegments(
-  new THREE.EdgesGeometry(new THREE.BoxGeometry(controlWidth, 160, G.height)),
-  new THREE.LineBasicMaterial({color:0x70b7ff, transparent:true, opacity:.55})
+  new THREE.EdgesGeometry(new THREE.BoxGeometry(DATA.control.width, 120, G.height)),
+  new THREE.LineBasicMaterial({color:0x70b7ff, transparent:true, opacity:.5})
 );
 barrierEdge.position.copy(barrier.position);
 barrierEdge.visible = false;
 scene.add(barrierEdge);
 
-// Observed final extent (teal), for context only.
+// Observed and model extents.
 const observedGroup = new THREE.Group();
 scene.add(observedGroup);
 for (const ring of DATA.observed_extent || []) {
   if (!Array.isArray(ring) || ring.length < 3) continue;
-  const pts = ring.map(([x, y]) => new THREE.Vector3(lx(x), 6, lz(y)));
+  const pts = ring.map(([x,y]) => new THREE.Vector3(lx(x), 7, lz(y)));
   pts.push(pts[0].clone());
-  observedGroup.add(new THREE.LineLoop(
-    new THREE.BufferGeometry().setFromPoints(pts),
-    new THREE.LineBasicMaterial({color:0x7ce0c6, transparent:true, opacity:.95, depthTest:false})
-  ));
+  observedGroup.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({color:0x7ce0c6, transparent:true, opacity:.95, depthTest:false})));
 }
-
-// Free-burn model extent (amber), for context only.
 const modelGroup = new THREE.Group();
 modelGroup.visible = true;
 scene.add(modelGroup);
 for (const ring of DATA.model_extent || []) {
   if (!Array.isArray(ring) || ring.length < 3) continue;
-  const pts = ring.map(([x, y]) => new THREE.Vector3(lx(x), 4, lz(y)));
+  const pts = ring.map(([x,y]) => new THREE.Vector3(lx(x), 3, lz(y)));
   pts.push(pts[0].clone());
-  modelGroup.add(new THREE.LineLoop(
-    new THREE.BufferGeometry().setFromPoints(pts),
-    new THREE.LineBasicMaterial({color:0xffd27c, transparent:true, opacity:.75})
-  ));
+  modelGroup.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({color:0xffd27c, transparent:true, opacity:.7})));
 }
 
-// Optional reference marker at the 600-minute front.
-const frontMarker = new THREE.Mesh(
-  new THREE.RingGeometry(90, 120, 40),
-  new THREE.MeshBasicMaterial({color:0xff6b2c, side:THREE.DoubleSide, transparent:true, opacity:.8})
-);
-frontMarker.rotation.x = -Math.PI/2;
-frontMarker.position.set(lx(492150), 3, lz(5726250));
-scene.add(frontMarker);
-
-const state = {t: 0, playing: false, last: performance.now(), speed: 1};
+const state = {t: 600, playing: false, last: performance.now(), mode: "realistic"};
 const slider = document.getElementById("slider");
+slider.min = String(DATA.timeline.start);
+slider.max = String(DATA.timeline.end);
 const clock = document.getElementById("clock");
 const play = document.getElementById("play");
 const status = document.getElementById("status");
-slider.min = String(DATA.timeline.start);
-slider.max = String(DATA.timeline.end);
+
+function setMode(next) {
+  state.mode = next;
+  const control = next === "control";
+  barrier.visible = control;
+  barrierEdge.visible = control;
+  fireGroup.visible = !control;
+  for (const group of pathGroups.values()) group.visible = !control;
+  for (const marker of aircraftMarkers.values()) marker.group.visible = !control;
+  for (const drop of dropMarkers) drop.group.visible = !control && drop.group.visible;
+  document.getElementById("mode-realistic").classList.toggle("active", !control);
+  document.getElementById("mode-control").classList.toggle("active", control);
+  document.getElementById("result-realistic").classList.toggle("selected", !control);
+  document.getElementById("result-control").classList.toggle("selected", control);
+  status.textContent = control
+    ? "Synthetic control · permanent 20-cell water band · not operational."
+    : "Schematic lake-to-fire cycles · three aircraft · geometry only.";
+}
+
+function phasePosition(sortie, t) {
+  const phases = sortie.phases;
+  if (t < phases[0].start) return lakePoint.clone();
+  for (const phase of phases) {
+    if (t >= phase.start && t <= phase.end) {
+      const u = (t - phase.start) / Math.max(1e-6, phase.end - phase.start);
+      return new THREE.Vector3(
+        lx(phase.from[0] + (phase.to[0] - phase.from[0]) * u),
+        phase.from[2] + (phase.to[2] - phase.from[2]) * u,
+        lz(phase.from[1] + (phase.to[1] - phase.from[1]) * u)
+      );
+    }
+  }
+  const last = phases[phases.length - 1];
+  return new THREE.Vector3(lx(last.to[0]), last.to[2], lz(last.to[1]));
+}
+function aircraftPosition(sortie, aircraftId, t) {
+  const assigned = DATA.sorties.filter(s => s.aircraft_id === aircraftId);
+  let current = assigned[0];
+  for (const s of assigned) if (t >= s.phases[0].start) current = s;
+  if (!current || t < current.phases[0].start) return lakePoint.clone();
+  return phasePosition(current, t);
+}
 
 function setTime(value) {
   state.t = Math.max(DATA.timeline.start, Math.min(DATA.timeline.end, value));
   slider.value = String(state.t);
   let active = 0;
-  let lastActive = null;
-  let firstDrop = DATA.drops[0];
-  for (const item of dropMeshes) {
-    const d = item.drop;
-    const age = state.t - d.start;
-    const isActive = age >= 0 && age <= (d.end - d.start) + 60;
-    item.group.visible = isActive;
+  for (const item of dropMarkers) {
+    const s = item.sortie;
+    const dropStart = s.drop_start;
+    const isActive = state.t >= dropStart && state.t <= s.drop_end + 60;
+    item.group.visible = state.mode === "realistic" && isActive;
     if (isActive) {
       active += 1;
-      lastActive = d;
-      const pulse = 1 + .10 * Math.sin(state.t * .12 + d.start);
+      const age = state.t - dropStart;
+      const pulse = 1 + .08 * Math.sin(state.t * .2 + dropStart);
       item.marker.scale.setScalar(pulse);
-      item.marker.material.opacity = .9;
-      if (age <= 8) {
+      if (age <= 2) {
         item.column.visible = true;
-        item.column.position.y = 150 + (1 - age / 8) * 220;
-        item.column.scale.y = Math.max(.08, 1 - age / 8);
-        item.column.material.opacity = .35 * (1 - age / 8);
+        item.column.position.y = 115 + (1 - age / 2) * 160;
+        item.column.scale.y = Math.max(.1, 1 - age / 2);
+        item.column.material.opacity = .35 * (1 - age / 2);
       } else {
         item.column.visible = false;
       }
@@ -285,23 +346,18 @@ function setTime(value) {
       item.column.visible = false;
     }
   }
+  for (const [id, marker] of aircraftMarkers) {
+    marker.group.position.copy(aircraftPosition(DATA.sorties.find(s => s.aircraft_id === id), id, state.t));
+  }
   document.getElementById("s-active").textContent = active;
-  document.getElementById("s-total").textContent = DATA.drops.length;
+  document.getElementById("s-total").textContent = DATA.sorties.length;
   document.getElementById("s-aircraft").textContent = DATA.aircraft.length;
   clock.textContent = `${Math.round(state.t)} min`;
-  for (const [id, marker] of aircraftMarkers) {
-    const assigned = DATA.drops.filter(drop => drop.resource_id === id);
-    if (!assigned.length) continue;
-    let target = assigned[0];
-    for (const drop of assigned) if (state.t >= drop.start) target = drop;
-    marker.group.position.x += (lx(target.x) - marker.group.position.x) * .10;
-    marker.group.position.z += (lz(target.y) - marker.group.position.z) * .10;
-  }
-  status.textContent = state.t < DATA.timeline.drop_time
-    ? "Before the mission: 21 drops scheduled near the 600-minute front."
-    : active > 0
-      ? `${active} drops active · geometry and timing only · no validated fire effect.`
-      : "Mission window ended · diagnostic geometry only · no validated fire effect.";
+  status.textContent = state.mode === "control"
+    ? "Synthetic control · permanent 20-cell water band · not operational."
+    : state.t < 600
+      ? "Three aircraft staged at the lake. Mission starts at minute 600."
+      : `${active} water drops visible · scoop–climb–cruise–drop–return cycles · no validated fire effect.`;
 }
 
 slider.addEventListener("input", () => { state.playing = false; play.textContent = "Play"; setTime(Number(slider.value)); });
@@ -311,52 +367,32 @@ play.addEventListener("click", () => {
   play.textContent = state.playing ? "Pause" : "Play";
 });
 document.getElementById("reset").addEventListener("click", () => { state.playing = false; play.textContent = "Play"; setTime(DATA.timeline.start); });
-let mode = "realistic";
-const modeButtons = {
-  realistic: document.getElementById("mode-realistic"),
-  control: document.getElementById("mode-control"),
-};
-function setMode(next) {
-  mode = next;
-  const control = mode === "control";
-  barrier.visible = control;
-  barrierEdge.visible = control;
-  dropGroup.visible = !control;
-  missionLine.visible = !control;
-  for (const [key, button] of Object.entries(modeButtons)) button.classList.toggle("active", key === mode);
-  document.getElementById("result-realistic").classList.toggle("selected", mode === "realistic");
-  document.getElementById("result-control").classList.toggle("selected", mode === "control");
-  status.textContent = control
-    ? "Synthetic control · permanent 20-cell water band · effect model responds, not operational."
-    : "Realistic mission · 21 drops · 0% containment in the 32-member evidence ensemble.";
-}
+document.getElementById("focus").addEventListener("click", focusMission);
+document.getElementById("overview").addEventListener("click", overview);
+document.getElementById("mode-realistic").addEventListener("click", () => setMode("realistic"));
+document.getElementById("mode-control").addEventListener("click", () => setMode("control"));
+document.getElementById("extent").addEventListener("click", () => {
+  modelGroup.visible = !modelGroup.visible;
+  document.getElementById("extent").textContent = modelGroup.visible ? "Hide extent" : "Model extent";
+});
+document.getElementById("observed").addEventListener("click", () => {
+  observedGroup.visible = !observedGroup.visible;
+  document.getElementById("observed").textContent = observedGroup.visible ? "Hide observed" : "Observed extent";
+});
 const methodsPanel = document.getElementById("methods-panel");
 const methodsBackdrop = document.getElementById("methods-backdrop");
 function closeMethods() { methodsPanel.hidden = true; methodsBackdrop.hidden = true; }
-document.getElementById("focus").addEventListener("click", focusMission);
-document.getElementById("overview").addEventListener("click", overview);
-document.getElementById("methods").addEventListener("click", () => {
-  methodsPanel.hidden = false; methodsBackdrop.hidden = false;
-});
+document.getElementById("methods").addEventListener("click", () => { methodsPanel.hidden = false; methodsBackdrop.hidden = false; });
 document.getElementById("methods-close").addEventListener("click", closeMethods);
 methodsBackdrop.addEventListener("click", closeMethods);
-addEventListener("keydown", event => {
-  if (event.key === "Escape" && !methodsPanel.hidden) closeMethods();
-});
-modeButtons.realistic.addEventListener("click", () => setMode("realistic"));
-modeButtons.control.addEventListener("click", () => setMode("control"));
+addEventListener("keydown", e => { if (e.key === "Escape" && !methodsPanel.hidden) closeMethods(); });
 addEventListener("keydown", e => { if (e.code === "Space") { e.preventDefault(); play.click(); } });
-function resize() {
-  camera.aspect = innerWidth / innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(innerWidth, innerHeight, false);
-}
+function resize() { camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight, false); }
 addEventListener("resize", resize);
 resize();
-
-setTime(DATA.timeline.drop_time);
-setMode("realistic");
+setTime(600);
 focusMission();
+setMode("realistic");
 state.playing = true;
 play.textContent = "Pause";
 let frames = 0, t0 = performance.now();
@@ -364,7 +400,7 @@ function frame(now) {
   const dt = Math.min(.05, (now - state.last) / 1000);
   state.last = now;
   if (state.playing) {
-    setTime(state.t + dt * 8);
+    setTime(state.t + dt * 4);
     if (state.t >= DATA.timeline.end) { state.playing = false; play.textContent = "Play"; }
   }
   for (const marker of aircraftMarkers.values()) marker.rotor.rotation.z += dt * 8;
