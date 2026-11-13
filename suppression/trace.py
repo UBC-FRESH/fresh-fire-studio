@@ -111,7 +111,7 @@ def trace_targets(
                 col=col,
                 arrival_min=arrival,
                 combined_at_arrival_mm=combined,
-                wet_at_arrival=(np.isfinite(arrival) and combined >= wet.required_depth_mm),
+                wet_at_arrival=bool(np.isfinite(arrival) and combined >= wet.required_depth_mm),
                 max_combined_mm=maximum,
                 drops=tuple(drops),
             )

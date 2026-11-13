@@ -55,6 +55,7 @@ A public 3D benchmark-fire portal from the UBC FRESH Lab.
 - P182 effect width: [`docs/p182-width.md`](docs/p182-width.md)
 - P182 timing/persistence: [`docs/p182-timing.md`](docs/p182-timing.md)
 - P182 prepositioned line: [`docs/p182-prepositioned.md`](docs/p182-prepositioned.md)
+- P183 fleet sizing: [`docs/p183-fleet.md`](docs/p183-fleet.md)
 - P180 stacked mission: [`docs/p180-stacked.md`](docs/p180-stacked.md)
 - P180 target traces: [`suppression/proofs/2003-526-target-wetness-trace-5targets.json`](suppression/proofs/2003-526-target-wetness-trace-5targets.json)
 - Diagnostic suppression replay: `/suppression/` (mission geometry only)
