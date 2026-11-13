@@ -1,0 +1,11 @@
+{
+  "scenario_id": "2003-526-cycle-mission-2pass",
+  "required_depth_mm": 0.75,
+  "wet_drops": 116,
+  "wet_cells": 46,
+  "wet_at_arrival": 0,
+  "burned_before_wet": 1,
+  "burned_after_wet": 13,
+  "unburned": 1,
+  "no_wet_window": 31
+}
