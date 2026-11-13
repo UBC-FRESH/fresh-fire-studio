@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles, P179.8 sub-cell raster, P179.9 wetness/ROS factor, P179.10 fine-grid experiment, P179.11 perimeter queries, P179.12 perimeter mission, P179.13 closed box, P179.14 receding horizon, P179.15 canopy penetration and P179.16 evidence parameters implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles, P179.8 sub-cell raster, P179.9 wetness/ROS factor, P179.10 fine-grid experiment, P179.11 perimeter queries, P179.12 perimeter mission, P179.13 closed box, P179.14 receding horizon, P179.15 canopy penetration, P179.16 evidence parameters and P179.17 queue implemented. Not operational.
 
 Five local PDFs were mined on 2026-11-13; see
 [`martell-pdf-notes.md`](martell-pdf-notes.md). The 2015 control-time paper is
@@ -140,6 +140,9 @@ Implemented in this repository:
 - `suppression/scenarios/2003-526-wheatley-evidence.json` — 123 s hold.
 - `suppression/scenarios/2003-526-mcfayden-evidence.json` — 60 min hold.
 - `docs/p179-16-evidence.md` — evidence, absolute ROS reduction and result.
+- `suppression/queue.py` — non-preemptive resource queue.
+- `tests/test_queue.py` — queue tests.
+- `docs/p179-17-queue.md` — queue scope and limits.
 
 Run:
 
@@ -417,6 +420,15 @@ Both the 123 s and 60 min scenarios still finish at **5,325 ha**. A finite
 21-drop line remains geometrically incomplete; the evidence changes the effect
 calculation, not the placement problem. See
 [`p179-16-evidence.md`](p179-16-evidence.md).
+
+## P179.17 deterministic queue
+
+`suppression/queue.py` is a non-preemptive queue for requests and available
+servers. It orders by priority and arrival, assigns the earliest feasible
+server, reports wait/utilization and leaves infeasible requests unserved.
+
+It is a scheduling primitive for the eventual IA/aircraft dispatch layer. See
+[`p179-17-queue.md`](p179-17-queue.md).
 
 ## Adjacent Canadian planning layers
 
