@@ -141,7 +141,7 @@ scene.add(barrierEdge);
 
 // Free-burn model extent (amber), for context only.
 const modelGroup = new THREE.Group();
-modelGroup.visible = false;
+modelGroup.visible = true;
 scene.add(modelGroup);
 for (const ring of DATA.model_extent || []) {
   if (!Array.isArray(ring) || ring.length < 3) continue;
@@ -246,7 +246,7 @@ addEventListener("resize", resize);
 resize();
 
 const auto = new URLSearchParams(location.search).has("autoplay");
-setTime(auto ? DATA.timeline.drop_time - 5 : 0);
+setTime(DATA.timeline.drop_time);
 setMode("realistic");
 if (auto) { state.playing = true; play.textContent = "Pause"; }
 let frames = 0, t0 = performance.now();
