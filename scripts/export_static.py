@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from portal.app import CASES, G50872_CASE, VRI_CASE, _case_page, _landing, brief, case, home, methods, pilot
+from portal.app import CASES, G50872_CASE, VRI_CASE, _case_page, _landing, brief, case, home, methods, pilot, suppression_replay
 
 OUT = ROOT / "public"
 
@@ -22,6 +22,7 @@ def _rewrite_index(payload: str) -> str:
     payload = payload.replace('href="/bc"', 'href="bc.html"')
     payload = payload.replace('href="/cfs"', 'href="cfs.html"')
     payload = payload.replace('href="/reel"', 'href="reel/index.html"')
+    payload = payload.replace('href="/suppression"', 'href="suppression.html"')
     payload = payload.replace('href="/briefs/bc"', 'href="briefs/bc.html"')
     payload = payload.replace('href="/briefs/cfs"', 'href="briefs/cfs.html"')
     payload = payload.replace('src="/static/', 'src="static/')
@@ -63,6 +64,9 @@ def main() -> None:
     pilot_payload = pilot_payload.replace('href="/pilot/g50872"', 'href="pilot-g50872.html"')
     pilot_payload = pilot_payload.replace('href="/static/', 'href="static/')
     (OUT / "pilot.html").write_text(pilot_payload, encoding="utf-8")
+    suppression_payload = suppression_replay()
+    suppression_payload = suppression_payload.replace('href="/"', 'href="index.html"')
+    (OUT / "suppression.html").write_text(suppression_payload, encoding="utf-8")
     for name, case_data in (("pilot-vri", VRI_CASE), ("pilot-g50872", G50872_CASE)):
         payload = _case_page(case_data)
         payload = payload.replace('href="/"', 'href="index.html"')

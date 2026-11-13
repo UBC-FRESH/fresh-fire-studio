@@ -1,0 +1,54 @@
+# P179.20 diagnostic suppression replay
+
+Status: public-facing diagnostic replay. It is not a fire-effect prediction.
+
+## Route
+
+`/suppression`
+
+Static export: `suppression.html`.
+
+## What it shows
+
+- 21 CL-415-style drop markers from the fixed 2003_526 drop-line scenario;
+- mission timeline and active-drop count;
+- a simple aircraft marker that moves toward the latest active drop;
+- an optional **synthetic 20-cell control barrier**;
+- a 1 km grid and north-up compass;
+- a permanent banner: **diagnostic mission geometry, not an operational
+  prediction**.
+
+Data: `portal/static/suppression-mission.json`.
+
+## What it does not show
+
+- no observed or simulated fire perimeter;
+- no validated water effect;
+- no terrain elevation;
+- no containment result;
+- no operational dispatch recommendation.
+
+The page exists to make the mission geometry and timing legible without
+overstating the model.
+
+## Why a separate page
+
+The six benchmark scenes are observed-extent replays with synthetic tree layers.
+Mixing a diagnostic suppression mission into those scenes would imply a level of
+validation the suppression model does not have.
+
+This page is deliberately separate and labelled.
+
+## Limits
+
+- The drop markers are points, not sub-cell water-depth contours.
+- The control barrier is synthetic and permanent.
+- The aircraft motion is illustrative.
+- No smoke, fire, hose, crew or pump animation yet.
+- The page does not consume a live simulation result.
+
+## Next
+
+A later replay can load a validated event stream with fire perimeter snapshots
+and a clearly labelled effect envelope. That should happen only after the
+placement/effect control question is settled.

@@ -1,0 +1,198 @@
+{
+  "case": "cfsds-2003-526",
+  "title": "2003_526 \u00b7 diagnostic suppression replay",
+  "grid": {
+    "xll": 487700.0,
+    "yll": 5722700.0,
+    "width": 9000.0,
+    "height": 7600.0,
+    "cell": 100.0
+  },
+  "timeline": {
+    "start": 0.0,
+    "end": 900.0,
+    "drop_time": 600.0
+  },
+  "drops": [
+    {
+      "id": "drop-line-1",
+      "x": 491200.0,
+      "y": 5726250.0,
+      "start": 600.0,
+      "end": 601.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-2",
+      "x": 491260.0,
+      "y": 5726250.0,
+      "start": 605.0,
+      "end": 606.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-3",
+      "x": 491320.0,
+      "y": 5726250.0,
+      "start": 610.0,
+      "end": 611.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-4",
+      "x": 491380.0,
+      "y": 5726250.0,
+      "start": 615.0,
+      "end": 616.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-5",
+      "x": 491440.0,
+      "y": 5726250.0,
+      "start": 620.0,
+      "end": 621.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-6",
+      "x": 491500.0,
+      "y": 5726250.0,
+      "start": 625.0,
+      "end": 626.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-7",
+      "x": 491560.0,
+      "y": 5726250.0,
+      "start": 630.0,
+      "end": 631.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-8",
+      "x": 491620.0,
+      "y": 5726250.0,
+      "start": 635.0,
+      "end": 636.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-9",
+      "x": 491680.0,
+      "y": 5726250.0,
+      "start": 640.0,
+      "end": 641.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-10",
+      "x": 491740.0,
+      "y": 5726250.0,
+      "start": 645.0,
+      "end": 646.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-11",
+      "x": 491800.0,
+      "y": 5726250.0,
+      "start": 650.0,
+      "end": 651.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-12",
+      "x": 491860.0,
+      "y": 5726250.0,
+      "start": 655.0,
+      "end": 656.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-13",
+      "x": 491920.0,
+      "y": 5726250.0,
+      "start": 660.0,
+      "end": 661.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-14",
+      "x": 491980.0,
+      "y": 5726250.0,
+      "start": 665.0,
+      "end": 666.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-15",
+      "x": 492040.0,
+      "y": 5726250.0,
+      "start": 670.0,
+      "end": 671.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-16",
+      "x": 492100.0,
+      "y": 5726250.0,
+      "start": 675.0,
+      "end": 676.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-17",
+      "x": 492160.0,
+      "y": 5726250.0,
+      "start": 680.0,
+      "end": 681.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-18",
+      "x": 492220.0,
+      "y": 5726250.0,
+      "start": 685.0,
+      "end": 686.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-19",
+      "x": 492280.0,
+      "y": 5726250.0,
+      "start": 690.0,
+      "end": 691.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-20",
+      "x": 492340.0,
+      "y": 5726250.0,
+      "start": 695.0,
+      "end": 696.0,
+      "depth_mm": 1.0
+    },
+    {
+      "id": "drop-line-21",
+      "x": 492400.0,
+      "y": 5726250.0,
+      "start": 700.0,
+      "end": 701.0,
+      "depth_mm": 1.0
+    }
+  ],
+  "aircraft": [
+    {
+      "id": "proof-heli",
+      "label": "Diagnostic helicopter"
+    }
+  ],
+  "control": {
+    "x": 493600.0,
+    "width": 2000.0,
+    "label": "Synthetic evidence control barrier"
+  },
+  "note": "Mission geometry only. Diagnostic replay, not an operational suppression prediction."
+}

@@ -26,6 +26,7 @@ STATIC = ROOT / "portal" / "static"
 CASES_PATH = ROOT / "config" / "cases.json"
 SUMMARIES_PATH = ROOT / "config" / "scene_summaries.json"
 PILOT_PATH = ROOT / "portal" / "pilot.html"
+SUPPRESSION_PATH = ROOT / "portal" / "suppression.html"
 BRIEFS = ROOT / "portal" / "briefs"
 REEL_PATH = ROOT / "docs" / "reel" / "index.html"
 ASK_HITS: dict[str, list[float]] = {}
@@ -294,7 +295,7 @@ footer{{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--dim);fo
 </head>
 <body>
 <div class="wrap">
-<nav><div class="brand"><span class="brand-mark"></span> FRESH Fire Studio</div><div class="navlinks"><a href="#cases">Benchmark fires</a><a href="/methods">Science</a><a href="/pilot">Pilot</a><a href="/bc">BC</a><a href="/cfs">CFS</a><button class="ask" type="button" data-assistant-open aria-expanded="false" aria-controls="assistant-panel">+ Ask</button><a href="/case/{first}">Launch demo ↗</a></div></nav>
+<nav><div class="brand"><span class="brand-mark"></span> FRESH Fire Studio</div><div class="navlinks"><a href="#cases">Benchmark fires</a><a href="/methods">Science</a><a href="/pilot">Pilot</a><a href="/suppression">Suppression</a><a href="/bc">BC</a><a href="/cfs">CFS</a><button class="ask" type="button" data-assistant-open aria-expanded="false" aria-controls="assistant-panel">+ Ask</button><a href="/case/{first}">Launch demo ↗</a></div></nav>
 <section class="hero">
   <div><div class="eyebrow">{copy["eyebrow"]}</div>
   <h1>{copy["headline"]}</h1>
@@ -420,6 +421,13 @@ def pilot_g50872() -> str:
 @app.get("/pilot/vri", response_class=HTMLResponse)
 def pilot_vri() -> str:
     return _case_page(VRI_CASE)
+
+
+@app.get("/suppression", response_class=HTMLResponse)
+def suppression_replay() -> str:
+    if SUPPRESSION_PATH.is_file():
+        return SUPPRESSION_PATH.read_text(encoding="utf-8")
+    raise HTTPException(status_code=404, detail="suppression replay unavailable")
 
 
 @app.get("/pilot", response_class=HTMLResponse)
