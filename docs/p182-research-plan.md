@@ -145,6 +145,12 @@ For the fire:
 
 ### P182.2 — line hold and breach
 
+Timing result: a full-height 76-cell water line with 60 or 600 min hold still
+ends at 5,325 ha; a nominal 22,200 min hold reaches 5,254 ha. A static
+non-burnable barrier from the start reaches 3,504 ha. The requirement is
+sustained pre-arrival persistence, not width. See
+[`p182-timing.md`](p182-timing.md).
+
 Result: a one-cell, full-height, permanent wet band reduces the benchmark from
 5,325 to **3,504 ha**; widths 1, 5, 10 and 20 all give the same area. The native
 wet branch works. The earlier scheduled line was not closed for the full height

@@ -21,6 +21,7 @@ def main() -> None:
     parser.add_argument("--stack", type=int, default=3)
     parser.add_argument("--hold-min", type=float, default=60.0)
     parser.add_argument("--pre-arrival-min", type=float, default=2.0)
+    parser.add_argument("--all-rows", action="store_true", help="include every row, including non-burnable rows")
     parser.add_argument(
         "--out",
         type=Path,
@@ -56,7 +57,17 @@ def main() -> None:
     targets = []
     for row in range(fire.grid.nrows):
         arrival = float(free.growth.ignition_time_min[row, col])
-        if burnable[row, col] and np.isfinite(arrival) and arrival > 0.0:
+        if args.all_rows:
+            if not np.isfinite(arrival) or arrival <= 0.0:
+                arrival = 1800.0
+            targets.append(
+                TimedTarget(
+                    fire.grid.xll + (col + 0.5) * fire.grid.cell_size_m,
+                    fire.grid.yll + (fire.grid.nrows - 1 - row + 0.5) * fire.grid.cell_size_m,
+                    arrival,
+                )
+            )
+        elif burnable[row, col] and np.isfinite(arrival) and arrival > 0.0:
             targets.append(
                 TimedTarget(
                     fire.grid.xll + (col + 0.5) * fire.grid.cell_size_m,

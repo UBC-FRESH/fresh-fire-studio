@@ -1,0 +1,2275 @@
+{
+  "proof": "P179.3 native time-dependent containment",
+  "case_id": "2003_526",
+  "scenario_id": "2003-526-closed-barrier",
+  "method": {
+    "sampling_min": 60.0,
+    "kernel": "single WS4 minimum-travel-time run",
+    "mask": "cell containment checked at expansion time",
+    "drops": "temporary wet ROS factor at 0.75 mm, 10 m sub-cell",
+    "line_timing": "scenario"
+  },
+  "wet_schedule": {
+    "required_depth_mm": 0.75,
+    "drops": [
+      {
+        "drop_id": "barrier-drop-1",
+        "depth_mm": 1.0,
+        "start_min": 1343.7471593660246,
+        "end_min": 1343.8304926993578,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-2",
+        "depth_mm": 1.0,
+        "start_min": 1343.7471593660246,
+        "end_min": 1343.8304926993578,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-3",
+        "depth_mm": 1.0,
+        "start_min": 1343.7471593660246,
+        "end_min": 1343.8304926993578,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-4",
+        "depth_mm": 1.0,
+        "start_min": 1362.0584115196857,
+        "end_min": 1362.141744853019,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-5",
+        "depth_mm": 1.0,
+        "start_min": 1362.0584115196857,
+        "end_min": 1362.141744853019,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-6",
+        "depth_mm": 1.0,
+        "start_min": 1362.0584115196857,
+        "end_min": 1362.141744853019,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-7",
+        "depth_mm": 1.0,
+        "start_min": 1369.9341131317433,
+        "end_min": 1370.0174464650765,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-8",
+        "depth_mm": 1.0,
+        "start_min": 1369.9341131317433,
+        "end_min": 1370.0174464650765,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-9",
+        "depth_mm": 1.0,
+        "start_min": 1369.9341131317433,
+        "end_min": 1370.0174464650765,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-10",
+        "depth_mm": 1.0,
+        "start_min": 1370.2105923016907,
+        "end_min": 1370.293925635024,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-11",
+        "depth_mm": 1.0,
+        "start_min": 1370.2105923016907,
+        "end_min": 1370.293925635024,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-12",
+        "depth_mm": 1.0,
+        "start_min": 1370.2105923016907,
+        "end_min": 1370.293925635024,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-13",
+        "depth_mm": 1.0,
+        "start_min": 1375.0356779228305,
+        "end_min": 1375.1190112561637,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-14",
+        "depth_mm": 1.0,
+        "start_min": 1375.0356779228305,
+        "end_min": 1375.1190112561637,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-15",
+        "depth_mm": 1.0,
+        "start_min": 1375.0356779228305,
+        "end_min": 1375.1190112561637,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-16",
+        "depth_mm": 1.0,
+        "start_min": 1377.6244675690734,
+        "end_min": 1377.7078009024067,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-17",
+        "depth_mm": 1.0,
+        "start_min": 1377.6244675690734,
+        "end_min": 1377.7078009024067,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-18",
+        "depth_mm": 1.0,
+        "start_min": 1377.6244675690734,
+        "end_min": 1377.7078009024067,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-19",
+        "depth_mm": 1.0,
+        "start_min": 1377.868857178456,
+        "end_min": 1377.9521905117892,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-20",
+        "depth_mm": 1.0,
+        "start_min": 1377.868857178456,
+        "end_min": 1377.9521905117892,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-21",
+        "depth_mm": 1.0,
+        "start_min": 1377.868857178456,
+        "end_min": 1377.9521905117892,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-22",
+        "depth_mm": 1.0,
+        "start_min": 1384.5144979391957,
+        "end_min": 1384.597831272529,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-23",
+        "depth_mm": 1.0,
+        "start_min": 1384.5144979391957,
+        "end_min": 1384.597831272529,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-24",
+        "depth_mm": 1.0,
+        "start_min": 1384.5144979391957,
+        "end_min": 1384.597831272529,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-25",
+        "depth_mm": 1.0,
+        "start_min": 1399.1905020246136,
+        "end_min": 1399.2738353579468,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-26",
+        "depth_mm": 1.0,
+        "start_min": 1399.1905020246136,
+        "end_min": 1399.2738353579468,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-27",
+        "depth_mm": 1.0,
+        "start_min": 1399.1905020246136,
+        "end_min": 1399.2738353579468,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-28",
+        "depth_mm": 1.0,
+        "start_min": 1401.3126232126592,
+        "end_min": 1401.3959565459925,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-29",
+        "depth_mm": 1.0,
+        "start_min": 1401.3126232126592,
+        "end_min": 1401.3959565459925,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-30",
+        "depth_mm": 1.0,
+        "start_min": 1401.3126232126592,
+        "end_min": 1401.3959565459925,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-31",
+        "depth_mm": 1.0,
+        "start_min": 1410.0863761363248,
+        "end_min": 1410.169709469658,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-32",
+        "depth_mm": 1.0,
+        "start_min": 1410.0863761363248,
+        "end_min": 1410.169709469658,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-33",
+        "depth_mm": 1.0,
+        "start_min": 1410.0863761363248,
+        "end_min": 1410.169709469658,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-34",
+        "depth_mm": 1.0,
+        "start_min": 1434.79783976625,
+        "end_min": 1434.8811730995833,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-35",
+        "depth_mm": 1.0,
+        "start_min": 1434.79783976625,
+        "end_min": 1434.8811730995833,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-36",
+        "depth_mm": 1.0,
+        "start_min": 1434.79783976625,
+        "end_min": 1434.8811730995833,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-37",
+        "depth_mm": 1.0,
+        "start_min": 1442.6366424044459,
+        "end_min": 1442.7199757377791,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-38",
+        "depth_mm": 1.0,
+        "start_min": 1442.6366424044459,
+        "end_min": 1442.7199757377791,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-39",
+        "depth_mm": 1.0,
+        "start_min": 1442.6366424044459,
+        "end_min": 1442.7199757377791,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-40",
+        "depth_mm": 1.0,
+        "start_min": 1445.285924047769,
+        "end_min": 1445.3692573811022,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-41",
+        "depth_mm": 1.0,
+        "start_min": 1445.285924047769,
+        "end_min": 1445.3692573811022,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-42",
+        "depth_mm": 1.0,
+        "start_min": 1445.285924047769,
+        "end_min": 1445.3692573811022,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-43",
+        "depth_mm": 1.0,
+        "start_min": 1454.8320551081022,
+        "end_min": 1454.9153884414354,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-44",
+        "depth_mm": 1.0,
+        "start_min": 1454.8320551081022,
+        "end_min": 1454.9153884414354,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-45",
+        "depth_mm": 1.0,
+        "start_min": 1454.8320551081022,
+        "end_min": 1454.9153884414354,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-46",
+        "depth_mm": 1.0,
+        "start_min": 1463.6549370005232,
+        "end_min": 1463.7382703338565,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-47",
+        "depth_mm": 1.0,
+        "start_min": 1463.6549370005232,
+        "end_min": 1463.7382703338565,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-48",
+        "depth_mm": 1.0,
+        "start_min": 1463.6549370005232,
+        "end_min": 1463.7382703338565,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-49",
+        "depth_mm": 1.0,
+        "start_min": 1470.00895667993,
+        "end_min": 1470.0922900132632,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-50",
+        "depth_mm": 1.0,
+        "start_min": 1470.00895667993,
+        "end_min": 1470.0922900132632,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-51",
+        "depth_mm": 1.0,
+        "start_min": 1470.00895667993,
+        "end_min": 1470.0922900132632,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-52",
+        "depth_mm": 1.0,
+        "start_min": 1477.4906585726094,
+        "end_min": 1477.5739919059426,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-53",
+        "depth_mm": 1.0,
+        "start_min": 1477.4906585726094,
+        "end_min": 1477.5739919059426,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-54",
+        "depth_mm": 1.0,
+        "start_min": 1477.4906585726094,
+        "end_min": 1477.5739919059426,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-55",
+        "depth_mm": 1.0,
+        "start_min": 1485.1446675971897,
+        "end_min": 1485.228000930523,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-56",
+        "depth_mm": 1.0,
+        "start_min": 1485.1446675971897,
+        "end_min": 1485.228000930523,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-57",
+        "depth_mm": 1.0,
+        "start_min": 1485.1446675971897,
+        "end_min": 1485.228000930523,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-58",
+        "depth_mm": 1.0,
+        "start_min": 1501.6085368121767,
+        "end_min": 1501.69187014551,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-59",
+        "depth_mm": 1.0,
+        "start_min": 1501.6085368121767,
+        "end_min": 1501.69187014551,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-60",
+        "depth_mm": 1.0,
+        "start_min": 1501.6085368121767,
+        "end_min": 1501.69187014551,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-61",
+        "depth_mm": 1.0,
+        "start_min": 1515.212705561253,
+        "end_min": 1515.2960388945862,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-62",
+        "depth_mm": 1.0,
+        "start_min": 1515.212705561253,
+        "end_min": 1515.2960388945862,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-63",
+        "depth_mm": 1.0,
+        "start_min": 1515.212705561253,
+        "end_min": 1515.2960388945862,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-64",
+        "depth_mm": 1.0,
+        "start_min": 1519.772049896099,
+        "end_min": 1519.8553832294322,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-65",
+        "depth_mm": 1.0,
+        "start_min": 1519.772049896099,
+        "end_min": 1519.8553832294322,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-66",
+        "depth_mm": 1.0,
+        "start_min": 1519.772049896099,
+        "end_min": 1519.8553832294322,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-67",
+        "depth_mm": 1.0,
+        "start_min": 1523.1529497800698,
+        "end_min": 1523.236283113403,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-68",
+        "depth_mm": 1.0,
+        "start_min": 1523.1529497800698,
+        "end_min": 1523.236283113403,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-69",
+        "depth_mm": 1.0,
+        "start_min": 1523.1529497800698,
+        "end_min": 1523.236283113403,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-70",
+        "depth_mm": 1.0,
+        "start_min": 1530.6632153441253,
+        "end_min": 1530.7465486774586,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-71",
+        "depth_mm": 1.0,
+        "start_min": 1530.6632153441253,
+        "end_min": 1530.7465486774586,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-72",
+        "depth_mm": 1.0,
+        "start_min": 1530.6632153441253,
+        "end_min": 1530.7465486774586,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-73",
+        "depth_mm": 1.0,
+        "start_min": 1540.422206636881,
+        "end_min": 1540.5055399702142,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-74",
+        "depth_mm": 1.0,
+        "start_min": 1540.422206636881,
+        "end_min": 1540.5055399702142,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-75",
+        "depth_mm": 1.0,
+        "start_min": 1540.422206636881,
+        "end_min": 1540.5055399702142,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-76",
+        "depth_mm": 1.0,
+        "start_min": 1541.6224729923822,
+        "end_min": 1541.7058063257155,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-77",
+        "depth_mm": 1.0,
+        "start_min": 1541.6224729923822,
+        "end_min": 1541.7058063257155,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-78",
+        "depth_mm": 1.0,
+        "start_min": 1541.6224729923822,
+        "end_min": 1541.7058063257155,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-79",
+        "depth_mm": 1.0,
+        "start_min": 1547.4740574309915,
+        "end_min": 1547.5573907643247,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-80",
+        "depth_mm": 1.0,
+        "start_min": 1547.4740574309915,
+        "end_min": 1547.5573907643247,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-81",
+        "depth_mm": 1.0,
+        "start_min": 1547.4740574309915,
+        "end_min": 1547.5573907643247,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-82",
+        "depth_mm": 1.0,
+        "start_min": 1561.5400478485449,
+        "end_min": 1561.6233811818781,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-83",
+        "depth_mm": 1.0,
+        "start_min": 1561.5400478485449,
+        "end_min": 1561.6233811818781,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-84",
+        "depth_mm": 1.0,
+        "start_min": 1561.5400478485449,
+        "end_min": 1561.6233811818781,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-85",
+        "depth_mm": 1.0,
+        "start_min": 1563.8274922419837,
+        "end_min": 1563.910825575317,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-86",
+        "depth_mm": 1.0,
+        "start_min": 1563.8274922419837,
+        "end_min": 1563.910825575317,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-87",
+        "depth_mm": 1.0,
+        "start_min": 1563.8274922419837,
+        "end_min": 1563.910825575317,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-88",
+        "depth_mm": 1.0,
+        "start_min": 1566.7801180610816,
+        "end_min": 1566.8634513944148,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-89",
+        "depth_mm": 1.0,
+        "start_min": 1566.7801180610816,
+        "end_min": 1566.8634513944148,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-90",
+        "depth_mm": 1.0,
+        "start_min": 1566.7801180610816,
+        "end_min": 1566.8634513944148,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-91",
+        "depth_mm": 1.0,
+        "start_min": 1567.1111337468055,
+        "end_min": 1567.1944670801388,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-92",
+        "depth_mm": 1.0,
+        "start_min": 1567.1111337468055,
+        "end_min": 1567.1944670801388,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-93",
+        "depth_mm": 1.0,
+        "start_min": 1567.1111337468055,
+        "end_min": 1567.1944670801388,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-94",
+        "depth_mm": 1.0,
+        "start_min": 1572.23318271739,
+        "end_min": 1572.3165160507233,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-95",
+        "depth_mm": 1.0,
+        "start_min": 1572.23318271739,
+        "end_min": 1572.3165160507233,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-96",
+        "depth_mm": 1.0,
+        "start_min": 1572.23318271739,
+        "end_min": 1572.3165160507233,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-97",
+        "depth_mm": 1.0,
+        "start_min": 1573.4146437252973,
+        "end_min": 1573.4979770586306,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-98",
+        "depth_mm": 1.0,
+        "start_min": 1573.4146437252973,
+        "end_min": 1573.4979770586306,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-99",
+        "depth_mm": 1.0,
+        "start_min": 1573.4146437252973,
+        "end_min": 1573.4979770586306,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-100",
+        "depth_mm": 1.0,
+        "start_min": 1578.7748791940962,
+        "end_min": 1578.8582125274295,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-101",
+        "depth_mm": 1.0,
+        "start_min": 1578.7748791940962,
+        "end_min": 1578.8582125274295,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-102",
+        "depth_mm": 1.0,
+        "start_min": 1578.7748791940962,
+        "end_min": 1578.8582125274295,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-103",
+        "depth_mm": 1.0,
+        "start_min": 1583.703033239239,
+        "end_min": 1583.7863665725722,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-104",
+        "depth_mm": 1.0,
+        "start_min": 1583.703033239239,
+        "end_min": 1583.7863665725722,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-105",
+        "depth_mm": 1.0,
+        "start_min": 1583.703033239239,
+        "end_min": 1583.7863665725722,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-106",
+        "depth_mm": 1.0,
+        "start_min": 1586.5211878025918,
+        "end_min": 1586.604521135925,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-107",
+        "depth_mm": 1.0,
+        "start_min": 1586.5211878025918,
+        "end_min": 1586.604521135925,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-108",
+        "depth_mm": 1.0,
+        "start_min": 1586.5211878025918,
+        "end_min": 1586.604521135925,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-109",
+        "depth_mm": 1.0,
+        "start_min": 1587.867303996888,
+        "end_min": 1587.9506373302213,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-110",
+        "depth_mm": 1.0,
+        "start_min": 1587.867303996888,
+        "end_min": 1587.9506373302213,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-111",
+        "depth_mm": 1.0,
+        "start_min": 1587.867303996888,
+        "end_min": 1587.9506373302213,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-112",
+        "depth_mm": 1.0,
+        "start_min": 1588.8859636361008,
+        "end_min": 1588.969296969434,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-113",
+        "depth_mm": 1.0,
+        "start_min": 1588.8859636361008,
+        "end_min": 1588.969296969434,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-114",
+        "depth_mm": 1.0,
+        "start_min": 1588.8859636361008,
+        "end_min": 1588.969296969434,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-115",
+        "depth_mm": 1.0,
+        "start_min": 1590.2959214217854,
+        "end_min": 1590.3792547551186,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-116",
+        "depth_mm": 1.0,
+        "start_min": 1590.2959214217854,
+        "end_min": 1590.3792547551186,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-117",
+        "depth_mm": 1.0,
+        "start_min": 1590.2959214217854,
+        "end_min": 1590.3792547551186,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-118",
+        "depth_mm": 1.0,
+        "start_min": 1591.7057316265018,
+        "end_min": 1591.789064959835,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-119",
+        "depth_mm": 1.0,
+        "start_min": 1591.7057316265018,
+        "end_min": 1591.789064959835,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-120",
+        "depth_mm": 1.0,
+        "start_min": 1591.7057316265018,
+        "end_min": 1591.789064959835,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-121",
+        "depth_mm": 1.0,
+        "start_min": 1591.921254522685,
+        "end_min": 1592.0045878560184,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-122",
+        "depth_mm": 1.0,
+        "start_min": 1591.921254522685,
+        "end_min": 1592.0045878560184,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-123",
+        "depth_mm": 1.0,
+        "start_min": 1591.921254522685,
+        "end_min": 1592.0045878560184,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-124",
+        "depth_mm": 1.0,
+        "start_min": 1592.5769611608885,
+        "end_min": 1592.6602944942217,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-125",
+        "depth_mm": 1.0,
+        "start_min": 1592.5769611608885,
+        "end_min": 1592.6602944942217,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-126",
+        "depth_mm": 1.0,
+        "start_min": 1592.5769611608885,
+        "end_min": 1592.6602944942217,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-127",
+        "depth_mm": 1.0,
+        "start_min": 1593.6554375634748,
+        "end_min": 1593.738770896808,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-128",
+        "depth_mm": 1.0,
+        "start_min": 1593.6554375634748,
+        "end_min": 1593.738770896808,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-129",
+        "depth_mm": 1.0,
+        "start_min": 1593.6554375634748,
+        "end_min": 1593.738770896808,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-130",
+        "depth_mm": 1.0,
+        "start_min": 1594.6125499506327,
+        "end_min": 1594.695883283966,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-131",
+        "depth_mm": 1.0,
+        "start_min": 1594.6125499506327,
+        "end_min": 1594.695883283966,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-132",
+        "depth_mm": 1.0,
+        "start_min": 1594.6125499506327,
+        "end_min": 1594.695883283966,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-133",
+        "depth_mm": 1.0,
+        "start_min": 1598.0790463191997,
+        "end_min": 1598.162379652533,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-134",
+        "depth_mm": 1.0,
+        "start_min": 1598.0790463191997,
+        "end_min": 1598.162379652533,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-135",
+        "depth_mm": 1.0,
+        "start_min": 1598.0790463191997,
+        "end_min": 1598.162379652533,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-136",
+        "depth_mm": 1.0,
+        "start_min": 1598.994395991848,
+        "end_min": 1599.0777293251813,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-137",
+        "depth_mm": 1.0,
+        "start_min": 1598.994395991848,
+        "end_min": 1599.0777293251813,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-138",
+        "depth_mm": 1.0,
+        "start_min": 1598.994395991848,
+        "end_min": 1599.0777293251813,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-139",
+        "depth_mm": 1.0,
+        "start_min": 1602.1113258008015,
+        "end_min": 1602.1946591341348,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-140",
+        "depth_mm": 1.0,
+        "start_min": 1602.1113258008015,
+        "end_min": 1602.1946591341348,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-141",
+        "depth_mm": 1.0,
+        "start_min": 1602.1113258008015,
+        "end_min": 1602.1946591341348,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-142",
+        "depth_mm": 1.0,
+        "start_min": 1604.6178191302627,
+        "end_min": 1604.701152463596,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-143",
+        "depth_mm": 1.0,
+        "start_min": 1604.6178191302627,
+        "end_min": 1604.701152463596,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-144",
+        "depth_mm": 1.0,
+        "start_min": 1604.6178191302627,
+        "end_min": 1604.701152463596,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-145",
+        "depth_mm": 1.0,
+        "start_min": 1612.312155869306,
+        "end_min": 1612.3954892026393,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-146",
+        "depth_mm": 1.0,
+        "start_min": 1612.312155869306,
+        "end_min": 1612.3954892026393,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-147",
+        "depth_mm": 1.0,
+        "start_min": 1612.312155869306,
+        "end_min": 1612.3954892026393,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-148",
+        "depth_mm": 1.0,
+        "start_min": 1614.0538823924312,
+        "end_min": 1614.1372157257645,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-149",
+        "depth_mm": 1.0,
+        "start_min": 1614.0538823924312,
+        "end_min": 1614.1372157257645,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-150",
+        "depth_mm": 1.0,
+        "start_min": 1614.0538823924312,
+        "end_min": 1614.1372157257645,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-151",
+        "depth_mm": 1.0,
+        "start_min": 1632.81907136158,
+        "end_min": 1632.9024046949132,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-152",
+        "depth_mm": 1.0,
+        "start_min": 1632.81907136158,
+        "end_min": 1632.9024046949132,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-153",
+        "depth_mm": 1.0,
+        "start_min": 1632.81907136158,
+        "end_min": 1632.9024046949132,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-154",
+        "depth_mm": 1.0,
+        "start_min": 1633.6025103095185,
+        "end_min": 1633.6858436428518,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-155",
+        "depth_mm": 1.0,
+        "start_min": 1633.6025103095185,
+        "end_min": 1633.6858436428518,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-156",
+        "depth_mm": 1.0,
+        "start_min": 1633.6025103095185,
+        "end_min": 1633.6858436428518,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-157",
+        "depth_mm": 1.0,
+        "start_min": 1655.4713686540417,
+        "end_min": 1655.554701987375,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-158",
+        "depth_mm": 1.0,
+        "start_min": 1655.4713686540417,
+        "end_min": 1655.554701987375,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-159",
+        "depth_mm": 1.0,
+        "start_min": 1655.4713686540417,
+        "end_min": 1655.554701987375,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-160",
+        "depth_mm": 1.0,
+        "start_min": 1659.566878509152,
+        "end_min": 1659.6502118424853,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-161",
+        "depth_mm": 1.0,
+        "start_min": 1659.566878509152,
+        "end_min": 1659.6502118424853,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-162",
+        "depth_mm": 1.0,
+        "start_min": 1659.566878509152,
+        "end_min": 1659.6502118424853,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-163",
+        "depth_mm": 1.0,
+        "start_min": 1676.1113549390552,
+        "end_min": 1676.1946882723885,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-164",
+        "depth_mm": 1.0,
+        "start_min": 1676.1113549390552,
+        "end_min": 1676.1946882723885,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-165",
+        "depth_mm": 1.0,
+        "start_min": 1676.1113549390552,
+        "end_min": 1676.1946882723885,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-166",
+        "depth_mm": 1.0,
+        "start_min": 1691.3705680505743,
+        "end_min": 1691.4539013839076,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-167",
+        "depth_mm": 1.0,
+        "start_min": 1691.3705680505743,
+        "end_min": 1691.4539013839076,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-168",
+        "depth_mm": 1.0,
+        "start_min": 1691.3705680505743,
+        "end_min": 1691.4539013839076,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-169",
+        "depth_mm": 1.0,
+        "start_min": 1696.9968062386847,
+        "end_min": 1697.080139572018,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-170",
+        "depth_mm": 1.0,
+        "start_min": 1696.9968062386847,
+        "end_min": 1697.080139572018,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-171",
+        "depth_mm": 1.0,
+        "start_min": 1696.9968062386847,
+        "end_min": 1697.080139572018,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-172",
+        "depth_mm": 1.0,
+        "start_min": 1710.4952447317955,
+        "end_min": 1710.5785780651288,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-173",
+        "depth_mm": 1.0,
+        "start_min": 1710.4952447317955,
+        "end_min": 1710.5785780651288,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-174",
+        "depth_mm": 1.0,
+        "start_min": 1710.4952447317955,
+        "end_min": 1710.5785780651288,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-175",
+        "depth_mm": 1.0,
+        "start_min": 1712.5764712657297,
+        "end_min": 1712.659804599063,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-176",
+        "depth_mm": 1.0,
+        "start_min": 1712.5764712657297,
+        "end_min": 1712.659804599063,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-177",
+        "depth_mm": 1.0,
+        "start_min": 1712.5764712657297,
+        "end_min": 1712.659804599063,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-178",
+        "depth_mm": 1.0,
+        "start_min": 1747.155293578848,
+        "end_min": 1747.2386269121812,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-179",
+        "depth_mm": 1.0,
+        "start_min": 1747.155293578848,
+        "end_min": 1747.2386269121812,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-180",
+        "depth_mm": 1.0,
+        "start_min": 1747.155293578848,
+        "end_min": 1747.2386269121812,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-181",
+        "depth_mm": 1.0,
+        "start_min": 1779.2825389310035,
+        "end_min": 1779.3658722643368,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-182",
+        "depth_mm": 1.0,
+        "start_min": 1779.2825389310035,
+        "end_min": 1779.3658722643368,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-183",
+        "depth_mm": 1.0,
+        "start_min": 1779.2825389310035,
+        "end_min": 1779.3658722643368,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-184",
+        "depth_mm": 1.0,
+        "start_min": 1798.0,
+        "end_min": 1798.0833333333333,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-185",
+        "depth_mm": 1.0,
+        "start_min": 1798.0,
+        "end_min": 1798.0833333333333,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-186",
+        "depth_mm": 1.0,
+        "start_min": 1798.0,
+        "end_min": 1798.0833333333333,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-187",
+        "depth_mm": 1.0,
+        "start_min": 1798.0,
+        "end_min": 1798.0833333333333,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-188",
+        "depth_mm": 1.0,
+        "start_min": 1798.0,
+        "end_min": 1798.0833333333333,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-189",
+        "depth_mm": 1.0,
+        "start_min": 1798.0,
+        "end_min": 1798.0833333333333,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-190",
+        "depth_mm": 1.0,
+        "start_min": 1798.0,
+        "end_min": 1798.0833333333333,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-191",
+        "depth_mm": 1.0,
+        "start_min": 1798.0,
+        "end_min": 1798.0833333333333,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-192",
+        "depth_mm": 1.0,
+        "start_min": 1798.0,
+        "end_min": 1798.0833333333333,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-193",
+        "depth_mm": 1.0,
+        "start_min": 1798.0,
+        "end_min": 1798.0833333333333,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-194",
+        "depth_mm": 1.0,
+        "start_min": 1798.0,
+        "end_min": 1798.0833333333333,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-195",
+        "depth_mm": 1.0,
+        "start_min": 1798.0,
+        "end_min": 1798.0833333333333,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-196",
+        "depth_mm": 1.0,
+        "start_min": 1798.0,
+        "end_min": 1798.0833333333333,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-197",
+        "depth_mm": 1.0,
+        "start_min": 1798.0,
+        "end_min": 1798.0833333333333,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-198",
+        "depth_mm": 1.0,
+        "start_min": 1798.0,
+        "end_min": 1798.0833333333333,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-199",
+        "depth_mm": 1.0,
+        "start_min": 1823.8594513326825,
+        "end_min": 1823.9427846660158,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-200",
+        "depth_mm": 1.0,
+        "start_min": 1823.8594513326825,
+        "end_min": 1823.9427846660158,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-201",
+        "depth_mm": 1.0,
+        "start_min": 1823.8594513326825,
+        "end_min": 1823.9427846660158,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-202",
+        "depth_mm": 1.0,
+        "start_min": 1825.5199319727622,
+        "end_min": 1825.6032653060954,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-203",
+        "depth_mm": 1.0,
+        "start_min": 1825.5199319727622,
+        "end_min": 1825.6032653060954,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-204",
+        "depth_mm": 1.0,
+        "start_min": 1825.5199319727622,
+        "end_min": 1825.6032653060954,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-205",
+        "depth_mm": 1.0,
+        "start_min": 1825.9675752141563,
+        "end_min": 1826.0509085474896,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-206",
+        "depth_mm": 1.0,
+        "start_min": 1825.9675752141563,
+        "end_min": 1826.0509085474896,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-207",
+        "depth_mm": 1.0,
+        "start_min": 1825.9675752141563,
+        "end_min": 1826.0509085474896,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-208",
+        "depth_mm": 1.0,
+        "start_min": 1827.3799909398092,
+        "end_min": 1827.4633242731425,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-209",
+        "depth_mm": 1.0,
+        "start_min": 1827.3799909398092,
+        "end_min": 1827.4633242731425,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-210",
+        "depth_mm": 1.0,
+        "start_min": 1827.3799909398092,
+        "end_min": 1827.4633242731425,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-211",
+        "depth_mm": 1.0,
+        "start_min": 1835.6171524668114,
+        "end_min": 1835.7004858001446,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-212",
+        "depth_mm": 1.0,
+        "start_min": 1835.6171524668114,
+        "end_min": 1835.7004858001446,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-213",
+        "depth_mm": 1.0,
+        "start_min": 1835.6171524668114,
+        "end_min": 1835.7004858001446,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-214",
+        "depth_mm": 1.0,
+        "start_min": 1838.5901813646244,
+        "end_min": 1838.6735146979577,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-215",
+        "depth_mm": 1.0,
+        "start_min": 1838.5901813646244,
+        "end_min": 1838.6735146979577,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-216",
+        "depth_mm": 1.0,
+        "start_min": 1838.5901813646244,
+        "end_min": 1838.6735146979577,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-217",
+        "depth_mm": 1.0,
+        "start_min": 1838.9298232156043,
+        "end_min": 1839.0131565489376,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-218",
+        "depth_mm": 1.0,
+        "start_min": 1838.9298232156043,
+        "end_min": 1839.0131565489376,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-219",
+        "depth_mm": 1.0,
+        "start_min": 1838.9298232156043,
+        "end_min": 1839.0131565489376,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-220",
+        "depth_mm": 1.0,
+        "start_min": 1842.9996322132913,
+        "end_min": 1843.0829655466246,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-221",
+        "depth_mm": 1.0,
+        "start_min": 1842.9996322132913,
+        "end_min": 1843.0829655466246,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-222",
+        "depth_mm": 1.0,
+        "start_min": 1842.9996322132913,
+        "end_min": 1843.0829655466246,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-223",
+        "depth_mm": 1.0,
+        "start_min": 1843.0822988684063,
+        "end_min": 1843.1656322017395,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-224",
+        "depth_mm": 1.0,
+        "start_min": 1843.0822988684063,
+        "end_min": 1843.1656322017395,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-225",
+        "depth_mm": 1.0,
+        "start_min": 1843.0822988684063,
+        "end_min": 1843.1656322017395,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-226",
+        "depth_mm": 1.0,
+        "start_min": 1848.9933454107052,
+        "end_min": 1849.0766787440384,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-227",
+        "depth_mm": 1.0,
+        "start_min": 1848.9933454107052,
+        "end_min": 1849.0766787440384,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      },
+      {
+        "drop_id": "barrier-drop-228",
+        "depth_mm": 1.0,
+        "start_min": 1848.9933454107052,
+        "end_min": 1849.0766787440384,
+        "duration_min": 600.0,
+        "covered_cells": 1
+      }
+    ]
+  },
+  "dispatch": null,
+  "grid": {
+    "crs": "EPSG:26911",
+    "xll": 487700.0,
+    "yll": 5722700.0,
+    "ncols": 90,
+    "nrows": 76,
+    "cell_size_m": 100.0
+  },
+  "free_burn": {
+    "area_sim_ha": 5325.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 9.240384615384615,
+    "perimeter_sim_m": 116800.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 4.959183673469388,
+    "centroid_distance_m": 174.69119277442272,
+    "iou": 0.09559512652296158,
+    "sorensen": 0.174508126603935,
+    "orientation_error_deg": 21.642970351518244
+  },
+  "native": {
+    "area_sim_ha": 5325.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 9.240384615384615,
+    "perimeter_sim_m": 116800.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 4.959183673469388,
+    "centroid_distance_m": 174.69119277442272,
+    "iou": 0.09559512652296158,
+    "sorensen": 0.174508126603935,
+    "orientation_error_deg": 21.642970351518244
+  },
+  "native_area_by_time_ha": {
+    "0": 1.0,
+    "60": 9.0,
+    "120": 21.0,
+    "180": 33.0,
+    "240": 60.0,
+    "300": 97.0,
+    "360": 145.0,
+    "420": 179.0,
+    "480": 212.0,
+    "540": 249.0,
+    "600": 291.0,
+    "660": 327.0,
+    "720": 359.0,
+    "780": 399.0,
+    "840": 430.0,
+    "900": 469.0,
+    "960": 501.0,
+    "1020": 534.0,
+    "1080": 563.0,
+    "1140": 595.0,
+    "1200": 626.0,
+    "1260": 648.0,
+    "1320": 691.0,
+    "1380": 747.0,
+    "1440": 847.0,
+    "1500": 1005.0,
+    "1560": 1227.0,
+    "1620": 1511.0,
+    "1680": 1911.0,
+    "1740": 2654.0,
+    "1800": 3180.0,
+    "1860": 3765.0,
+    "1920": 4163.0,
+    "1980": 4421.0,
+    "2040": 4675.0,
+    "2100": 4960.0,
+    "2160": 5122.0,
+    "2220": 5193.0,
+    "2280": 5249.0,
+    "2340": 5281.0,
+    "2400": 5298.0,
+    "2460": 5308.0,
+    "2520": 5315.0,
+    "2580": 5321.0,
+    "2640": 5322.0,
+    "2700": 5325.0,
+    "2760": 5325.0,
+    "2820": 5325.0,
+    "2880": 5325.0,
+    "2940": 5325.0,
+    "3000": 5325.0,
+    "3060": 5325.0,
+    "3120": 5325.0,
+    "3180": 5325.0,
+    "3240": 5325.0,
+    "3300": 5325.0,
+    "3360": 5325.0,
+    "3420": 5325.0,
+    "3480": 5325.0,
+    "3540": 5325.0,
+    "3600": 5325.0,
+    "3660": 5325.0,
+    "3720": 5325.0,
+    "3780": 5325.0,
+    "3840": 5325.0,
+    "3900": 5325.0,
+    "3960": 5325.0,
+    "4020": 5325.0,
+    "4080": 5325.0,
+    "4140": 5325.0,
+    "4200": 5325.0,
+    "4260": 5325.0,
+    "4320": 5325.0,
+    "4380": 5325.0,
+    "4440": 5325.0,
+    "4500": 5325.0,
+    "4560": 5325.0,
+    "4620": 5325.0,
+    "4680": 5325.0,
+    "4740": 5325.0,
+    "4800": 5325.0,
+    "4860": 5325.0,
+    "4920": 5325.0,
+    "4980": 5325.0,
+    "5040": 5325.0,
+    "5100": 5325.0,
+    "5160": 5325.0,
+    "5220": 5325.0,
+    "5280": 5325.0,
+    "5340": 5325.0,
+    "5400": 5325.0,
+    "5460": 5325.0,
+    "5520": 5325.0,
+    "5580": 5325.0,
+    "5640": 5325.0,
+    "5700": 5325.0,
+    "5760": 5325.0,
+    "5820": 5325.0,
+    "5880": 5325.0,
+    "5940": 5325.0,
+    "6000": 5325.0,
+    "6060": 5325.0,
+    "6120": 5325.0,
+    "6180": 5325.0,
+    "6240": 5325.0,
+    "6300": 5325.0,
+    "6360": 5325.0,
+    "6420": 5325.0,
+    "6480": 5325.0,
+    "6540": 5325.0,
+    "6600": 5325.0,
+    "6660": 5325.0,
+    "6720": 5325.0,
+    "6780": 5325.0,
+    "6840": 5325.0,
+    "6900": 5325.0,
+    "6960": 5325.0,
+    "7020": 5325.0,
+    "7080": 5325.0,
+    "7140": 5325.0,
+    "7200": 5325.0,
+    "7260": 5325.0,
+    "7320": 5325.0,
+    "7380": 5325.0,
+    "7440": 5325.0,
+    "7500": 5325.0,
+    "7560": 5325.0,
+    "7620": 5325.0,
+    "7680": 5325.0,
+    "7740": 5325.0,
+    "7800": 5325.0,
+    "7860": 5325.0,
+    "7920": 5325.0,
+    "7980": 5325.0,
+    "8040": 5325.0,
+    "8100": 5325.0,
+    "8160": 5325.0,
+    "8220": 5325.0,
+    "8280": 5325.0,
+    "8340": 5325.0,
+    "8400": 5325.0,
+    "8460": 5325.0,
+    "8520": 5325.0,
+    "8580": 5325.0,
+    "8640": 5325.0,
+    "8700": 5325.0,
+    "8760": 5325.0,
+    "8820": 5325.0,
+    "8880": 5325.0,
+    "8940": 5325.0,
+    "9000": 5325.0,
+    "9060": 5325.0,
+    "9120": 5325.0,
+    "9180": 5325.0,
+    "9240": 5325.0,
+    "9300": 5325.0,
+    "9360": 5325.0,
+    "9420": 5325.0,
+    "9480": 5325.0,
+    "9540": 5325.0,
+    "9600": 5325.0,
+    "9660": 5325.0,
+    "9720": 5325.0,
+    "9780": 5325.0,
+    "9840": 5325.0,
+    "9900": 5325.0,
+    "9960": 5325.0,
+    "10020": 5325.0,
+    "10080": 5325.0,
+    "10140": 5325.0,
+    "10200": 5325.0,
+    "10260": 5325.0,
+    "10320": 5325.0,
+    "10380": 5325.0,
+    "10440": 5325.0,
+    "10500": 5325.0,
+    "10560": 5325.0,
+    "10620": 5325.0,
+    "10680": 5325.0,
+    "10740": 5325.0,
+    "10800": 5325.0,
+    "10860": 5325.0,
+    "10920": 5325.0,
+    "10980": 5325.0,
+    "11040": 5325.0,
+    "11100": 5325.0,
+    "11160": 5325.0,
+    "11220": 5325.0,
+    "11280": 5325.0,
+    "11340": 5325.0,
+    "11400": 5325.0,
+    "11460": 5325.0,
+    "11520": 5325.0,
+    "11580": 5325.0,
+    "11640": 5325.0,
+    "11700": 5325.0,
+    "11760": 5325.0,
+    "11820": 5325.0,
+    "11880": 5325.0,
+    "11940": 5325.0,
+    "12000": 5325.0,
+    "12060": 5325.0,
+    "12120": 5325.0,
+    "12180": 5325.0,
+    "12240": 5325.0,
+    "12300": 5325.0,
+    "12360": 5325.0,
+    "12420": 5325.0,
+    "12480": 5325.0,
+    "12540": 5325.0,
+    "12600": 5325.0,
+    "12660": 5325.0,
+    "12720": 5325.0,
+    "12780": 5325.0,
+    "12840": 5325.0,
+    "12900": 5325.0,
+    "12960": 5325.0,
+    "13020": 5325.0,
+    "13080": 5325.0,
+    "13140": 5325.0,
+    "13200": 5325.0,
+    "13260": 5325.0,
+    "13320": 5325.0,
+    "13380": 5325.0,
+    "13440": 5325.0,
+    "13500": 5325.0,
+    "13560": 5325.0,
+    "13620": 5325.0,
+    "13680": 5325.0,
+    "13740": 5325.0,
+    "13800": 5325.0,
+    "13860": 5325.0,
+    "13920": 5325.0,
+    "13980": 5325.0,
+    "14040": 5325.0,
+    "14100": 5325.0,
+    "14160": 5325.0,
+    "14220": 5325.0,
+    "14280": 5325.0,
+    "14340": 5325.0,
+    "14400": 5325.0,
+    "14460": 5325.0,
+    "14520": 5325.0,
+    "14580": 5325.0,
+    "14640": 5325.0,
+    "14700": 5325.0,
+    "14760": 5325.0,
+    "14820": 5325.0,
+    "14880": 5325.0,
+    "14940": 5325.0,
+    "15000": 5325.0,
+    "15060": 5325.0,
+    "15120": 5325.0,
+    "15180": 5325.0,
+    "15240": 5325.0,
+    "15300": 5325.0,
+    "15360": 5325.0,
+    "15420": 5325.0,
+    "15480": 5325.0,
+    "15540": 5325.0,
+    "15600": 5325.0,
+    "15660": 5325.0,
+    "15720": 5325.0,
+    "15780": 5325.0,
+    "15840": 5325.0,
+    "15900": 5325.0,
+    "15960": 5325.0,
+    "16020": 5325.0,
+    "16080": 5325.0,
+    "16140": 5325.0,
+    "16200": 5325.0,
+    "16260": 5325.0,
+    "16320": 5325.0,
+    "16380": 5325.0,
+    "16440": 5325.0,
+    "16500": 5325.0,
+    "16560": 5325.0,
+    "16620": 5325.0,
+    "16680": 5325.0,
+    "16740": 5325.0,
+    "16800": 5325.0,
+    "16860": 5325.0,
+    "16920": 5325.0,
+    "16980": 5325.0,
+    "17040": 5325.0,
+    "17100": 5325.0,
+    "17160": 5325.0,
+    "17220": 5325.0,
+    "17280": 5325.0,
+    "17340": 5325.0,
+    "17400": 5325.0,
+    "17460": 5325.0,
+    "17520": 5325.0,
+    "17580": 5325.0,
+    "17640": 5325.0,
+    "17700": 5325.0,
+    "17760": 5325.0,
+    "17820": 5325.0,
+    "17880": 5325.0,
+    "17940": 5325.0,
+    "18000": 5325.0,
+    "18060": 5325.0,
+    "18120": 5325.0,
+    "18180": 5325.0,
+    "18240": 5325.0,
+    "18300": 5325.0,
+    "18360": 5325.0,
+    "18420": 5325.0,
+    "18480": 5325.0,
+    "18540": 5325.0,
+    "18600": 5325.0,
+    "18660": 5325.0,
+    "18720": 5325.0,
+    "18780": 5325.0,
+    "18840": 5325.0,
+    "18900": 5325.0,
+    "18960": 5325.0,
+    "19020": 5325.0,
+    "19080": 5325.0,
+    "19140": 5325.0,
+    "19200": 5325.0,
+    "19260": 5325.0,
+    "19320": 5325.0,
+    "19380": 5325.0,
+    "19440": 5325.0,
+    "19500": 5325.0,
+    "19560": 5325.0,
+    "19620": 5325.0,
+    "19680": 5325.0,
+    "19740": 5325.0,
+    "19800": 5325.0,
+    "19860": 5325.0,
+    "19920": 5325.0,
+    "19980": 5325.0,
+    "20040": 5325.0,
+    "20100": 5325.0,
+    "20160": 5325.0,
+    "20220": 5325.0,
+    "20280": 5325.0,
+    "20340": 5325.0,
+    "20400": 5325.0,
+    "20460": 5325.0,
+    "20520": 5325.0,
+    "20580": 5325.0,
+    "20640": 5325.0,
+    "20700": 5325.0,
+    "20760": 5325.0,
+    "20820": 5325.0,
+    "20880": 5325.0,
+    "20940": 5325.0,
+    "21000": 5325.0,
+    "21060": 5325.0,
+    "21120": 5325.0,
+    "21180": 5325.0,
+    "21240": 5325.0,
+    "21300": 5325.0,
+    "21360": 5325.0,
+    "21420": 5325.0,
+    "21480": 5325.0,
+    "21540": 5325.0,
+    "21600": 5325.0,
+    "21660": 5325.0,
+    "21720": 5325.0,
+    "21780": 5325.0,
+    "21840": 5325.0,
+    "21900": 5325.0,
+    "21960": 5325.0,
+    "22020": 5325.0,
+    "22080": 5325.0,
+    "22140": 5325.0,
+    "22200": 5325.0
+  },
+  "chunked": {
+    "area_sim_ha": 3112.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 4.984615384615385,
+    "perimeter_sim_m": 72000.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 2.673469387755102,
+    "centroid_distance_m": 1907.2403225056748,
+    "iou": 0.13358302122347065,
+    "sorensen": 0.2356828193832599,
+    "orientation_error_deg": 72.23907495336407
+  },
+  "delta_vs_free": {
+    "area_reduction_ha": 0.0,
+    "area_reduction_pct": 0.0,
+    "iou_change": 0.0
+  },
+  "delta_vs_chunked": {
+    "area_difference_ha": 2213.0,
+    "iou_change": -0.037987894700509076
+  },
+  "limits": [
+    "The line is synthetic and construction is sampled every step_min.",
+    "Native containment is a prototype adapter around the P177 loop.",
+    "No spotting, wind grids or burning-condition gates are supported.",
+    "Drop moisture and decay are not coupled to growth.",
+    "This is a diagnostic contract proof, not a calibrated suppression result."
+  ]
+}
