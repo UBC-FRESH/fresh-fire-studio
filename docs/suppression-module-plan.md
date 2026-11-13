@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours and P179.6 temporary wet coupling implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling and P179.7 aircraft cycles implemented. Not operational.
 
 Five local PDFs were mined on 2026-11-13; see
 [`martell-pdf-notes.md`](martell-pdf-notes.md). The 2015 control-time paper is
@@ -106,6 +106,11 @@ Implemented in this repository:
 - `suppression/proofs/2003-526-native-drop*.json` — free/wet artifacts.
 - `tests/test_wet.py` — coverage, stacking, decay and artifact tests.
 - `docs/p179-6-wet-coupling.md` — temporary wet coupling and resolution result.
+- `suppression/aircraft.py` — CL-415 delivery-rate and cycle model.
+- `suppression/scenarios/2003-526-drop-line-proof.json` — repeated-drop line.
+- `suppression/proofs/2003-526-native-drop-line.json` — repeated-drop artifact.
+- `tests/test_aircraft.py` — delivery-rate, interval and artifact tests.
+- `docs/p179-7-aircraft-cycles.md` — cycle model and repeated-drop result.
 
 Run:
 
@@ -265,6 +270,18 @@ resolution one drop covers 0.392 of one cell; three stacked drops reach
 This exposes a resolution limit: a real CL-415 drop is sub-cell on the current
 100 m fire grid. The threshold is diagnostic, not a validated ROS model. See
 [`p179-6-wet-coupling.md`](p179-6-wet-coupling.md).
+
+## P179.7 aircraft cycles and repeated drops
+
+`suppression/aircraft.py` encodes the CL-415 delivery table from McFayden et
+al.: 12 drops/hour and 60,000 L/hour at 9 km, with a 5-minute cycle.
+
+A diagnostic 21-drop line at 60 m spacing produces no final area change. At
+100 m resolution each 100 × 50 m drop covers two cells with a fractional depth
+below the wet threshold; the fire bypasses the discontinuous cells.
+
+This is a delivery/placement result, not an effectiveness claim. See
+[`p179-7-aircraft-cycles.md`](p179-7-aircraft-cycles.md).
 
 ## Adjacent Canadian planning layers
 
