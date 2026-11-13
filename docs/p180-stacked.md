@@ -20,13 +20,17 @@ drop windows around predicted arrival.
 | 12 | 3 | 21 | 21 | **4** | 17 | 5,325 ha |
 | 12 | 3 | 5 | 5 | **5** | 0 | 5,325 ha |
 | 30 | 3 | 54 | 54 | **10** | 44 | 5,325 ha |
+| 100 | 3 | 54 | 54 | **54** | 0 | 5,325 ha |
+| 100 | 3 | 154 | 154 | **90** | 58 | 5,325 ha |
 
 The 5-target case is the first case where every treated target is **wet at
-arrival**, with combined cell depth about **1.045 mm**. The native area is still
-**5,325 ha** because only five target cells are treated; it is not a
-continuous barrier.
+arrival**, with combined cell depth about **1.045 mm**. The 100-aircraft,
+54-target case is the first full segment where every treated target is wet at
+arrival. The native area is still **5,325 ha**.
 
-The larger missions still lose most targets to lateness before water arrives.
+Even a 154-target all-front mission with 90 wet-at-arrival cells leaves the
+native area at **5,325 ha**. The remaining limitation is now the effect/growth
+coupling, not delivery, stacking, or arrival timing.
 
 ## Artifacts
 
@@ -44,4 +48,4 @@ The larger missions still lose most targets to lateness before water arrives.
   grows.
 - The five-target result proves wet-at-arrival is possible, but not that a
   contiguous barrier is possible with the current scheduler.
-- The native model remains baseline.
+- The native model remains baseline even when wet-at-arrival is achieved.
