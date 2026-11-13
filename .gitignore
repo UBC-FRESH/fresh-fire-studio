@@ -5,3 +5,6 @@ __pycache__/
 *.log
 
 .opencode/
+
+# Local licensed PDFs; keep out of the public repository
+data/martell/

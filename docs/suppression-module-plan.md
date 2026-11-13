@@ -2,6 +2,10 @@
 
 Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter and P179.4a dispatch prototype implemented. Not operational.
 
+Five local PDFs were mined on 2026-11-13; see
+[`martell-pdf-notes.md`](martell-pdf-notes.md). The 2015 control-time paper is
+Morin et al., not Wheatley et al.
+
 ## Open containment issues
 
 ### P176 — burnable-basin stopping
@@ -253,7 +257,7 @@ The IA model reached an ROC area of about **0.84**; the full model about
 **0.85**. A fire at rank 3 and 0.1 ha had a high chance of containment; at 5 ha
 the probability dropped sharply.
 
-Survival analysis of control time (Wheatley et al. 2015) found significant
+Survival analysis of control time (Morin et al. 2015) found significant
 covariates including fire size at IA, FFMC, ISI and response time.
 
 **Implication:** the first containment model should predict:
@@ -634,14 +638,18 @@ Use this once the fast path is stable:
 - Wheatley, M., et al. 2022. Modelling initial attack success on forest fires
   suppressed by air attack in Ontario. *International Journal of Wildland
   Fire*.
-- Wheatley, M., et al. 2015. The use of survival analysis methods to model the
-  control time of forest fires in Ontario. *International Journal of Wildland
-  Fire*.
+- Morin, A.A., Albert-Green, A., Woolford, D.G., and Martell, D.L. 2015. The
+  use of survival analysis methods to model the control time of forest fires
+  in Ontario. *International Journal of Wildland Fire*.
+  DOI: `10.1071/WF14158`.
 - Wheatley, M.J. 2024. *Forest Fire Suppression Effectiveness in the Canadian
   Boreal Forest*. PhD thesis, University of Toronto. Contains the detailed
   CL-415 drop, fire-rank, water-delivery and IR-hold results.
-- McFayden, C., et al. 2023. Airtanker drop energetics.
-- Van Wagner, C.E., and Taylor, S.W. 2022. Water-depth models for suppression.
+- McFayden, C.B., Wotton, B.M., Robinson, J.W., et al. 2023. *Reference Guide
+  to the Drop Effectiveness of Skimmer and Rotary Wing Airtankers.* Canadian
+  Forest Service Information Report GLC-X-35.
+- Van Wagner, C.E., and Taylor, S.W. 2022. *Theoretical Amounts of Water to
+  Put Out Forest Fires.* Canadian Forest Service Information Report BC-X-458.
 
 ## Recommendation
 

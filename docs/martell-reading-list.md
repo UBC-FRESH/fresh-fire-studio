@@ -4,6 +4,18 @@ Access note: use your own UBC Library session. Do not paste CWL credentials
 into chat. Download PDFs into `data/martell/pdfs/` and I can read and mine them
 locally. OpenAlex/Unpaywall were used to identify legal open copies.
 
+## Downloaded and mined on 2026-11-13
+
+Five PDFs are in `data/martell/pdfs/` (local only; not committed):
+
+- Bookbinder & Martell 1979 — helicopter queueing.
+- Martell 2015 — decision-support review.
+- Wheatley et al. 2022 — airtanker dispatch, author manuscript.
+- Van Wagner & Taylor 2022 — water requirements.
+- McFayden et al. 2023 — airtanker drop guide.
+
+Extraction notes: [`martell-pdf-notes.md`](martell-pdf-notes.md).
+
 ## Read in full already
 
 - **Wheatley, M.J. 2024.** *Forest Fire Suppression Effectiveness in the
@@ -66,10 +78,11 @@ airtanker simulation.
   DOI: https://doi.org/10.1093/forestscience/44.4.539
   Why: elicited crew effectiveness and line production.
 
-- **Wheatley et al. 2015.** The use of survival analysis methods to model the
-  control time of forest fires in Ontario. *IJWF*.
-  DOI: https://doi.org/10.1071/wf14158
+- **Morin, Albert-Green, Woolford & Martell 2015.** The use of survival
+  analysis methods to model the control time of forest fires in Ontario.
+  *IJWF*. DOI: https://doi.org/10.1071/wf14158
   Why: control-time distributions and covariates.
+  Correction: this paper was previously misattributed to Wheatley et al.
 
 - **Wheatley et al. 2018.** Factors that affect the timing of the dispatch of
   initial attack resources. *IJWF*.
@@ -87,6 +100,20 @@ airtanker simulation.
   suppressed by air attack in Ontario. *IJWF*.
   DOI: https://doi.org/10.1071/wf22006
   Why: IA success models; airtanker effort; ROC.
+
+  Note: the author manuscript for 2022a is downloaded locally.
+
+- **McFayden et al. 2023.** *Reference Guide to the Drop Effectiveness of
+  Skimmer and Rotary Wing Airtankers.* Canadian Forest Service Information
+  Report GLC-X-35. Downloaded locally.
+  Why: drop depth contours, stacking, breach criteria and aircraft delivery
+  rates.
+
+- **Van Wagner & Taylor 2022.** *Theoretical Amounts of Water to Put Out Forest
+  Fires.* Canadian Forest Service Information Report BC-X-458. Downloaded
+  locally; open Government of Canada publication.
+  Why: required water depth for quenching, cooling and wetting as a function of
+  fireline intensity.
 
 - **Wheatley et al. 2019.** The use of aircraft tracking GPS data to develop
   models of the use of airtankers. *INFOR*.

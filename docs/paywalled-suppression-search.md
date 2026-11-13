@@ -25,6 +25,16 @@ Already read and excluded from the queue:
   management in Alberta.* PhD thesis, University of British Columbia.
   DOI: `10.14288/1.0075312`. Open through UBC Open Collections.
 
+Downloaded and mined on 2026-11-13 (local PDFs, not committed):
+
+- Bookbinder & Martell 1979 — helicopter queueing.
+- Martell 2015 — decision-support review.
+- Wheatley et al. 2022a — airtanker dispatch, author manuscript.
+- Van Wagner & Taylor 2022 — water requirements.
+- McFayden et al. 2023 — airtanker drop guide.
+
+Extraction notes: [`martell-pdf-notes.md`](martell-pdf-notes.md).
+
 ---
 
 ## Master search prompt
@@ -136,7 +146,7 @@ resolves metadata, not necessarily full text.
 | 1 | MacLellan & Martell 1996. Basing airtankers for forest fire control in Ontario. *Operations Research* 44(5): 677–686. | `10.1287/opre.44.5.677` | INFORMS / UBC | Airtanker home-basing optimization. |
 | 1 | Hirsch & Martell 1996. A review of initial attack fire crew productivity and effectiveness. *IJWF* 6: 199–215. | `10.1071/wf9960199` | CSIRO / UBC | Crew productivity and effectiveness thresholds. |
 | 1 | Hirsch, Corey & Martell 1998. Using expert judgment to model initial attack fire crew effectiveness. *Forest Science* 44(4): 539–549. | `10.1093/forestscience/44.4.539` | Oxford / UBC | Elicited crew effectiveness and line production. |
-| 1 | Wheatley et al. 2015. The use of survival analysis methods to model the control time of forest fires in Ontario. *IJWF*. | `10.1071/wf14158` | CSIRO / UBC | Control-time distributions and covariates. |
+| 1 | Morin, Albert-Green, Woolford & Martell 2015. The use of survival analysis methods to model the control time of forest fires in Ontario. *IJWF*. | `10.1071/wf14158` | CSIRO / UBC | Control-time distributions and covariates. |
 | 2 | Wheatley et al. 2018. Factors that affect the timing of the dispatch of initial attack resources. *IJWF*. | `10.1071/wf18058` | CSIRO / UBC | Dispatch delay and daily fire load. |
 | 2 | Wheatley et al. 2022a. Modelling decisions concerning the dispatch of airtankers for initial attack in Ontario. *CJFR*. | `10.1139/cjfr-2022-0225` | Canadian Science Publishing / UBC | Hurdle dispatch models; FWI, fuel, ROS, size, cause. |
 | 2 | Wheatley et al. 2022b. Modelling initial attack success on forest fires suppressed by air attack in Ontario. *IJWF*. | `10.1071/wf22006` | CSIRO / UBC | IA success; airtanker effort; ROC. |
@@ -145,19 +155,16 @@ resolves metadata, not necessarily full text.
 | 2 | 2025. Assessing wildland fire suppression effectiveness with infrared imaging on experimental fires. *IJWF*. | `10.1071/wf24161` | CSIRO / UBC | Water delivery, ROS/intensity reduction and hold time. |
 | 3 | Martell 1982. A review of operational research studies in forest fire management. *CJFR* 12: 119–140. | `10.1139/x82-020` | Canadian Science Publishing / UBC | Classic OR framing. |
 | 3 | Martell 2015. A review of recent forest and wildland fire management decision support systems research. *Current Forestry Reports* 1: 128–137. | `10.1007/s40725-015-0011-y` | Springer / UBC | Modern DSS lessons. |
-| 3 | McFayden et al. 2023. Reference Guide to the Drop Effectiveness of Skimmer and Rotary Wing Airtankers. | Citation incomplete; verify | Report / web | Drop patterns and tanker-specific effectiveness. |
-| 3 | Van Wagner & Taylor 2022. Theoretical amounts of water to put out forest fires. | Government of Canada publication; verify | Open government report | Water mass/depth needed for quenching, cooling and fuel wetting. |
+| 3 | McFayden et al. 2023. Reference Guide to the Drop Effectiveness of Skimmer and Rotary Wing Airtankers. Canadian Forest Service Information Report GLC-X-35. | Downloaded locally | Open report | Drop patterns, stacking, breach criteria and tanker delivery rates. |
+| 3 | Van Wagner & Taylor 2022. Theoretical Amounts of Water to Put Out Forest Fires. Canadian Forest Service Information Report BC-X-458. | Downloaded locally | Open government report | Water mass/depth needed for quenching, cooling and fuel wetting. |
 
 Notes:
 
-- The McFayden item may be a reference guide rather than a journal article.
-  Verify the exact author list, year and publisher before citing it.
-- The Van Wagner and Taylor item is a federal publication with a public
-  catalogue record; confirm the exact title and date on the Government of
-  Canada page. The project plan previously called it "water-depth models"; the
-  catalogue title is *Theoretical amounts of water to put out forest fires*.
-- The 2022 BC aircraft paper and the 2025 IR paper need full author lists from
-  the publisher record.
+- The McFayden item is a reference guide (GLC-X-35), not a journal article.
+- The Van Wagner and Taylor item is a federal publication (BC-X-458); the
+  catalogue title is *Theoretical Amounts of Water to Put Out Forest Fires*.
+- The 2022 BC aircraft paper and the 2025 IR paper still need full author lists
+  from the publisher record.
 
 ---
 
