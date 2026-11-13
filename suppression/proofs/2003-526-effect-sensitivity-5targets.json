@@ -1,0 +1,102 @@
+{
+  "scenario_id": "2003-526-arrival-scheduled",
+  "targets": 5,
+  "cases": [
+    {
+      "required_depth_mm": 0.25,
+      "ros_reduction_m_min": null,
+      "delayed_targets": 5,
+      "mean_delay_min": 67.502527008069,
+      "max_delay_min": 74.11083932447559,
+      "final_area_ha": 5325.0
+    },
+    {
+      "required_depth_mm": 0.25,
+      "ros_reduction_m_min": 0.5,
+      "delayed_targets": 1,
+      "mean_delay_min": 1.278769266970403,
+      "max_delay_min": 4.432882723400326,
+      "final_area_ha": 5325.0
+    },
+    {
+      "required_depth_mm": 0.25,
+      "ros_reduction_m_min": 1.0,
+      "delayed_targets": 4,
+      "mean_delay_min": 1.9655627283307695,
+      "max_delay_min": 5.67955093272667,
+      "final_area_ha": 5325.0
+    },
+    {
+      "required_depth_mm": 0.5,
+      "ros_reduction_m_min": null,
+      "delayed_targets": 5,
+      "mean_delay_min": 59.32584801060962,
+      "max_delay_min": 61.87100468824133,
+      "final_area_ha": 5325.0
+    },
+    {
+      "required_depth_mm": 0.5,
+      "ros_reduction_m_min": 0.5,
+      "delayed_targets": 1,
+      "mean_delay_min": 1.278769266970403,
+      "max_delay_min": 4.432882723400326,
+      "final_area_ha": 5325.0
+    },
+    {
+      "required_depth_mm": 0.5,
+      "ros_reduction_m_min": 1.0,
+      "delayed_targets": 4,
+      "mean_delay_min": 1.9655627283307695,
+      "max_delay_min": 5.67955093272667,
+      "final_area_ha": 5325.0
+    },
+    {
+      "required_depth_mm": 0.75,
+      "ros_reduction_m_min": null,
+      "delayed_targets": 5,
+      "mean_delay_min": 52.44959261799045,
+      "max_delay_min": 55.20808725023153,
+      "final_area_ha": 5325.0
+    },
+    {
+      "required_depth_mm": 0.75,
+      "ros_reduction_m_min": 0.5,
+      "delayed_targets": 1,
+      "mean_delay_min": 1.278769266970403,
+      "max_delay_min": 4.432882723400326,
+      "final_area_ha": 5325.0
+    },
+    {
+      "required_depth_mm": 0.75,
+      "ros_reduction_m_min": 1.0,
+      "delayed_targets": 4,
+      "mean_delay_min": 1.9655627283307695,
+      "max_delay_min": 5.67955093272667,
+      "final_area_ha": 5325.0
+    },
+    {
+      "required_depth_mm": 1.0,
+      "ros_reduction_m_min": null,
+      "delayed_targets": 5,
+      "mean_delay_min": 37.54155411123329,
+      "max_delay_min": 52.88829814258111,
+      "final_area_ha": 5325.0
+    },
+    {
+      "required_depth_mm": 1.0,
+      "ros_reduction_m_min": 0.5,
+      "delayed_targets": 1,
+      "mean_delay_min": 6.159359784391972,
+      "max_delay_min": 28.835835310508173,
+      "final_area_ha": 5325.0
+    },
+    {
+      "required_depth_mm": 1.0,
+      "ros_reduction_m_min": 1.0,
+      "delayed_targets": 4,
+      "mean_delay_min": 6.59681960388707,
+      "max_delay_min": 28.835835310508173,
+      "final_area_ha": 5325.0
+    }
+  ]
+}
