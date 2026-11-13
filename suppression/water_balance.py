@@ -15,6 +15,7 @@ class WaterBalance:
     delivered_l: float
     required_depth_mm: float
     tank_l: float = 6000.0
+    unique_targets: int | None = None
 
     @property
     def target_area_m2(self) -> float:
@@ -22,7 +23,8 @@ class WaterBalance:
 
     @property
     def treated_area_m2(self) -> float:
-        return self.drop_count * self.drop_length_m * self.drop_width_m
+        count = self.drop_count if self.unique_targets is None else self.unique_targets
+        return count * self.drop_length_m * self.drop_width_m
 
     @property
     def line_mean_depth_mm(self) -> float:
@@ -57,6 +59,7 @@ class WaterBalance:
             "target_area_m2": round(self.target_area_m2, 1),
             "treated_area_m2": round(self.treated_area_m2, 1),
             "drop_count": self.drop_count,
+            "unique_targets": self.unique_targets if self.unique_targets is not None else self.drop_count,
             "delivered_l": round(self.delivered_l, 1),
             "required_depth_mm": self.required_depth_mm,
             "line_mean_depth_mm": round(self.line_mean_depth_mm, 3),
@@ -77,6 +80,7 @@ def water_balance(
     delivered_l: float,
     required_depth_mm: float,
     tank_l: float = 6000.0,
+    unique_targets: int | None = None,
 ) -> WaterBalance:
     for value, name in (
         (line_length_m, "line_length_m"),
@@ -97,6 +101,7 @@ def water_balance(
         delivered_l=delivered_l,
         required_depth_mm=required_depth_mm,
         tank_l=tank_l,
+        unique_targets=unique_targets,
     )
 
 

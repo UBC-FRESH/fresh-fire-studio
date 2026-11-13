@@ -1,0 +1,1861 @@
+{
+  "scenario_id": "2003-526-cycle-mission",
+  "fire_slug": "cfsds-2003-526",
+  "label": "Schematic lake-to-fire cycle mission",
+  "timeline_start_min": 0.0,
+  "timeline_end_min": 22200.0,
+  "bases": [
+    {
+      "id": "lake-base",
+      "label": "",
+      "x": 489900.0,
+      "y": 5725200.0,
+      "kind": "helicopter"
+    }
+  ],
+  "water_sources": [
+    {
+      "id": "lake",
+      "label": "",
+      "x": 489900.0,
+      "y": 5725200.0,
+      "capacity_l": 1000000.0,
+      "refill_rate_l_min": null
+    }
+  ],
+  "resources": [
+    {
+      "id": "aircraft-1",
+      "label": "CL-415 1",
+      "kind": "helicopter",
+      "home_base_id": "lake-base",
+      "crew_size": 0,
+      "speed_kmh": 180.0,
+      "line_rate_m_h": 0.0,
+      "flow_l_min": 0.0,
+      "capacity_l": 6000.0,
+      "available_start_min": 0.0,
+      "available_end_min": 22200.0
+    },
+    {
+      "id": "aircraft-2",
+      "label": "CL-415 2",
+      "kind": "helicopter",
+      "home_base_id": "lake-base",
+      "crew_size": 0,
+      "speed_kmh": 180.0,
+      "line_rate_m_h": 0.0,
+      "flow_l_min": 0.0,
+      "capacity_l": 6000.0,
+      "available_start_min": 0.0,
+      "available_end_min": 22200.0
+    },
+    {
+      "id": "aircraft-3",
+      "label": "CL-415 3",
+      "kind": "helicopter",
+      "home_base_id": "lake-base",
+      "crew_size": 0,
+      "speed_kmh": 180.0,
+      "line_rate_m_h": 0.0,
+      "flow_l_min": 0.0,
+      "capacity_l": 6000.0,
+      "available_start_min": 0.0,
+      "available_end_min": 22200.0
+    }
+  ],
+  "tasks": [
+    {
+      "id": "cycle-task-1",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 602.3974509964456,
+      "end_min": 602.480784329779,
+      "target": [
+        [
+          492850.0,
+          5727250.0
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-1",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-2",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 602.3786655713722,
+      "end_min": 602.4619989047055,
+      "target": [
+        [
+          492850.0,
+          5727149.557068219
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-2",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-3",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 602.3607905821588,
+      "end_min": 602.4441239154921,
+      "target": [
+        [
+          492849.7851465277,
+          5727050.859413889
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-3",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-4",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 607.0006794461561,
+      "end_min": 607.0840127794895,
+      "target": [
+        [
+          492776.7021788083,
+          5727343.191284767
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-4",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-5",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 607.0239391053369,
+      "end_min": 607.1072724386703,
+      "target": [
+        [
+          492801.0631680481,
+          5727245.747327807
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-5",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-6",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 607.0498435525957,
+      "end_min": 607.1331768859291,
+      "target": [
+        [
+          492825.42415728787,
+          5727148.303370848
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-6",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-7",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 611.6798261589569,
+      "end_min": 611.7631594922902,
+      "target": [
+        [
+          492721.14962647675,
+          5727436.55112057
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-7",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-8",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 611.6824031366665,
+      "end_min": 611.7657364699999,
+      "target": [
+        [
+          492750.0,
+          5727359.2100401
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-8",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-9",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 611.7138387618852,
+      "end_min": 611.7971720952186,
+      "target": [
+        [
+          492752.34118956845,
+          5727440.635241726
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-9",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-10",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 616.3821305926399,
+      "end_min": 616.4654639259733,
+      "target": [
+        [
+          492657.6239386187,
+          5727627.128184144
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-10",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-11",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 616.3741208320656,
+      "end_min": 616.457454165399,
+      "target": [
+        [
+          492650.0,
+          5727573.666078996
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-11",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-12",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 616.4181184237226,
+      "end_min": 616.501451757056,
+      "target": [
+        [
+          492689.38678254775,
+          5727531.839652357
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-12",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-13",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 621.0161708619945,
+      "end_min": 621.0995041953279,
+      "target": [
+        [
+          492650.0,
+          5727272.337283655
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-13",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-14",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 621.0582615526591,
+      "end_min": 621.1415948859925,
+      "target": [
+        [
+          492650.0,
+          5727372.780215436
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-14",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-15",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 621.1026506518951,
+      "end_min": 621.1859839852285,
+      "target": [
+        [
+          492650.0,
+          5727473.223147216
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-15",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-16",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 625.537617371703,
+      "end_min": 625.6209507050364,
+      "target": [
+        [
+          492650.0,
+          5726971.008488315
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-16",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-17",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 625.6186491205477,
+      "end_min": 625.7019824538811,
+      "target": [
+        [
+          492650.0,
+          5727071.451420095
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-17",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-18",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 625.7032612082111,
+      "end_min": 625.7865945415444,
+      "target": [
+        [
+          492650.0,
+          5727171.894351875
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-18",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-19",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 629.9745491035677,
+      "end_min": 630.0578824369011,
+      "target": [
+        [
+          492642.00783073803,
+          5726829.92169262
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-19",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-20",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 630.0663330543135,
+      "end_min": 630.1496663876469,
+      "target": [
+        [
+          492650.0,
+          5726770.122624754
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-20",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-21",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 630.1871164683345,
+      "end_min": 630.2704498016678,
+      "target": [
+        [
+          492650.0,
+          5726870.565556535
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-21",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-22",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 634.4306774137766,
+      "end_min": 634.51401074711,
+      "target": [
+        [
+          492612.0244949535,
+          5727129.7550504645
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-22",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-23",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 634.4985147002802,
+      "end_min": 634.5818480336136,
+      "target": [
+        [
+          492622.018940215,
+          5727029.81059785
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-23",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-24",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 634.6208758955152,
+      "end_min": 634.7042092288485,
+      "target": [
+        [
+          492632.0133854765,
+          5726929.866145235
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-24",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-25",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 638.9861004864144,
+      "end_min": 639.0694338197478,
+      "target": [
+        [
+          492582.041159169,
+          5727429.58840831
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-25",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-26",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 639.0193256622817,
+      "end_min": 639.1026589956151,
+      "target": [
+        [
+          492592.0356044305,
+          5727329.643955695
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-26",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-27",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 639.1085659687413,
+      "end_min": 639.1918993020747,
+      "target": [
+        [
+          492602.030049692,
+          5727229.69950308
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-27",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-28",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 643.6536460667194,
+      "end_min": 643.7369794000527,
+      "target": [
+        [
+          492552.0578233845,
+          5727729.421766155
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-28",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-29",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 643.648180649585,
+      "end_min": 643.7315139829184,
+      "target": [
+        [
+          492562.05226864596,
+          5727629.47731354
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-29",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-30",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 643.7000255310861,
+      "end_min": 643.7833588644195,
+      "target": [
+        [
+          492572.0467139075,
+          5727529.532860925
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-30",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-31",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 648.3178692928776,
+      "end_min": 648.401202626211,
+      "target": [
+        [
+          492550.0,
+          5727569.795005504
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-31",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-32",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 648.3215762431249,
+      "end_min": 648.4049095764583,
+      "target": [
+        [
+          492550.0,
+          5727469.352073723
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-32",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-33",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 648.372598725966,
+      "end_min": 648.4559320592994,
+      "target": [
+        [
+          492550.0,
+          5727670.237937284
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-33",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-34",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 652.8681615257592,
+      "end_min": 652.9514948590926,
+      "target": [
+        [
+          492550.0,
+          5727168.023278383
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-34",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-35",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 652.9067894714011,
+      "end_min": 652.9901228047345,
+      "target": [
+        [
+          492550.0,
+          5727268.466210163
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-35",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-36",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 653.0050012980971,
+      "end_min": 653.0883346314305,
+      "target": [
+        [
+          492550.0,
+          5727368.909141943
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-36",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-37",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 657.2952965545423,
+      "end_min": 657.3786298878757,
+      "target": [
+        [
+          492550.0,
+          5726866.694483042
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-37",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-38",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 657.3724123308529,
+      "end_min": 657.4557456641862,
+      "target": [
+        [
+          492550.0,
+          5726967.137414822
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-38",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-39",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 657.5104646635913,
+      "end_min": 657.5937979969246,
+      "target": [
+        [
+          492550.0,
+          5727067.580346603
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-39",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-40",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 661.602024973138,
+      "end_min": 661.6853583064714,
+      "target": [
+        [
+          492490.1545038527,
+          5726590.154503853
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-40",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-41",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 661.7269277777798,
+      "end_min": 661.8102611111132,
+      "target": [
+        [
+          492550.0,
+          5726665.8086194815
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-41",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-42",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 661.9005384513221,
+      "end_min": 661.9838717846554,
+      "target": [
+        [
+          492550.0,
+          5726766.251551262
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-42",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-43",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 665.7494202155848,
+      "end_min": 665.8327535489182,
+      "target": [
+        [
+          492277.0828693005,
+          5726377.082869301
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-43",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-44",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 665.9356908890192,
+      "end_min": 666.0190242223525,
+      "target": [
+        [
+          492348.1067474846,
+          5726448.106747485
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-44",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-45",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 666.1578266508977,
+      "end_min": 666.2411599842311,
+      "target": [
+        [
+          492419.1306256686,
+          5726519.130625669
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-45",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-46",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 669.7243821271284,
+      "end_min": 669.8077154604617,
+      "target": [
+        [
+          492134.72191286704,
+          5726134.721912867
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-46",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-47",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 669.9735099095194,
+      "end_min": 670.0568432428528,
+      "target": [
+        [
+          492205.7457910511,
+          5726205.745791051
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-47",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-48",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 670.2522243978631,
+      "end_min": 670.3355577311964,
+      "target": [
+        [
+          492250.0,
+          5726287.858029293
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-48",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-49",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 673.5298725677325,
+      "end_min": 673.6132059010658,
+      "target": [
+        [
+          491892.3609564335,
+          5725992.360956433
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-49",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-50",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 673.8409368008635,
+      "end_min": 673.9242701341968,
+      "target": [
+        [
+          491968.9290146463,
+          5726050.0
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-50",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-51",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 674.1753227998342,
+      "end_min": 674.2586561331676,
+      "target": [
+        [
+          492063.69803468295,
+          5726063.698034683
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-51",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-52",
+      "resource_id": "aircraft-3",
+      "kind": "drop",
+      "start_min": 677.1501911920142,
+      "end_min": 677.2335245253475,
+      "target": [
+        [
+          491650.0,
+          5725850.0
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-52",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-53",
+      "resource_id": "aircraft-2",
+      "kind": "drop",
+      "start_min": 677.5236027535293,
+      "end_min": 677.6069360868627,
+      "target": [
+        [
+          491750.3132000654,
+          5725850.313200066
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-53",
+      "note": ""
+    },
+    {
+      "id": "cycle-task-54",
+      "resource_id": "aircraft-1",
+      "kind": "drop",
+      "start_min": 677.9193213493344,
+      "end_min": 678.0026546826678,
+      "target": [
+        [
+          491821.33707824943,
+          5725921.337078249
+        ]
+      ],
+      "line_id": null,
+      "drop_id": "cycle-drop-54",
+      "note": ""
+    }
+  ],
+  "lines": [],
+  "drops": [
+    {
+      "id": "cycle-drop-1",
+      "task_id": "cycle-task-1",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 602.3974509964456,
+      "end_min": 602.480784329779,
+      "center": [
+        492850.0,
+        5727250.0
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-2",
+      "task_id": "cycle-task-2",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 602.3786655713722,
+      "end_min": 602.4619989047055,
+      "center": [
+        492850.0,
+        5727149.557068219
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-3",
+      "task_id": "cycle-task-3",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 602.3607905821588,
+      "end_min": 602.4441239154921,
+      "center": [
+        492849.7851465277,
+        5727050.859413889
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-4",
+      "task_id": "cycle-task-4",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 607.0006794461561,
+      "end_min": 607.0840127794895,
+      "center": [
+        492776.7021788083,
+        5727343.191284767
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-5",
+      "task_id": "cycle-task-5",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 607.0239391053369,
+      "end_min": 607.1072724386703,
+      "center": [
+        492801.0631680481,
+        5727245.747327807
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-6",
+      "task_id": "cycle-task-6",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 607.0498435525957,
+      "end_min": 607.1331768859291,
+      "center": [
+        492825.42415728787,
+        5727148.303370848
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-7",
+      "task_id": "cycle-task-7",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 611.6798261589569,
+      "end_min": 611.7631594922902,
+      "center": [
+        492721.14962647675,
+        5727436.55112057
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-8",
+      "task_id": "cycle-task-8",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 611.6824031366665,
+      "end_min": 611.7657364699999,
+      "center": [
+        492750.0,
+        5727359.2100401
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-9",
+      "task_id": "cycle-task-9",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 611.7138387618852,
+      "end_min": 611.7971720952186,
+      "center": [
+        492752.34118956845,
+        5727440.635241726
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-10",
+      "task_id": "cycle-task-10",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 616.3821305926399,
+      "end_min": 616.4654639259733,
+      "center": [
+        492657.6239386187,
+        5727627.128184144
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-11",
+      "task_id": "cycle-task-11",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 616.3741208320656,
+      "end_min": 616.457454165399,
+      "center": [
+        492650.0,
+        5727573.666078996
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-12",
+      "task_id": "cycle-task-12",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 616.4181184237226,
+      "end_min": 616.501451757056,
+      "center": [
+        492689.38678254775,
+        5727531.839652357
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-13",
+      "task_id": "cycle-task-13",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 621.0161708619945,
+      "end_min": 621.0995041953279,
+      "center": [
+        492650.0,
+        5727272.337283655
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-14",
+      "task_id": "cycle-task-14",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 621.0582615526591,
+      "end_min": 621.1415948859925,
+      "center": [
+        492650.0,
+        5727372.780215436
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-15",
+      "task_id": "cycle-task-15",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 621.1026506518951,
+      "end_min": 621.1859839852285,
+      "center": [
+        492650.0,
+        5727473.223147216
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-16",
+      "task_id": "cycle-task-16",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 625.537617371703,
+      "end_min": 625.6209507050364,
+      "center": [
+        492650.0,
+        5726971.008488315
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-17",
+      "task_id": "cycle-task-17",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 625.6186491205477,
+      "end_min": 625.7019824538811,
+      "center": [
+        492650.0,
+        5727071.451420095
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-18",
+      "task_id": "cycle-task-18",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 625.7032612082111,
+      "end_min": 625.7865945415444,
+      "center": [
+        492650.0,
+        5727171.894351875
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-19",
+      "task_id": "cycle-task-19",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 629.9745491035677,
+      "end_min": 630.0578824369011,
+      "center": [
+        492642.00783073803,
+        5726829.92169262
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-20",
+      "task_id": "cycle-task-20",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 630.0663330543135,
+      "end_min": 630.1496663876469,
+      "center": [
+        492650.0,
+        5726770.122624754
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-21",
+      "task_id": "cycle-task-21",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 630.1871164683345,
+      "end_min": 630.2704498016678,
+      "center": [
+        492650.0,
+        5726870.565556535
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-22",
+      "task_id": "cycle-task-22",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 634.4306774137766,
+      "end_min": 634.51401074711,
+      "center": [
+        492612.0244949535,
+        5727129.7550504645
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-23",
+      "task_id": "cycle-task-23",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 634.4985147002802,
+      "end_min": 634.5818480336136,
+      "center": [
+        492622.018940215,
+        5727029.81059785
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-24",
+      "task_id": "cycle-task-24",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 634.6208758955152,
+      "end_min": 634.7042092288485,
+      "center": [
+        492632.0133854765,
+        5726929.866145235
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-25",
+      "task_id": "cycle-task-25",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 638.9861004864144,
+      "end_min": 639.0694338197478,
+      "center": [
+        492582.041159169,
+        5727429.58840831
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-26",
+      "task_id": "cycle-task-26",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 639.0193256622817,
+      "end_min": 639.1026589956151,
+      "center": [
+        492592.0356044305,
+        5727329.643955695
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-27",
+      "task_id": "cycle-task-27",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 639.1085659687413,
+      "end_min": 639.1918993020747,
+      "center": [
+        492602.030049692,
+        5727229.69950308
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-28",
+      "task_id": "cycle-task-28",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 643.6536460667194,
+      "end_min": 643.7369794000527,
+      "center": [
+        492552.0578233845,
+        5727729.421766155
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-29",
+      "task_id": "cycle-task-29",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 643.648180649585,
+      "end_min": 643.7315139829184,
+      "center": [
+        492562.05226864596,
+        5727629.47731354
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-30",
+      "task_id": "cycle-task-30",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 643.7000255310861,
+      "end_min": 643.7833588644195,
+      "center": [
+        492572.0467139075,
+        5727529.532860925
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-31",
+      "task_id": "cycle-task-31",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 648.3178692928776,
+      "end_min": 648.401202626211,
+      "center": [
+        492550.0,
+        5727569.795005504
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-32",
+      "task_id": "cycle-task-32",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 648.3215762431249,
+      "end_min": 648.4049095764583,
+      "center": [
+        492550.0,
+        5727469.352073723
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-33",
+      "task_id": "cycle-task-33",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 648.372598725966,
+      "end_min": 648.4559320592994,
+      "center": [
+        492550.0,
+        5727670.237937284
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-34",
+      "task_id": "cycle-task-34",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 652.8681615257592,
+      "end_min": 652.9514948590926,
+      "center": [
+        492550.0,
+        5727168.023278383
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-35",
+      "task_id": "cycle-task-35",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 652.9067894714011,
+      "end_min": 652.9901228047345,
+      "center": [
+        492550.0,
+        5727268.466210163
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-36",
+      "task_id": "cycle-task-36",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 653.0050012980971,
+      "end_min": 653.0883346314305,
+      "center": [
+        492550.0,
+        5727368.909141943
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-37",
+      "task_id": "cycle-task-37",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 657.2952965545423,
+      "end_min": 657.3786298878757,
+      "center": [
+        492550.0,
+        5726866.694483042
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-38",
+      "task_id": "cycle-task-38",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 657.3724123308529,
+      "end_min": 657.4557456641862,
+      "center": [
+        492550.0,
+        5726967.137414822
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-39",
+      "task_id": "cycle-task-39",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 657.5104646635913,
+      "end_min": 657.5937979969246,
+      "center": [
+        492550.0,
+        5727067.580346603
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-40",
+      "task_id": "cycle-task-40",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 661.602024973138,
+      "end_min": 661.6853583064714,
+      "center": [
+        492490.1545038527,
+        5726590.154503853
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-41",
+      "task_id": "cycle-task-41",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 661.7269277777798,
+      "end_min": 661.8102611111132,
+      "center": [
+        492550.0,
+        5726665.8086194815
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-42",
+      "task_id": "cycle-task-42",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 661.9005384513221,
+      "end_min": 661.9838717846554,
+      "center": [
+        492550.0,
+        5726766.251551262
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-43",
+      "task_id": "cycle-task-43",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 665.7494202155848,
+      "end_min": 665.8327535489182,
+      "center": [
+        492277.0828693005,
+        5726377.082869301
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-44",
+      "task_id": "cycle-task-44",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 665.9356908890192,
+      "end_min": 666.0190242223525,
+      "center": [
+        492348.1067474846,
+        5726448.106747485
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-45",
+      "task_id": "cycle-task-45",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 666.1578266508977,
+      "end_min": 666.2411599842311,
+      "center": [
+        492419.1306256686,
+        5726519.130625669
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-46",
+      "task_id": "cycle-task-46",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 669.7243821271284,
+      "end_min": 669.8077154604617,
+      "center": [
+        492134.72191286704,
+        5726134.721912867
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-47",
+      "task_id": "cycle-task-47",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 669.9735099095194,
+      "end_min": 670.0568432428528,
+      "center": [
+        492205.7457910511,
+        5726205.745791051
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-48",
+      "task_id": "cycle-task-48",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 670.2522243978631,
+      "end_min": 670.3355577311964,
+      "center": [
+        492250.0,
+        5726287.858029293
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-49",
+      "task_id": "cycle-task-49",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 673.5298725677325,
+      "end_min": 673.6132059010658,
+      "center": [
+        491892.3609564335,
+        5725992.360956433
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-50",
+      "task_id": "cycle-task-50",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 673.8409368008635,
+      "end_min": 673.9242701341968,
+      "center": [
+        491968.9290146463,
+        5726050.0
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-51",
+      "task_id": "cycle-task-51",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 674.1753227998342,
+      "end_min": 674.2586561331676,
+      "center": [
+        492063.69803468295,
+        5726063.698034683
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-52",
+      "task_id": "cycle-task-52",
+      "resource_id": "aircraft-3",
+      "suppressant": "water",
+      "start_min": 677.1501911920142,
+      "end_min": 677.2335245253475,
+      "center": [
+        491650.0,
+        5725850.0
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-53",
+      "task_id": "cycle-task-53",
+      "resource_id": "aircraft-2",
+      "suppressant": "water",
+      "start_min": 677.5236027535293,
+      "end_min": 677.6069360868627,
+      "center": [
+        491750.3132000654,
+        5725850.313200066
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "cycle-drop-54",
+      "task_id": "cycle-task-54",
+      "resource_id": "aircraft-1",
+      "suppressant": "water",
+      "start_min": 677.9193213493344,
+      "end_min": 678.0026546826678,
+      "center": [
+        491821.33707824943,
+        5725921.337078249
+      ],
+      "length_m": 100.0,
+      "width_m": 50.0,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    }
+  ],
+  "objective": {
+    "containment_area_ha": null,
+    "max_area_ha": null,
+    "deadline_min": null,
+    "priority": "community"
+  },
+  "metadata": {}
+}

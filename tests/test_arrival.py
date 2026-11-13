@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from suppression.arrival import targets_at_time
+from suppression.arrival import resample_polyline, targets_at_time
 
 
 def test_targets_are_unburned_front_cells() -> None:
@@ -21,6 +21,13 @@ def test_targets_are_unburned_front_cells() -> None:
     )
     assert len(targets) == 2
     assert all(0.0 <= x <= 50.0 and 0.0 <= y <= 50.0 for x, y in targets)
+
+
+def test_resample_polyline_has_requested_spacing() -> None:
+    points = resample_polyline(((0.0, 0.0), (100.0, 0.0)), spacing_m=10.0)
+    assert len(points) == 11
+    assert points[0] == (0.0, 0.0)
+    assert points[-1] == (100.0, 0.0)
 
 
 def test_no_front_returns_empty() -> None:

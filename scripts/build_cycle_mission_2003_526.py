@@ -21,6 +21,7 @@ def main() -> None:
     parser.add_argument("--aircraft", type=int, default=3)
     parser.add_argument("--passes", type=int, default=1)
     parser.add_argument("--adaptive", action="store_true", help="re-select targets at each sortie drop time")
+    parser.add_argument("--continuous", action="store_true", help="resample targets at 100 m spacing along the front segment")
     parser.add_argument("--arrival-iterations", type=int, default=2)
     parser.add_argument(
         "--out",
@@ -40,7 +41,7 @@ def main() -> None:
     from ws4.fire.comparison import observed_mask, run_observed_case
     from ws4.fire.observed import load_cfsds_reanalysis_case
 
-    from suppression.arrival import targets_at_time
+    from suppression.arrival import resample_polyline, targets_at_time
     from suppression.cycle import CyclePerformance, build_cycle, cycle_summary
     from suppression.water_balance import water_balance
     from suppression.models import Scenario
@@ -78,6 +79,8 @@ def main() -> None:
     if args.passes < 1:
         raise SystemExit("--passes must be at least 1")
     centers = tuple(centers)
+    if args.continuous:
+        centers = resample_polyline(centers, spacing_m=100.0)
     if args.adaptive:
         for _ in range(max(1, args.arrival_iterations)):
             previous = build_cycle(
@@ -172,7 +175,7 @@ def main() -> None:
     summary = cycle_summary(sorties)
     summary_path = args.out.with_suffix(".summary.json")
     summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
-    if args.passes != 1 or args.adaptive:
+    if args.passes != 1 or args.adaptive or args.continuous:
         print(json.dumps(summary, indent=2))
         print(f"wrote {args.out}")
         return

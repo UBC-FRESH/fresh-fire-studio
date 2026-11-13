@@ -10,9 +10,9 @@ selected from a front 60 minutes ahead of the drop time.
 | Case | Water | Line-mean depth | Coverage | Native area |
 | --- | ---: | ---: | ---: | ---: |
 | 1 pass | 126,000 L | 0.47 mm | 39% | 5,325 ha |
-| 2 passes | 252,000 L | 0.95 mm | 79% | 5,325 ha |
-| 3 passes | 378,000 L | 1.42 mm | 100% | 5,325 ha |
-| 4 passes | 504,000 L | 1.89 mm | 100% | 5,325 ha |
+| 2 passes | 252,000 L | 0.95 mm | 39% | 5,325 ha |
+| 3 passes | 378,000 L | 1.42 mm | 39% | 5,325 ha |
+| 4 passes | 504,000 L | 1.89 mm | 39% | 5,325 ha |
 | 1 pass, 60-min target lead | 126,000 L | 0.47 mm | 39% | 5,325 ha |
 
 The two-pass case closes the **nominal mass deficit**, but the native burn area
@@ -52,6 +52,12 @@ still insensitive.
 Re-selecting targets at each sortie's drop time produced a mean cycle of
 **4.21 min** and **254,464 L/h**, but the native outcome remained **5,325 ha**.
 See [`p180-arrival.md`](p180-arrival.md).
+
+## Continuous-target follow-up
+
+Resampling the selected front at 100 m spacing produced **54 distinct targets**,
+**324,000 L**, 100% target coverage and still **5,325 ha**. See
+[`p180-continuous.md`](p180-continuous.md).
 
 ## Next
 

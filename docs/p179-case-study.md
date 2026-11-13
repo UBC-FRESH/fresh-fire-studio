@@ -62,9 +62,11 @@ public fuel/terrain, Open-Meteo/FireSTARR reanalysis weather.
 The 21 sorties deliver 126,000 L. Covering the 5.3 km selected head segment at
 0.75 mm would require about **199,630 L**; the line-mean depth is **0.47 mm**,
 coverage is **39%**, and the deficit is about **73,630 L**, or **13 additional
-sorties**. A two-pass case delivers **252,000 L**, reaches **0.95 mm** and
-**79%** coverage, and closes the nominal mass deficit in about **61 minutes**;
-the native fire outcome remains **5,325 ha**.
+sorties**. A two-pass case delivers **252,000 L**, reaches **0.95 mm** line-mean depth but
+still covers only **39%** of the target strip because it repeats the same 21
+cells; the mass deficit closes, while the native outcome remains **5,325 ha**.
+A continuous 54-target line delivers **324,000 L** at 100% target coverage and
+still ends at **5,325 ha**.
 The realistic mission is therefore both placement-limited and water-limited.
 
 The realistic mission is **placement-limited**. The control barrier is a

@@ -93,6 +93,7 @@ def delivery_case(
         delivered_l=summary["total_water_l"],
         required_depth_mm=required_depth_mm,
         tank_l=performance.tank_l,
+        unique_targets=len(targets),
     )
     return DeliveryCase(
         passes=passes,

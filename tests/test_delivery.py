@@ -28,6 +28,7 @@ def test_two_passes_close_the_nominal_deficit() -> None:
     assert two.deficit_l == 0
     assert two.delivered_l == 2 * one.delivered_l
     assert two.sorties == 2 * one.sorties
+    assert two.coverage_fraction == one.coverage_fraction
 
 
 def test_more_aircraft_reduce_elapsed_time_not_total_water() -> None:

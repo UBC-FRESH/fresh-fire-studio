@@ -13,9 +13,11 @@ def test_line_water_deficit() -> None:
         drop_count=21,
         delivered_l=126000.0,
         required_depth_mm=0.75,
+        unique_targets=21,
     )
     assert result.target_area_m2 == 265000.0
     assert result.treated_area_m2 == 105000.0
+    assert result.unique_targets == 21
     assert result.line_mean_depth_mm == pytest.approx(0.4755, abs=0.001)
     assert result.treated_mean_depth_mm == pytest.approx(1.2)
     assert result.coverage_fraction == pytest.approx(0.3962, abs=0.001)

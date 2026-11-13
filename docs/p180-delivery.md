@@ -16,8 +16,8 @@ Three aircraft, current lake, 21 targets per pass:
 | Passes | Sorties | Delivered | Line-mean depth | Coverage | Deficit | Elapsed |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1 | 21 | 126,000 L | 0.47 mm | 39% | 73,630 L | 30.5 min |
-| 2 | 42 | 252,000 L | 0.95 mm | 79% | 0 | 61.0 min |
-| 3 | 63 | 378,000 L | 1.42 mm | 100% | 0 | 91.5 min |
+| 2 | 42 | 252,000 L | 0.95 mm | 39% | 0 | 61.0 min |
+| 3 | 63 | 378,000 L | 1.42 mm | 39% | 0 | 91.5 min |
 
 The two-pass case closes the **nominal mass deficit**. It does not establish
 fire containment: the native growth run still ends at **5,325 ha**. Three and

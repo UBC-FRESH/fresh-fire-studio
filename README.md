@@ -43,6 +43,7 @@ A public 3D benchmark-fire portal from the UBC FRESH Lab.
 - P180 saturation: [`docs/p180-saturation.md`](docs/p180-saturation.md)
 - P180 fine-grid test: [`docs/p180-fine-grid.md`](docs/p180-fine-grid.md)
 - P180 arrival-time targets: [`docs/p180-arrival.md`](docs/p180-arrival.md)
+- P180 continuous target line: [`docs/p180-continuous.md`](docs/p180-continuous.md)
 - Diagnostic suppression replay: `/suppression/` (mission geometry only)
 - Suppression case study: [`docs/p179-case-study.md`](docs/p179-case-study.md) · [PDF](docs/p179-case-study.pdf)
 - Replay notes: [`docs/p179-20-replay.md`](docs/p179-20-replay.md)
