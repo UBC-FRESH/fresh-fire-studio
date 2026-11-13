@@ -1,0 +1,12 @@
+{
+  "case": "2003_526",
+  "benchmark_area_ha": 5325.0,
+  "native_area_ha": 5325.0,
+  "benchmark_iou": 0.09559512652296158,
+  "mismatch_cells": 0,
+  "both_cells": 5325,
+  "max_abs_arrival_delta_min": 0.0,
+  "mean_abs_arrival_delta_min": 0.0,
+  "masks_equal": true,
+  "observed": 520
+}
