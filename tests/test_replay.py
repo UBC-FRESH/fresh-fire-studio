@@ -29,6 +29,7 @@ def test_replay_page_and_data_are_consistent() -> None:
     assert data["logistics"]["litres_per_hour"] > 100000
     assert data["logistics"]["water_balance"]["line_mean_depth_mm"] < 0.75
     assert data["logistics"]["water_balance"]["additional_sorties"] > 0
+    assert data["delivery_sweep"]["two_pass_three_aircraft"]["deficit_l"] == 0.0
     assert data["results"]["realistic"]["area_ha"] == 5325.0
     assert data["results"]["realistic"]["containment_probability"] == 0.0
     assert data["results"]["control"]["area_ha"] == 3574.7

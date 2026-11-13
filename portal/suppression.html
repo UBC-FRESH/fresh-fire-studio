@@ -32,7 +32,8 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospac
 <div id="title" class="hud"><h1>Suppression mission replay</h1><span class="badge">DIAGNOSTIC · NO FIRE EFFECT</span><p>21 CL-415-style drops across three independent aircraft cycles on 21 selected head targets: scoop, climb, cruise, descend, drop, turn, return. The lake, flight paths, target segment and timings are schematic, not a dispatch record.</p></div>
 <div id="results" class="hud"><div class="eyebrow">EVIDENCE ENSEMBLE · 32 SAMPLES</div><div class="result" id="result-realistic"><div class="result-top"><span>Realistic cycle mission</span><b>5,325 ha</b></div><small>0% containment · placement-limited · all samples equal free burn</small><small>Observed final extent: 520 ha</small></div><div class="result"><div class="result-top"><span>Cycle logistics</span><b id="logistics-volume">—</b></div><small id="logistics-detail">—</small></div>
 <div class="result"><div class="result-top"><span>Water balance</span><b id="water-balance">—</b></div><small id="water-balance-detail">—</small></div>
-<div class="result" id="result-control"><div class="result-top"><span>Synthetic control barrier</span><b>3,574.7 ha</b></div><small>3,570–3,575 ha · ROS correlation −0.78 · effect model responds, not operational</small></div><div class="links"><a id="mission-link" href="#">Mission JSON</a><a id="evidence-link" href="#">Realistic ensemble</a><a id="control-link" href="#">Control results</a><a href="https://github.com/UBC-FRESH/fresh-fire-studio/blob/main/docs/p179-18-model-card.md" target="_blank" rel="noopener">Model card ↗</a></div></div>
+<div class="result" id="two-pass-row"><div class="result-top"><span>Two-pass mass case</span><b id="two-pass-value">—</b></div><small id="two-pass-detail">—</small></div>
+<div class="result" id="result-control"><div class="result-top"><span>Synthetic control barrier</span><b>3,574.7 ha</b></div><small>3,570–3,575 ha · ROS correlation −0.78 · effect model responds, not operational</small></div><div class="links"><a id="mission-link" href="#">Mission JSON</a><a id="evidence-link" href="#">Realistic ensemble</a><a id="control-link" href="#">Control results</a><a id="sweep-link" href="#">Delivery sweep</a><a href="https://github.com/UBC-FRESH/fresh-fire-studio/blob/main/docs/p179-18-model-card.md" target="_blank" rel="noopener">Model card ↗</a></div></div>
 <div id="phase" class="hud"><div class="eyebrow">AIRCRAFT PHASE</div><div id="phase-rows"></div></div>
 <div id="stats" class="hud"><div><span>mission drops</span><b id="s-total">—</b></div><div><span>active drops</span><b id="s-active">0</b></div><div><span>aircraft</span><b id="s-aircraft">—</b></div><div><span>fps</span><b id="s-fps">—</b></div></div>
 <div id="compass" class="hud">↑ <span>N</span></div>
@@ -76,6 +77,13 @@ if (DATA.logistics) {
     `${DATA.logistics.per_aircraft && Object.keys(DATA.logistics.per_aircraft).length || 0} aircraft · ` +
     `${DATA.logistics.sorties} sorties · mean ${Number(DATA.logistics.mean_cycle_min).toFixed(2)} min · ` +
     `${Math.round(DATA.logistics.litres_per_hour).toLocaleString()} L/h · schematic`;
+  const two = DATA.delivery_sweep && DATA.delivery_sweep.two_pass_three_aircraft;
+  if (two) {
+    document.getElementById("two-pass-value").textContent = `${Number(two.line_mean_depth_mm).toFixed(2)} mm`;
+    document.getElementById("two-pass-detail").textContent =
+      `${Math.round(two.delivered_l).toLocaleString()} L · ${Math.round(two.coverage_fraction * 100)}% coverage · ` +
+      `${two.deficit_l === 0 ? "mass deficit closed" : Math.round(two.deficit_l).toLocaleString() + " L short"} · ${Number(two.elapsed_min).toFixed(1)} min · mass only`;
+  }
   const wb = DATA.logistics.water_balance;
   if (wb) {
     document.getElementById("water-balance").textContent = `${Number(wb.line_mean_depth_mm).toFixed(2)} mm`;
@@ -87,6 +95,7 @@ if (DATA.logistics) {
 document.getElementById("mission-link").href = dataPrefix + "static/suppression-mission.json";
 document.getElementById("evidence-link").href = dataPrefix + "static/suppression-evidence-ensemble.json";
 document.getElementById("control-link").href = dataPrefix + "static/suppression-evidence-control.json";
+document.getElementById("sweep-link").href = dataPrefix + "static/suppression-delivery-sweep.json";
 document.getElementById("case-study-link").href = dataPrefix + "static/p179-case-study.pdf";
 const assistantScript = document.createElement("script");
 assistantScript.src = dataPrefix + "static/assistant.js";

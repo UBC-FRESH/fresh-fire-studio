@@ -51,8 +51,10 @@ At 126,000 L delivered and 0.75 mm required depth:
 - deficit: **73,630 L**;
 - additional sorties: **13**.
 
-The current mission is short of the nominal demand. That is the first
-operationally meaningful number in the cycle model.
+A second pass delivers **252,000 L**, **0.95 mm**, **79%** coverage and closes
+the nominal mass deficit; elapsed time is about **61 min**. The current
+one-pass mission is short of demand. That is the first operationally meaningful
+number in the cycle model.
 
 ## Coupling
 
