@@ -51,6 +51,22 @@
       "containment_probability": 1.0,
       "ros_correlation": -0.777,
       "note": "Permanent 20-cell wet band. Effect model responds; not operational."
+    },
+    "persistence": {
+      "label": "Perfect 15-minute re-wetting",
+      "area_ha": 3504.0,
+      "held_cells": 71,
+      "burnable_cells": 71,
+      "effective_hold_min": 17.0,
+      "failing_interval_min": 18.0,
+      "fleet_lower_bound": {
+        "minimum_tested_aircraft": 54,
+        "with_margin_aircraft": 65,
+        "sorties_per_hour": 760,
+        "water_l_per_hour": 4560000,
+        "note": "Perfect continuous dispatch; 30 min at 1.5 mm has zero duration margin; 2.0 mm gives 65 aircraft with ~7.5 min margin."
+      },
+      "note": "Perfect full-cell re-wetting test, not an aircraft schedule. The 12-aircraft line held only ~17-18 min and all 71 burnable cells breached after expiry."
     }
   },
   "model_extent": [

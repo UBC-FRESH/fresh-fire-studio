@@ -29,12 +29,13 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospac
 <canvas id="c"></canvas>
 <div id="loading">LOADING MISSION REPLAY…</div>
 <div id="note">DIAGNOSTIC MISSION GEOMETRY · NOT AN OPERATIONAL PREDICTION</div>
-<div id="title" class="hud"><h1>Suppression mission replay</h1><span class="badge">DIAGNOSTIC · NO FIRE EFFECT</span><p>21 CL-415-style drops across three independent aircraft cycles on 21 selected head targets: scoop, climb, cruise, descend, drop, turn, return. The lake, flight paths, target segment and timings are schematic, not a dispatch record.</p></div>
+<div id="title" class="hud"><h1>Suppression mission replay</h1><span class="badge">DIAGNOSTIC · EVIDENCE-BOUNDED</span><p>21 CL-415-style drops across three independent aircraft cycles on 21 selected head targets: scoop, climb, cruise, descend, drop, turn, return. The lake, flight paths, target segment and timings are schematic, not a dispatch record. A separate perfect-re-wetting test bounds persistence; it is not an aircraft schedule.</p></div>
 <div id="results" class="hud"><div class="eyebrow">EVIDENCE ENSEMBLE · 32 SAMPLES</div><div class="result" id="result-realistic"><div class="result-top"><span>Realistic cycle mission</span><b>5,325 ha</b></div><small>0% containment · placement-limited · all samples equal free burn</small><small>Observed final extent: 520 ha</small></div><div class="result"><div class="result-top"><span>Cycle logistics</span><b id="logistics-volume">—</b></div><small id="logistics-detail">—</small></div>
 <div class="result"><div class="result-top"><span>Water balance</span><b id="water-balance">—</b></div><small id="water-balance-detail">—</small></div>
 <div class="result"><div class="result-top"><span>Local effect · full ring</span><b>124/154</b></div><small>targets delayed · mean 3.83 min · max 34.92 min · final area unchanged</small></div>
+<div class="result" id="result-persistence"><div class="result-top"><span>Persistence · perfect 15 min</span><b id="persistence-value">—</b></div><small id="persistence-detail">—</small></div>
 <div class="result" id="two-pass-row"><div class="result-top"><span>Two-pass mass case</span><b id="two-pass-value">—</b></div><small id="two-pass-detail">—</small></div>
-<div class="result" id="result-control"><div class="result-top"><span>Synthetic control barrier</span><b>3,574.7 ha</b></div><small>3,570–3,575 ha · ROS correlation −0.78 · effect model responds, not operational</small></div><div class="links"><a id="mission-link" href="#">Mission JSON</a><a id="evidence-link" href="#">Realistic ensemble</a><a id="control-link" href="#">Control results</a><a id="sweep-link" href="#">Delivery sweep</a><a href="https://github.com/UBC-FRESH/fresh-fire-studio/blob/main/docs/p179-18-model-card.md" target="_blank" rel="noopener">Model card ↗</a></div></div>
+<div class="result" id="result-control"><div class="result-top"><span>Synthetic control barrier</span><b>3,574.7 ha</b></div><small>3,570–3,575 ha · ROS correlation −0.78 · effect model responds, not operational</small></div><div class="links"><a id="mission-link" href="#">Mission JSON</a><a id="evidence-link" href="#">Realistic ensemble</a><a id="control-link" href="#">Control results</a><a id="sweep-link" href="#">Delivery sweep</a><a href="https://github.com/UBC-FRESH/fresh-fire-studio/blob/main/docs/p179-18-model-card.md" target="_blank" rel="noopener">Model card ↗</a><a href="https://github.com/UBC-FRESH/fresh-fire-studio/blob/main/docs/p185-rewetting.md" target="_blank" rel="noopener">Persistence note ↗</a></div></div>
 <div id="phase" class="hud"><div class="eyebrow">AIRCRAFT PHASE</div><div id="phase-rows"></div></div>
 <div id="stats" class="hud"><div><span>mission drops</span><b id="s-total">—</b></div><div><span>active drops</span><b id="s-active">0</b></div><div><span>aircraft</span><b id="s-aircraft">—</b></div><div><span>fps</span><b id="s-fps">—</b></div></div>
 <div id="compass" class="hud">↑ <span>N</span></div>
@@ -51,11 +52,14 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospac
   <h3>Evidence</h3>
   <table><tr><th>Source</th><th>Value used</th></tr><tr><td>Wheatley 2024, Chapter 5</td><td>ROS reduction <b>0.5 ± 0.7 m/min</b>; fireline intensity reduction <b>72 ± 159 kW/m</b>; hold <b>123 ± 117 s</b></td></tr><tr><td>Wheatley high-water</td><td>hold <b>187 s</b>; indirect high-water <b>243 s</b></td></tr><tr><td>McFayden et al. 2023</td><td>effective aerial hold <b>60 min</b>; drop contours, stacking and breach criteria</td></tr><tr><td>Van Wagner &amp; Taylor 2022</td><td>theoretical water depth from fireline intensity, fuel load and wetting</td></tr></table>
   <h3>Results</h3>
-  <table><tr><th>Case</th><th>Area</th><th>Meaning</th></tr><tr><td>Observed final extent</td><td><b>520 ha</b></td><td>Public CFSDS perimeter</td></tr><tr><td>Free burn</td><td><b>5,325 ha</b></td><td>Model basin-filling result</td></tr><tr><td>Realistic cycle mission</td><td><b>5,325 ha</b></td><td>All 32 evidence samples; 0% containment; placement-limited</td></tr><tr><td>Synthetic control barrier</td><td><b>3,574.7 ha</b></td><td>3,570–3,575 ha; ROS correlation −0.78; not operational</td></tr></table>
+  <table><tr><th>Case</th><th>Area</th><th>Meaning</th></tr><tr><td>Observed final extent</td><td><b>520 ha</b></td><td>Public CFSDS perimeter</td></tr><tr><td>Free burn</td><td><b>5,325 ha</b></td><td>Model basin-filling result</td></tr><tr><td>Realistic cycle mission</td><td><b>5,325 ha</b></td><td>All 32 evidence samples; 0% containment; placement-limited</td></tr><tr><td>12-aircraft full-height line</td><td><b>5,325 ha</b></td><td>Wet at arrival; all 71 burnable cells breached after expiry</td></tr><tr><td>Perfect 15-min re-wetting</td><td><b>3,504 ha</b></td><td>71/71 held; 18-min interval fails; perfect full-cell test</td></tr><tr><td>Fleet lower bound</td><td><b>54–65 aircraft</b></td><td>Perfect dispatch; 760–912 sorties/h; not operational</td></tr><tr><td>Synthetic control barrier</td><td><b>3,574.7 ha</b></td><td>3,570–3,575 ha; ROS correlation −0.78; not operational</td></tr></table>
+  <h3>Persistence envelope</h3>
+  <p>The 12-aircraft line was wet at free-burn arrival, but the 3-stack application held only about 17–18 minutes. Every burnable barrier cell then breached after expiry. A perfect 15-minute re-wetting test holds at 3,504 ha; an 18-minute interval fails. A 30-minute interval needs at least 1.5 mm and implies a 54-aircraft lower bound with zero duration margin, or 65 aircraft at 2.0 mm.</p>
+  <p>The fleet bound assumes perfect full-cell re-wetting, a 4.25-minute cycle, 6,000 L per sortie and continuous dispatch. It is a persistence diagnostic, not a dispatch plan.</p>
   <h3>What is synthetic</h3>
-  <ul><li>suppression mission geometry and aircraft motion;</li><li>the control barrier and its permanent 20-cell extent;</li><li>tree placement in the benchmark scenes;</li><li>ignition timing.</li></ul>
+  <ul><li>suppression mission geometry and aircraft motion;</li><li>the perfect re-wetting schedule and fleet lower bound;</li><li>the control barrier and its permanent 20-cell extent;</li><li>tree placement in the benchmark scenes;</li><li>ignition timing.</li></ul>
   <h3>Limits</h3>
-  <ul><li>100 m fire grid cannot resolve a 50–100 m drop footprint;</li><li>Wheatley evidence is from low-intensity surface fires;</li><li>the wetness/ROS mapping is diagnostic;</li><li>no field validation for 2003_526 or BC;</li><li>the realistic mission leaves open flanks.</li></ul>
+  <ul><li>100 m fire grid cannot resolve a 50–100 m drop footprint;</li><li>Wheatley evidence is from low-intensity surface fires;</li><li>the wetness/ROS mapping is diagnostic;</li><li>the 15-minute persistence test is perfect full-cell re-wetting, not an aircraft schedule;</li><li>the 54–65 aircraft bound ignores supply, weather, maintenance and simultaneous tasking;</li><li>no field validation for 2003_526 or BC;</li><li>the realistic mission leaves open flanks.</li></ul>
   <div class="foot">Public code and notes: github.com/UBC-FRESH/fresh-fire-studio · <a id="case-study-link" href="#">Two-page case study PDF</a> · UBC FRESH Lab</div>
 </aside>
 <div id="assistant-backdrop" hidden></div>
@@ -92,6 +96,16 @@ if (DATA.logistics) {
       `${Math.round(wb.delivered_l).toLocaleString()} L delivered / ${Math.round(wb.required_l).toLocaleString()} L required · ` +
       `${Math.round(wb.coverage_fraction * 100)}% of line · ${wb.additional_sorties} more sorties needed`;
   }
+}
+const persistence = DATA.results && DATA.results.persistence;
+if (persistence) {
+  document.getElementById("persistence-value").textContent =
+    `${Math.round(persistence.area_ha).toLocaleString()} ha`;
+  const fleet = persistence.fleet_lower_bound;
+  document.getElementById("persistence-detail").textContent =
+    `${persistence.held_cells}/${persistence.burnable_cells} held · ` +
+    `${Number(persistence.failing_interval_min).toFixed(0)} min fails · ` +
+    `${fleet.minimum_tested_aircraft}–${fleet.with_margin_aircraft} aircraft lower bound · not operational`;
 }
 document.getElementById("mission-link").href = dataPrefix + "static/suppression-mission.json";
 document.getElementById("evidence-link").href = dataPrefix + "static/suppression-evidence-ensemble.json";

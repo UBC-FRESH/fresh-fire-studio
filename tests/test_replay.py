@@ -14,6 +14,8 @@ def test_replay_page_and_data_are_consistent() -> None:
     assert "assistant-panel" in page
     assert "assistantScript" in page
     assert "methods-panel" in page
+    assert "Persistence · perfect 15 min" in page
+    assert "Persistence envelope" in page
     assert "Wheatley 2024" in page
     assert (ROOT / "portal/static/p179-case-study.pdf").exists()
     assert len(data["sorties"]) == 21
@@ -46,6 +48,11 @@ def test_replay_page_and_data_are_consistent() -> None:
     assert data["results"]["realistic"]["containment_probability"] == 0.0
     assert data["results"]["control"]["area_ha"] == 3574.7
     assert data["results"]["control"]["ros_correlation"] < -0.5
+    persistence = data["results"]["persistence"]
+    assert persistence["area_ha"] == 3504.0
+    assert persistence["held_cells"] == 71
+    assert persistence["fleet_lower_bound"]["minimum_tested_aircraft"] == 54
+    assert persistence["fleet_lower_bound"]["with_margin_aircraft"] == 65
     assert len(data["model_extent"]) == 19
     assert (ROOT / "portal/static/suppression-evidence-ensemble.json").exists()
     assert (ROOT / "portal/static/suppression-evidence-control.json").exists()

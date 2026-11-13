@@ -28,6 +28,8 @@ The assistant prompt covers:
 - the G50872 and G50266 VRI pilots;
 - the `/suppression/` diagnostic replay, evidence ensemble, and synthetic
   control barrier;
+- the 12-aircraft persistence failure, perfect 15-minute re-wetting result and
+  54–65 aircraft lower bound;
 - public contact details.
 
 It is explicitly told not to invent numbers or claim operational prediction,

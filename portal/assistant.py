@@ -48,6 +48,18 @@ Portal facts:
   containment probability. A deliberately synthetic 20-cell control barrier
   ends at 3,574.7 ha and has ROS-reduction/area correlation about -0.78. The
   control is not operational and must not be described as a suppression plan.
+- A 12-aircraft full-height 76-cell line was built for persistence testing. All
+  71 burnable cells were wet at free-burn arrival, but all 71 breached after
+  expiry; the effective hold was about 17-18 minutes, not 60. This was a
+  persistence failure, not a wet-branch failure.
+- Perfect full-cell re-wetting at 15 minutes and the current 1.047 mm depth
+  holds at 3,504 ha; an 18-minute interval fails. A 30-minute interval needs at
+  least 1.5 mm, implying a 54-aircraft lower bound with no duration margin, or
+  65 aircraft at 2.0 mm with about 7.5 minutes of margin. These are
+  perfect-dispatch lower bounds, not an operational plan.
+- The successful persistence cases require 760-912 sorties/h; 12 aircraft can
+  deliver about 169 sorties/h at the 4.25-minute P180 cycle. The 12-aircraft
+  case is therefore not close to sustained water-only containment.
 - The suppression evidence comes from published sources: Wheatley 2024
   experimental burns, McFayden et al. 2023 aerial drop guide, and Van Wagner &
   Taylor 2022 water requirements. It is evidence-bounded, not field-validated
