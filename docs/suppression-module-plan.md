@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof, P179.2a schedule and P179.2b failure proofs implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs and P179.3a native containment adapter implemented. Not operational.
 
 ## Open containment issues
 
@@ -80,6 +80,10 @@ Implemented in this repository:
 - `suppression/proofs/2003-526-breach.json` — breach artifact.
 - `suppression/proofs/2003-526-late-line.json` — late-arrival artifact.
 - `docs/p179-2b-failure-proofs.md` — failure results and limits.
+- `suppression/native_growth.py` — native per-cell containment schedule adapter.
+- `scripts/prove_native_suppression_2003_526.py` — native proof runner.
+- `suppression/proofs/2003-526-native*.json` — native fast, slow, breach and late artifacts.
+- `docs/p179-3-native-proof.md` — native method, results and limits.
 
 Run:
 
@@ -154,6 +158,31 @@ Two diagnostic cases show that the schedule can represent failure:
 These are not effectiveness estimates; the 2 ha difference is a chunking
 artifact. They do show that the same event stream can model held, breached and
 late lines. See [`p179-2b-failure-proofs.md`](p179-2b-failure-proofs.md).
+
+## P179.3a native time-dependent containment
+
+The chunked P179.2 harness was replaced by a prototype native adapter in
+`suppression/native_growth.py`. It checks a per-cell containment start/end
+schedule during a single WS4 growth run and re-expands the burned front when a
+containment event occurs.
+
+Results on `2003_526`:
+
+| Scenario | Native area | IoU | Change vs free |
+| --- | ---: | ---: | ---: |
+| Fast line, built 0–60 min | 3,113 ha | 0.134 | −41.5% |
+| Slow line, built 0–1,440 min | 5,183 ha | 0.097 | −2.7% |
+| Fast line, breached at 7,200 min | 5,325 ha | 0.096 | 0 |
+| Late line, built 18,000–19,440 min | 5,325 ha | 0.096 | 0 |
+
+The fast line matches the P179.1 static result exactly. The slow-build line
+fails to contain because the fire crosses while it is being built; the chunked
+harness overestimated that case by 2,071 ha. Breach and late arrival return to
+free burn.
+
+This is still diagnostic: drops are not coupled, and spotting, wind grids and
+burning-condition gates are not supported. See
+[`p179-3-native-proof.md`](p179-3-native-proof.md).
 
 ## Evidence base: Martell and collaborators
 
@@ -433,9 +462,9 @@ Visual labels must distinguish:
 
 ### P179.2 — ground response
 
-- Status: time-aware line/drop schedule and failure proofs implemented
-  (P179.2a/P179.2b); dispatch, crew productivity and ground-resource
-  simulation pending.
+- Status: time-aware line/drop schedule, failure proofs and native containment
+  adapter implemented (P179.2a/P179.2b/P179.3a); dispatch, crew productivity
+  and ground-resource simulation pending.
 - IA crew, engine, dozer, pump and hose.
 - Travel, setup, line production, water supply, holding/breach.
 - Discrete-event playback.

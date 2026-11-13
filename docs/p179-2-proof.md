@@ -90,6 +90,15 @@ python scripts/prove_temporal_suppression_2003_526.py \
 pytest -q tests/
 ```
 
+
+## P179.3 follow-up
+
+The native single-run adapter in [`p179-3-native-proof.md`](p179-3-native-proof.md)
+returns **5,183 ha** for the same 24-hour line build. The chunked result above
+is **3,112 ha**, so the chunk harness overestimates containment when the line
+is built slowly. Use the native run for timing conclusions; keep the chunked
+run as a historical approximation.
+
 ## Next
 
 - Add a native time-dependent containment mask to the growth kernel rather than

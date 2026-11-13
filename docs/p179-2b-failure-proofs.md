@@ -12,21 +12,21 @@ north–south barrier.
 
 Scenario: `suppression/scenarios/2003-526-breach-proof.json`
 
-- line built from minute 0 to 1,440;
+- line built from minute 0 to 60;
 - line held at 152 cells through minute 7,140;
 - breached at minute 7,200;
 - no line after the breach.
 
 | Time | Line cells | Burned area |
 | ---: | ---: | ---: |
-| 1,440 min | 152 | 16 ha |
+| 60 min | 152 | 9 ha |
 | 7,140 min | 152 | 609 ha |
 | 7,200 min | 0 | 609 ha |
 | 22,200 min | 0 | 5,323 ha |
 
-The final area is **5,323 ha**, within **2 ha** of the 5,325 ha free burn. The
-line delayed growth while it held, but once breached the fire recovered almost
-the entire free-burn area.
+The chunked harness final area is **5,323 ha**, within **2 ha** of the 5,325 ha
+free burn. The native P179.3 run returns **5,325 ha**. The line delayed growth
+while it held, but once breached the fire recovered the free-burn area.
 
 ## Late arrival
 

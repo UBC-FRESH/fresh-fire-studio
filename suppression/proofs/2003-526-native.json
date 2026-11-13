@@ -1,0 +1,71 @@
+{
+  "proof": "P179.3 native time-dependent containment",
+  "case_id": "2003_526",
+  "scenario_id": "2003-526-temporal-line-proof",
+  "method": {
+    "sampling_min": 60.0,
+    "kernel": "single WS4 minimum-travel-time run",
+    "mask": "cell containment checked at expansion time",
+    "drops": "not coupled"
+  },
+  "grid": {
+    "crs": "EPSG:26911",
+    "xll": 487700.0,
+    "yll": 5722700.0,
+    "ncols": 90,
+    "nrows": 76,
+    "cell_size_m": 100.0
+  },
+  "free_burn": {
+    "area_sim_ha": 5325.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 9.240384615384615,
+    "perimeter_sim_m": 116800.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 4.959183673469388,
+    "centroid_distance_m": 174.69119277442272,
+    "iou": 0.09559512652296158,
+    "sorensen": 0.174508126603935,
+    "orientation_error_deg": 21.642970351518244
+  },
+  "native": {
+    "area_sim_ha": 5183.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 8.967307692307692,
+    "perimeter_sim_m": 121000.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 5.173469387755102,
+    "centroid_distance_m": 167.76304986349882,
+    "iou": 0.09651990001922707,
+    "sorensen": 0.17604769419603716,
+    "orientation_error_deg": 22.191425224965002
+  },
+  "chunked": {
+    "area_sim_ha": 3112.0,
+    "area_obs_ha": 520.0,
+    "area_bias": 4.984615384615385,
+    "perimeter_sim_m": 72000.0,
+    "perimeter_obs_m": 19600.0,
+    "perimeter_bias": 2.673469387755102,
+    "centroid_distance_m": 1907.2403225056748,
+    "iou": 0.13358302122347065,
+    "sorensen": 0.2356828193832599,
+    "orientation_error_deg": 72.23907495336407
+  },
+  "delta_vs_free": {
+    "area_reduction_ha": 142.0,
+    "area_reduction_pct": 2.666666666666667,
+    "iou_change": 0.0009247734962654908
+  },
+  "delta_vs_chunked": {
+    "area_difference_ha": 2071.0,
+    "iou_change": -0.037063121204243585
+  },
+  "limits": [
+    "The line is synthetic and construction is sampled every step_min.",
+    "Native containment is a prototype adapter around the P177 loop.",
+    "No spotting, wind grids or burning-condition gates are supported.",
+    "Drop moisture and decay are not coupled to growth.",
+    "This is a diagnostic contract proof, not a calibrated suppression result."
+  ]
+}

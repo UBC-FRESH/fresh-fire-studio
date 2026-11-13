@@ -7,7 +7,7 @@
   "metadata": {
     "status": "diagnostic",
     "coordinate_system": "EPSG:26911",
-    "note": "A synthetic north-south line built over 24 hours and breached at minute 7,200. It tests time-aware failure, not a real suppression operation."
+    "note": "A synthetic north-south line built over 60 minutes and breached at minute 7,200. It tests time-aware failure, not a real suppression operation."
   },
   "objective": {
     "containment_area_ha": 2500,
@@ -41,7 +41,7 @@
       "resource_id": "proof-dozer",
       "kind": "construct_line",
       "start_min": 0,
-      "end_min": 1440,
+      "end_min": 60,
       "line_id": "proof-line",
       "target": [
         [
@@ -71,7 +71,7 @@
       ],
       "width_m": 100,
       "constructed_start_min": 0,
-      "constructed_end_min": 1440,
+      "constructed_end_min": 60,
       "state": "breached",
       "fuel_removed": 1.0,
       "moisture": 0.0,
