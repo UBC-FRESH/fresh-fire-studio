@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling and P179.7 aircraft cycles implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours, P179.6 wet coupling, P179.7 aircraft cycles and P179.8 sub-cell drop raster implemented. Not operational.
 
 Five local PDFs were mined on 2026-11-13; see
 [`martell-pdf-notes.md`](martell-pdf-notes.md). The 2015 control-time paper is
@@ -111,6 +111,9 @@ Implemented in this repository:
 - `suppression/proofs/2003-526-native-drop-line.json` — repeated-drop artifact.
 - `tests/test_aircraft.py` — delivery-rate, interval and artifact tests.
 - `docs/p179-7-aircraft-cycles.md` — cycle model and repeated-drop result.
+- `suppression/subcell.py` — 10 m drop raster and fire-cell aggregation.
+- `tests/test_subcell.py` — nested depth and aggregation tests.
+- `docs/p179-8-subcell.md` — resolution problem, aggregation and limits.
 
 Run:
 
@@ -282,6 +285,18 @@ below the wet threshold; the fire bypasses the discontinuous cells.
 
 This is a delivery/placement result, not an effectiveness claim. See
 [`p179-7-aircraft-cycles.md`](p179-7-aircraft-cycles.md).
+
+## P179.8 sub-cell drop raster
+
+`suppression/subcell.py` preserves drop contours at 10 m, then aggregates mean
+depth, maximum depth and coverage fraction to the 100 m fire grid.
+
+A 90 × 40 m, 0.5 mm contour covers about 0.28 ha. Its containing 100 m fire cell
+receives a mean depth of about **0.14 mm** and a wetted fraction of about
+**0.28**, not a full-cell wet flag.
+
+This is a geometry fix, not a fire-kernel fix. See
+[`p179-8-subcell.md`](p179-8-subcell.md).
 
 ## Adjacent Canadian planning layers
 
