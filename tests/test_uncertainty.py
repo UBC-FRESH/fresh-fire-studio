@@ -57,6 +57,16 @@ def test_summary_reports_envelope_and_correlations() -> None:
     assert "correlation_ros_reduction_m_min" in summary
 
 
+def test_control_artifact_is_sensitive_to_ros_reduction() -> None:
+    path = ROOT / "suppression/proofs/2003-526-evidence-control.json"
+    assert path.exists()
+    payload = json.loads(path.read_text())
+    assert payload["n"] == 32
+    assert payload["synthetic_control_barrier"]["width_cells"] == 20
+    assert payload["summary"]["probability_any_reduction"] == 1.0
+    assert payload["summary"]["correlation_ros_reduction_m_min"] < -0.5
+
+
 def test_ensemble_artifact_if_present() -> None:
     path = ROOT / "suppression/proofs/2003-526-evidence-ensemble.json"
     assert path.exists()

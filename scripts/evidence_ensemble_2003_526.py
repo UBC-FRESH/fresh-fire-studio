@@ -29,6 +29,9 @@ def main() -> None:
         type=Path,
         default=ROOT / "suppression/proofs/2003-526-evidence-ensemble.json",
     )
+    parser.add_argument("--synthetic-barrier-x", type=float, default=None)
+    parser.add_argument("--synthetic-barrier-width-cells", type=int, default=20)
+    parser.add_argument("--synthetic-barrier-depth-mm", type=float, default=2.0)
     args = parser.parse_args()
 
     sys.path.insert(0, str(ROOT))
@@ -45,7 +48,7 @@ def main() -> None:
         sample_evidence,
         summarize_ensemble,
     )
-    from suppression.wet import build_wet_schedule
+    from suppression.wet import WetDrop, WetSchedule, build_wet_schedule
 
     fixture = args.ws4_root / "tests/fixtures/fire/cfsds_2003_526"
     fire = load_cfsds_reanalysis_case(fixture)
@@ -115,17 +118,35 @@ def main() -> None:
     samples = [sample_evidence(rng) for _ in range(args.samples)]
     outcomes = []
     for index, sample in enumerate(samples, start=1):
-        scenario = apply_sample_to_scenario(base_scenario, sample)
-        wet = build_wet_schedule(
-            scenario,
-            required_depth_mm=sample.required_depth_mm,
-            xll=fire.grid.xll,
-            yll=fire.grid.yll,
-            nrows=rows,
-            ncols=cols,
-            cell_size_m=fire.grid.cell_size_m,
-            subcell_cell_size_m=args.subcell_cell_size_m,
-        )
+        if args.synthetic_barrier_x is not None:
+            col0 = int(round((args.synthetic_barrier_x - fire.grid.xll) / fire.grid.cell_size_m))
+            fraction = np.zeros((rows, cols), dtype=float)
+            fraction[:, max(0, col0) : min(cols, col0 + args.synthetic_barrier_width_cells)] = 1.0
+            wet = WetSchedule(
+                required_depth_mm=sample.required_depth_mm,
+                drops=(
+                    WetDrop(
+                        drop_id="synthetic-control-barrier",
+                        fraction=fraction,
+                        depth_mm=args.synthetic_barrier_depth_mm,
+                        start_min=0.0,
+                        end_min=0.0,
+                        duration_min=duration,
+                    ),
+                ),
+            )
+        else:
+            scenario = apply_sample_to_scenario(base_scenario, sample)
+            wet = build_wet_schedule(
+                scenario,
+                required_depth_mm=sample.required_depth_mm,
+                xll=fire.grid.xll,
+                yll=fire.grid.yll,
+                nrows=rows,
+                ncols=cols,
+                cell_size_m=fire.grid.cell_size_m,
+                subcell_cell_size_m=args.subcell_cell_size_m,
+            )
         _, metrics = run(wet, sample.ros_reduction_m_min)
         outcomes.append(metrics.to_dict())
         print(f"sample {index:02d}/{args.samples}: {metrics.area_sim_ha:.0f} ha")
@@ -133,6 +154,15 @@ def main() -> None:
     summary = summarize_ensemble(areas, free_metrics.area_sim_ha, samples=samples)
     payload = {
         "proof": "P179.18 evidence-bounded suppression ensemble",
+        "synthetic_control_barrier": (
+            {
+                "x": args.synthetic_barrier_x,
+                "width_cells": args.synthetic_barrier_width_cells,
+                "depth_mm": args.synthetic_barrier_depth_mm,
+            }
+            if args.synthetic_barrier_x is not None
+            else None
+        ),
         "scenario_id": base_scenario.scenario_id,
         "seed": args.seed,
         "n": len(samples),

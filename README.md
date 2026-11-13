@@ -37,6 +37,7 @@ A public 3D benchmark-fire portal from the UBC FRESH Lab.
 - P179.16 evidence parameters: [`docs/p179-16-evidence.md`](docs/p179-16-evidence.md)
 - P179.17 queue: [`docs/p179-17-queue.md`](docs/p179-17-queue.md)
 - P179.18 evidence ensemble: [`docs/p179-18-model-card.md`](docs/p179-18-model-card.md)
+- P179.19 evidence control: [`docs/p179-19-control.md`](docs/p179-19-control.md)
 - Canadian wildfire studies notes: [`docs/ws4-canadian-wildfire-notes.md`](docs/ws4-canadian-wildfire-notes.md)
 - Current edge: <https://fresh-fire.01101.dev/>
 - Local portal: <http://127.0.0.1:8800/>

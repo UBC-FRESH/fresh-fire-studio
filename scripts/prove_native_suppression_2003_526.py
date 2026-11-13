@@ -60,6 +60,11 @@ def main() -> None:
         default=None,
         help="absolute ROS reduction where a drop is fully wet",
     )
+    parser.add_argument("--synthetic-barrier-x", type=float, default=None)
+    parser.add_argument("--synthetic-barrier-width-cells", type=int, default=1)
+    parser.add_argument("--synthetic-barrier-start-min", type=float, default=900.0)
+    parser.add_argument("--synthetic-barrier-duration-min", type=float, default=600.0)
+    parser.add_argument("--synthetic-barrier-depth-mm", type=float, default=2.0)
     args = parser.parse_args()
 
     sys.path.insert(0, str(ROOT))
@@ -80,7 +85,7 @@ def main() -> None:
         build_containment_schedule,
         grow_fire_with_containment,
     )
-    from suppression.wet import build_wet_schedule
+    from suppression.wet import WetDrop, WetSchedule, build_wet_schedule
 
     fixture = args.ws4_root / "tests/fixtures/fire/cfsds_2003_526"
     fire = load_cfsds_reanalysis_case(fixture)
@@ -152,7 +157,26 @@ def main() -> None:
         step_min=args.step_min,
     )
     wet = None
-    if args.drops:
+    if args.synthetic_barrier_x is not None:
+        import numpy as _np
+        width = max(1, args.synthetic_barrier_width_cells)
+        col0 = int(round((args.synthetic_barrier_x - fire.grid.xll) / fire.grid.cell_size_m))
+        fraction = _np.zeros((rows, cols), dtype=float)
+        fraction[:, max(0, col0) : min(cols, col0 + width)] = 1.0
+        wet = WetSchedule(
+            required_depth_mm=args.required_depth_mm,
+            drops=(
+                WetDrop(
+                    drop_id="synthetic-barrier",
+                    fraction=fraction,
+                    depth_mm=args.synthetic_barrier_depth_mm,
+                    start_min=args.synthetic_barrier_start_min,
+                    end_min=args.synthetic_barrier_start_min,
+                    duration_min=args.synthetic_barrier_duration_min,
+                ),
+            ),
+        )
+    elif args.drops:
         wet = build_wet_schedule(
             scenario,
             required_depth_mm=args.required_depth_mm,
