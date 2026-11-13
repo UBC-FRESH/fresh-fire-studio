@@ -7,7 +7,7 @@ from dataclasses import dataclass
 import numpy as np
 from rasterio.features import rasterize
 from rasterio.transform import from_origin
-from shapely.geometry import LineString, Polygon, mapping
+from shapely.geometry import LineString, Polygon, box, mapping
 
 from .models import EffectEvent
 
@@ -25,6 +25,35 @@ class RasterEffects:
     def containment(self) -> np.ndarray:
         """Cells removed from the burnable mask for the static P179.1 proof."""
         return self.line
+
+
+def coverage_fraction(
+    geometry: list[tuple[float, float]],
+    *,
+    xll: float,
+    yll: float,
+    nrows: int,
+    ncols: int,
+    cell_size_m: float,
+) -> np.ndarray:
+    """Return the fraction of each grid cell covered by a polygon."""
+    polygon = Polygon(geometry)
+    if not polygon.is_valid:
+        polygon = polygon.buffer(0)
+    result = np.zeros((nrows, ncols), dtype=float)
+    min_x, min_y, max_x, max_y = polygon.bounds
+    col_start = max(0, int((min_x - xll) // cell_size_m))
+    col_end = min(ncols - 1, int((max_x - xll) // cell_size_m))
+    row_start = max(0, nrows - 1 - int((max_y - yll) // cell_size_m))
+    row_end = min(nrows - 1, nrows - 1 - int((min_y - yll) // cell_size_m))
+    cell_area = cell_size_m * cell_size_m
+    for row in range(row_start, row_end + 1):
+        y0 = yll + (nrows - 1 - row) * cell_size_m
+        for col in range(col_start, col_end + 1):
+            x0 = xll + col * cell_size_m
+            cell = box(x0, y0, x0 + cell_size_m, y0 + cell_size_m)
+            result[row, col] = polygon.intersection(cell).area / cell_area
+    return result
 
 
 def rasterize_effects(

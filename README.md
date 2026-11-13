@@ -24,6 +24,7 @@ A public 3D benchmark-fire portal from the UBC FRESH Lab.
 - Extracted suppression PDF notes: [`docs/martell-pdf-notes.md`](docs/martell-pdf-notes.md)
 - P179.5 water requirements: [`docs/p179-5-water.md`](docs/p179-5-water.md)
 - P179.5b drop contours: [`docs/p179-5b-drop-contours.md`](docs/p179-5b-drop-contours.md)
+- P179.6 temporary wet coupling: [`docs/p179-6-wet-coupling.md`](docs/p179-6-wet-coupling.md)
 - Canadian wildfire studies notes: [`docs/ws4-canadian-wildfire-notes.md`](docs/ws4-canadian-wildfire-notes.md)
 - Current edge: <https://fresh-fire.01101.dev/>
 - Local portal: <http://127.0.0.1:8800/>

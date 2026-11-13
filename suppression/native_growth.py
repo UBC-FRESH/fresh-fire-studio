@@ -19,6 +19,7 @@ import numpy as np
 from .effects import rasterize_effects
 from .models import LineState, Scenario
 from .temporal import line_effect_at
+from .wet import WetSchedule
 
 
 @dataclass(frozen=True)
@@ -122,12 +123,17 @@ def _line_is_burnable_at(
     drow: int,
     dcol: int,
     time_min: float,
+    wet_schedule: WetSchedule | None = None,
 ) -> bool:
     steps = max(abs(drow), abs(dcol))
     for step in range(1, steps):
         middle_row = row + round(drow * step / steps)
         middle_col = col + round(dcol * step / steps)
         if not schedule.is_burnable(base_burnable, middle_row, middle_col, time_min):
+            return False
+        if wet_schedule is not None and wet_schedule.is_suppressed(
+            middle_row, middle_col, time_min
+        ):
             return False
     return True
 
@@ -136,6 +142,7 @@ def grow_fire_with_containment(
     grid: Any,
     config: Any,
     schedule: ContainmentSchedule,
+    wet_schedule: WetSchedule | None = None,
 ) -> Any:
     """Run a minimum-travel-time growth with a native containment schedule.
 
@@ -210,21 +217,30 @@ def grow_fire_with_containment(
         return value
 
     ignition = np.full((grid.rows, grid.cols), np.inf, dtype=float)
+    def available(row: int, col: int, time_min: float) -> bool:
+        return schedule.is_burnable(burnable, row, col, time_min) and not (
+            wet_schedule is not None
+            and wet_schedule.is_suppressed(row, col, time_min)
+        )
+
     queue: list[tuple[float, int, int, bool]] = []
     for row, col in config.ignition_cells:
-        if not schedule.is_burnable(burnable, row, col, 0.0):
+        if not available(row, col, 0.0):
             raise ValueError(f"ignition cell ({row}, {col}) is contained or unburnable at t=0")
         ignition[row, col] = 0.0
         heapq.heappush(queue, (0.0, row, col, False))
     offsets = _neighbor_offsets(config.allow_diagonal, config.neighbor_radius)
 
-    event_times = sorted(
-        {
-            float(value)
-            for value in np.concatenate((schedule.start_min.ravel(), schedule.end_min.ravel()))
-            if np.isfinite(value) and 0.0 < value < config.max_time_min
-        }
-    )
+    event_values = {
+        float(value)
+        for value in np.concatenate((schedule.start_min.ravel(), schedule.end_min.ravel()))
+        if np.isfinite(value) and 0.0 < value < config.max_time_min
+    }
+    if wet_schedule is not None:
+        event_values.update(
+            value for value in wet_schedule.event_times() if 0.0 < value < config.max_time_min
+        )
+    event_times = sorted(event_values)
     for event_time in event_times:
         heapq.heappush(queue, (event_time, -1, -1, True))
 
@@ -232,7 +248,7 @@ def grow_fire_with_containment(
         """Re-expand burned boundary cells after a containment change."""
         burned = ignition <= event_time + 1e-12
         for row, col in np.argwhere(burned):
-            if not schedule.is_burnable(burnable, int(row), int(col), event_time):
+            if not available(int(row), int(col), event_time):
                 continue
             reaches_unburned = False
             for drow, dcol in offsets:
@@ -241,7 +257,7 @@ def grow_fire_with_containment(
                 if nrow < 0 or nrow >= grid.rows or ncol < 0 or ncol >= grid.cols:
                     continue
                 if (
-                    schedule.is_burnable(burnable, nrow, ncol, event_time)
+                    available(nrow, ncol, event_time)
                     and not np.isfinite(ignition[nrow, ncol])
                 ):
                     reaches_unburned = True
@@ -258,7 +274,7 @@ def grow_fire_with_containment(
             break
         if not is_source and time > ignition[row, col] + 1e-12:
             continue
-        if not schedule.is_burnable(burnable, row, col, time):
+        if not available(row, col, time):
             continue
         step_index = max(0, bisect.bisect_right(starts, time) - 1)
         for drow, dcol in offsets:
@@ -266,9 +282,11 @@ def grow_fire_with_containment(
             ncol = col + dcol
             if nrow < 0 or nrow >= grid.rows or ncol < 0 or ncol >= grid.cols:
                 continue
-            if not schedule.is_burnable(burnable, nrow, ncol, time):
+            if not available(nrow, ncol, time):
                 continue
-            if not _line_is_burnable_at(schedule, burnable, row, col, drow, dcol, time):
+            if not _line_is_burnable_at(
+                schedule, burnable, row, col, drow, dcol, time, wet_schedule
+            ):
                 continue
             distance = grid.cell_size_m * math.hypot(drow, dcol)
             direction = math.degrees(math.atan2(dcol, -drow)) % 360.0

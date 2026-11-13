@@ -1,0 +1,136 @@
+{
+  "scenario_id": "2003-526-drop-proof",
+  "fire_slug": "cfsds-2003-526",
+  "label": "Diagnostic water drop on the 2003_526 fire grid",
+  "timeline_start_min": 0,
+  "timeline_end_min": 22200,
+  "metadata": {
+    "status": "diagnostic",
+    "coordinate_system": "EPSG:26911",
+    "note": "Three synthetic stacked water drops near the 600-minute fire front. They test temporary wet-cell coupling; they are not a real suppression operation."
+  },
+  "objective": {
+    "containment_area_ha": 2500,
+    "deadline_min": 1440,
+    "priority": "resource"
+  },
+  "bases": [
+    {
+      "id": "proof-base",
+      "x": 487700,
+      "y": 5722700,
+      "kind": "ground"
+    }
+  ],
+  "water_sources": [],
+  "resources": [
+    {
+      "id": "proof-heli",
+      "label": "Diagnostic helicopter",
+      "kind": "helicopter",
+      "home_base_id": "proof-base",
+      "speed_kmh": 180,
+      "capacity_l": 6000,
+      "available_start_min": 0,
+      "available_end_min": 22200
+    }
+  ],
+  "tasks": [
+    {
+      "id": "drop-task-1",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 600,
+      "end_min": 620,
+      "drop_id": "drop-proof-1",
+      "target": [
+        [
+          492150,
+          5726250
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-2",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 620,
+      "end_min": 640,
+      "drop_id": "drop-proof-2",
+      "target": [
+        [
+          492150,
+          5726250
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-3",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 640,
+      "end_min": 660,
+      "drop_id": "drop-proof-3",
+      "target": [
+        [
+          492150,
+          5726250
+        ]
+      ]
+    }
+  ],
+  "lines": [],
+  "drops": [
+    {
+      "id": "drop-proof-1",
+      "task_id": "drop-task-1",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 600,
+      "end_min": 620,
+      "center": [
+        492150,
+        5726250
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-proof-2",
+      "task_id": "drop-task-2",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 620,
+      "end_min": 640,
+      "center": [
+        492150,
+        5726250
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-proof-3",
+      "task_id": "drop-task-3",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 640,
+      "end_min": 660,
+      "center": [
+        492150,
+        5726250
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 240,
+      "canopy_penetration": 1.0
+    }
+  ]
+}

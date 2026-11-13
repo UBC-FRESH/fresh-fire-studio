@@ -231,6 +231,31 @@ __all__ = [
     "DropPattern",
     "cl415_c2_full_effectiveness",
     "cl415_c2_full_pattern",
+    "drop_to_pattern",
     "ellipse_geometry",
     "is_breached",
 ]
+
+
+def drop_to_pattern(drop: object) -> DropPattern:
+    """Build a one-contour pattern from a P179 ``Drop``.
+
+    The scenario drop is treated as one effective uniform-depth contour. For a
+    multi-depth pattern, build ``DropPattern`` directly from measured contours.
+    """
+    from .models import Drop
+
+    if not isinstance(drop, Drop):
+        raise TypeError("drop must be a suppression.models.Drop")
+    return DropPattern(
+        aircraft="scenario",
+        fuel_type="unspecified",
+        canopy="unspecified",
+        contours=(
+            DropContour(
+                depth_mm=drop.coverage_l_m2,
+                length_m=drop.length_m,
+                width_m=drop.width_m,
+            ),
+        ),
+    )

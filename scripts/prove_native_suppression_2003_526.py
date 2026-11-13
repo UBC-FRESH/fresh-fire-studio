@@ -42,6 +42,12 @@ def main() -> None:
         action="store_true",
         help="derive line construction times from the dispatch prototype",
     )
+    parser.add_argument(
+        "--drops",
+        action="store_true",
+        help="apply temporary wet cells from the scenario drops",
+    )
+    parser.add_argument("--required-depth-mm", type=float, default=0.75)
     args = parser.parse_args()
 
     sys.path.insert(0, str(ROOT))
@@ -62,6 +68,7 @@ def main() -> None:
         build_containment_schedule,
         grow_fire_with_containment,
     )
+    from suppression.wet import build_wet_schedule
 
     fixture = args.ws4_root / "tests/fixtures/fire/cfsds_2003_526"
     fire = load_cfsds_reanalysis_case(fixture)
@@ -132,6 +139,17 @@ def main() -> None:
         cell_size_m=fire.grid.cell_size_m,
         step_min=args.step_min,
     )
+    wet = None
+    if args.drops:
+        wet = build_wet_schedule(
+            scenario,
+            required_depth_mm=args.required_depth_mm,
+            xll=fire.grid.xll,
+            yll=fire.grid.yll,
+            nrows=rows,
+            ncols=cols,
+            cell_size_m=fire.grid.cell_size_m,
+        )
     growth = grow_fire_with_containment(
         grid,
         GrowthConfig(
@@ -144,6 +162,7 @@ def main() -> None:
             weather_steps=steps,
         ),
         schedule,
+        wet_schedule=wet,
     )
     simulated = np.isfinite(growth.ignition_time_min)
     metrics = compare_masks(simulated, observed, fire.grid)
@@ -165,9 +184,31 @@ def main() -> None:
             "sampling_min": args.step_min,
             "kernel": "single WS4 minimum-travel-time run",
             "mask": "cell containment checked at expansion time",
-            "drops": "not coupled",
+            "drops": (
+                f"temporary wet threshold at {args.required_depth_mm:g} mm"
+                if wet is not None
+                else "not coupled"
+            ),
             "line_timing": "dispatch-derived" if dispatch is not None else "scenario",
         },
+        "wet_schedule": (
+            {
+                "required_depth_mm": wet.required_depth_mm,
+                "drops": [
+                    {
+                        "drop_id": drop.drop_id,
+                        "depth_mm": drop.depth_mm,
+                        "start_min": drop.start_min,
+                        "end_min": drop.end_min,
+                        "duration_min": drop.duration_min,
+                        "covered_cells": drop.covered_cells,
+                    }
+                    for drop in wet.drops
+                ],
+            }
+            if wet is not None
+            else None
+        ),
         "dispatch": dispatch.to_dict() if dispatch is not None else None,
         "grid": {
             "crs": fire.grid.crs,
@@ -179,6 +220,9 @@ def main() -> None:
         },
         "free_burn": free.metrics.to_dict(),
         "native": metrics.to_dict(),
+        "native_area_by_time_ha": {
+            f"{snapshot.time_min:g}": snapshot.area_ha for snapshot in growth.snapshots
+        },
         "chunked": chunked,
         "delta_vs_free": {
             "area_reduction_ha": free.metrics.area_sim_ha - metrics.area_sim_ha,

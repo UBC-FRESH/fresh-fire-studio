@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements and P179.5b drop contours implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter, P179.4a dispatch prototype, P179.5a water requirements, P179.5b drop contours and P179.6 temporary wet coupling implemented. Not operational.
 
 Five local PDFs were mined on 2026-11-13; see
 [`martell-pdf-notes.md`](martell-pdf-notes.md). The 2015 control-time paper is
@@ -100,6 +100,12 @@ Implemented in this repository:
 - `suppression/drop.py` — drop contours, stacking, breach and CL-415 catalogue.
 - `tests/test_drop.py` — contour, geometry, breach and catalogue tests.
 - `docs/p179-5b-drop-contours.md` — drop-pattern method, catalogue and limits.
+- `suppression/wet.py` — fractional wet-cell schedule and decay.
+- `suppression/effects.py` — effect rasterization and coverage-fraction helper.
+- `suppression/scenarios/2003-526-drop-proof.json` — stacked-drop proof.
+- `suppression/proofs/2003-526-native-drop*.json` — free/wet artifacts.
+- `tests/test_wet.py` — coverage, stacking, decay and artifact tests.
+- `docs/p179-6-wet-coupling.md` — temporary wet coupling and resolution result.
 
 Run:
 
@@ -244,6 +250,21 @@ al. Tables 8-2/8-3: 130 × 50 m at 0.25 mm, 90 × 40 m at 0.5 mm, 70 × 30 m at
 
 This remains operational guidance encoded as geometry, not a calibrated drop
 model. See [`p179-5b-drop-contours.md`](p179-5b-drop-contours.md).
+
+## P179.6 temporary wet-cell coupling
+
+`suppression/wet.py` converts each scenario drop into a fractional-coverage
+`WetDrop` and builds a temporary wet-cell schedule. The native growth run now
+consults that schedule and re-expands the front when water disappears.
+
+The proof stacks three 1 mm, 100 × 50 m drops at the 600-minute front. At 100 m
+resolution one drop covers 0.392 of one cell; three stacked drops reach
+1.176 mm. The cell is temporarily non-ignitable, but the final area remains
+**5,325 ha** because the fire bypasses a single cell.
+
+This exposes a resolution limit: a real CL-415 drop is sub-cell on the current
+100 m fire grid. The threshold is diagnostic, not a validated ROS model. See
+[`p179-6-wet-coupling.md`](p179-6-wet-coupling.md).
 
 ## Adjacent Canadian planning layers
 

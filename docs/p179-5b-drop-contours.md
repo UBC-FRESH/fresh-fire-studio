@@ -87,7 +87,8 @@ rasterize the nested layers in order and apply the deepest coverage last.
 1. Convert an existing `Drop` scenario entry into a `DropPattern`.
 2. Rasterize the nested contours into a coverage field.
 3. Feed water depth and decay into the native growth run as a local fuel
-   moisture or ROS modifier.
+   moisture or ROS modifier. The temporary threshold version is in
+   [`p179-6-wet-coupling.md`](p179-6-wet-coupling.md).
 4. Add sparse-canopy and additional aircraft catalogues only when needed.
 5. Add aircraft cycle time from dispatch before 3D playback.
 MD
