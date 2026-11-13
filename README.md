@@ -20,6 +20,7 @@ A public 3D benchmark-fire portal from the UBC FRESH Lab.
 - P179.2 time-aware effect proof: [`docs/p179-2-proof.md`](docs/p179-2-proof.md)
 - P179.2b breach and late-arrival proofs: [`docs/p179-2b-failure-proofs.md`](docs/p179-2b-failure-proofs.md)
 - P179.3 native containment proof: [`docs/p179-3-native-proof.md`](docs/p179-3-native-proof.md)
+- P179.4 dispatch prototype: [`docs/p179-4-dispatch.md`](docs/p179-4-dispatch.md)
 - Current edge: <https://fresh-fire.01101.dev/>
 - Local portal: <http://127.0.0.1:8800/>
 - Lab preview: <https://fresh01.01101.dev/jupyterhub18/user/gep/proxy/8791/fire-studio/index.html>

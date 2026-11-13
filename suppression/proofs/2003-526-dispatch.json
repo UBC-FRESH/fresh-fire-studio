@@ -1,0 +1,129 @@
+{
+  "scenario_id": "2003-526-suppression-demo",
+  "fire_slug": "cfsds-2003-526",
+  "assignments": [
+    {
+      "task_id": "t-assess",
+      "resource_id": "ia-crew-1",
+      "requested_start_min": 20.0,
+      "actual_start_min": 20.0,
+      "actual_end_min": 50.0,
+      "travel_min": 0.9428090415820634,
+      "service_min": 30.0,
+      "delay_min": 0.0,
+      "late": false,
+      "line_id": null,
+      "drop_id": null,
+      "line_length_m": 0.0
+    },
+    {
+      "task_id": "t-pump",
+      "resource_id": "pump-1",
+      "requested_start_min": 45.0,
+      "actual_start_min": 45.0,
+      "actual_end_min": 80.0,
+      "travel_min": 0.0,
+      "service_min": 35.0,
+      "delay_min": 0.0,
+      "late": false,
+      "line_id": null,
+      "drop_id": null,
+      "line_length_m": 0.0
+    },
+    {
+      "task_id": "t-hose",
+      "resource_id": "engine-1",
+      "requested_start_min": 50.0,
+      "actual_start_min": 50.0,
+      "actual_end_min": 200.0,
+      "travel_min": 0.6788225099390857,
+      "service_min": 150.0,
+      "delay_min": 0.0,
+      "late": false,
+      "line_id": null,
+      "drop_id": null,
+      "line_length_m": 0.0
+    },
+    {
+      "task_id": "t-line-crew",
+      "resource_id": "ia-crew-1",
+      "requested_start_min": 50.0,
+      "actual_start_min": 50.188561808316415,
+      "actual_end_min": 150.4105376641358,
+      "travel_min": 0.18856180831641267,
+      "service_min": 100.22197585581938,
+      "delay_min": 0.18856180831641467,
+      "late": false,
+      "line_id": "line-crew",
+      "drop_id": null,
+      "line_length_m": 300.66592756745814
+    },
+    {
+      "task_id": "t-line-dozer",
+      "resource_id": "dozer-1",
+      "requested_start_min": 80.0,
+      "actual_start_min": 80.0,
+      "actual_end_min": 138.98737325972087,
+      "travel_min": 1.959199836668021,
+      "service_min": 58.987373259720876,
+      "delay_min": 0.0,
+      "late": false,
+      "line_id": "line-dozer",
+      "drop_id": null,
+      "line_length_m": 344.0930106817051
+    },
+    {
+      "task_id": "t-air1",
+      "resource_id": "heli-1",
+      "requested_start_min": 120.0,
+      "actual_start_min": 120.0,
+      "actual_end_min": 140.0,
+      "travel_min": 0.669991708074726,
+      "service_min": 20.0,
+      "delay_min": 0.0,
+      "late": false,
+      "line_id": null,
+      "drop_id": "drop-heli-1",
+      "line_length_m": 0.0
+    },
+    {
+      "task_id": "t-tanker",
+      "resource_id": "airtanker-1",
+      "requested_start_min": 150.0,
+      "actual_start_min": 150.0,
+      "actual_end_min": 165.0,
+      "travel_min": 0.31714285714285717,
+      "service_min": 15.0,
+      "delay_min": 0.0,
+      "late": false,
+      "line_id": null,
+      "drop_id": "drop-tanker-1",
+      "line_length_m": 0.0
+    },
+    {
+      "task_id": "t-air2",
+      "resource_id": "heli-1",
+      "requested_start_min": 180.0,
+      "actual_start_min": 180.0,
+      "actual_end_min": 200.0,
+      "travel_min": 0.023570226039551584,
+      "service_min": 20.0,
+      "delay_min": 0.0,
+      "late": false,
+      "line_id": null,
+      "drop_id": "drop-heli-2",
+      "line_length_m": 0.0
+    }
+  ],
+  "utilization": {
+    "ia-crew-1": 0.09043192767765235,
+    "engine-1": 0.10416666666666667,
+    "dozer-1": 0.04096345365258394,
+    "heli-1": 0.027777777777777776,
+    "airtanker-1": 0.010416666666666666,
+    "pump-1": 0.024305555555555556
+  },
+  "warnings": [
+    "resource pump-1 has no speed; travel set to zero"
+  ]
+}

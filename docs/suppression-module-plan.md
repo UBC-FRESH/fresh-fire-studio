@@ -1,6 +1,6 @@
 # Proposed P179 — Process-based suppression and response
 
-Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs and P179.3a native containment adapter implemented. Not operational.
+Status: P179.0 contract, P179.1 static proof, P179.2a schedule, P179.2b failure proofs, P179.3a native containment adapter and P179.4a dispatch prototype implemented. Not operational.
 
 ## Open containment issues
 
@@ -84,6 +84,11 @@ Implemented in this repository:
 - `scripts/prove_native_suppression_2003_526.py` — native proof runner.
 - `suppression/proofs/2003-526-native*.json` — native fast, slow, breach and late artifacts.
 - `docs/p179-3-native-proof.md` — native method, results and limits.
+- `suppression/dispatch.py` — deterministic travel, service and task-timing prototype.
+- `scripts/dispatch_suppression_scenario.py` — dispatch CLI.
+- `suppression/proofs/2003-526-dispatch.json` — demo dispatch artifact.
+- `tests/test_dispatch.py` — travel, line service, utilization tests.
+- `docs/p179-4-dispatch.md` — dispatch method, demo and limits.
 
 Run:
 
@@ -183,6 +188,21 @@ free burn.
 This is still diagnostic: drops are not coupled, and spotting, wind grids and
 burning-condition gates are not supported. See
 [`p179-3-native-proof.md`](p179-3-native-proof.md).
+
+## P179.4a deterministic dispatch prototype
+
+`suppression/dispatch.py` follows the scenario's existing resource assignments
+and derives travel, readiness, service time and actual task windows. Line
+service time comes from line length and `line_rate_m_h`; drop service time is
+the requested task duration.
+
+The schematic demo yields a 300.7 m crew line in 100.2 minutes and a 344.1 m
+dozer line in 59.0 minutes. It also reports delay, late tasks, availability
+warnings and utilization.
+
+This is not an optimizer and not an aircraft-cycle model. Travel is straight
+line; there are no roads, rest rules, refills or multi-incident queues. See
+[`p179-4-dispatch.md`](p179-4-dispatch.md).
 
 ## Evidence base: Martell and collaborators
 
@@ -462,9 +482,10 @@ Visual labels must distinguish:
 
 ### P179.2 — ground response
 
-- Status: time-aware line/drop schedule, failure proofs and native containment
-  adapter implemented (P179.2a/P179.2b/P179.3a); dispatch, crew productivity
-  and ground-resource simulation pending.
+- Status: time-aware line/drop schedule, failure proofs, native containment
+  adapter and deterministic dispatch prototype implemented
+  (P179.2a/P179.2b/P179.3a/P179.4a); queueing, rest rules and aircraft cycles
+  pending.
 - IA crew, engine, dozer, pump and hose.
 - Travel, setup, line production, water supply, holding/breach.
 - Discrete-event playback.
