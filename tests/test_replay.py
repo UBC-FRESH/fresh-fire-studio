@@ -19,3 +19,5 @@ def test_replay_page_and_data_are_consistent() -> None:
     assert len(data["model_extent"]) == 19
     assert (ROOT / "portal/static/suppression-evidence-ensemble.json").exists()
     assert (ROOT / "portal/static/suppression-evidence-control.json").exists()
+    assert len(data["observed_extent"]) == 3
+    assert data["observed_ha"] == 520.0

@@ -28,12 +28,12 @@ input[type=range]{accent-color:var(--hot)}#clock{font:12px ui-monospace,monospac
 <div id="loading">LOADING MISSION REPLAY…</div>
 <div id="note">DIAGNOSTIC MISSION GEOMETRY · NOT AN OPERATIONAL PREDICTION</div>
 <div id="title" class="hud"><h1>Suppression mission replay</h1><span class="badge">DIAGNOSTIC · NO FIRE EFFECT</span><p>21 CL-415-style drops on a 1,200 m line near the 600-minute front. This page visualizes the mission geometry and timing only. It does not show validated fire containment.</p></div>
-<div id="results" class="hud"><div class="eyebrow">EVIDENCE ENSEMBLE · 32 SAMPLES</div><div class="result" id="result-realistic"><div class="result-top"><span>Realistic 21-drop line</span><b>5,325 ha</b></div><small>0% containment · placement-limited · all samples equal free burn</small></div><div class="result" id="result-control"><div class="result-top"><span>Synthetic control barrier</span><b>3,574.7 ha</b></div><small>3,570–3,575 ha · ROS correlation −0.78 · effect model responds, not operational</small></div><div class="links"><a id="mission-link" href="#">Mission JSON</a><a id="evidence-link" href="#">Realistic ensemble</a><a id="control-link" href="#">Control results</a><a href="https://github.com/UBC-FRESH/fresh-fire-studio/blob/main/docs/p179-18-model-card.md" target="_blank" rel="noopener">Model card ↗</a></div></div>
+<div id="results" class="hud"><div class="eyebrow">EVIDENCE ENSEMBLE · 32 SAMPLES</div><div class="result" id="result-realistic"><div class="result-top"><span>Realistic 21-drop line</span><b>5,325 ha</b></div><small>0% containment · placement-limited · all samples equal free burn</small><small>Observed final extent: 520 ha</small></div><div class="result" id="result-control"><div class="result-top"><span>Synthetic control barrier</span><b>3,574.7 ha</b></div><small>3,570–3,575 ha · ROS correlation −0.78 · effect model responds, not operational</small></div><div class="links"><a id="mission-link" href="#">Mission JSON</a><a id="evidence-link" href="#">Realistic ensemble</a><a id="control-link" href="#">Control results</a><a href="https://github.com/UBC-FRESH/fresh-fire-studio/blob/main/docs/p179-18-model-card.md" target="_blank" rel="noopener">Model card ↗</a></div></div>
 <div id="stats" class="hud"><div><span>mission drops</span><b id="s-total">—</b></div><div><span>active drops</span><b id="s-active">0</b></div><div><span>aircraft</span><b id="s-aircraft">1</b></div><div><span>fps</span><b id="s-fps">—</b></div></div>
 <div id="compass" class="hud">↑ <span>N</span></div>
 <div id="bar" class="hud">
-  <div class="row"><button id="play" class="primary">Play</button><button id="reset">Reset</button><button id="mode-realistic" class="mode active">Realistic</button><button id="mode-control" class="mode">Control</button><button id="extent">Model extent</button><input id="slider" class="grow" type="range" min="0" max="900" step="1" value="0"><span id="clock">0 min</span></div>
-  <div class="legend"><span><i style="background:#7ce0c6"></i>drop / water</span><span><i style="background:#70b7ff"></i>control barrier</span><span><i style="background:#ffb347"></i>aircraft</span><span><i style="background:#ffd27c"></i>free-burn extent</span><span><i style="background:#52635d"></i>1 km grid</span></div>
+  <div class="row"><button id="play" class="primary">Play</button><button id="reset">Reset</button><button id="mode-realistic" class="mode active">Realistic</button><button id="mode-control" class="mode">Control</button><button id="extent">Model extent</button><button id="observed">Hide observed</button><input id="slider" class="grow" type="range" min="0" max="900" step="1" value="0"><span id="clock">0 min</span></div>
+  <div class="legend"><span><i style="background:#7ce0c6"></i>drop / water</span><span><i style="background:#70b7ff"></i>control barrier</span><span><i style="background:#ffb347"></i>aircraft</span><span><i style="background:#ffd27c"></i>free-burn extent</span><span><i style="background:#7ce0c6"></i>observed final</span><span><i style="background:#52635d"></i>1 km grid</span></div>
   <div id="status">Mission geometry only · drag to orbit · scroll to zoom · space to play</div>
 </div>
 <script type="module">
@@ -138,6 +138,19 @@ const barrierEdge = new THREE.LineSegments(
 barrierEdge.position.copy(barrier.position);
 barrierEdge.visible = false;
 scene.add(barrierEdge);
+
+// Observed final extent (teal), for context only.
+const observedGroup = new THREE.Group();
+scene.add(observedGroup);
+for (const ring of DATA.observed_extent || []) {
+  if (!Array.isArray(ring) || ring.length < 3) continue;
+  const pts = ring.map(([x, y]) => new THREE.Vector3(lx(x), 6, lz(y)));
+  pts.push(pts[0].clone());
+  observedGroup.add(new THREE.LineLoop(
+    new THREE.BufferGeometry().setFromPoints(pts),
+    new THREE.LineBasicMaterial({color:0x7ce0c6, transparent:true, opacity:.95, depthTest:false})
+  ));
+}
 
 // Free-burn model extent (amber), for context only.
 const modelGroup = new THREE.Group();

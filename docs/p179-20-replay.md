@@ -17,12 +17,14 @@ Static export: `suppression/index.html` and `suppression.html`.
 - a **Realistic / Control** mode switch;
 - an optional **synthetic 20-cell control barrier**;
 - an optional free-burn model extent overlay;
+- the observed final extent in teal;
 - a 1 km grid and north-up compass;
 - a permanent banner: **diagnostic mission geometry, not an operational
   prediction**.
 
 The results panel reports:
 
+- observed final extent: 520 ha;
 - realistic 21-drop mission: 5,325 ha, 0% containment, placement-limited;
 - synthetic control barrier: 3,574.7 ha, 3,570–3,575 ha, ROS correlation
   −0.78, effect model responds but is not operational.
