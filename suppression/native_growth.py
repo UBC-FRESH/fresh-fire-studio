@@ -143,6 +143,7 @@ def grow_fire_with_containment(
     config: Any,
     schedule: ContainmentSchedule,
     wet_schedule: WetSchedule | None = None,
+    ros_reduction_m_min: float | None = None,
 ) -> Any:
     """Run a minimum-travel-time growth with a native containment schedule.
 
@@ -304,7 +305,17 @@ def grow_fire_with_containment(
                 step_index,
             )
             factor = wet_ros_factor(nrow, ncol, time)
-            if math.isfinite(arrival) and factor > 0.0:
+            if (
+                ros_reduction_m_min is not None
+                and wet_schedule is not None
+                and wet_schedule.is_suppressed(nrow, ncol, time)
+                and math.isfinite(arrival)
+                and arrival > time + 1e-12
+            ):
+                pre_ros = distance / (arrival - time)
+                post_ros = max(0.0, pre_ros - ros_reduction_m_min)
+                arrival = math.inf if post_ros <= 0.0 else time + distance / post_ros
+            elif math.isfinite(arrival) and factor > 0.0:
                 arrival = time + (arrival - time) / factor
             if (
                 math.isfinite(arrival)

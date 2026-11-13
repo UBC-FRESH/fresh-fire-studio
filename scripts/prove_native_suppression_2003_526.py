@@ -54,6 +54,12 @@ def main() -> None:
         default=None,
         help="aggregate nested drop depth from this sub-cell size",
     )
+    parser.add_argument(
+        "--ros-reduction-m-min",
+        type=float,
+        default=None,
+        help="absolute ROS reduction where a drop is fully wet",
+    )
     args = parser.parse_args()
 
     sys.path.insert(0, str(ROOT))
@@ -170,6 +176,7 @@ def main() -> None:
         ),
         schedule,
         wet_schedule=wet,
+        ros_reduction_m_min=args.ros_reduction_m_min,
     )
     simulated = np.isfinite(growth.ignition_time_min)
     metrics = compare_masks(simulated, observed, fire.grid)
@@ -197,6 +204,11 @@ def main() -> None:
                     + (
                         f", {args.subcell_cell_size_m:g} m sub-cell"
                         if args.subcell_cell_size_m is not None
+                        else ""
+                    )
+                    + (
+                        f", absolute ROS reduction {args.ros_reduction_m_min:g} m/min"
+                        if args.ros_reduction_m_min is not None
                         else ""
                     )
                 )

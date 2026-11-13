@@ -1,0 +1,694 @@
+{
+  "scenario_id": "2003-526-mcfayden-evidence",
+  "fire_slug": "cfsds-2003-526",
+  "label": "Diagnostic evidence-based drop line: McFayden effective aerial hold 60 min",
+  "timeline_start_min": 0,
+  "timeline_end_min": 22200,
+  "metadata": {
+    "status": "diagnostic",
+    "coordinate_system": "EPSG:26911",
+    "note": "Diagnostic 21-drop line using McFayden effective aerial hold 60 min. Not a real operation."
+  },
+  "objective": {
+    "containment_area_ha": 2500,
+    "deadline_min": 1440,
+    "priority": "resource"
+  },
+  "bases": [
+    {
+      "id": "proof-base",
+      "x": 487700,
+      "y": 5722700,
+      "kind": "ground"
+    }
+  ],
+  "water_sources": [],
+  "resources": [
+    {
+      "id": "proof-heli",
+      "label": "Diagnostic helicopter",
+      "kind": "helicopter",
+      "home_base_id": "proof-base",
+      "speed_kmh": 180,
+      "capacity_l": 6000,
+      "available_start_min": 0,
+      "available_end_min": 22200
+    }
+  ],
+  "tasks": [
+    {
+      "id": "drop-task-1",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 600.0,
+      "end_min": 601.0,
+      "drop_id": "drop-line-1",
+      "target": [
+        [
+          491200.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-2",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 605.0,
+      "end_min": 606.0,
+      "drop_id": "drop-line-2",
+      "target": [
+        [
+          491260.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-3",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 610.0,
+      "end_min": 611.0,
+      "drop_id": "drop-line-3",
+      "target": [
+        [
+          491320.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-4",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 615.0,
+      "end_min": 616.0,
+      "drop_id": "drop-line-4",
+      "target": [
+        [
+          491380.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-5",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 620.0,
+      "end_min": 621.0,
+      "drop_id": "drop-line-5",
+      "target": [
+        [
+          491440.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-6",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 625.0,
+      "end_min": 626.0,
+      "drop_id": "drop-line-6",
+      "target": [
+        [
+          491500.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-7",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 630.0,
+      "end_min": 631.0,
+      "drop_id": "drop-line-7",
+      "target": [
+        [
+          491560.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-8",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 635.0,
+      "end_min": 636.0,
+      "drop_id": "drop-line-8",
+      "target": [
+        [
+          491620.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-9",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 640.0,
+      "end_min": 641.0,
+      "drop_id": "drop-line-9",
+      "target": [
+        [
+          491680.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-10",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 645.0,
+      "end_min": 646.0,
+      "drop_id": "drop-line-10",
+      "target": [
+        [
+          491740.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-11",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 650.0,
+      "end_min": 651.0,
+      "drop_id": "drop-line-11",
+      "target": [
+        [
+          491800.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-12",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 655.0,
+      "end_min": 656.0,
+      "drop_id": "drop-line-12",
+      "target": [
+        [
+          491860.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-13",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 660.0,
+      "end_min": 661.0,
+      "drop_id": "drop-line-13",
+      "target": [
+        [
+          491920.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-14",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 665.0,
+      "end_min": 666.0,
+      "drop_id": "drop-line-14",
+      "target": [
+        [
+          491980.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-15",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 670.0,
+      "end_min": 671.0,
+      "drop_id": "drop-line-15",
+      "target": [
+        [
+          492040.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-16",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 675.0,
+      "end_min": 676.0,
+      "drop_id": "drop-line-16",
+      "target": [
+        [
+          492100.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-17",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 680.0,
+      "end_min": 681.0,
+      "drop_id": "drop-line-17",
+      "target": [
+        [
+          492160.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-18",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 685.0,
+      "end_min": 686.0,
+      "drop_id": "drop-line-18",
+      "target": [
+        [
+          492220.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-19",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 690.0,
+      "end_min": 691.0,
+      "drop_id": "drop-line-19",
+      "target": [
+        [
+          492280.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-20",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 695.0,
+      "end_min": 696.0,
+      "drop_id": "drop-line-20",
+      "target": [
+        [
+          492340.0,
+          5726250.0
+        ]
+      ]
+    },
+    {
+      "id": "drop-task-21",
+      "resource_id": "proof-heli",
+      "kind": "drop",
+      "start_min": 700.0,
+      "end_min": 701.0,
+      "drop_id": "drop-line-21",
+      "target": [
+        [
+          492400.0,
+          5726250.0
+        ]
+      ]
+    }
+  ],
+  "lines": [],
+  "drops": [
+    {
+      "id": "drop-line-1",
+      "task_id": "drop-task-1",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 600.0,
+      "end_min": 601.0,
+      "center": [
+        491200.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-2",
+      "task_id": "drop-task-2",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 605.0,
+      "end_min": 606.0,
+      "center": [
+        491260.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-3",
+      "task_id": "drop-task-3",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 610.0,
+      "end_min": 611.0,
+      "center": [
+        491320.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-4",
+      "task_id": "drop-task-4",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 615.0,
+      "end_min": 616.0,
+      "center": [
+        491380.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-5",
+      "task_id": "drop-task-5",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 620.0,
+      "end_min": 621.0,
+      "center": [
+        491440.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-6",
+      "task_id": "drop-task-6",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 625.0,
+      "end_min": 626.0,
+      "center": [
+        491500.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-7",
+      "task_id": "drop-task-7",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 630.0,
+      "end_min": 631.0,
+      "center": [
+        491560.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-8",
+      "task_id": "drop-task-8",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 635.0,
+      "end_min": 636.0,
+      "center": [
+        491620.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-9",
+      "task_id": "drop-task-9",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 640.0,
+      "end_min": 641.0,
+      "center": [
+        491680.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-10",
+      "task_id": "drop-task-10",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 645.0,
+      "end_min": 646.0,
+      "center": [
+        491740.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-11",
+      "task_id": "drop-task-11",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 650.0,
+      "end_min": 651.0,
+      "center": [
+        491800.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-12",
+      "task_id": "drop-task-12",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 655.0,
+      "end_min": 656.0,
+      "center": [
+        491860.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-13",
+      "task_id": "drop-task-13",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 660.0,
+      "end_min": 661.0,
+      "center": [
+        491920.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-14",
+      "task_id": "drop-task-14",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 665.0,
+      "end_min": 666.0,
+      "center": [
+        491980.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-15",
+      "task_id": "drop-task-15",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 670.0,
+      "end_min": 671.0,
+      "center": [
+        492040.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-16",
+      "task_id": "drop-task-16",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 675.0,
+      "end_min": 676.0,
+      "center": [
+        492100.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-17",
+      "task_id": "drop-task-17",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 680.0,
+      "end_min": 681.0,
+      "center": [
+        492160.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-18",
+      "task_id": "drop-task-18",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 685.0,
+      "end_min": 686.0,
+      "center": [
+        492220.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-19",
+      "task_id": "drop-task-19",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 690.0,
+      "end_min": 691.0,
+      "center": [
+        492280.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-20",
+      "task_id": "drop-task-20",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 695.0,
+      "end_min": 696.0,
+      "center": [
+        492340.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    },
+    {
+      "id": "drop-line-21",
+      "task_id": "drop-task-21",
+      "resource_id": "proof-heli",
+      "suppressant": "water",
+      "start_min": 700.0,
+      "end_min": 701.0,
+      "center": [
+        492400.0,
+        5726250.0
+      ],
+      "length_m": 100,
+      "width_m": 50,
+      "coverage_l_m2": 1.0,
+      "effect_duration_min": 60.0,
+      "canopy_penetration": 1.0
+    }
+  ]
+}
