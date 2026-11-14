@@ -72,6 +72,8 @@ def main() -> None:
     for name, case_data in (("pilot-vri", VRI_CASE), ("pilot-g50872", G50872_CASE)):
         payload = _case_page(case_data)
         payload = payload.replace('href="/"', 'href="index.html"')
+        payload = payload.replace('src="/static/', 'src="static/')
+        payload = payload.replace("url('/static/", "url('static/")
         payload = payload.replace(
             f'src="/static/scenes/{case_data["slug"]}/',
             f'src="static/scenes/{case_data["slug"]}/',

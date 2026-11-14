@@ -22,7 +22,7 @@ strong,b{color:var(--ink);font-weight:650}.small{font-size:12px;color:var(--dim)
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}.card{border:1px solid var(--line);background:rgba(16,20,22,.72);border-radius:14px;padding:18px}.card h3{margin:0 0 6px;font-size:16px}.card p{margin:0;font-size:13px}.card .num{font:12px "DM Mono",monospace;color:var(--hot);letter-spacing:.08em}
 .eq{border:1px solid var(--line);background:#0b1012;border-radius:12px;padding:16px 18px;margin:18px 0;font:15px/1.8 "DM Mono",monospace;color:#ffd7b4;overflow:auto}
 .eq span{color:var(--muted);font-family:Manrope,sans-serif;font-size:12px;display:block;margin-top:6px}
-.table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13px}.table th,.table td{text-align:left;border-bottom:1px solid var(--line);padding:9px 10px;vertical-align:top}.table th{color:var(--dim);font:10px "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase}.table td{color:var(--muted)}.table td b{color:var(--ink)}
+.table-wrap{overflow-x:auto;margin:18px 0}.table{width:100%;border-collapse:collapse;margin:0;font-size:13px}.table th,.table td{text-align:left;border-bottom:1px solid var(--line);padding:9px 10px;vertical-align:top}.table th{color:var(--dim);font:10px "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase}.table td{color:var(--muted)}.table td b{color:var(--ink)}
 .pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:24px 0}.pipe{background:#0d1214;padding:14px}.pipe b{display:block;font-size:12px;color:var(--ink)}.pipe span{display:block;font-size:11px;color:var(--dim);margin-top:4px}
 .callout{border-left:3px solid var(--hot);padding:12px 16px;background:rgba(255,107,44,.06);margin:22px 0;color:#d8cdc0}
 .refs{font-size:13px;color:var(--muted)}.refs li{margin:8px 0}
@@ -67,7 +67,7 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:v
 
 <h2>4 · Validation ladder</h2>
 <p>We deliberately do not use one fire or one IoU as a pass mark. The ladder has six tiers:</p>
-<table class="table">
+<div class="table-wrap"><table class="table">
 <tr><th>Tier</th><th>Question</th><th>Current evidence</th></tr>
 <tr><td><b>Standard cases</b></td><td>Does the kernel reproduce FBP/Rothermel standard cases?</td><td>Surface, crown, FWI and ellipse benchmarks pass in WS4 tests.</td></tr>
 <tr><td><b>Event reconstruction</b></td><td>Does the simulated perimeter match a public observed fire?</td><td>Dogrib and Hay River are the depth cases; multi-fire reanalysis cases are reported separately.</td></tr>
@@ -75,7 +75,7 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:v
 <tr><td><b>Treatment response</b></td><td>Do fuel treatments change risk in the right direction and magnitude?</td><td>Open for P164.4; containment/firebreak scenarios are now a first-class input.</td></tr>
 <tr><td><b>Tree effects</b></td><td>Do scorch, torch and mortality match FOFEM/Ryan-type evidence?</td><td>FOFEM ±20% stand-level is the benchmark; the 3D classes are not mortality validation.</td></tr>
 <tr><td><b>Decision quality</b></td><td>Does uncertainty change the chosen plan?</td><td>Open for P164.5.</td></tr>
-</table>
+</table></div>
 
 <h2>5 · What we found, including the uncomfortable parts</h2>
 <p>Published event models are modest. Across the WildfireAV/ELMFIRE and FARSITE comparisons, mean event Jaccard is about <b>0.18</b>; Prometheus Dogrib is <b>0.21</b> on the difficult case and <b>0.568</b> on the better-conditioned case. Our own six-case reanalysis benchmark is in that range: median IoU <b>0.096</b>, area bias <b>+6.7× to +11.6×</b>.</p>
@@ -88,14 +88,14 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:v
 </ul>
 
 <h2>6 · Inputs and provenance</h2>
-<table class="table">
+<div class="table-wrap"><table class="table">
 <tr><th>Input</th><th>Source</th><th>Use</th></tr>
 <tr><td>Observed perimeters / progression</td><td>Prometheus Dogrib sample, CFSDS v1.1 (OSF f48ry)</td><td>Event geometry and comparison</td></tr>
 <tr><td>Hourly weather</td><td>ECCC station data or Open-Meteo historical reanalysis</td><td>FWI, wind, temperature, RH, rain</td></tr>
 <tr><td>Fuel / terrain</td><td>FireSTARR 2023 fuel, NRCan DEM; VRI where available</td><td>FBP fuel type, slope, aspect, elevation</td></tr>
 <tr><td>Tree layer</td><td>Nemora synthetic stems</td><td>Visual scale and tree-state communication</td></tr>
 <tr><td>Validation references</td><td>WildfireAV, Prometheus, FSim, FOFEM</td><td>Published envelopes, not pass marks</td></tr>
-</table>
+</table></div>
 <p>Every case records its source, access date, licence, grid, event window, weather mode and ignition mode. The data are public; the derived fixtures are small; raw archives stay out of the portal.</p>
 
 <h2>7 · Where this is weak</h2>
