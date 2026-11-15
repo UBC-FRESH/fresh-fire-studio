@@ -20,6 +20,7 @@ def test_replay_page_and_data_are_consistent() -> None:
     assert "Persistence envelope" in page
     assert "Gap-only 15-min wetting" in page
     assert "Gap-only capacity" in page
+    assert "max-height:calc(100vh - 300px)" in page
     assert "4,235 L/min" in page
     assert "100/100" in page
     assert "Wheatley 2024" in page
