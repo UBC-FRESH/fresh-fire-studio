@@ -83,7 +83,9 @@ A separate WS4 FBP diagnostic tested a five-cell gap in an existing firebreak at
 100 m resolution. Perfect 15-minute re-wetting held at **92,722 ha**. A
 deterministic earliest-available queue gives a **three-aircraft lower bound**
 with a **4,235 L/min** source; 3,000 L/min fails. The source queue peaks at
-2.83 minutes at the threshold. This is capacity evidence, not operational
+2.83 minutes at the threshold. Under a seeded ±10% service-time and ±5% cycle
+envelope, 4,235 L/min remained feasible in **100/100** samples while
+3,500 L/min failed in **100/100**. This is capacity evidence, not operational
 dispatch, and does not change the full-line results above.
 
 ## Intended use
