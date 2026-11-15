@@ -18,6 +18,8 @@ def test_replay_page_and_data_are_consistent() -> None:
     assert "#stats,#results,#phase{display:none}" in page
     assert "@media(max-height:500px)" in page
     assert "Persistence envelope" in page
+    assert "Gap-only 15-min wetting" in page
+    assert "4,235 L/min" in page
     assert "Wheatley 2024" in page
     assert (ROOT / "portal/static/p179-case-study.pdf").exists()
     assert len(data["sorties"]) == 21

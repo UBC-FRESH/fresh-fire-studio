@@ -77,6 +77,15 @@ These are perfect-dispatch lower bounds, not an operational plan. They assume
 full-cell re-wetting, a 4.25-minute cycle, 6,000 L per sortie and no supply,
 weather or maintenance limits. See [`p185-rewetting.md`](p185-rewetting.md).
 
+### Gap-only capacity diagnostic
+
+A separate WS4 FBP diagnostic tested a five-cell gap in an existing firebreak at
+100 m resolution. Perfect 15-minute re-wetting held at **92,722 ha**. A
+deterministic earliest-available queue gives a **three-aircraft lower bound**
+with a **4,235 L/min** source; 3,000 L/min fails. The source queue peaks at
+2.83 minutes at the threshold. This is capacity evidence, not operational
+dispatch, and does not change the full-line results above.
+
 ## Intended use
 
 - compare model assumptions;
