@@ -28,4 +28,7 @@ def test_methods_page_reports_mortality_and_treatment_limits() -> None:
         assert "screening mortality probability" in page
         assert "FTM held-out datasets" in page
         assert "not BC-calibrated" in page
-        assert "fuel/canopy prescription mapping" in page
+        assert "post-treatment FBP conversion" in page
+        assert "Open FFS data" in page
+        assert "Access Only" in page
+        assert "BC VRI 2025 Rank 1" in page

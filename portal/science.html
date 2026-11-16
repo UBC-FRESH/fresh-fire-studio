@@ -72,7 +72,7 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:v
 <tr><td><b>Standard cases</b></td><td>Does the kernel reproduce FBP/Rothermel standard cases?</td><td>Surface, crown, FWI and ellipse benchmarks pass in WS4 tests.</td></tr>
 <tr><td><b>Event reconstruction</b></td><td>Does the simulated perimeter match a public observed fire?</td><td>Dogrib and Hay River are the depth cases; multi-fire reanalysis cases are reported separately.</td></tr>
 <tr><td><b>Burn probability</b></td><td>Are probabilities calibrated and discriminative?</td><td>FSim-style top-20% capture and LSS are the published reference class; P164.3 is paused until a public occurrence dataset is acquired.</td></tr>
-<tr><td><b>Treatment response</b></td><td>Do fuel treatments change risk in the right direction and magnitude?</td><td>Published effect ranges are registered. Simulation is blocked until a fuel/canopy prescription mapping is agreed; containment/firebreak scenarios remain separate.</td></tr>
+<tr><td><b>Treatment response</b></td><td>Do fuel treatments change risk in the right direction and magnitude?</td><td>Open FFS data give measured median changes: burn-only −45% surface fuel; thin-only +51% surface fuel but −29% basal area; thin-burn −23% canopy and −3.5% surface fuel. An explicit BC VRI prescription contract exists, but the post-treatment FBP class is still an expert input. BC CRI treatment locations are Access Only and are not used.</td></tr>
 <tr><td><b>Tree effects</b></td><td>Do scorch, torch and mortality match FOFEM/Ryan-type evidence?</td><td>Generic FOFEM screening equation validated on FTM held-out datasets: AUC 0.912, Brier skill 0.514. Mostly US data; not BC-calibrated. Visual classes remain separate.</td></tr>
 <tr><td><b>Decision quality</b></td><td>Does uncertainty change the chosen plan?</td><td>Open for P164.5.</td></tr>
 </table></div>
@@ -94,6 +94,8 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:v
 <tr><td>Hourly weather</td><td>ECCC station data or Open-Meteo historical reanalysis</td><td>FWI, wind, temperature, RH, rain</td></tr>
 <tr><td>Fuel / terrain</td><td>FireSTARR 2023 fuel, NRCan DEM; VRI where available</td><td>FBP fuel type, slope, aspect, elevation</td></tr>
 <tr><td>Tree layer</td><td>Nemora synthetic stems</td><td>Visual scale and tree-state communication</td></tr>
+<tr><td>Treatment effects</td><td>National Fire and Fire Surrogate study, RDS-2016-0009</td><td>Measured canopy, basal-area, and surface-fuel deltas</td></tr>
+<tr><td>BC stand geometry</td><td>BC VRI 2025 Rank 1, Open Government Licence – BC</td><td>Explicit stand-level prescription preview</td></tr>
 <tr><td>Validation references</td><td>WildfireAV, Prometheus, FSim, FOFEM</td><td>Published envelopes, not pass marks</td></tr>
 </table></div>
 <p>Every case records its source, access date, licence, grid, event window, weather mode and ignition mode. The data are public; the derived fixtures are small; raw archives stay out of the portal.</p>
@@ -104,6 +106,7 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:v
 <li><b>Reanalysis weather is not a station.</b> Small-fire timing is sensitive to local wind and rain.</li>
 <li><b>The tree layer is synthetic.</b> The near-field LOD renders a visual 500 stems/ha target from stand geometry; a wider 140 stems/ha tree-silhouette ring carries the background. Neither is an inventory or a mortality sample.</li>
 <li><b>Mortality screening is not BC-calibrated.</b> It uses a generic FOFEM equation with mostly US FTM data. The 3D visual state and the screening probability are separate outputs.</li>
+<li><b>BC treatment locations are not open.</b> The BC Wildfire CRI Fuel Treatments and BC Fire Fuel Types layers are Access Only, not open. The public methods use open BC VRI geometry and open FFS effect sizes, not a BC treatment inventory.</li>
 <li><b>Observed-extent replay is not free-burn prediction.</b> The model-extent toggle exists precisely to show that.</li>
 <li><b>Burn probability is not resumed.</b> P164.3 needs a public occurrence dataset and a pre-registered skill target.</li>
 </ul>
@@ -112,7 +115,7 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:v
 <ol>
 <li><b>Free-burn vs observed toggle as a first-class comparison</b> — show both extents without confusing them.</li>
 <li><b>Containment/firebreak scenarios</b> — a management input, not a tuned parameter.</li>
-<li><b>Treatment-effect validation</b> — direction, magnitude and ranking stability; blocked until the fuel/canopy prescription mapping is agreed.</li>
+<li><b>Treatment-effect validation</b> — direction, magnitude and ranking stability; the explicit VRI + FFS prescription contract is ready, but the post-treatment FBP conversion still needs expert agreement.</li>
 <li><b>Decision quality</b> — does uncertainty change the plan?</li>
 </ol>
 
@@ -126,6 +129,8 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:v
 <li>Hood, S.M., et al. 2007. Predicting tree mortality and fuel consumption with FOFEM. <i>International Journal of Wildland Fire</i>.</li>
 <li>Cansler, C.A., et al. 2022. Fire and Tree Mortality Database, 2nd edition. USDA Forest Service Research Data Archive. <code>doi:10.2737/RDS-2020-0001-2</code>.</li>
 <li>Davis, K.T., et al. 2024. A meta-analysis of thinning, prescribed fire, and wildfire effects on subsequent wildfire severity. <i>Forest Ecology and Management</i> 561:121885.</li>
+<li>McIver, J.D., et al. 2016. Data for National Fire and Fire Surrogate study. USDA Forest Service Research Data Archive. <code>doi:10.2737/RDS-2016-0009</code>.</li>
+<li>BC VRI 2025 Rank 1. Open Government Licence – British Columbia.</li>
 <li>Canadian Fire Spread Dataset v1.1. OSF <code>f48ry</code>.</li>
 <li>Open-Meteo historical weather API. <code>archive-api.open-meteo.com</code>.</li>
 <li>WildfireAV / ELMFIRE and FARSITE event-validation summaries.</li>
