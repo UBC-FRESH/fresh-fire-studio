@@ -63,7 +63,7 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:v
 <h2>3 · What the 3D studio actually shows</h2>
 <p>The 3D layer is an <b>observed-extent replay</b>. The tree and stand geometry is clipped to the mapped final fire perimeter. For CFSDS cases, each tree ignites on the observed day-of-burn raster; for Dogrib and Hay River, arrival time comes from the WS4 growth field inside the observed extent. Trees then resolve to live, burning, scorched, torched or consumed visual states.</p>
 <div class="callout"><b>This is not a prediction of the square AOI.</b> The default scene is the observed burn shape. The <b>Model extent</b> button overlays the free-burn model footprint in orange, so the difference between observed extent and basin-filling model behaviour is visible.</div>
-<p>The tree population is synthetic. Nemora places stems from a species/DBH distribution; it is a plausible realization, not a measured inventory. Tree-scale mortality is a visual classification, not a validated FOFEM output. The 3D scene is a communication and inspection tool; the authoritative output is the gridded arrival-time field and the perimeter metrics.</p>
+<p>The tree population is synthetic. Nemora places stems from a species/DBH distribution; it is a plausible realization, not a measured inventory. The unburned, scorched, torched and consumed states are visual classes. A separate per-tree <b>screening mortality probability</b> is calculated for supported species from the FOFEM crown-scorch equation and FTM bark coefficients. It is not a BC-calibrated mortality prediction, and it does not turn the visual classes into validation. The authoritative output remains the gridded arrival-time field and the perimeter metrics.</p>
 
 <h2>4 · Validation ladder</h2>
 <p>We deliberately do not use one fire or one IoU as a pass mark. The ladder has six tiers:</p>
@@ -72,8 +72,8 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:v
 <tr><td><b>Standard cases</b></td><td>Does the kernel reproduce FBP/Rothermel standard cases?</td><td>Surface, crown, FWI and ellipse benchmarks pass in WS4 tests.</td></tr>
 <tr><td><b>Event reconstruction</b></td><td>Does the simulated perimeter match a public observed fire?</td><td>Dogrib and Hay River are the depth cases; multi-fire reanalysis cases are reported separately.</td></tr>
 <tr><td><b>Burn probability</b></td><td>Are probabilities calibrated and discriminative?</td><td>FSim-style top-20% capture and LSS are the published reference class; P164.3 is paused until a public occurrence dataset is acquired.</td></tr>
-<tr><td><b>Treatment response</b></td><td>Do fuel treatments change risk in the right direction and magnitude?</td><td>Open for P164.4; containment/firebreak scenarios are now a first-class input.</td></tr>
-<tr><td><b>Tree effects</b></td><td>Do scorch, torch and mortality match FOFEM/Ryan-type evidence?</td><td>FOFEM ±20% stand-level is the benchmark; the 3D classes are not mortality validation.</td></tr>
+<tr><td><b>Treatment response</b></td><td>Do fuel treatments change risk in the right direction and magnitude?</td><td>Published effect ranges are registered. Simulation is blocked until a fuel/canopy prescription mapping is agreed; containment/firebreak scenarios remain separate.</td></tr>
+<tr><td><b>Tree effects</b></td><td>Do scorch, torch and mortality match FOFEM/Ryan-type evidence?</td><td>Generic FOFEM screening equation validated on FTM held-out datasets: AUC 0.912, Brier skill 0.514. Mostly US data; not BC-calibrated. Visual classes remain separate.</td></tr>
 <tr><td><b>Decision quality</b></td><td>Does uncertainty change the chosen plan?</td><td>Open for P164.5.</td></tr>
 </table></div>
 
@@ -103,6 +103,7 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:v
 <li><b>Suppression is not solved.</b> Containment masks and firebreaks are scenario inputs; we do not claim to predict suppression.</li>
 <li><b>Reanalysis weather is not a station.</b> Small-fire timing is sensitive to local wind and rain.</li>
 <li><b>The tree layer is synthetic.</b> The near-field LOD renders a visual 500 stems/ha target from stand geometry; a wider 140 stems/ha tree-silhouette ring carries the background. Neither is an inventory or a mortality sample.</li>
+<li><b>Mortality screening is not BC-calibrated.</b> It uses a generic FOFEM equation with mostly US FTM data. The 3D visual state and the screening probability are separate outputs.</li>
 <li><b>Observed-extent replay is not free-burn prediction.</b> The model-extent toggle exists precisely to show that.</li>
 <li><b>Burn probability is not resumed.</b> P164.3 needs a public occurrence dataset and a pre-registered skill target.</li>
 </ul>
@@ -111,8 +112,7 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:v
 <ol>
 <li><b>Free-burn vs observed toggle as a first-class comparison</b> — show both extents without confusing them.</li>
 <li><b>Containment/firebreak scenarios</b> — a management input, not a tuned parameter.</li>
-<li><b>Treatment-effect validation</b> — direction, magnitude and ranking stability against public experiments.</li>
-<li><b>Tree-mortality evidence</b> — FOFEM/Ryan relationships, with the 3D classes kept separate.</li>
+<li><b>Treatment-effect validation</b> — direction, magnitude and ranking stability; blocked until the fuel/canopy prescription mapping is agreed.</li>
 <li><b>Decision quality</b> — does uncertainty change the plan?</li>
 </ol>
 
@@ -124,6 +124,8 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:v
 <li>Lawson, B.D., and Armitage, O.B. 2008. <i>Weather guide for the Canadian Forest Fire Danger Rating System.</i> Natural Resources Canada, Canadian Forest Service.</li>
 <li>Finney, M.A. 1998. <i>FARSITE: Fire Area Simulator — model development and evaluation.</i> USDA Forest Service RMRS-RP-4.</li>
 <li>Hood, S.M., et al. 2007. Predicting tree mortality and fuel consumption with FOFEM. <i>International Journal of Wildland Fire</i>.</li>
+<li>Cansler, C.A., et al. 2022. Fire and Tree Mortality Database, 2nd edition. USDA Forest Service Research Data Archive. <code>doi:10.2737/RDS-2020-0001-2</code>.</li>
+<li>Davis, K.T., et al. 2024. A meta-analysis of thinning, prescribed fire, and wildfire effects on subsequent wildfire severity. <i>Forest Ecology and Management</i> 561:121885.</li>
 <li>Canadian Fire Spread Dataset v1.1. OSF <code>f48ry</code>.</li>
 <li>Open-Meteo historical weather API. <code>archive-api.open-meteo.com</code>.</li>
 <li>WildfireAV / ELMFIRE and FARSITE event-validation summaries.</li>

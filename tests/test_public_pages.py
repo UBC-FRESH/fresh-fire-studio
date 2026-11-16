@@ -19,3 +19,13 @@ def test_methods_tables_are_horizontally_scrollable() -> None:
     assert ".table-wrap{overflow-x:auto" in source
     assert source.count('<div class="table-wrap">') == 2
     assert source.count("</table></div>") == 2
+
+
+def test_methods_page_reports_mortality_and_treatment_limits() -> None:
+    source = (ROOT / "portal" / "science.html").read_text(encoding="utf-8")
+    exported = (ROOT / "public" / "methods.html").read_text(encoding="utf-8")
+    for page in (source, exported):
+        assert "screening mortality probability" in page
+        assert "FTM held-out datasets" in page
+        assert "not BC-calibrated" in page
+        assert "fuel/canopy prescription mapping" in page
